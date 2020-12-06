@@ -1,3 +1,4 @@
+
 USE siec_hoteli
 GO
 

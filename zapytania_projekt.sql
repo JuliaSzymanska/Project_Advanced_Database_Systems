@@ -90,10 +90,10 @@ SELECT * FROM rozmowy_telefoniczne rt
 WHERE DATEDIFF(MINUTE, data_rozpoczecia_rozmowy, CAST(data_zakonczenia_rozmowy AS TIME)) > 5
 GO
 
--- 14. Wyœwietl id_rezerwacji oraz data_rezerwacji dla wszystkich rezerwacji odbywaj¹cych siê po 15 sierpnia 2020 roku. 
+-- 14. Wyœwietl id_rezerwacji oraz data_rezerwacji dla wszystkich rezerwacji odbywaj¹cych siê po 15 sierpnia 2021 roku. 
 SELECT id_rezerwacji, data_rezerwacji 
 FROM rezerwacje 
-WHERE data_rezerwacji > CONVERT(DATE, '2020/08/15')
+WHERE data_rezerwacji > CONVERT(DATE, '2021/08/15')
 GO
 
 -- 15. Wyœwietl wszystkich klientów, których numer telefonu zaczyna siê od liczby '6' i koñczy siê na liczbê 2, ich imiê i nazwisko 
@@ -146,4 +146,53 @@ AS BEGIN
 		END
     RETURN @wspolczynnik; 
 END; 
+GO
+
+--19. 
+
+CREATE PROCEDURE premia
+@id INT = -1, @procent INT = -1
+AS
+BEGIN
+	IF @procent = -1 AND @id = -1
+		BEGIN
+			UPDATE pracownicy
+			SET premia = 0
+			WHERE premia IS NULL;
+		END
+	ELSE IF @procent = -1 AND @id != -1
+		BEGIN
+			UPDATE pracownicy
+			SET premia = 0
+			WHERE premia IS NULL
+			AND @id = id_pracownika
+		END
+	ELSE IF @procent != -1 AND @id != -1
+		BEGIN
+			UPDATE pracownicy
+			SET premia = premia * ((100.00 + @procent) / 100.00)
+			WHERE @id = id_pracownika
+		END
+	ELSE 
+		BEGIN
+			DECLARE kursor_premia CURSOR FOR
+				SELECT id_pracownika FROM pracownicy
+			DECLARE @id_kr INT
+			BEGIN
+			OPEN kursor_premia
+			FETCH NEXT FROM kursor_premia INTO @id_kr
+			WHILE @@FETCH_STATUS = 0
+				BEGIN
+					UPDATE pracownicy
+					SET premia = premia * ((100.00 + @procent) / 100.00)
+					WHERE CURRENT OF kursor_premia
+					FETCH NEXT FROM kursor_premia INTO @id_kr
+				END
+			CLOSE kursor_placa
+			DEALLOCATE kursor_placa
+		END
+		
+		END
+
+END
 GO
