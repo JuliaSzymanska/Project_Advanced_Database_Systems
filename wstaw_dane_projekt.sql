@@ -464,7 +464,7 @@ INSERT INTO uslugi VALUES ('Karnet na silownie', 25);
 INSERT INTO uslugi VALUES ('Karnet na basen', 40);
 INSERT INTO uslugi VALUES ('Masaz', 150);
 INSERT INTO uslugi VALUES ('Lekcja jogi', 75)
-/*
+
 INSERT INTO archiwum_rezerwacji VALUES (1520, 0, 0, 112, 1032, 1013);
 INSERT INTO archiwum_rezerwacji VALUES (3190, 0, 150, 110, 1033, 1019);
 INSERT INTO archiwum_rezerwacji VALUES (3419, 0, 75, 110, 1034, 1012);
@@ -482,7 +482,7 @@ INSERT INTO archiwum_rezerwacji VALUES (638, 48, 150, 126, 1045, 1003);
 INSERT INTO archiwum_rezerwacji VALUES (6688, 0, 480, 139, 1046, 1009);
 INSERT INTO archiwum_rezerwacji VALUES (1283, 115, 240, 151, 1047, 1012);
 INSERT INTO archiwum_rezerwacji VALUES (2624, 0, 800, 160, 1048, 1005);
-*/
+
 INSERT INTO usluga_dla_rezerwacji VALUES (1, 1000);
 INSERT INTO usluga_dla_rezerwacji VALUES (2, 1001);
 INSERT INTO usluga_dla_rezerwacji VALUES (1, 1001);

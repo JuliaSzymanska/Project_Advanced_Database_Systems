@@ -1,3 +1,4 @@
+IF EXISTS(SELECT 1 FROM master.dbo.sysdatabases WHERE name = 'siec_hoteli') DROP DATABASE siec_hoteli
 CREATE DATABASE siec_hoteli
 GO
 USE siec_hoteli
@@ -178,7 +179,7 @@ CREATE TABLE archiwum_rezerwacji(
 	cena_za_uslugi		MONEY,
 	id_pokoju			INT					NOT NULL,
 	id_rezerwacji		INT					NOT NULL,
-	id_klienta			INT					NOT NULL
+	id_klienta			INT					NOT NULL	
 );
 GO
 
