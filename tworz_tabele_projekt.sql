@@ -54,7 +54,7 @@ CREATE TABLE siec_hoteli.dbo.pracownicy
     id_pracownika             INT IDENTITY (1,1) NOT NULL,
     imie_pracownika           VARCHAR(20)        NOT NULL,
     nazwisko_pracownika       VARCHAR(40)        NOT NULL,
-    email_pracownika          VARCHAR(25) UNIQUE NOT NULL,
+    email_pracownika          VARCHAR(40) UNIQUE NOT NULL,
     numer_telefonu_pracownika CHAR(9) UNIQUE     NOT NULL,
 	data_urodzenia			  DATETIME,			 
     pensja                    MONEY,
