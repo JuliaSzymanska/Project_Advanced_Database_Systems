@@ -43,28 +43,6 @@ WHERE data_rezerwacji IN (SELECT DISTINCT TOP 5 data_rezerwacji FROM rezerwacje 
 ORDER BY data_rezerwacji ASC
 GO
 
--- 6. Wyœwietl wszystkie rezerwacje (id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji) dla klienta o nazwisku Kowalczyk.
---SELECT id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
---FROM rezerwacje r, klienci k
---WHERE r.id_klienta = k.id_klienta AND k.nazwisko_klienta = 'KOWALCZYK'
---GROUP BY data_rezerwacji, id_rezerwacji, liczba_dni_rezerwacji
---ORDER BY data_rezerwacji ASC
---GO
-
--- 6. Wyœwietl wszystkie us³ugi, które s¹ zarejestrowane dla rezerwacji dla klienta o nazwisku 'Dudziak'. 
---SELECT DISTINCT u.nazwa_uslugi 
---FROM uslugi u, usluga_dla_rezerwacji ur, klienci k, rezerwacje r
---WHERE ur.id_uslugi = u.id_uslugi
---AND ur.id_rezerwacji = r.id_rezerwacji
---AND r.id_klienta = k.id_klienta
---AND k.nazwisko_klienta LIKE 'Dudziak'
---GO
-
--- 7. Wyœwietl imiona, nazwiska, numery telefonów klietów, których imiê koñczy siê na literkê 'a'.
---SELECT imie_klienta, nazwisko_klienta, numer_telefonu_klienta 
---FROM klienci
---WHERE imie_klienta LIKE '%a'
---GO
 
 -- 9. Wyœwietl imiona, nazwiska, adresy klientów, którzy mieszkaj¹ w Hiszpani. 
 SELECT imie_klienta, nazwisko_klienta, adres_zamieszkania 
@@ -100,25 +78,15 @@ WHERE DATEDIFF(MINUTE, r.data_rozpoczecia_rozmowy, r.data_zakonczenia_rozmowy) >
 ORDER BY data_rozpoczecia_rozmowy
 GO
 
--- 14. Wyœwietl id_rezerwacji oraz data_rezerwacji dla wszystkich rezerwacji odbywaj¹cych siê po 15 sierpnia 2021 roku. 
-SELECT id_rezerwacji, data_rezerwacji 
-FROM rezerwacje 
-WHERE data_rezerwacji > CONVERT(DATE, '2021/08/15')
-GO
-
--- 15. Wyœwietl wszystkich klientów, których numer telefonu zaczyna siê od liczby '6' i koñczy siê na liczbê 2, ich imiê i nazwisko 
--- po³¹cz w jednej kolumnie o nazwie imie_i_nazwisko. 
-SELECT CONCAT(imie_klienta, ' ', nazwisko_klienta) AS imie_i_nazwisko, numer_telefonu_klienta 
-FROM klienci
-WHERE numer_telefonu_klienta LIKE '6%2'
-GO
-
+------------------------------------------------- FUNKCJA ----------------------------------------------------------------
 -- 16. Podwy¿sz wszystkim hotelom cenê bazow¹ za pokój o 5%.
-UPDATE hotele
-SET cena_bazowa_za_pokoj = 1.05 * cena_bazowa_za_pokoj
-SELECT id_hotelu, cena_bazowa_za_pokoj 
-FROM hotele
-GO
+--UPDATE hotele
+--SET cena_bazowa_za_pokoj = 1.05 * cena_bazowa_za_pokoj
+--SELECT id_hotelu, cena_bazowa_za_pokoj 
+--FROM hotele
+--GO
+
+----------------------------------------Napisac cos co wyswietli wszystkich klientow ktorzy dzownili --------------------------------------------------------
 
 -- 17. Dodaj funkcjê zwracaj¹c¹ wspó³czynnik z jakim trzeba bêdzie pomno¿yæ cenê za po³¹czenie telefoniczne. Funkcja ma przyjmowaæ dwa argumenty: 
 -- numer_telefonu, id_pokoju. Jeœli numer telefonu, na który zosta³o wykonane po³¹czenie nale¿y do któregoœ z pokoi w hotelu z którego wykonano po³¹czenie 
