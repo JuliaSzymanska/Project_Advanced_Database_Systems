@@ -2,7 +2,7 @@ USE siec_hoteli
 GO
 
 -- 1. Wyœwietl liczbê pokoi w ka¿dym z hoteli. Na koñcu dodaj podsumowanie ile jest ³¹cznie pokoi. 
-SELECT COUNT(*) as 'Liczba pokoi', nazwa_hotelu 
+SELECT COUNT(*) as 'Liczba pokoi', case when h.nazwa_hotelu is null then 'Suma' else h.nazwa_hotelu end as 'Nazwa Hotelu'
 FROM pokoje p, hotele h
 WHERE p.id_hotelu = h.id_hotelu
 GROUP BY ROLLUP(nazwa_hotelu)

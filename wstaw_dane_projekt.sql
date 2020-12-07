@@ -20,6 +20,7 @@ INSERT INTO panstwa VALUES ('DK', 'Dania');
 INSERT INTO panstwa VALUES ('AG', 'Argentyna');
 INSERT INTO panstwa VALUES ('BE', 'Belgia');
 INSERT INTO panstwa VALUES ('LT', 'Litwa');
+GO
 
 INSERT INTO miasta VALUES ('Rzym', 'IT');
 INSERT INTO miasta VALUES ('Wenecja', 'IT');
@@ -65,6 +66,7 @@ INSERT INTO miasta VALUES ('Bruksela', 'BE');
 INSERT INTO miasta VALUES ('Brugia', 'BE');
 INSERT INTO miasta VALUES ('Wilno', 'LT');
 INSERT INTO miasta VALUES ('Szawle', 'LT');
+GO
 
 INSERT INTO hotele VALUES ('Hotel Hiberia', 'Via XXIV Maggio 7, 00187', 136, 1.25, 10);
 INSERT INTO hotele VALUES ('Hotel Varese', 'Via Varese 26, 00185', 220, 2.10, 10);
@@ -114,6 +116,7 @@ INSERT INTO hotele VALUES ('Hotel Tobaco Lodz', 'Kopernika 64, 90-553', 152, 0.6
 INSERT INTO hotele VALUES ('OYO Hotel Vital', 'Rua Sacadura Cabral 107', 56, 0.05, 80);
 INSERT INTO hotele VALUES ('Pestana Rio Atlantica', 'Avenida Atlantica, 2964, Copacabana, CEP 22070-000', 292, 1.60, 80);
 INSERT INTO hotele VALUES ('Maxhotel', 'Bd. Adolphe Max 107, 1000', 196, 1.99, 90);
+GO
 
 INSERT INTO pracownicy VALUES ('Steven', 'King', 'king@onet.us', '500498112', 2400, NULL, 100);
 INSERT INTO pracownicy VALUES ('Neena', 'Kochhar', 'kochhar1342@wp.pl', '210198662', 2850, NULL, 100);
@@ -214,6 +217,7 @@ INSERT INTO archiwum_pracownikow VALUES (CAST('17-MAR-1993' AS DATETIME), CAST('
 INSERT INTO archiwum_pracownikow VALUES (CAST('12-MAR-1990' AS DATETIME), CAST('10-MAY-1990'AS DATETIME), 59);
 INSERT INTO archiwum_pracownikow VALUES (CAST('19-APR-1990' AS DATETIME), CAST('29-MAR-2010'AS DATETIME), 73); 
 INSERT INTO archiwum_pracownikow VALUES (CAST('12-MAR-2014' AS DATETIME), CAST('19-DEC-2019'AS DATETIME), 78);
+GO
 
 INSERT INTO pokoje VALUES (1, '04245', 6, 3, 100);
 INSERT INTO pokoje VALUES (2, '04123', 4, 2, 100);
@@ -336,6 +340,7 @@ INSERT INTO pokoje VALUES (1, '70000', 3, 1, 145);
 INSERT INTO pokoje VALUES (2, '66000', 2, 1, 145);
 INSERT INTO pokoje VALUES (3, '55000', 2, 1, 145);
 INSERT INTO pokoje VALUES (4, '95000', 1, 1, 145);
+GO
 
 INSERT INTO sprzatanie VALUES ('2020/05/15 12:00:00', '2020/05/15 14:30:00', 'Pelne', 100);
 INSERT INTO sprzatanie VALUES ('2020/03/05 11:00:00', '2020/03/05 11:45:00', 'Podstawowe', 100);
@@ -363,6 +368,7 @@ INSERT INTO sprzatanie VALUES ('2020/04/10 12:00:00', '2020/04/10 14:55:00', 'Pe
 INSERT INTO sprzatanie VALUES ('2020/03/12 11:00:00', '2020/03/12 12:30:00', 'Podstawowe', 150);
 INSERT INTO sprzatanie VALUES ('2020/05/01 06:00:00', '2020/05/01 10:30:00', 'Pelne', 160);
 INSERT INTO sprzatanie VALUES ('2020/02/23 09:00:00', '2020/02/23 09:30:00', 'Podstawowe', 162);
+GO
 
 INSERT INTO rozmowy_telefoniczne VALUES ('205947321', '2020/05/03  15:30:45', '2020/05/03 15:32:04', 123);
 INSERT INTO rozmowy_telefoniczne VALUES ('97465', '2020/01/06  10:21:05', '2020/01/06 11:01:37', 104);
@@ -376,6 +382,7 @@ INSERT INTO rozmowy_telefoniczne VALUES ('68345', '2020/05/04 11:22:34', '2020/0
 INSERT INTO rozmowy_telefoniczne VALUES ('19235', '2020/04/2 13:05:22', '2020/04/2 13:12:21', 145);
 INSERT INTO rozmowy_telefoniczne VALUES ('12432', '2020/02/13 04:45:59', '2020/02/13 05:54:11', 155);
 INSERT INTO rozmowy_telefoniczne VALUES ('205948876', '2020/02/28 13:17:23', '2020/02/28 14:45:13', 160);
+GO
 
 INSERT INTO klienci VALUES ('Maciej', 'Kowalczyk', '185392323', 'Politechniki 12 92-431 Lodz Polska');
 INSERT INTO klienci VALUES ('Magdalena', 'Nowak', '659302954', 'Morskie Oko 132 12-432 Zakopane Polska');
@@ -406,6 +413,7 @@ INSERT INTO klienci VALUES('Monika','Krawczyk', '760519009', 'Warszawa ul.Mazurk
 INSERT INTO klienci VALUES('Marta','Maczyk', '780709053', '£ódŸ ul.Przybyszewskiego 2 Polska');
 INSERT INTO klienci VALUES('Janusz','Balcerek', '620902053', 'Olsztyn ul.Matki Boskiej Czêstochowskiej 69 Polska');
 INSERT INTO klienci VALUES('Micha³','Daniec', '023151085', 'Konin, ul.Mala 1 Polska');
+GO
 
 INSERT INTO rezerwacje VALUES ('2021/12/25', 5, 101, 1000);
 INSERT INTO rezerwacje VALUES ('2021/08/06', 10, 102, 1004);
@@ -456,6 +464,7 @@ INSERT INTO rezerwacje VALUES ('2019/10/15', 5, 126, 1003);
 INSERT INTO rezerwacje VALUES ('2018/12/20', 16, 139, 1009);
 INSERT INTO rezerwacje VALUES ('2020/11/05', 8, 151, 1012);
 INSERT INTO rezerwacje VALUES ('2019/12/15', 9, 160, 1005);
+GO
 
 INSERT INTO uslugi VALUES ('Miejsce parkingowe', 10);
 INSERT INTO uslugi VALUES ('Miejsce garazowe', 50);
@@ -465,6 +474,7 @@ INSERT INTO uslugi VALUES ('Karnet na silownie', 25);
 INSERT INTO uslugi VALUES ('Karnet na basen', 40);
 INSERT INTO uslugi VALUES ('Masaz', 150);
 INSERT INTO uslugi VALUES ('Lekcja jogi', 75)
+GO
 
 INSERT INTO archiwum_rezerwacji VALUES (1520, 0, 0, 112, 1032, 1013);
 INSERT INTO archiwum_rezerwacji VALUES (3190, 0, 150, 110, 1033, 1019);
@@ -483,6 +493,7 @@ INSERT INTO archiwum_rezerwacji VALUES (638, 48, 150, 126, 1045, 1003);
 INSERT INTO archiwum_rezerwacji VALUES (6688, 0, 480, 139, 1046, 1009);
 INSERT INTO archiwum_rezerwacji VALUES (1283, 115, 240, 151, 1047, 1012);
 INSERT INTO archiwum_rezerwacji VALUES (2624, 0, 800, 160, 1048, 1005);
+GO
 
 INSERT INTO usluga_dla_rezerwacji VALUES (1, 1000);
 INSERT INTO usluga_dla_rezerwacji VALUES (2, 1001);
@@ -518,6 +529,7 @@ INSERT INTO usluga_dla_rezerwacji VALUES (1, 1019);
 INSERT INTO usluga_dla_rezerwacji VALUES (2, 1019);
 INSERT INTO usluga_dla_rezerwacji VALUES (5, 1019);
 INSERT INTO usluga_dla_rezerwacji VALUES (6, 1019);
+GO
 
 SELECT * FROM panstwa
 SELECT * FROM miasta 
@@ -532,3 +544,4 @@ SELECT * FROM rezerwacje
 SELECT * FROM uslugi
 SELECT * FROM archiwum_rezerwacji
 SELECT * FROM usluga_dla_rezerwacji
+GO
