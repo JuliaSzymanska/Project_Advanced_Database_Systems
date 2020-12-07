@@ -111,11 +111,6 @@ WHERE p.pensja IN (SELECT MAX(pensja) FROM siec_hoteli.dbo.pracownicy p2 WHERE p
   AND p.id_hotelu = h.id_hotelu
 ORDER BY p.nazwisko_pracownika
 
-<<<<<<< HEAD
--- 12
-
-SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika 'Imie i nazwisko pracownika', DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy), m.nazwa_miasta
-=======
 
 -- 12. Wyswietl pracownikow z archiwum pracownikow, ktorzy pracuja dluzej niz srednia dlugosc pracy w tym miescie. 
 SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika 'Imie i nazwisko pracownika', m.nazwa_miasta
