@@ -104,6 +104,19 @@ WHERE p.pensja IN (SELECT MAX(pensja) FROM siec_hoteli.dbo.pracownicy p2 WHERE p
 AND p.id_hotelu = h.id_hotelu
 ORDER BY p.nazwisko_pracownika
 
+-- 12. Wyswietl pracownikow z archiwum pracownikow, ktorzy pracuja dluzej niz srednia dlugosc pracy w tym miescie. 
+SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika 'Imie i nazwisko pracownika', m.nazwa_miasta
+FROM siec_hoteli.dbo.pracownicy p, siec_hoteli.dbo.archiwum_pracownikow ap, siec_hoteli.dbo.hotele h, siec_hoteli.dbo.miasta m
+WHERE ap.id_pracownika = p.id_pracownika
+  AND p.id_hotelu = h.id_hotelu
+  AND h.id_miasta = m.id_miasta
+AND DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy) > (
+    SELECT AVG(DATEDIFF(DAY, ap2.poczatek_pracy, ap2.koniec_pracy))
+    FROM siec_hoteli.dbo.pracownicy p2, siec_hoteli.dbo.archiwum_pracownikow ap2, siec_hoteli.dbo.hotele h2, siec_hoteli.dbo.miasta m2
+    WHERE ap2.id_pracownika = p2.id_pracownika AND p2.id_hotelu = h2.id_hotelu AND h2.id_miasta = m2.id_miasta and m2.id_miasta = m.id_miasta
+    GROUP BY m2.id_miasta)
+GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, ap.poczatek_pracy, ap.koniec_pracy
+
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
 -- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania.
