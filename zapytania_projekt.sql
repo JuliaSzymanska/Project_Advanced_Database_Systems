@@ -111,6 +111,30 @@ WHERE p.pensja IN (SELECT MAX(pensja) FROM siec_hoteli.dbo.pracownicy p2 WHERE p
   AND p.id_hotelu = h.id_hotelu
 ORDER BY p.nazwisko_pracownika
 
+-- 12
+
+SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika 'Imie i nazwisko pracownika', DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy), m.nazwa_miasta
+FROM siec_hoteli.dbo.pracownicy p, siec_hoteli.dbo.archiwum_pracownikow ap, siec_hoteli.dbo.hotele h, siec_hoteli.dbo.miasta m
+WHERE ap.id_pracownika = p.id_pracownika
+  AND p.id_hotelu = h.id_hotelu
+  AND h.id_miasta = m.id_miasta
+and DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy) > (
+    SELECT AVG(DATEDIFF(DAY, ap2.poczatek_pracy, ap2.koniec_pracy))
+    FROM siec_hoteli.dbo.pracownicy p2, siec_hoteli.dbo.archiwum_pracownikow ap2, siec_hoteli.dbo.hotele h2, siec_hoteli.dbo.miasta m2
+    WHERE ap2.id_pracownika = p2.id_pracownika AND p2.id_hotelu = h2.id_hotelu AND h2.id_miasta = m2.id_miasta and m2.id_miasta = m.id_miasta
+    GROUP BY m2.id_miasta)
+GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, ap.poczatek_pracy, ap.koniec_pracy
+
+select m.nazwa_miasta
+from siec_hoteli..archiwum_pracownikow ap,
+     siec_hoteli..pracownicy p,
+     siec_hoteli..hotele h,
+     siec_hoteli..miasta m
+where p.id_pracownika = ap.id_pracownika
+  and h.id_miasta = m.id_miasta
+  and p.id_hotelu = h.id_hotelu
+order by m.nazwa_miasta
+
 -- 13.
 select sum(p.pensja) suma, pan.nazwa_panstwa
 from siec_hoteli..panstwa pan,
