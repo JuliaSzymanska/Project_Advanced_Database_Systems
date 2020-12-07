@@ -160,8 +160,7 @@ where pan.id_panstwa = m.id_panstwa
 group by pan.nazwa_panstwa, pms.max_suma
 having sum(p.pensja) = max_suma
 
--- 14. Wypisz klijenta który mia³ najwiecej skonczonych rezerwacji
-
+-- 14. Wypisz klienta który mia³ najwiecej skonczonych rezerwacji. 
 select k.imie_klienta, k.nazwisko_klienta, count(k.id_klienta) Ilosc_rezerwacji
 from siec_hoteli..klienci k,
      siec_hoteli..rezerwacje r
@@ -176,9 +175,9 @@ having count(k.id_klienta) = (select top 1 count(k.id_klienta)
                               group by k.id_klienta
                               order by count(k.id_klienta) desc)
 
--- 15. Wypisz najbardziej posprz¹tany pokój
 
-select p.id_pokoju, count(*) 'Ilosc sprzatan'
+-- 15. Wypisz najwiecej sprz¹tany pokój.
+SELECT p.id_pokoju, COUNT(*) 'Ilosc sprzatan'
 from siec_hoteli..pokoje p,
      siec_hoteli..sprzatanie s
 where p.id_pokoju = s.id_pokoju
@@ -189,6 +188,28 @@ having (count(p.id_pokoju)) = (select top 1 count(*) count
                                where p.id_pokoju = s.id_pokoju
                                group by p.id_pokoju
                                order by count desc)
+
+--16. Wyswietl najczesciej wykupowana usluge
+SELECT MAX(max_count.Ile), u.nazwa_uslugi 
+FROM (SELECT COUNT(*) 'Ile', us.id_uslugi 'Usluga' 
+		FROM siec_hoteli..usluga_dla_rezerwacji us 
+		GROUP BY us.id_uslugi) max_count, siec_hoteli..uslugi u
+WHERE u.id_uslugi = max_count.Usluga
+GROUP BY max_count.Usluga
+
+
+-- 17. Wyswietl nazwe hotelu, miasto oraz panstwo, w ktorych znajduje sie hotel, a takze kwote, dla hotelu, dla ktorego byla najdrozsza rezerwacja. 
+SELECT h.nazwa_hotelu, m.nazwa_miasta, pan.nazwa_panstwa, max_kwota.[Kwota rezerwacji]
+FROM (SELECT MAX(ar2.cena_calkowita) 'Kwota rezerwacji' FROM siec_hoteli..archiwum_rezerwacji ar2) max_kwota, 
+	siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r, siec_hoteli..pokoje p, siec_hoteli..hotele h, siec_hoteli..miasta m, siec_hoteli..panstwa pan
+WHERE max_kwota.[Kwota rezerwacji] = ar.cena_calkowita
+AND ar.id_rezerwacji = r.id_rezerwacji
+AND r.id_pokoju = p.id_pokoju
+AND p.id_hotelu = h.id_hotelu
+AND h.id_miasta = m.id_miasta
+AND m.id_panstwa = pan.id_panstwa
+
+
 
 
 
