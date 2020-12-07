@@ -2,11 +2,13 @@ USE siec_hoteli
 GO
 
 -- 1. Wyœwietl liczbê pokoi w ka¿dym z hoteli. Na koñcu dodaj podsumowanie ile jest ³¹cznie pokoi. 
-SELECT COUNT(*) as 'Liczba pokoi', case when h.nazwa_hotelu is null then 'Suma' else h.nazwa_hotelu end as 'Nazwa Hotelu'
+SELECT case when h.nazwa_hotelu is null then 'Suma' else h.nazwa_hotelu end as 'Nazwa Hotelu', COUNT(*) as 'Liczba pokoi'
 FROM pokoje p, hotele h
 WHERE p.id_hotelu = h.id_hotelu
 GROUP BY ROLLUP(nazwa_hotelu)
-ORDER BY [Liczba pokoi]
+ORDER BY 
+CASE WHEN h.nazwa_hotelu IS NULL THEN 1 else 0 END,
+[Nazwa Hotelu] ASC
 GO
 
 -- 2. Wyœwietl nazwê hotelu, cenê bazow¹ za pokój, nazwê miasta przy tworzeniu rankingu hoteli na podstawie ceny bazowej za 
@@ -26,9 +28,12 @@ ORDER BY [Srednia cena polaczen telefonicznych] DESC
 GO
 
 -- 4. Wyœwietl liczbê pokoi dla których nie przewidziano rezerwacji. 
-SELECT COUNT(id_pokoju) as 'Liczba pokoi bez rezerwacji' 
-FROM pokoje
+SELECT nazwa_hotelu, COUNT(id_pokoju) as 'Liczba pokoi bez rezerwacji'
+FROM pokoje, hotele
 WHERE id_pokoju NOT IN (SELECT id_pokoju FROM rezerwacje)
+AND pokoje.id_hotelu = hotele.id_hotelu
+GROUP BY nazwa_hotelu
+ORDER BY [Liczba pokoi bez rezerwacji] DESC
 GO
 
 -- 5. Wyœwietl piêæ najbli¿szych rezerwacji. 
