@@ -43,20 +43,13 @@ WHERE data_rezerwacji IN (SELECT DISTINCT TOP 5 data_rezerwacji FROM rezerwacje 
 ORDER BY data_rezerwacji ASC
 GO
 
-
--- 9. Wyœwietl imiona, nazwiska, adresy klientów, którzy mieszkaj¹ w Hiszpani. 
+-- 6. Wyœwietl imiona, nazwiska, adresy klientów, którzy mieszkaj¹ w Hiszpani. 
 SELECT imie_klienta, nazwisko_klienta, adres_zamieszkania 
 FROM klienci
 WHERE adres_zamieszkania LIKE '%Hiszpania%'
 GO
 
---------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
--- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania. 
---SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji, DATEADD(DAY, liczba_dni_rezerwacji, data_rezerwacji) AS data_wymeldowania
---FROM rezerwacje
---GO
-
--- 11. Wyœwietl wszystkie rezerwacje przewidziane na miesi¹c lipiec, które jeszcze siê nie odby³y.  
+-- 7. Wyœwietl wszystkie rezerwacje przewidziane na miesi¹c lipiec, które jeszcze siê nie odby³y.  
 SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji
 FROM rezerwacje
 WHERE MONTH(data_rezerwacji) = 7
@@ -64,7 +57,7 @@ AND data_rezerwacji > GETDATE()
 ORDER BY id_rezerwacji
 GO
 
--- 12. Wyœwietl id_sprzatania, id_pokoju, czas trwania sprzatania jako czas_trwania wszystkich pe³nych sprz¹tañ. 
+-- 8. Wyœwietl id_sprzatania, id_pokoju, czas trwania sprzatania jako czas_trwania wszystkich pe³nych sprz¹tañ. 
 SELECT id_sprzatania, id_pokoju, CAST(data_rozpoczecia_sprzatania AS DATE) AS 'Data rozpoczecia sprzatania',
 CAST(data_rozpoczecia_sprzatania AS TIME(0)) AS 'Godzina rozpoczecia sprzatania', CAST((data_zakonczenia_sprzatania - data_rozpoczecia_sprzatania) AS TIME(0)) AS 'Czas trwania'
 FROM sprzatanie
@@ -72,11 +65,17 @@ WHERE rodzaj_sprzatania = 'Pelne'
 ORDER BY data_rozpoczecia_sprzatania
 GO
 
--- 13. Wyœwietl wszystkie rozmowy telefoniczne, które trwa³y d³u¿ej ni¿ 5 minut.
+-- 9. Wyœwietl wszystkie rozmowy telefoniczne, które trwa³y d³u¿ej ni¿ 5 minut.
 SELECT * FROM rozmowy_telefoniczne r
 WHERE DATEDIFF(MINUTE, r.data_rozpoczecia_rozmowy, r.data_zakonczenia_rozmowy) > 5
 ORDER BY data_rozpoczecia_rozmowy
 GO
+
+--------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
+-- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania. 
+--SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji, DATEADD(DAY, liczba_dni_rezerwacji, data_rezerwacji) AS data_wymeldowania
+--FROM rezerwacje
+--GO
 
 ------------------------------------------------- FUNKCJA ----------------------------------------------------------------
 -- 16. Podwy¿sz wszystkim hotelom cenê bazow¹ za pokój o 5%.
