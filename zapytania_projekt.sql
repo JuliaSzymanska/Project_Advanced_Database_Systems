@@ -40,32 +40,31 @@ GO
 SELECT id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
 FROM rezerwacje
 WHERE data_rezerwacji IN (SELECT DISTINCT TOP 5 data_rezerwacji FROM rezerwacje WHERE data_rezerwacji > GETDATE() ORDER BY data_rezerwacji)
-GROUP BY data_rezerwacji, id_rezerwacji, liczba_dni_rezerwacji
 ORDER BY data_rezerwacji ASC
 GO
 
 -- 6. Wyœwietl wszystkie rezerwacje (id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji) dla klienta o nazwisku Kowalczyk.
-SELECT id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
-FROM rezerwacje r, klienci k
-WHERE r.id_klienta = k.id_klienta AND k.nazwisko_klienta = 'KOWALCZYK'
-GROUP BY data_rezerwacji, id_rezerwacji, liczba_dni_rezerwacji
-ORDER BY data_rezerwacji ASC
-GO
+--SELECT id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
+--FROM rezerwacje r, klienci k
+--WHERE r.id_klienta = k.id_klienta AND k.nazwisko_klienta = 'KOWALCZYK'
+--GROUP BY data_rezerwacji, id_rezerwacji, liczba_dni_rezerwacji
+--ORDER BY data_rezerwacji ASC
+--GO
 
--- 7. Wyœwietl wszystkie us³ugi, które s¹ zarejestrowane dla rezerwacji dla klienta o nazwisku 'Dudziak'. 
-SELECT DISTINCT u.nazwa_uslugi 
-FROM uslugi u, usluga_dla_rezerwacji ur, klienci k, rezerwacje r
-WHERE ur.id_uslugi = u.id_uslugi
-AND ur.id_rezerwacji = r.id_rezerwacji
-AND r.id_klienta = k.id_klienta
-AND k.nazwisko_klienta LIKE 'Dudziak'
-GO
+-- 6. Wyœwietl wszystkie us³ugi, które s¹ zarejestrowane dla rezerwacji dla klienta o nazwisku 'Dudziak'. 
+--SELECT DISTINCT u.nazwa_uslugi 
+--FROM uslugi u, usluga_dla_rezerwacji ur, klienci k, rezerwacje r
+--WHERE ur.id_uslugi = u.id_uslugi
+--AND ur.id_rezerwacji = r.id_rezerwacji
+--AND r.id_klienta = k.id_klienta
+--AND k.nazwisko_klienta LIKE 'Dudziak'
+--GO
 
--- 8. Wyœwietl imiona, nazwiska, numery telefonów klietów, których imiê koñczy siê na literkê 'a'.
-SELECT imie_klienta, nazwisko_klienta, numer_telefonu_klienta 
-FROM klienci
-WHERE imie_klienta LIKE '%a'
-GO
+-- 7. Wyœwietl imiona, nazwiska, numery telefonów klietów, których imiê koñczy siê na literkê 'a'.
+--SELECT imie_klienta, nazwisko_klienta, numer_telefonu_klienta 
+--FROM klienci
+--WHERE imie_klienta LIKE '%a'
+--GO
 
 -- 9. Wyœwietl imiona, nazwiska, adresy klientów, którzy mieszkaj¹ w Hiszpani. 
 SELECT imie_klienta, nazwisko_klienta, adres_zamieszkania 
@@ -73,27 +72,32 @@ FROM klienci
 WHERE adres_zamieszkania LIKE '%Hiszpania%'
 GO
 
+--------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
 -- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania. 
-SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji, DATEADD(DAY, liczba_dni_rezerwacji, data_rezerwacji) AS data_wymeldowania
-FROM rezerwacje
-GO
+--SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji, DATEADD(DAY, liczba_dni_rezerwacji, data_rezerwacji) AS data_wymeldowania
+--FROM rezerwacje
+--GO
 
--- 11. Wyœwietl wszystkie rezerwacje przewidziane na miesi¹c lipiec. 
+-- 11. Wyœwietl wszystkie rezerwacje przewidziane na miesi¹c lipiec, które jeszcze siê nie odby³y.  
 SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji
 FROM rezerwacje
 WHERE MONTH(data_rezerwacji) = 7
+AND data_rezerwacji > GETDATE()
 ORDER BY id_rezerwacji
 GO
 
 -- 12. Wyœwietl id_sprzatania, id_pokoju, czas trwania sprzatania jako czas_trwania wszystkich pe³nych sprz¹tañ. 
-SELECT id_sprzatania, id_pokoju, CAST((data_zakonczenia_sprzatania - data_rozpoczecia_sprzatania) AS TIME(0)) AS czas_trwania 
+SELECT id_sprzatania, id_pokoju, CAST(data_rozpoczecia_sprzatania AS DATE) AS 'Data rozpoczecia sprzatania',
+CAST(data_rozpoczecia_sprzatania AS TIME(0)) AS 'Godzina rozpoczecia sprzatania', CAST((data_zakonczenia_sprzatania - data_rozpoczecia_sprzatania) AS TIME(0)) AS 'Czas trwania'
 FROM sprzatanie
 WHERE rodzaj_sprzatania = 'Pelne'
+ORDER BY data_rozpoczecia_sprzatania
 GO
 
 -- 13. Wyœwietl wszystkie rozmowy telefoniczne, które trwa³y d³u¿ej ni¿ 5 minut.
-SELECT * FROM rozmowy_telefoniczne rt
-WHERE DATEDIFF(MINUTE, data_rozpoczecia_rozmowy, CAST(data_zakonczenia_rozmowy AS TIME)) > 5
+SELECT * FROM rozmowy_telefoniczne r
+WHERE DATEDIFF(MINUTE, r.data_rozpoczecia_rozmowy, r.data_zakonczenia_rozmowy) > 5
+ORDER BY data_rozpoczecia_rozmowy
 GO
 
 -- 14. Wyœwietl id_rezerwacji oraz data_rezerwacji dla wszystkich rezerwacji odbywaj¹cych siê po 15 sierpnia 2021 roku. 
