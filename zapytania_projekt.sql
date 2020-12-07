@@ -39,6 +39,7 @@ GO
 -- 5. Wyœwietl piêæ najbli¿szych rezerwacji. 
 SELECT top 5 id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
 FROM rezerwacje
+WHERE data_rezerwacji > GETDATE()
 GROUP BY data_rezerwacji, id_rezerwacji, liczba_dni_rezerwacji
 ORDER BY data_rezerwacji ASC
 GO
