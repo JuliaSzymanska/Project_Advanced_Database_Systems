@@ -209,6 +209,12 @@ AND p.id_hotelu = h.id_hotelu
 AND h.id_miasta = m.id_miasta
 AND m.id_panstwa = pan.id_panstwa
 
+-- 18 Wypisz klijentów, którzy mieli rezerwacje, posortowani po sumie wartoœci ich rezerwacji
+
+select sum(h.cena_bazowa_za_pokoj * r.liczba_dni_rezerwacji) suma, k.imie_klienta, k.nazwisko_klienta from siec_hoteli..klienci k, siec_hoteli..rezerwacje r, siec_hoteli..pokoje p, siec_hoteli..hotele h
+where k.id_klienta = r.id_klienta and r.id_pokoju = p.id_pokoju and h.id_hotelu = p.id_hotelu
+group by k.id_klienta, k.imie_klienta, k.nazwisko_klienta
+order by suma desc
 
 
 
@@ -233,7 +239,7 @@ AND m.id_panstwa = pan.id_panstwa
 -- (na podstawie id_pokoju uzyskujemy id_hotelu z którego wykonano po³¹czenie) wtedy wspó³czynnik ustawiany jest na 0. Dla numeru telefonu pokoju znajduj¹cego 
 -- siê w innym hotelu wspó³czynnik ustawiany jest na 0.5, dla numerów telefonów spoza hotelu wspó³czynnik ustawiany jest na 1.
 
-GO
+GO, k.imie_klienta, k.nazwisko_klienta
 CREATE OR
 ALTER FUNCTION oblicz_wspoczynnik(@numer_telefonu VARCHAR(9),
                                   @id_pokoju INT)
