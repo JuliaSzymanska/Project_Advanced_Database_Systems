@@ -114,20 +114,28 @@ ORDER BY p.nazwisko_pracownika
 
 -- 12. Wyswietl pracownikow z archiwum pracownikow, ktorzy pracuja dluzej niz srednia dlugosc pracy w tym miescie. 
 SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika 'Imie i nazwisko pracownika', m.nazwa_miasta
-FROM siec_hoteli.dbo.pracownicy p, siec_hoteli.dbo.archiwum_pracownikow ap, siec_hoteli.dbo.hotele h, siec_hoteli.dbo.miasta m
+FROM siec_hoteli.dbo.pracownicy p,
+     siec_hoteli.dbo.archiwum_pracownikow ap,
+     siec_hoteli.dbo.hotele h,
+     siec_hoteli.dbo.miasta m
 WHERE ap.id_pracownika = p.id_pracownika
   AND p.id_hotelu = h.id_hotelu
   AND h.id_miasta = m.id_miasta
-and DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy) > (
+  and DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy) > (
     SELECT AVG(DATEDIFF(DAY, ap2.poczatek_pracy, ap2.koniec_pracy))
-    FROM siec_hoteli.dbo.pracownicy p2, siec_hoteli.dbo.archiwum_pracownikow ap2, siec_hoteli.dbo.hotele h2, siec_hoteli.dbo.miasta m2
-    WHERE ap2.id_pracownika = p2.id_pracownika AND p2.id_hotelu = h2.id_hotelu AND h2.id_miasta = m2.id_miasta and m2.id_miasta = m.id_miasta
+    FROM siec_hoteli.dbo.pracownicy p2,
+         siec_hoteli.dbo.archiwum_pracownikow ap2,
+         siec_hoteli.dbo.hotele h2,
+         siec_hoteli.dbo.miasta m2
+    WHERE ap2.id_pracownika = p2.id_pracownika
+      AND p2.id_hotelu = h2.id_hotelu
+      AND h2.id_miasta = m2.id_miasta
+      and m2.id_miasta = m.id_miasta
     GROUP BY m2.id_miasta)
 GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, ap.poczatek_pracy, ap.koniec_pracy
 
 
-
--- 13. Wyœwietla panstwo, w ktorym najwiecej sie wydaje na oplacenie pracownikow. 
+-- 13. Wyœwietla panstwo, w ktorym najwiecej sie wydaje na oplacenie pracownikow.
 
 select sum(p.pensja) suma, pan.nazwa_panstwa
 from siec_hoteli..panstwa pan,
@@ -152,11 +160,36 @@ where pan.id_panstwa = m.id_panstwa
 group by pan.nazwa_panstwa, pms.max_suma
 having sum(p.pensja) = max_suma
 
--- 14 Wypisz klijenta który mia³ najwiecej skonczonych rezerwacji
+-- 14. Wypisz klijenta który mia³ najwiecej skonczonych rezerwacji
 
-select k.*, count(*) Ilosc_rezerwacji from siec_hoteli..klienci k, siec_hoteli..rezerwacje r
-where k.id_klienta = r.id_klienta and dateadd(day, r.liczba_dni_rezerwacji, r.data_rezerwacji) < getdate()
-having count(*)
+select k.imie_klienta, k.nazwisko_klienta, count(k.id_klienta) Ilosc_rezerwacji
+from siec_hoteli..klienci k,
+     siec_hoteli..rezerwacje r
+where k.id_klienta = r.id_klienta
+  and dateadd(day, r.liczba_dni_rezerwacji, r.data_rezerwacji) < getdate()
+group by k.id_klienta, imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania
+having count(k.id_klienta) = (select top 1 count(k.id_klienta)
+                              from siec_hoteli..klienci k,
+                                   siec_hoteli..rezerwacje r
+                              where k.id_klienta = r.id_klienta
+                                and dateadd(day, r.liczba_dni_rezerwacji, r.data_rezerwacji) < getdate()
+                              group by k.id_klienta
+                              order by count(k.id_klienta) desc)
+
+-- 15. Wypisz najbardziej posprz¹tany pokój
+
+select p.id_pokoju, count(*) 'Ilosc sprzatan'
+from siec_hoteli..pokoje p,
+     siec_hoteli..sprzatanie s
+where p.id_pokoju = s.id_pokoju
+group by p.id_pokoju
+having (count(p.id_pokoju)) = (select top 1 count(*) count
+                               from siec_hoteli..pokoje p,
+                                    siec_hoteli..sprzatanie s
+                               where p.id_pokoju = s.id_pokoju
+                               group by p.id_pokoju
+                               order by count desc)
+
 
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
