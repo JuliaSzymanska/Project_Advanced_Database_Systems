@@ -71,6 +71,9 @@ WHERE DATEDIFF(MINUTE, r.data_rozpoczecia_rozmowy, r.data_zakonczenia_rozmowy) >
 ORDER BY data_rozpoczecia_rozmowy
 GO
 
+-- 10. Wyœwietlenie wszystkich klientów, którzy wykonali rozmowê telefoniczn¹. 
+
+
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
 -- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania. 
 --SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji, DATEADD(DAY, liczba_dni_rezerwacji, data_rezerwacji) AS data_wymeldowania
