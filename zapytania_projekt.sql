@@ -46,7 +46,10 @@ GO
 SELECT r1.id_rezerwacji, r1.data_rezerwacji, r1.liczba_dni_rezerwacji
 FROM siec_hoteli.dbo.rezerwacje r1
 WHERE r1.data_rezerwacji IN
-      (SELECT DISTINCT TOP 5 r2.data_rezerwacji FROM siec_hoteli.dbo.rezerwacje r2 WHERE r2.data_rezerwacji > GETDATE() ORDER BY r2.data_rezerwacji)
+      (SELECT DISTINCT TOP 5 r2.data_rezerwacji
+       FROM siec_hoteli.dbo.rezerwacje r2
+       WHERE r2.data_rezerwacji > GETDATE()
+       ORDER BY r2.data_rezerwacji)
 ORDER BY r1.data_rezerwacji
 GO
 
@@ -83,8 +86,10 @@ ORDER BY data_rozpoczecia_rozmowy
 GO
 
 -- 10. Wyœwietl wszystkich klientow, ktorzy dzownili z telefonu pokojowego do innych klientow. 
-select k1.imie_klienta + ' ' + k1.nazwisko_klienta 'Imie i nazwisko odbiorcy', k1.numer_telefonu_klienta 'Numer telefonu odbiorcy', 
-k2.imie_klienta + ' ' + k2.nazwisko_klienta 'Imie i nazwisko dzowniacego', p.numer_telefonu_pokoju 'Numer telefonu pokoju'
+select k1.imie_klienta + ' ' + k1.nazwisko_klienta 'Imie i nazwisko odbiorcy',
+       k1.numer_telefonu_klienta                   'Numer telefonu odbiorcy',
+       k2.imie_klienta + ' ' + k2.nazwisko_klienta 'Imie i nazwisko dzowniacego',
+       p.numer_telefonu_pokoju                     'Numer telefonu pokoju'
 from siec_hoteli.dbo.klienci k1,
      siec_hoteli.dbo.klienci k2,
      siec_hoteli.dbo.pokoje p,
@@ -99,10 +104,37 @@ where rt.numer_telefonu = k1.numer_telefonu_klienta
 
 
 -- 11. Wyswietl pracownikow, ktorzy maja najwieksza pensje w danym hotelu. 
-SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika Pracownik, p.pensja, h.nazwa_hotelu FROM siec_hoteli.dbo.pracownicy p, siec_hoteli.dbo.hotele h
+SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika Pracownik, p.pensja, h.nazwa_hotelu
+FROM siec_hoteli.dbo.pracownicy p,
+     siec_hoteli.dbo.hotele h
 WHERE p.pensja IN (SELECT MAX(pensja) FROM siec_hoteli.dbo.pracownicy p2 WHERE p2.id_hotelu = p.id_hotelu)
-AND p.id_hotelu = h.id_hotelu
+  AND p.id_hotelu = h.id_hotelu
 ORDER BY p.nazwisko_pracownika
+
+-- 13.
+select sum(p.pensja) suma, pan.nazwa_panstwa
+from siec_hoteli..panstwa pan,
+     siec_hoteli..miasta m,
+     siec_hoteli..hotele h,
+     siec_hoteli..pracownicy p,
+     (select max(a.suma) as max_suma
+      from (
+               select sum(p.pensja) suma
+               from siec_hoteli..panstwa pan,
+                    siec_hoteli..miasta m,
+                    siec_hoteli..hotele h,
+                    siec_hoteli..pracownicy p
+               where pan.id_panstwa = m.id_panstwa
+                 and m.id_miasta = h.id_miasta
+                 and p.id_hotelu = h.id_hotelu
+               group by pan.nazwa_panstwa
+           ) as a) as pms
+where pan.id_panstwa = m.id_panstwa
+  and m.id_miasta = h.id_miasta
+  and p.id_hotelu = h.id_hotelu
+group by pan.nazwa_panstwa, pms.max_suma
+having sum(p.pensja) = max_suma
+
 
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
