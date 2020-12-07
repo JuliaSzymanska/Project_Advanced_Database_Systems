@@ -152,6 +152,12 @@ where pan.id_panstwa = m.id_panstwa
 group by pan.nazwa_panstwa, pms.max_suma
 having sum(p.pensja) = max_suma
 
+-- 14 Wypisz klijenta który mia³ najwiecej skonczonych rezerwacji
+
+select k.*, count(*) Ilosc_rezerwacji from siec_hoteli..klienci k, siec_hoteli..rezerwacje r
+where k.id_klienta = r.id_klienta and dateadd(day, r.liczba_dni_rezerwacji, r.data_rezerwacji) < getdate()
+having count(*)
+
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
 -- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania.
