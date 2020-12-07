@@ -42,15 +42,15 @@ ORDER BY [Liczba pokoi bez rezerwacji] DESC
 GO
 
 
--- 5. Wyœwietl piêæ najbli¿szych dat rezerwacji i rezerwacje przewidziane na te daty. 
+-- 5. Wyœwietl piêæ najbli¿szych dat rezerwacji i rezerwacje przewidziane na te daty.
 SELECT id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
 FROM siec_hoteli.dbo.rezerwacje
 WHERE data_rezerwacji IN (SELECT DISTINCT TOP 5 data_rezerwacji FROM rezerwacje WHERE data_rezerwacji > GETDATE() ORDER BY data_rezerwacji)
 ORDER BY data_rezerwacji ASC
 GO
 
--- 6. Wyœwietl imiona, nazwiska, adresy klientów, którzy mieszkaj¹ w Hiszpani. 
-SELECT imie_klienta, nazwisko_klienta, adres_zamieszkania 
+-- 6. Wyœwietl imiona, nazwiska, adresy klientów, którzy mieszkaj¹ w Hiszpani.
+SELECT imie_klienta, nazwisko_klienta, adres_zamieszkania
 FROM siec_hoteli.dbo.klienci
 WHERE adres_zamieszkania LIKE '%Hiszpania%'
 GO
@@ -63,7 +63,7 @@ AND data_rezerwacji > GETDATE()
 ORDER BY id_rezerwacji
 GO
 
--- 8. Wyœwietl id_sprzatania, id_pokoju, czas trwania sprzatania jako czas_trwania wszystkich pe³nych sprz¹tañ. 
+-- 8. Wyœwietl id_sprzatania, id_pokoju, czas trwania sprzatania jako czas_trwania wszystkich pe³nych sprz¹tañ.
 SELECT id_sprzatania, id_pokoju, CAST(data_rozpoczecia_sprzatania AS DATE) AS 'Data rozpoczecia sprzatania',
 CAST(data_rozpoczecia_sprzatania AS TIME(0)) AS 'Godzina rozpoczecia sprzatania', CAST((data_zakonczenia_sprzatania - data_rozpoczecia_sprzatania) AS TIME(0)) AS 'Czas trwania'
 FROM siec_hoteli.dbo.sprzatanie
@@ -78,7 +78,7 @@ ORDER BY data_rozpoczecia_rozmowy
 GO
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
--- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania. 
+-- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania.
 --SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji, DATEADD(DAY, liczba_dni_rezerwacji, data_rezerwacji) AS data_wymeldowania
 --FROM rezerwacje
 --GO
@@ -87,7 +87,7 @@ GO
 -- 16. Podwy¿sz wszystkim hotelom cenê bazow¹ za pokój o 5%.
 --UPDATE hotele
 --SET cena_bazowa_za_pokoj = 1.05 * cena_bazowa_za_pokoj
---SELECT id_hotelu, cena_bazowa_za_pokoj 
+--SELECT id_hotelu, cena_bazowa_za_pokoj
 --FROM hotele
 --GO
 
