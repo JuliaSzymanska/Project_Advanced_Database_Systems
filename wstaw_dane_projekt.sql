@@ -748,6 +748,17 @@ INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne
 VALUES ('205948876', '2020/02/28 13:17:23', '2020/02/28 14:45:13', 160);
 GO
 
+INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne
+VALUES ('601874010', '2020/03/29 13:17:23', '2020/03/29 15:45:13', 160);
+GO
+INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne
+VALUES ('665074716', '2020/03/30 13:17:23', '2020/03/30 16:45:13', 160);
+GO
+INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne
+VALUES ('601874010', '2020/03/31 13:17:23', '2020/03/31 17:45:13', 160);
+GO
+
+
 INSERT INTO siec_hoteli.dbo.klienci
 VALUES ('Maciej', 'Kowalczyk', '185392323', 'Politechniki 12 92-431 Lodz Polska');
 INSERT INTO siec_hoteli.dbo.klienci
@@ -797,18 +808,22 @@ VALUES ('Gabriele', 'Calin', '406958473', 'Frotter 1 67-797 Tuluza Francja');
 INSERT INTO siec_hoteli.dbo.klienci
 VALUES ('Dolorez', 'Ambriage', '496830123', 'Kine 57 54-876 Nantes Francja');
 INSERT INTO siec_hoteli.dbo.klienci
-VALUES ('Jerzy', 'Tkaczyk', '641015002', N'Krak�w ul.Solna 12 Lodz Polska');
+VALUES ('Jerzy', 'Tkaczyk', '641015002', N'Kraków ul.Solna 12 Lodz Polska');
 INSERT INTO siec_hoteli.dbo.klienci
 VALUES ('Monika', 'Krawczyk', '760519009',
-        N'Warszawa ul.Mazurka D�browskiego 5 Polska');
+        N'Warszawa ul.Mazurka Dąbrowskiego 5 Polska');
 INSERT INTO siec_hoteli.dbo.klienci
-VALUES ('Marta', 'Maczyk', '780709053', N'��d� ul.Przybyszewskiego 2 Polska');
+VALUES ('Marta', 'Maczyk', '780709053', N'Łódź ul.Przybyszewskiego 2 Polska');
 INSERT INTO siec_hoteli.dbo.klienci
 VALUES ('Janusz', 'Balcerek', '620902053',
-        N'Olsztyn ul.Matki Boskiej Cz�stochowskiej 69 Polska');
+        N'Olsztyn ul.Matki Boskiej Częstochowskiej 69 Polska');
 INSERT INTO siec_hoteli.dbo.klienci
-VALUES (N'Micha�', 'Daniec', '023151085', 'Konin, ul.Mala 1 Polska');
+VALUES (N'Michał', 'Daniec', '023151085', 'Konin, ul.Mala 1 Polska');
 GO
+insert into siec_hoteli.dbo.klienci
+VALUES (N'Przemysław', 'Zdrzalik', '665074716', N'Łódź ul.Sacharowa 53 Polska')
+insert into siec_hoteli.dbo.klienci
+VALUES ('Julia', N'Szymańska', '601874010', N'Łódź ul.Krzeptowskiego 12 Polska')
 
 INSERT INTO siec_hoteli.dbo.rezerwacje
 VALUES ('2021/12/25', 5, 101, 1000);

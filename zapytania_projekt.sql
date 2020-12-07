@@ -45,8 +45,9 @@ GO
 -- 5. Wyœwietl piêæ najbli¿szych dat rezerwacji i rezerwacje przewidziane na te daty.
 SELECT id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
 FROM siec_hoteli.dbo.rezerwacje
-WHERE data_rezerwacji IN (SELECT DISTINCT TOP 5 data_rezerwacji FROM rezerwacje WHERE data_rezerwacji > GETDATE() ORDER BY data_rezerwacji)
-ORDER BY data_rezerwacji ASC
+WHERE data_rezerwacji IN
+      (SELECT DISTINCT TOP 5 data_rezerwacji FROM rezerwacje WHERE data_rezerwacji > GETDATE() ORDER BY data_rezerwacji)
+ORDER BY data_rezerwacji
 GO
 
 -- 6. Wyœwietl imiona, nazwiska, adresy klientów, którzy mieszkaj¹ w Hiszpani.
@@ -59,23 +60,44 @@ GO
 SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji
 FROM siec_hoteli.dbo.rezerwacje
 WHERE MONTH(data_rezerwacji) = 7
-AND data_rezerwacji > GETDATE()
+  AND data_rezerwacji > GETDATE()
 ORDER BY id_rezerwacji
 GO
 
 -- 8. Wyœwietl id_sprzatania, id_pokoju, czas trwania sprzatania jako czas_trwania wszystkich pe³nych sprz¹tañ.
-SELECT id_sprzatania, id_pokoju, CAST(data_rozpoczecia_sprzatania AS DATE) AS 'Data rozpoczecia sprzatania',
-CAST(data_rozpoczecia_sprzatania AS TIME(0)) AS 'Godzina rozpoczecia sprzatania', CAST((data_zakonczenia_sprzatania - data_rozpoczecia_sprzatania) AS TIME(0)) AS 'Czas trwania'
+SELECT id_sprzatania,
+       id_pokoju,
+       CAST(data_rozpoczecia_sprzatania AS DATE)                                    AS 'Data rozpoczecia sprzatania',
+       CAST(data_rozpoczecia_sprzatania AS TIME(0))                                 AS 'Godzina rozpoczecia sprzatania',
+       CAST((data_zakonczenia_sprzatania - data_rozpoczecia_sprzatania) AS TIME(0)) AS 'Czas trwania'
 FROM siec_hoteli.dbo.sprzatanie
 WHERE rodzaj_sprzatania = 'Pelne'
 ORDER BY data_rozpoczecia_sprzatania
 GO
 
 -- 9. Wyœwietl wszystkie rozmowy telefoniczne, które trwa³y d³u¿ej ni¿ 5 minut.
-SELECT * FROM siec_hoteli.dbo.rozmowy_telefoniczne r
+SELECT *
+FROM siec_hoteli.dbo.rozmowy_telefoniczne r
 WHERE DATEDIFF(MINUTE, r.data_rozpoczecia_rozmowy, r.data_zakonczenia_rozmowy) > 5
 ORDER BY data_rozpoczecia_rozmowy
 GO
+
+-- 10. Wyœwietl wszystkich ludzi którzy dzwonili do ludzia
+
+select k1.imie_klienta, k1.nazwisko_klienta, k1.numer_telefonu_klienta, k2.imie_klienta, k2.nazwisko_klienta
+from siec_hoteli.dbo.klienci k1,
+     siec_hoteli.dbo.klienci k2,
+     siec_hoteli.dbo.pokoje p,
+     siec_hoteli.dbo.rozmowy_telefoniczne rt,
+     siec_hoteli.dbo.rezerwacje rez
+where rt.numer_telefonu = k1.numer_telefonu_klienta
+  and rt.id_pokoju = p.id_pokoju
+  and p.id_pokoju = rez.id_pokoju
+  and rez.id_klienta = k2.id_klienta
+
+select * from siec_hoteli.dbo.rozmowy_telefoniczne
+
+select * from siec_hoteli.dbo.klienci k, siec_hoteli.dbo.rozmowy_telefoniczne rt where k.numer_telefonu_klienta = rt.numer_telefonu
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
 -- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania.
