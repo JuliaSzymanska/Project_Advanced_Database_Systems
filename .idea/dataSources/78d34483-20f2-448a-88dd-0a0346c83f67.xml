@@ -277,7 +277,7 @@
 1787153412|||0|select|G
 1803153469|||0|select|G
 </Grants>
-      <IntrospectionTimestamp>2020-12-08.00:40:37.063</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2020-12-08.01:20:46.290</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="50" parent="5" name="guest">
@@ -406,7 +406,7 @@
     </schema>
     <schema id="78" parent="9" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2020-12-08.00:40:37.073</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2020-12-08.01:20:46.303</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="79" parent="9" name="guest">
@@ -597,68 +597,68 @@
     </routine>
     <table id="111" parent="78" name="archiwum_pracownikow">
       <ObjectId>901578250</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.307</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.320</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.580</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.593</ModifiedTimestamp>
     </table>
     <table id="112" parent="78" name="archiwum_rezerwacji">
       <ObjectId>1573580644</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.397</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.423</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.670</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.690</ModifiedTimestamp>
     </table>
     <table id="113" parent="78" name="hotele">
       <ObjectId>661577395</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.197</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.337</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.543</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.607</ModifiedTimestamp>
     </table>
     <table id="114" parent="78" name="klienci">
       <ObjectId>1317579732</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.357</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.403</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.630</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.657</ModifiedTimestamp>
     </table>
     <table id="115" parent="78" name="miasta">
       <ObjectId>613577224</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.193</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.207</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.537</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.550</ModifiedTimestamp>
     </table>
     <table id="116" parent="78" name="panstwa">
       <ObjectId>581577110</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.187</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.197</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.530</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.540</ModifiedTimestamp>
     </table>
     <table id="117" parent="78" name="pokoje">
       <ObjectId>965578478</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.313</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.400</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.587</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.653</ModifiedTimestamp>
     </table>
     <table id="118" parent="78" name="pracownicy">
       <ObjectId>741577680</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.203</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.320</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.553</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.593</ModifiedTimestamp>
     </table>
     <table id="119" parent="78" name="rezerwacje">
       <ObjectId>1381579960</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.377</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.400</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.650</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.677</ModifiedTimestamp>
     </table>
     <table id="120" parent="78" name="rozmowy_telefoniczne">
       <ObjectId>1205579333</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.347</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.367</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.620</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.640</ModifiedTimestamp>
     </table>
     <table id="121" parent="78" name="sprzatanie">
       <ObjectId>1093578934</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.340</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.360</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.610</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.630</ModifiedTimestamp>
     </table>
     <table id="122" parent="78" name="usluga_dla_rezerwacji">
       <ObjectId>1509580416</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.390</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.403</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.663</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.677</ModifiedTimestamp>
     </table>
     <table id="123" parent="78" name="uslugi">
       <ObjectId>1461580245</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.383</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.397</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.657</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.670</ModifiedTimestamp>
     </table>
     <column id="124" parent="95" name="optname">
       <Position>1</Position>
@@ -990,16 +990,16 @@
     </index>
     <key id="194" parent="111" name="archiwum_pracownikow_id_pk">
       <ObjectId>917578307</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.310</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.310</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.583</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.583</ModifiedTimestamp>
       <ColNames>id_pracownika_arch</ColNames>
       <UnderlyingIndexName>archiwum_pracownikow_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="195" parent="111" name="archiwum_pracownik_fk">
       <ObjectId>949578421</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.310</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.310</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.583</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.583</ModifiedTimestamp>
       <ColNames>id_pracownika</ColNames>
       <RefTableId>741577680</RefTableId>
       <RefTableName>pracownicy</RefTableName>
@@ -1008,8 +1008,8 @@
     </foreign-key>
     <check id="196" parent="111" name="archiwum_data_interwal">
       <ObjectId>933578364</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.310</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.310</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.583</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.583</ModifiedTimestamp>
       <ColNames>koniec_pracy</ColNames>
       <Predicate>[koniec_pracy]&lt;=getdate()</Predicate>
     </check>
@@ -1031,826 +1031,796 @@
       <Position>4</Position>
       <DataType>money|0s</DataType>
     </column>
-    <column id="201" parent="112" name="id_pokoju">
+    <column id="201" parent="112" name="id_rezerwacji">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="202" parent="112" name="id_rezerwacji">
-      <Position>6</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="203" parent="112" name="id_klienta">
-      <Position>7</Position>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="204" parent="112" name="archiwum_rezerwacji_id_pk">
+    <index id="202" parent="112" name="archiwum_rezerwacji_id_pk">
       <Position>1</Position>
       <ColNames>id_rezerwacji_arch</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="205" parent="112" name="archiwum_rezerwacji_id_pk">
+    <key id="203" parent="112" name="archiwum_rezerwacji_id_pk">
       <ObjectId>1589580701</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.400</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.400</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.673</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.673</ModifiedTimestamp>
       <ColNames>id_rezerwacji_arch</ColNames>
       <UnderlyingIndexName>archiwum_rezerwacji_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="206" parent="112" name="archiwum_rezerwacji_pokoj_fk">
+    <foreign-key id="204" parent="112" name="archiwum_rezerwacji_rezerwacja_fk">
       <ObjectId>1653580929</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.400</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.400</ModifiedTimestamp>
-      <ColNames>id_pokoju</ColNames>
-      <RefTableId>965578478</RefTableId>
-      <RefTableName>pokoje</RefTableName>
-      <RefKeyName>pokoje_id_pk</RefKeyName>
-      <RefColNames>id_pokoju</RefColNames>
-    </foreign-key>
-    <foreign-key id="207" parent="112" name="archiwum_rezerwacji_rezerwacja_fk">
-      <ObjectId>1669580986</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.400</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.400</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.677</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.677</ModifiedTimestamp>
       <ColNames>id_rezerwacji</ColNames>
       <RefTableId>1381579960</RefTableId>
       <RefTableName>rezerwacje</RefTableName>
       <RefKeyName>rezerwacje_id_pk</RefKeyName>
       <RefColNames>id_rezerwacji</RefColNames>
     </foreign-key>
-    <foreign-key id="208" parent="112" name="archiwum_rezerwacji_klient_fk">
-      <ObjectId>1685581043</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.403</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.403</ModifiedTimestamp>
-      <ColNames>id_klienta</ColNames>
-      <RefTableId>1317579732</RefTableId>
-      <RefTableName>klienci</RefTableName>
-      <RefKeyName>klienci_id_pk</RefKeyName>
-      <RefColNames>id_klienta</RefColNames>
-    </foreign-key>
-    <check id="209" parent="112" name="cena_calkowita_check">
+    <check id="205" parent="112" name="cena_calkowita_check">
       <ObjectId>1605580758</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.400</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.400</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.673</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.673</ModifiedTimestamp>
       <ColNames>cena_calkowita</ColNames>
       <Predicate>[cena_calkowita]&gt;0</Predicate>
     </check>
-    <check id="210" parent="112" name="cena_za_telefon_check">
+    <check id="206" parent="112" name="cena_za_telefon_check">
       <ObjectId>1621580815</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.400</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.400</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.673</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.673</ModifiedTimestamp>
       <ColNames>cena_za_telefon</ColNames>
       <Predicate>[cena_za_telefon]&gt;=0</Predicate>
     </check>
-    <check id="211" parent="112" name="cena_za_uslugi_check">
+    <check id="207" parent="112" name="cena_za_uslugi_check">
       <ObjectId>1637580872</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.400</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.400</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.673</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.673</ModifiedTimestamp>
       <ColNames>cena_za_uslugi</ColNames>
       <Predicate>[cena_za_uslugi]&gt;=0</Predicate>
     </check>
-    <column id="212" parent="113" name="id_hotelu">
+    <column id="208" parent="113" name="id_hotelu">
       <Position>1</Position>
       <SequenceIdentity>100</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="213" parent="113" name="nazwa_hotelu">
+    <column id="209" parent="113" name="nazwa_hotelu">
       <Position>2</Position>
       <DataType>varchar(70 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="214" parent="113" name="adres_hotelu">
+    <column id="210" parent="113" name="adres_hotelu">
       <Position>3</Position>
       <DataType>varchar(100 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="215" parent="113" name="cena_bazowa_za_pokoj">
+    <column id="211" parent="113" name="cena_bazowa_za_pokoj">
       <Position>4</Position>
       <DataType>money|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="216" parent="113" name="cena_za_polaczenie_telefoniczne">
+    <column id="212" parent="113" name="cena_za_polaczenie_telefoniczne">
       <Position>5</Position>
       <DataType>money|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="217" parent="113" name="id_miasta">
+    <column id="213" parent="113" name="id_miasta">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="218" parent="113" name="hotele_id_pk">
+    <index id="214" parent="113" name="hotele_id_pk">
       <Position>1</Position>
       <ColNames>id_hotelu</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="219" parent="113" name="hotele_id_pk">
+    <key id="215" parent="113" name="hotele_id_pk">
       <ObjectId>677577452</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.200</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.200</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.547</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.547</ModifiedTimestamp>
       <ColNames>id_hotelu</ColNames>
       <UnderlyingIndexName>hotele_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="220" parent="113" name="hotel_miasto_fk">
+    <foreign-key id="216" parent="113" name="hotel_miasto_fk">
       <ObjectId>725577623</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.200</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.200</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.550</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.550</ModifiedTimestamp>
       <ColNames>id_miasta</ColNames>
       <RefTableId>613577224</RefTableId>
       <RefTableName>miasta</RefTableName>
       <RefKeyName>miasta_id_pk</RefKeyName>
       <RefColNames>id_miasta</RefColNames>
     </foreign-key>
-    <check id="221" parent="113" name="cena_bazowa_pokoj_check">
+    <check id="217" parent="113" name="cena_bazowa_pokoj_check">
       <ObjectId>693577509</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.200</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.200</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.547</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.547</ModifiedTimestamp>
       <ColNames>cena_bazowa_za_pokoj</ColNames>
       <Predicate>[cena_bazowa_za_pokoj]&gt;0</Predicate>
     </check>
-    <check id="222" parent="113" name="cena_telefon_check">
+    <check id="218" parent="113" name="cena_telefon_check">
       <ObjectId>709577566</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.200</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.200</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.550</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.550</ModifiedTimestamp>
       <ColNames>cena_za_polaczenie_telefoniczne</ColNames>
       <Predicate>[cena_za_polaczenie_telefoniczne]&gt;0</Predicate>
     </check>
-    <column id="223" parent="114" name="id_klienta">
+    <column id="219" parent="114" name="id_klienta">
       <Position>1</Position>
       <SequenceIdentity>1000</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="224" parent="114" name="imie_klienta">
+    <column id="220" parent="114" name="imie_klienta">
       <Position>2</Position>
       <DataType>varchar(20 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="225" parent="114" name="nazwisko_klienta">
+    <column id="221" parent="114" name="nazwisko_klienta">
       <Position>3</Position>
       <DataType>varchar(40 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="226" parent="114" name="numer_telefonu_klienta">
+    <column id="222" parent="114" name="numer_telefonu_klienta">
       <Position>4</Position>
       <DataType>char(9 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="227" parent="114" name="adres_zamieszkania">
+    <column id="223" parent="114" name="adres_zamieszkania">
       <Position>5</Position>
       <DataType>varchar(100 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="228" parent="114" name="klienci_id_pk">
+    <index id="224" parent="114" name="klienci_id_pk">
       <Position>1</Position>
       <ColNames>id_klienta</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="229" parent="114" name="UQ__klienci__BCBD0BC3744EB920">
+    <index id="225" parent="114" name="UQ__klienci__BCBD0BC314A20364">
       <Position>2</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>numer_telefonu_klienta</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="230" parent="114" name="klienci_id_pk">
+    <key id="226" parent="114" name="klienci_id_pk">
       <ObjectId>1349579846</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.367</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.367</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.640</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.640</ModifiedTimestamp>
       <ColNames>id_klienta</ColNames>
       <UnderlyingIndexName>klienci_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="231" parent="114" name="UQ__klienci__BCBD0BC3744EB920">
+    <key id="227" parent="114" name="UQ__klienci__BCBD0BC314A20364">
       <ObjectId>1333579789</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2020-12-08.00:40:34.357</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.357</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.630</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.630</ModifiedTimestamp>
       <ColNames>numer_telefonu_klienta</ColNames>
-      <UnderlyingIndexName>UQ__klienci__BCBD0BC3744EB920</UnderlyingIndexName>
+      <UnderlyingIndexName>UQ__klienci__BCBD0BC314A20364</UnderlyingIndexName>
     </key>
-    <check id="232" parent="114" name="numer_tel_klienta_check">
+    <check id="228" parent="114" name="numer_tel_klienta_check">
       <ObjectId>1365579903</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.373</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.373</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.647</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.647</ModifiedTimestamp>
       <ColNames>numer_telefonu_klienta</ColNames>
       <Predicate>[numer_telefonu_klienta] like &apos;[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]&apos;</Predicate>
     </check>
-    <column id="233" parent="115" name="id_miasta">
+    <column id="229" parent="115" name="id_miasta">
       <Position>1</Position>
       <SequenceIdentity>10+2</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="234" parent="115" name="nazwa_miasta">
+    <column id="230" parent="115" name="nazwa_miasta">
       <Position>2</Position>
       <DataType>varchar(30 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="235" parent="115" name="id_panstwa">
+    <column id="231" parent="115" name="id_panstwa">
       <Position>3</Position>
       <DataType>char(2 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="236" parent="115" name="miasta_id_pk">
+    <index id="232" parent="115" name="miasta_id_pk">
       <Position>1</Position>
       <ColNames>id_miasta</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="237" parent="115" name="miasta_id_pk">
+    <key id="233" parent="115" name="miasta_id_pk">
       <ObjectId>629577281</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.193</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.193</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.540</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.540</ModifiedTimestamp>
       <ColNames>id_miasta</ColNames>
       <UnderlyingIndexName>miasta_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="238" parent="115" name="miasto_panstwo_fk">
+    <foreign-key id="234" parent="115" name="miasto_panstwo_fk">
       <ObjectId>645577338</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.197</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.197</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.540</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.540</ModifiedTimestamp>
       <ColNames>id_panstwa</ColNames>
       <RefTableId>581577110</RefTableId>
       <RefTableName>panstwa</RefTableName>
       <RefKeyName>panstwa_id_pk</RefKeyName>
       <RefColNames>id_panstwa</RefColNames>
     </foreign-key>
-    <column id="239" parent="116" name="id_panstwa">
+    <column id="235" parent="116" name="id_panstwa">
       <Position>1</Position>
       <DataType>char(2 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="240" parent="116" name="nazwa_panstwa">
+    <column id="236" parent="116" name="nazwa_panstwa">
       <Position>2</Position>
       <DataType>varchar(40 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="241" parent="116" name="panstwa_id_pk">
+    <index id="237" parent="116" name="panstwa_id_pk">
       <Position>1</Position>
       <ColNames>id_panstwa</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="242" parent="116" name="panstwa_id_pk">
+    <key id="238" parent="116" name="panstwa_id_pk">
       <ObjectId>597577167</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.190</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.190</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.533</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.533</ModifiedTimestamp>
       <ColNames>id_panstwa</ColNames>
       <UnderlyingIndexName>panstwa_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="243" parent="117" name="id_pokoju">
+    <column id="239" parent="117" name="id_pokoju">
       <Position>1</Position>
       <SequenceIdentity>100</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="244" parent="117" name="numer_pokoju">
+    <column id="240" parent="117" name="numer_pokoju">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="245" parent="117" name="numer_telefonu_pokoju">
+    <column id="241" parent="117" name="numer_telefonu_pokoju">
       <Position>3</Position>
       <DataType>char(5 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="246" parent="117" name="liczba_przewidzianych_osob">
+    <column id="242" parent="117" name="liczba_przewidzianych_osob">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="247" parent="117" name="liczba_pomieszczen">
+    <column id="243" parent="117" name="liczba_pomieszczen">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="248" parent="117" name="id_hotelu">
+    <column id="244" parent="117" name="id_hotelu">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="249" parent="117" name="pokoje_id_pk">
+    <index id="245" parent="117" name="pokoje_id_pk">
       <Position>1</Position>
       <ColNames>id_pokoju</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="250" parent="117" name="UQ__pokoje__F803B58428973015">
+    <index id="246" parent="117" name="UQ__pokoje__F803B584BEC268CD">
       <Position>2</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>numer_pokoju
 id_hotelu</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="251" parent="117" name="UQ__pokoje__E9C4113563F7B1CF">
+    <index id="247" parent="117" name="UQ__pokoje__E9C41135D5BEBBE1">
       <Position>3</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>numer_telefonu_pokoju</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="252" parent="117" name="pokoje_id_pk">
+    <key id="248" parent="117" name="pokoje_id_pk">
       <ObjectId>1013578649</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.327</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.327</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.597</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.597</ModifiedTimestamp>
       <ColNames>id_pokoju</ColNames>
       <UnderlyingIndexName>pokoje_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="253" parent="117" name="UQ__pokoje__F803B58428973015">
+    <key id="249" parent="117" name="UQ__pokoje__F803B584BEC268CD">
       <ObjectId>981578535</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2020-12-08.00:40:34.313</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.313</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.587</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.587</ModifiedTimestamp>
       <ColNames>numer_pokoju
 id_hotelu</ColNames>
-      <UnderlyingIndexName>UQ__pokoje__F803B58428973015</UnderlyingIndexName>
+      <UnderlyingIndexName>UQ__pokoje__F803B584BEC268CD</UnderlyingIndexName>
     </key>
-    <key id="254" parent="117" name="UQ__pokoje__E9C4113563F7B1CF">
+    <key id="250" parent="117" name="UQ__pokoje__E9C41135D5BEBBE1">
       <ObjectId>997578592</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2020-12-08.00:40:34.317</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.317</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.587</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.587</ModifiedTimestamp>
       <ColNames>numer_telefonu_pokoju</ColNames>
-      <UnderlyingIndexName>UQ__pokoje__E9C4113563F7B1CF</UnderlyingIndexName>
+      <UnderlyingIndexName>UQ__pokoje__E9C41135D5BEBBE1</UnderlyingIndexName>
     </key>
-    <foreign-key id="255" parent="117" name="pokoj_hotel_fk">
+    <foreign-key id="251" parent="117" name="pokoj_hotel_fk">
       <ObjectId>1077578877</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.337</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.337</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.607</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.607</ModifiedTimestamp>
       <ColNames>id_hotelu</ColNames>
       <RefTableId>661577395</RefTableId>
       <RefTableName>hotele</RefTableName>
       <RefKeyName>hotele_id_pk</RefKeyName>
       <RefColNames>id_hotelu</RefColNames>
     </foreign-key>
-    <check id="256" parent="117" name="liczba_pomieszczen_check">
+    <check id="252" parent="117" name="liczba_pomieszczen_check">
       <ObjectId>1061578820</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.337</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.337</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.607</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.607</ModifiedTimestamp>
       <ColNames>liczba_pomieszczen</ColNames>
       <Predicate>[liczba_pomieszczen]&gt;0</Predicate>
     </check>
-    <check id="257" parent="117" name="liczba_przewid_osob_check">
+    <check id="253" parent="117" name="liczba_przewid_osob_check">
       <ObjectId>1045578763</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.337</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.337</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.607</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.607</ModifiedTimestamp>
       <ColNames>liczba_przewidzianych_osob</ColNames>
       <Predicate>[liczba_przewidzianych_osob]&gt;0</Predicate>
     </check>
-    <check id="258" parent="117" name="numer_tel_pokoju_check">
+    <check id="254" parent="117" name="numer_tel_pokoju_check">
       <ObjectId>1029578706</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.333</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.333</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.607</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.607</ModifiedTimestamp>
       <ColNames>numer_telefonu_pokoju</ColNames>
       <Predicate>[numer_telefonu_pokoju] like &apos;[0-9][0-9][0-9][0-9][0-9]&apos;</Predicate>
     </check>
-    <column id="259" parent="118" name="id_pracownika">
+    <column id="255" parent="118" name="id_pracownika">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="260" parent="118" name="imie_pracownika">
+    <column id="256" parent="118" name="imie_pracownika">
       <Position>2</Position>
       <DataType>varchar(20 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="261" parent="118" name="nazwisko_pracownika">
+    <column id="257" parent="118" name="nazwisko_pracownika">
       <Position>3</Position>
       <DataType>varchar(40 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="262" parent="118" name="email_pracownika">
+    <column id="258" parent="118" name="email_pracownika">
       <Position>4</Position>
       <DataType>varchar(25 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="263" parent="118" name="numer_telefonu_pracownika">
+    <column id="259" parent="118" name="numer_telefonu_pracownika">
       <Position>5</Position>
       <DataType>char(9 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="264" parent="118" name="data_urodzenia">
+    <column id="260" parent="118" name="data_urodzenia">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="265" parent="118" name="pensja">
+    <column id="261" parent="118" name="pensja">
       <Position>7</Position>
       <DataType>money|0s</DataType>
     </column>
-    <column id="266" parent="118" name="premia">
+    <column id="262" parent="118" name="premia">
       <Position>8</Position>
       <DataType>decimal(2,2)|0s</DataType>
     </column>
-    <column id="267" parent="118" name="poczatek_pracy">
+    <column id="263" parent="118" name="poczatek_pracy">
       <Position>9</Position>
       <DefaultConstraintName>DF__pracownic__pocza__2F10007B</DefaultConstraintName>
       <DefaultExpression>getdate()</DefaultExpression>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="268" parent="118" name="id_hotelu">
+    <column id="264" parent="118" name="id_hotelu">
       <Position>10</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="269" parent="118" name="pracownicy_id_pk">
+    <index id="265" parent="118" name="pracownicy_id_pk">
       <Position>1</Position>
       <ColNames>id_pracownika</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="270" parent="118" name="UQ__pracowni__F2EF50669FD5AAE5">
+    <index id="266" parent="118" name="UQ__pracowni__F2EF5066598CF42C">
       <Position>2</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>numer_telefonu_pracownika</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="271" parent="118" name="UQ__pracowni__634FC24D35F5EE13">
+    <index id="267" parent="118" name="UQ__pracowni__634FC24D00DA9556">
       <Position>3</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email_pracownika</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="272" parent="118" name="pracownicy_id_pk">
+    <key id="268" parent="118" name="pracownicy_id_pk">
       <ObjectId>805577908</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.293</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.293</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.563</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.563</ModifiedTimestamp>
       <ColNames>id_pracownika</ColNames>
       <UnderlyingIndexName>pracownicy_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="273" parent="118" name="UQ__pracowni__634FC24D35F5EE13">
+    <key id="269" parent="118" name="UQ__pracowni__634FC24D00DA9556">
       <ObjectId>773577794</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2020-12-08.00:40:34.207</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.207</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.553</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.553</ModifiedTimestamp>
       <ColNames>email_pracownika</ColNames>
-      <UnderlyingIndexName>UQ__pracowni__634FC24D35F5EE13</UnderlyingIndexName>
+      <UnderlyingIndexName>UQ__pracowni__634FC24D00DA9556</UnderlyingIndexName>
     </key>
-    <key id="274" parent="118" name="UQ__pracowni__F2EF50669FD5AAE5">
+    <key id="270" parent="118" name="UQ__pracowni__F2EF5066598CF42C">
       <ObjectId>757577737</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2020-12-08.00:40:34.207</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.207</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.553</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.553</ModifiedTimestamp>
       <ColNames>numer_telefonu_pracownika</ColNames>
-      <UnderlyingIndexName>UQ__pracowni__F2EF50669FD5AAE5</UnderlyingIndexName>
+      <UnderlyingIndexName>UQ__pracowni__F2EF5066598CF42C</UnderlyingIndexName>
     </key>
-    <foreign-key id="275" parent="118" name="pracownik_hotel_fk">
+    <foreign-key id="271" parent="118" name="pracownik_hotel_fk">
       <ObjectId>885578193</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.303</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.303</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.577</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.577</ModifiedTimestamp>
       <ColNames>id_hotelu</ColNames>
       <RefTableId>661577395</RefTableId>
       <RefTableName>hotele</RefTableName>
       <RefKeyName>hotele_id_pk</RefKeyName>
       <RefColNames>id_hotelu</RefColNames>
     </foreign-key>
-    <check id="276" parent="118" name="poczatek_pracy_max">
+    <check id="272" parent="118" name="poczatek_pracy_max">
       <ObjectId>869578136</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.303</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.303</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.573</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.573</ModifiedTimestamp>
       <ColNames>data_urodzenia</ColNames>
       <Predicate>[data_urodzenia]&lt;=getdate()</Predicate>
     </check>
-    <check id="277" parent="118" name="data_urodzenia_max">
+    <check id="273" parent="118" name="data_urodzenia_max">
       <ObjectId>853578079</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.303</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.303</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.573</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.573</ModifiedTimestamp>
       <ColNames>data_urodzenia</ColNames>
       <Predicate>[data_urodzenia]&lt;getdate()</Predicate>
     </check>
-    <check id="278" parent="118" name="numer_tel_pracownika_check">
+    <check id="274" parent="118" name="numer_tel_pracownika_check">
       <ObjectId>821577965</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.300</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.300</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.573</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.573</ModifiedTimestamp>
       <ColNames>numer_telefonu_pracownika</ColNames>
       <Predicate>[numer_telefonu_pracownika] like &apos;[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]&apos;</Predicate>
     </check>
-    <check id="279" parent="118" name="pensja_pracownika_min">
+    <check id="275" parent="118" name="pensja_pracownika_min">
       <ObjectId>837578022</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.300</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.300</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.573</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.573</ModifiedTimestamp>
       <ColNames>pensja</ColNames>
       <Predicate>[pensja]&gt;0</Predicate>
     </check>
-    <default id="280" parent="118" name="DF__pracownic__pocza__2F10007B">
+    <default id="276" parent="118" name="DF__pracownic__pocza__2F10007B">
       <ObjectId>789577851</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <ModifiedTimestamp>2020-12-08.00:40:34.207</ModifiedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.553</ModifiedTimestamp>
       <ColNames>poczatek_pracy</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
     </default>
-    <column id="281" parent="119" name="id_rezerwacji">
+    <column id="277" parent="119" name="id_rezerwacji">
       <Position>1</Position>
       <SequenceIdentity>1000</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="282" parent="119" name="data_rezerwacji">
+    <column id="278" parent="119" name="data_rezerwacji">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="283" parent="119" name="liczba_dni_rezerwacji">
+    <column id="279" parent="119" name="liczba_dni_rezerwacji">
       <Position>3</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="284" parent="119" name="id_pokoju">
+    <column id="280" parent="119" name="id_pokoju">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="285" parent="119" name="id_klienta">
+    <column id="281" parent="119" name="id_klienta">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="286" parent="119" name="rezerwacje_id_pk">
+    <index id="282" parent="119" name="rezerwacje_id_pk">
       <Position>1</Position>
       <ColNames>id_rezerwacji</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="287" parent="119" name="rezerwacje_id_pk">
+    <key id="283" parent="119" name="rezerwacje_id_pk">
       <ObjectId>1397580017</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.380</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.380</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.653</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.653</ModifiedTimestamp>
       <ColNames>id_rezerwacji</ColNames>
       <UnderlyingIndexName>rezerwacje_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="119" name="rezerwacja_pokoj_fk">
+    <foreign-key id="284" parent="119" name="rezerwacja_pokoj_fk">
       <ObjectId>1429580131</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.380</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.380</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.653</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.653</ModifiedTimestamp>
       <ColNames>id_pokoju</ColNames>
       <RefTableId>965578478</RefTableId>
       <RefTableName>pokoje</RefTableName>
       <RefKeyName>pokoje_id_pk</RefKeyName>
       <RefColNames>id_pokoju</RefColNames>
     </foreign-key>
-    <foreign-key id="289" parent="119" name="rezerwacja_klient_fk">
+    <foreign-key id="285" parent="119" name="rezerwacja_klient_fk">
       <ObjectId>1445580188</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.380</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.380</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.657</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.657</ModifiedTimestamp>
       <ColNames>id_klienta</ColNames>
       <RefTableId>1317579732</RefTableId>
       <RefTableName>klienci</RefTableName>
       <RefKeyName>klienci_id_pk</RefKeyName>
       <RefColNames>id_klienta</RefColNames>
     </foreign-key>
-    <check id="290" parent="119" name="liczba_dni_check">
+    <check id="286" parent="119" name="liczba_dni_check">
       <ObjectId>1413580074</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.380</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.380</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.653</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.653</ModifiedTimestamp>
       <ColNames>liczba_dni_rezerwacji</ColNames>
       <Predicate>[liczba_dni_rezerwacji]&gt;0</Predicate>
     </check>
-    <column id="291" parent="120" name="id_rozmowy_telefonicznej">
+    <column id="287" parent="120" name="id_rozmowy_telefonicznej">
       <Position>1</Position>
       <SequenceIdentity>100</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="292" parent="120" name="numer_telefonu">
+    <column id="288" parent="120" name="numer_telefonu">
       <Position>2</Position>
       <DataType>varchar(9 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="293" parent="120" name="data_rozpoczecia_rozmowy">
+    <column id="289" parent="120" name="data_rozpoczecia_rozmowy">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="294" parent="120" name="data_zakonczenia_rozmowy">
+    <column id="290" parent="120" name="data_zakonczenia_rozmowy">
       <Position>4</Position>
       <DefaultConstraintName>DF__rozmowy_t__data___48CFD27E</DefaultConstraintName>
       <DefaultExpression>getdate()</DefaultExpression>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="295" parent="120" name="id_pokoju">
+    <column id="291" parent="120" name="id_pokoju">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="296" parent="120" name="rozmowy_tel_id_pk">
+    <index id="292" parent="120" name="rozmowy_tel_id_pk">
       <Position>1</Position>
       <ColNames>id_rozmowy_telefonicznej</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="297" parent="120" name="rozmowy_tel_id_pk">
+    <key id="293" parent="120" name="rozmowy_tel_id_pk">
       <ObjectId>1237579447</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.350</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.350</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.623</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.623</ModifiedTimestamp>
       <ColNames>id_rozmowy_telefonicznej</ColNames>
       <UnderlyingIndexName>rozmowy_tel_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="298" parent="120" name="rozmowy_pokoj_fk">
+    <foreign-key id="294" parent="120" name="rozmowy_pokoj_fk">
       <ObjectId>1301579675</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.353</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.353</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.627</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.627</ModifiedTimestamp>
       <ColNames>id_pokoju</ColNames>
       <RefTableId>965578478</RefTableId>
       <RefTableName>pokoje</RefTableName>
       <RefKeyName>pokoje_id_pk</RefKeyName>
       <RefColNames>id_pokoju</RefColNames>
     </foreign-key>
-    <check id="299" parent="120" name="numer_telefonu_check">
+    <check id="295" parent="120" name="numer_telefonu_check">
       <ObjectId>1253579504</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.350</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.350</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.623</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.623</ModifiedTimestamp>
       <ColNames>numer_telefonu</ColNames>
       <Predicate>NOT [numer_telefonu] like &apos;%^(0-9)%&apos;</Predicate>
     </check>
-    <check id="300" parent="120" name="data_zakonczenia_rozmowy_check">
+    <check id="296" parent="120" name="data_zakonczenia_rozmowy_check">
       <ObjectId>1285579618</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.353</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.353</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.627</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.627</ModifiedTimestamp>
       <ColNames>data_zakonczenia_rozmowy</ColNames>
       <Predicate>[data_zakonczenia_rozmowy]&lt;=getdate()</Predicate>
     </check>
-    <check id="301" parent="120" name="data_rozmowy_check">
+    <check id="297" parent="120" name="data_rozmowy_check">
       <ObjectId>1269579561</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.353</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.353</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.627</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.627</ModifiedTimestamp>
       <Predicate>[data_zakonczenia_rozmowy]&gt;=[data_rozpoczecia_rozmowy]</Predicate>
     </check>
-    <default id="302" parent="120" name="DF__rozmowy_t__data___48CFD27E">
+    <default id="298" parent="120" name="DF__rozmowy_t__data___48CFD27E">
       <ObjectId>1221579390</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <ModifiedTimestamp>2020-12-08.00:40:34.350</ModifiedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.620</ModifiedTimestamp>
       <ColNames>data_zakonczenia_rozmowy</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
     </default>
-    <column id="303" parent="121" name="id_sprzatania">
+    <column id="299" parent="121" name="id_sprzatania">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="304" parent="121" name="data_rozpoczecia_sprzatania">
+    <column id="300" parent="121" name="data_rozpoczecia_sprzatania">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="305" parent="121" name="data_zakonczenia_sprzatania">
+    <column id="301" parent="121" name="data_zakonczenia_sprzatania">
       <Position>3</Position>
       <DefaultConstraintName>DF__sprzatani__data___4222D4EF</DefaultConstraintName>
       <DefaultExpression>getdate()</DefaultExpression>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="306" parent="121" name="rodzaj_sprzatania">
+    <column id="302" parent="121" name="rodzaj_sprzatania">
       <Position>4</Position>
       <DataType>varchar(10 char)|0s</DataType>
     </column>
-    <column id="307" parent="121" name="id_pokoju">
+    <column id="303" parent="121" name="id_pokoju">
       <Position>5</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="308" parent="121" name="sprzatanie_id_pk">
+    <index id="304" parent="121" name="sprzatanie_id_pk">
       <Position>1</Position>
       <ColNames>id_sprzatania</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="309" parent="121" name="sprzatanie_id_pk">
+    <key id="305" parent="121" name="sprzatanie_id_pk">
       <ObjectId>1125579048</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.343</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.343</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.613</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.613</ModifiedTimestamp>
       <ColNames>id_sprzatania</ColNames>
       <UnderlyingIndexName>sprzatanie_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="310" parent="121" name="sprzatanie_pokoj_fk">
+    <foreign-key id="306" parent="121" name="sprzatanie_pokoj_fk">
       <ObjectId>1189579276</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.347</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.347</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.617</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.617</ModifiedTimestamp>
       <ColNames>id_pokoju</ColNames>
       <RefTableId>965578478</RefTableId>
       <RefTableName>pokoje</RefTableName>
       <RefKeyName>pokoje_id_pk</RefKeyName>
       <RefColNames>id_pokoju</RefColNames>
     </foreign-key>
-    <check id="311" parent="121" name="data_zakonczenia_sprzatania_check">
+    <check id="307" parent="121" name="data_zakonczenia_sprzatania_check">
       <ObjectId>1157579162</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.343</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.343</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.617</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.617</ModifiedTimestamp>
       <ColNames>data_zakonczenia_sprzatania</ColNames>
       <Predicate>[data_zakonczenia_sprzatania]&lt;=getdate()</Predicate>
     </check>
-    <check id="312" parent="121" name="data_sprzatania_check">
+    <check id="308" parent="121" name="data_sprzatania_check">
       <ObjectId>1141579105</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.343</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.343</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.617</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.617</ModifiedTimestamp>
       <Predicate>[data_zakonczenia_sprzatania]&gt;=[data_rozpoczecia_sprzatania]</Predicate>
     </check>
-    <check id="313" parent="121" name="rodzaj_sprzatania_wybor">
+    <check id="309" parent="121" name="rodzaj_sprzatania_wybor">
       <ObjectId>1173579219</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.343</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.343</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.617</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.617</ModifiedTimestamp>
       <ColNames>rodzaj_sprzatania</ColNames>
       <Predicate>upper([rodzaj_sprzatania])=&apos;PELNE&apos; OR upper([rodzaj_sprzatania])=&apos;PODSTAWOWE&apos;</Predicate>
     </check>
-    <default id="314" parent="121" name="DF__sprzatani__data___4222D4EF">
+    <default id="310" parent="121" name="DF__sprzatani__data___4222D4EF">
       <ObjectId>1109578991</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <ModifiedTimestamp>2020-12-08.00:40:34.340</ModifiedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.610</ModifiedTimestamp>
       <ColNames>data_zakonczenia_sprzatania</ColNames>
       <DefaultExpression>getdate()</DefaultExpression>
     </default>
-    <column id="315" parent="122" name="id_uslugi">
+    <column id="311" parent="122" name="id_uslugi">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="316" parent="122" name="id_rezerwacji">
+    <column id="312" parent="122" name="id_rezerwacji">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="317" parent="122" name="usluga_dla_rezerwacji_pk">
+    <index id="313" parent="122" name="usluga_dla_rezerwacji_pk">
       <Position>1</Position>
       <ColNames>id_uslugi
 id_rezerwacji</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="318" parent="122" name="usluga_dla_rezerwacji_pk">
+    <key id="314" parent="122" name="usluga_dla_rezerwacji_pk">
       <ObjectId>1525580473</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.390</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.390</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.667</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.667</ModifiedTimestamp>
       <ColNames>id_uslugi
 id_rezerwacji</ColNames>
       <UnderlyingIndexName>usluga_dla_rezerwacji_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="319" parent="122" name="usluga_dla_rezerwacji_usluga_fk">
+    <foreign-key id="315" parent="122" name="usluga_dla_rezerwacji_usluga_fk">
       <ObjectId>1541580530</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.393</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.393</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.667</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.667</ModifiedTimestamp>
       <ColNames>id_uslugi</ColNames>
       <RefTableId>1461580245</RefTableId>
       <RefTableName>uslugi</RefTableName>
       <RefKeyName>uslugi_id_pk</RefKeyName>
       <RefColNames>id_uslugi</RefColNames>
     </foreign-key>
-    <foreign-key id="320" parent="122" name="usluga_dla_rezerwacji_rezerwacja_fk">
+    <foreign-key id="316" parent="122" name="usluga_dla_rezerwacji_rezerwacja_fk">
       <ObjectId>1557580587</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.393</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.393</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.667</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.667</ModifiedTimestamp>
       <ColNames>id_rezerwacji</ColNames>
       <RefTableId>1381579960</RefTableId>
       <RefTableName>rezerwacje</RefTableName>
       <RefKeyName>rezerwacje_id_pk</RefKeyName>
       <RefColNames>id_rezerwacji</RefColNames>
     </foreign-key>
-    <column id="321" parent="123" name="id_uslugi">
+    <column id="317" parent="123" name="id_uslugi">
       <Position>1</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="322" parent="123" name="nazwa_uslugi">
+    <column id="318" parent="123" name="nazwa_uslugi">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="323" parent="123" name="cena_uslugi">
+    <column id="319" parent="123" name="cena_uslugi">
       <Position>3</Position>
       <DataType>money|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="324" parent="123" name="uslugi_id_pk">
+    <index id="320" parent="123" name="uslugi_id_pk">
       <Position>1</Position>
       <ColNames>id_uslugi</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="325" parent="123" name="uslugi_id_pk">
+    <key id="321" parent="123" name="uslugi_id_pk">
       <ObjectId>1477580302</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.387</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.387</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.660</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.660</ModifiedTimestamp>
       <ColNames>id_uslugi</ColNames>
       <UnderlyingIndexName>uslugi_id_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <check id="326" parent="123" name="cena_uslugi_check">
+    <check id="322" parent="123" name="cena_uslugi_check">
       <ObjectId>1493580359</ObjectId>
-      <CreatedTimestamp>2020-12-08.00:40:34.387</CreatedTimestamp>
-      <ModifiedTimestamp>2020-12-08.00:40:34.387</ModifiedTimestamp>
+      <CreatedTimestamp>2020-12-08.01:20:42.660</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-08.01:20:42.660</ModifiedTimestamp>
       <ColNames>cena_uslugi</ColNames>
       <Predicate>[cena_uslugi]&gt;0</Predicate>
     </check>

@@ -236,9 +236,7 @@ CREATE TABLE siec_hoteli.dbo.archiwum_rezerwacji
     cena_calkowita     MONEY,
     cena_za_telefon    MONEY,
     cena_za_uslugi     MONEY,
-    id_pokoju          INT                NOT NULL,
     id_rezerwacji      INT                NOT NULL,
-    id_klienta         INT                NOT NULL
 );
 GO
 
@@ -251,9 +249,5 @@ ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
     ADD CONSTRAINT cena_za_uslugi_check CHECK (cena_za_uslugi >= 0);
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
-    ADD CONSTRAINT archiwum_rezerwacji_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju);
-ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
     ADD CONSTRAINT archiwum_rezerwacji_rezerwacja_fk FOREIGN KEY (id_rezerwacji) REFERENCES rezerwacje (id_rezerwacji);
-ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
-    ADD CONSTRAINT archiwum_rezerwacji_klient_fk FOREIGN KEY (id_klienta) REFERENCES klienci (id_klienta);
 GO
