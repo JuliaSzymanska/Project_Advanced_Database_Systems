@@ -121,8 +121,8 @@ FROM siec_hoteli.dbo.pracownicy p,
 WHERE ap.id_pracownika = p.id_pracownika
   AND p.id_hotelu = h.id_hotelu
   AND h.id_miasta = m.id_miasta
-  and DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy) > (
-    SELECT AVG(DATEDIFF(DAY, ap2.poczatek_pracy, ap2.koniec_pracy))
+  and DATEDIFF(DAY, p.poczatek_pracy, ap.koniec_pracy) > (
+    SELECT AVG(DATEDIFF(DAY, p2.poczatek_pracy, ap2.koniec_pracy))
     FROM siec_hoteli.dbo.pracownicy p2,
          siec_hoteli.dbo.archiwum_pracownikow ap2,
          siec_hoteli.dbo.hotele h2,
@@ -132,7 +132,7 @@ WHERE ap.id_pracownika = p.id_pracownika
       AND h2.id_miasta = m2.id_miasta
       and m2.id_miasta = m.id_miasta
     GROUP BY m2.id_miasta)
-GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, ap.poczatek_pracy, ap.koniec_pracy
+GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, p.poczatek_pracy, ap.koniec_pracy
 
 
 -- 13. Wyœwietla panstwo, w ktorym najwiecej sie wydaje na oplacenie pracownikow.
@@ -241,7 +241,6 @@ order by suma desc
 -- (na podstawie id_pokoju uzyskujemy id_hotelu z którego wykonano po³¹czenie) wtedy wspó³czynnik ustawiany jest na 0. Dla numeru telefonu pokoju znajduj¹cego 
 -- siê w innym hotelu wspó³czynnik ustawiany jest na 0.5, dla numerów telefonów spoza hotelu wspó³czynnik ustawiany jest na 1.
 
-GO, k.imie_klienta, k.nazwisko_klienta
 CREATE OR
 ALTER FUNCTION oblicz_wspoczynnik(@numer_telefonu VARCHAR(9),
                                   @id_pokoju INT)
