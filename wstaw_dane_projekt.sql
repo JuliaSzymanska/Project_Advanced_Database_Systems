@@ -274,285 +274,369 @@ VALUES ('Maxhotel', 'Bd. Adolphe Max 107, 1000', 196, 1.99, 90);
 GO
 
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Steven', 'King', 'king@onet.us', '500498112', 2400, NULL, 100);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Neena', 'Kochhar', 'kochhar1342@wp.pl', '210198662', 2850, NULL, 100);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Lex', 'De Haan', 'lexDeHaanCute@expres.lt', '987544331', 2500, NULL, 101);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Alexander', 'Hunold', 'axhunold@expres.fr', '882304607', 3900, NULL, 101);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Bruce', 'Ernst', 'brucebruce@etlit.eu', '603604203', 6000, .3, 101);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('David', 'Austin', 'davidAustinMy@onet.us', '111222828', 4800, NULL, 102);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Valli', 'Pataballa', 'vallipataballa@lavieu.it', '102920876', 4800, NULL, 102);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Diana', 'Lorentz', 'dianadiana@lavieu.it', '772338222', 4200, NULL, 102);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Nancy', 'Greenberg', 'nNgreenberg@lavieu.it', '907263111', 1900, NULL, 102);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Daniel', 'Faviet', 'danielFaviet@usausa.us', '605605444', 3800, NULL, 104);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('John', 'Chen', 'johndchen@usausa.us', '747474102', 5100, .3, 105);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Ismael', 'Sciarra', 'isciarra1404@usausa.us', '308929002', 2200, NULL, 105);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Jose Manuel', 'Urman', 'jmanuelurman@usausa.us', '903903903', 3120, NULL, 105);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Luis', 'Popp', 'luispopp2@usausa.us', '534872610', 4050, NULL, 105);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Den', 'Raphaely', 'denraphaely@onet.eu', '679630621', 3000, NULL, 106);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Alexander', 'Khoo', 'alexanderkhoo@onet.eu', '330220110', 2190, NULL, 106);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Shelli', 'Baida', 'shellibaida@wicker.pl', '515231729', 2900, NULL, 107);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Sigal', 'Tobias', 'sigaltobias@wicker.pl', '929000188', 2800, NULL, 107);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Guy', 'Himuro', 'guyhimuro30@pflis.ang', '660320473', 2600, NULL, 108);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Karen', 'Colmenares', 'karencolmenares@pflis.ang', '505221923', 3650, NULL, 108);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Matthew', 'Weiss', 'matthewweiss@pflis.ang', '509509509', 6000, NULL, 108);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Adam', 'Fripp', 'adamfripp@deuche.de', '660225919', 4800, .3, 109);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Payam', 'Kaufling', 'payamkaufling@deuche.de', '880234110', 3200, NULL, 109);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Shanta', 'Vollman', 'shantavollman@deuche.de', '600700430', 4200, .1, 109);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Kevin', 'Mourgos', 'kevinmourgos@deuche.de', '340901921', 1900, NULL, 109);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Julia', 'Nayer', 'julianayer@deuche.de', '500555500', 2750, NULL, 109);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Irene', 'Mikkilineni', 'irmikkilineni@deuche.de', '112456788', 3000, NULL, 109);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('James', 'Landry', 'jameslandry@deuche.de', '232000211', 1900, NULL, 109);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Steven', 'Markle', 'stevenmarkle@xchx.pl', '343000291', 2300, NULL, 111);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Laura', 'Bissot', 'laurabissot@xchx.pl', '212980000', 2900, NULL, 111);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Mozhe', 'Atkinson', 'mozheatkinson@xchx.pl', '111222313', 3450, NULL, 111);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('James', 'Marlow', 'jamesmarlow@edu.com', '309409228', 2000, NULL, 112);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('TJ', 'Olson', 'tjolson@edu.po', '797777363', 2100, NULL, 113);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Jason', 'Mallin', 'jasonMallin@edu.po', '909282333', 3300, .1, 113);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Michael', 'Rogers', 'michaelRogers@edu.po', '662330001', 1860, NULL, 114);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Ki', 'Gee', 'kigee24@cos.ed', '843001000', 2300, NULL, 115);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Hazel', 'Philtanker', 'hazelphiltanker@cos.ed', '212980500', 2100, NULL, 115);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Renske', 'Ladwig', 'renskeladwig@cos.ed', '199222313', 2100, NULL, 115);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Stephen', 'Stiles', 'stephenstiles@cos.pl', '222131000', 3200, NULL, 116);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('John', 'Seo', 'johnseo@cos.pl', '888444333', 2700, NULL, 116);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Joshua', 'Patel', 'joshuapatel@cos.pl', '100999100', 2500, NULL, 116);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Trenna', 'Rajs', 'trennarajsneu@view.eu', '202303404', 4200, .4, 117);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Curtis', 'Davies', 'curtisdavies@view.eu', '900000888', 3100, NULL, 117);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Randall', 'Matos', 'randallmatos@view.eu', '232111424', 2600, NULL, 117);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Peter', 'Vargas', 'peterpetervargas@view.eu', '800121222', 2500, NULL, 117);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('John', 'Russell', 'johnrussell@view.eu', '202303202', 7500, .6, 117);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Karen', 'Partners', 'karenpartners@cos.pl', '843001001', 3500, NULL, 119);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Alberto', 'Errazuriz', 'albertoerrazuriz@cos.pl', '212970500', 6100, .4, 119);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Gerald', 'Cambrault', 'geraldcambrault@cos.pl', '833001001', 3900, NULL, 120);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Eleni', 'Zlotkey', 'eleniZlotkey@cos.pl', '212870500', 5200, NULL, 120);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Peter', 'Tucker', 'peterTucker@view.eu', '900021888', 5500, NULL, 121);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('David', 'Bernstein', 'davidbernstein@view.eu', '322011424', 2600, NULL, 121);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Peter', 'Hall', 'peterhall@view.eu', '660121222', 2800, NULL, 121);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Christopher', 'Olsen', 'christopherolsen@view.eu', '202303111', 4200, NULL, 121);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Nanette', 'Cambrault', 'nanettecambrault@view.eu', '607407807', 2200, NULL, 122);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Oliver', 'Tuvault', 'olivertuvault@view.eu', '111111112', 2800, NULL, 126);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Janette', 'King', 'janetteking@view.eu', '222222221', 3100, .15, 126);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Patrick', 'Sully', 'patricksully@view.eu', '440444004', 2600, NULL, 126);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Allan', 'McEwen', 'allanMcEwen@view.eu', '550005500', 1900, NULL, 126);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Lindsey', 'Smith', 'lindsaysmith@view.eu', '202303201', 6100, .45, 126);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Louise', 'Doran', 'lousiedoran@onet.eu', '600600600', 3400, NULL, 127);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Sarath', 'Sewall', 'sarathsewall@onet.eu', '210210210', 3000, .15, 127);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Clara', 'Vishney', 'claravishney@onet.eu', '600600622', 3450, NULL, 128);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Danielle', 'Greene', 'daniellegreene@onet.eu', '210210213', 2000, NULL, 128);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Mattea', 'Marvins', 'matteamarvins@onet.pl', '107108109', 1850, NULL, 130);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('David', 'Lee', 'davidlee@onet.eu', '510600622', 3650, NULL, 131);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Sundar', 'Ande', 'sundarande@onet.eu', '210377213', 2050, NULL, 131);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Amit', 'Banda', 'amitbanda@view.eu', '440444022', 2700, NULL, 132);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Lisa', 'Ozer', 'lisaozer@view.eu', '550005111', 1900, NULL, 132);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Harrison', 'Bloom', 'harrisonbloom@view.eu', '101302015', 4300, .25, 132);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Tayler', 'Fox', 'foxFox@view.eu', '662102002', 1850, .20, 134);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('William', 'Smith', 'williamSmith@view.eu', '544295111', 2600, NULL, 134);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Elizabeth', 'Bates', 'elizabethBates@view.eu', '999222999', 6600, NULL, 139);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Sundita', 'Kumar', 'sunditaKumar@view.eu', '555999222', 2900, NULL, 139);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Ellen', 'Abel', 'ellenabel@view.eu', '202303200', 3100, NULL, 139);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Alyssa', 'Hutton', 'alyssahutton@alpaka.ma', '112032000', 2300, NULL, 140);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Jonathon', 'Taylor', 'jonathontaylor@alpaka.ma', '102003000', 2700, .1, 141);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Sylwia', 'Winter', 'sylwiawinter@gmail.com', '669222999', 8600, NULL, 143);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Wojciech', 'Winter', 'wojtekwinter@gmail.com', '555499120', 2900, NULL, 143);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Mirka', 'Abel', 'mirkaabel@gmail.com', '782303200', 1800, NULL, 143);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Michal', 'Kaczor', 'kaczor@gmail.com', '155499120', 2975, NULL, 144);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Michalina', 'Abba', 'michalinaabba@gmail.com', '723132960', 2000, NULL, 144);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Mateusz', 'Nowak', 'mnowak@gmail.com', '488499120', 3900, .1, 146);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
-                                       numer_telefonu_pracownika, pensja, premia, id_hotelu)
+                                       numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
+                                       id_hotelu)
 VALUES ('Aga', 'Aga', 'agaaga@gmail.com', '992313290', 2050, NULL, 146);
 
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('24-MAR-1998' AS DATETIME), CAST('24-DEC-2003' AS DATETIME), 3);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('20-FEB-1991' AS DATETIME), CAST('03-MAY-2010' AS DATETIME), 8);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('17-AUG-1990' AS DATETIME), CAST('01-DEC-1999' AS DATETIME), 12);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('10-JUN-1998' AS DATETIME), CAST('10-JUN-2004' AS DATETIME), 13);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('24-MAR-2019' AS DATETIME), CAST('24-DEC-2019' AS DATETIME), 21);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('14-APR-2000' AS DATETIME), CAST('27-SEP-2006' AS DATETIME), 23);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('10-OCT-2005' AS DATETIME), CAST('13-NOV-2008' AS DATETIME), 24);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('22-SEP-2009' AS DATETIME), CAST('01-JAN-2015' AS DATETIME), 26);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('03-SEP-2012' AS DATETIME), CAST('02-AUG-2016' AS DATETIME), 31);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('22-NOV-2018' AS DATETIME), CAST('01-MAY-2019' AS DATETIME), 40);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('17-MAR-1993' AS DATETIME), CAST('09-JUL-1995' AS DATETIME), 46);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('12-MAR-1990' AS DATETIME), CAST('10-MAY-1990' AS DATETIME), 59);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('19-APR-1990' AS DATETIME), CAST('29-MAR-2010' AS DATETIME), 73);
-INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(poczatek_pracy, koniec_pracy, id_pracownika)
+INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
 VALUES (CAST('12-MAR-2014' AS DATETIME), CAST('19-DEC-2019' AS DATETIME), 78);
 GO
 
