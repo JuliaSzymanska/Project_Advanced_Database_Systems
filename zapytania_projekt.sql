@@ -154,9 +154,11 @@ having sum(p.pensja) = max_suma
 
 -- 14 Wypisz klijenta który mia³ najwiecej skonczonych rezerwacji
 
-select k.*, count(*) Ilosc_rezerwacji from siec_hoteli..klienci k, siec_hoteli..rezerwacje r
+select k.imie_klienta, k.nazwisko_klienta, count(k.id_klienta) Ilosc_rezerwacji from siec_hoteli..klienci k, siec_hoteli..rezerwacje r
 where k.id_klienta = r.id_klienta and dateadd(day, r.liczba_dni_rezerwacji, r.data_rezerwacji) < getdate()
-having count(*)
+group by  k.id_klienta, imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania
+having count(k.id_klienta) = (select count(k.id_klienta) from siec_hoteli..klienci k, siec_hoteli..rezerwacje r
+                              where k.id_klienta = r.id_klienta and dateadd(day, r.liczba_dni_rezerwacji, r.data_rezerwacji) < getdate() group by k.id_klienta)
 
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
