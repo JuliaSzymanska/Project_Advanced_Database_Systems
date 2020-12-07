@@ -1,0 +1,1796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.20">
+    <root id="1">
+      <ServerVersion>15.0.2070</ServerVersion>
+      <PermissionsCheckSum>43840682207</PermissionsCheckSum>
+      <Grants>0|root||1|connect sql|G
+0|root||2|view any database|G
+0|root||101|view any definition|G
+0|root||102|authenticate server|G
+0|root||102|view any definition|G
+0|root||102|view server state|G
+0|root||103|authenticate server|G
+0|root||105|control server|G
+0|root||105|view any definition|G
+0|root||106|view any definition|G
+0|root||257|connect sql|G
+0|root||257|view any definition|G
+0|root||257|view server state|G
+0|root||259|connect sql|G
+0|root||260|connect sql|G
+0|root||261|connect sql|G
+0|root||262|connect sql|G
+0|root||263|alter any availability group|G
+0|root||263|connect sql|G
+0|root||263|view server state|G
+0|root||264|connect sql|G
+0|root||265|alter any event session|G
+0|root||265|connect any database|G
+0|root||265|connect sql|G
+0|root||265|view any definition|G
+0|root||265|view server state|G
+0|root||266|connect sql|G
+0|root||267|connect sql|G
+2|||2|connect|G
+3|||2|connect|G
+4|||2|connect|G
+5|||2|connect|G
+</Grants>
+    </root>
+    <database id="2" parent="1" name="HR">
+      <ObjectId>9</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="3" parent="1" name="biblioteka">
+      <ObjectId>7</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="4" parent="1" name="biuro">
+      <ObjectId>6</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="5" parent="1" name="master">
+      <ObjectId>1</ObjectId>
+      <PermissionsCheckSum>7998723517</PermissionsCheckSum>
+      <Grants>1|database||0|view any column encryption key definition|G
+1|database||0|view any column master key definition|G
+1|database||1|connect|G
+1|database||2|connect|G
+1|database||5|connect|G
+1|database||6|connect|G
+1|database||6|execute|G
+</Grants>
+      <Current>1</Current>
+      <Collation>Polish_CI_AS</Collation>
+      <Fingerprint>1.37717/00000000-0000-0000-0000-000000000000@PREMIDEL</Fingerprint>
+    </database>
+    <database id="6" parent="1" name="model">
+      <ObjectId>3</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="7" parent="1" name="msdb">
+      <ObjectId>4</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="8" parent="1" name="narciarze">
+      <ObjectId>5</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="9" parent="1" name="siec_hoteli">
+      <ObjectId>12</ObjectId>
+      <PermissionsCheckSum>3196235284</PermissionsCheckSum>
+      <Grants>12|database||0|view any column encryption key definition|G
+12|database||0|view any column master key definition|G
+12|database||1|connect|G
+</Grants>
+      <Collation>Polish_CI_AS</Collation>
+      <Fingerprint>1.37717/00000000-0000-0000-0000-000000000000@PREMIDEL</Fingerprint>
+    </database>
+    <database id="10" parent="1" name="tempdb">
+      <ObjectId>2</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="11" parent="1" name="test_cwiczenia">
+      <ObjectId>8</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="12" parent="1" name="test_pracownicy">
+      <ObjectId>11</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <database id="13" parent="1" name="testowa">
+      <ObjectId>10</ObjectId>
+      <Collation>Polish_CI_AS</Collation>
+    </database>
+    <login id="14" parent="1" name="sa">
+      <ObjectId>1</ObjectId>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="15" parent="1" name="public">
+      <ObjectId>2</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="16" parent="1" name="sysadmin">
+      <ObjectId>3</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="17" parent="1" name="securityadmin">
+      <ObjectId>4</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="18" parent="1" name="serveradmin">
+      <ObjectId>5</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="19" parent="1" name="setupadmin">
+      <ObjectId>6</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="20" parent="1" name="processadmin">
+      <ObjectId>7</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="21" parent="1" name="diskadmin">
+      <ObjectId>8</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="22" parent="1" name="dbcreator">
+      <ObjectId>9</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="23" parent="1" name="bulkadmin">
+      <ObjectId>10</ObjectId>
+      <Type>server-role</Type>
+      <Enabled>1</Enabled>
+    </login>
+    <login id="24" parent="1" name="##MS_SQLResourceSigningCertificate##">
+      <ObjectId>101</ObjectId>
+      <Type>certificate-mapped-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="25" parent="1" name="##MS_SQLReplicationSigningCertificate##">
+      <ObjectId>102</ObjectId>
+      <Type>certificate-mapped-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="26" parent="1" name="##MS_SQLAuthenticatorCertificate##">
+      <ObjectId>103</ObjectId>
+      <Type>certificate-mapped-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="27" parent="1" name="##MS_PolicySigningCertificate##">
+      <ObjectId>105</ObjectId>
+      <Type>certificate-mapped-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="28" parent="1" name="##MS_SmoExtendedSigningCertificate##">
+      <ObjectId>106</ObjectId>
+      <Type>certificate-mapped-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="29" parent="1" name="##MS_PolicyTsqlExecutionLogin##">
+      <ObjectId>257</ObjectId>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="30" parent="1" name="Premidel\Przemek">
+      <ObjectId>259</ObjectId>
+      <Type>windows-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="31" parent="1" name="NT SERVICE\SQLWriter">
+      <ObjectId>260</ObjectId>
+      <Type>windows-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="32" parent="1" name="NT SERVICE\Winmgmt">
+      <ObjectId>261</ObjectId>
+      <Type>windows-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="33" parent="1" name="NT Service\MSSQLSERVER">
+      <ObjectId>262</ObjectId>
+      <Type>windows-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="34" parent="1" name="ZARZĄDZANIE NT\SYSTEM">
+      <ObjectId>263</ObjectId>
+      <Type>windows-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="35" parent="1" name="NT SERVICE\SQLSERVERAGENT">
+      <ObjectId>264</ObjectId>
+      <Type>windows-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="36" parent="1" name="NT SERVICE\SQLTELEMETRY">
+      <ObjectId>265</ObjectId>
+      <Type>windows-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="37" parent="1" name="##MS_PolicyEventProcessingLogin##">
+      <ObjectId>266</ObjectId>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="38" parent="1" name="##MS_AgentSigningCertificate##">
+      <ObjectId>267</ObjectId>
+      <Type>certificate-mapped-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <schema id="39" parent="5" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+    </schema>
+    <schema id="40" parent="5" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+    </schema>
+    <schema id="41" parent="5" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+    </schema>
+    <schema id="42" parent="5" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+    </schema>
+    <schema id="43" parent="5" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+    </schema>
+    <schema id="44" parent="5" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+    </schema>
+    <schema id="45" parent="5" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+    </schema>
+    <schema id="46" parent="5" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+    </schema>
+    <schema id="47" parent="5" name="db_owner">
+      <ObjectId>16384</ObjectId>
+    </schema>
+    <schema id="48" parent="5" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+    </schema>
+    <schema id="49" parent="5" name="dbo">
+      <ObjectId>1</ObjectId>
+      <PermissionsCheckSum>7026290343</PermissionsCheckSum>
+      <Grants>117575457|||0|select|G
+133575514|||0|select|G
+149575571|||0|select|G
+1787153412|||0|select|G
+1803153469|||0|select|G
+</Grants>
+      <IntrospectionTimestamp>2020-12-07.22:04:44.480</IntrospectionTimestamp>
+      <Current>1</Current>
+    </schema>
+    <schema id="50" parent="5" name="guest">
+      <ObjectId>2</ObjectId>
+    </schema>
+    <schema id="51" parent="5" name="sys">
+      <ObjectId>4</ObjectId>
+    </schema>
+    <role id="52" parent="5" name="public">
+      <ObjectId>0</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="53" parent="5" name="dbo">
+      <ObjectId>1</ObjectId>
+      <DefaultSchema>dbo</DefaultSchema>
+      <AuthType>instance</AuthType>
+    </role>
+    <role id="54" parent="5" name="guest">
+      <ObjectId>2</ObjectId>
+      <DefaultSchema>guest</DefaultSchema>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="55" parent="5" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="56" parent="5" name="sys">
+      <ObjectId>4</ObjectId>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="57" parent="5" name="##MS_PolicyEventProcessingLogin##">
+      <ObjectId>5</ObjectId>
+      <DefaultSchema>dbo</DefaultSchema>
+      <AuthType>instance</AuthType>
+    </role>
+    <role id="58" parent="5" name="##MS_AgentSigningCertificate##">
+      <ObjectId>6</ObjectId>
+      <Type>certificate-mapped-user</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="59" parent="5" name="db_owner">
+      <ObjectId>16384</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="60" parent="5" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="61" parent="5" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="62" parent="5" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="63" parent="5" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="64" parent="5" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="65" parent="5" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="66" parent="5" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="67" parent="5" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <schema id="68" parent="9" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+    </schema>
+    <schema id="69" parent="9" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+    </schema>
+    <schema id="70" parent="9" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+    </schema>
+    <schema id="71" parent="9" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+    </schema>
+    <schema id="72" parent="9" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+    </schema>
+    <schema id="73" parent="9" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+    </schema>
+    <schema id="74" parent="9" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+    </schema>
+    <schema id="75" parent="9" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+    </schema>
+    <schema id="76" parent="9" name="db_owner">
+      <ObjectId>16384</ObjectId>
+    </schema>
+    <schema id="77" parent="9" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+    </schema>
+    <schema id="78" parent="9" name="dbo">
+      <ObjectId>1</ObjectId>
+      <IntrospectionTimestamp>2020-12-07.22:05:15.930</IntrospectionTimestamp>
+      <Current>1</Current>
+    </schema>
+    <schema id="79" parent="9" name="guest">
+      <ObjectId>2</ObjectId>
+    </schema>
+    <schema id="80" parent="9" name="sys">
+      <ObjectId>4</ObjectId>
+    </schema>
+    <role id="81" parent="9" name="public">
+      <ObjectId>0</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="82" parent="9" name="dbo">
+      <ObjectId>1</ObjectId>
+      <Type>windows-user</Type>
+      <DefaultSchema>dbo</DefaultSchema>
+      <AuthType>windows</AuthType>
+    </role>
+    <role id="83" parent="9" name="guest">
+      <ObjectId>2</ObjectId>
+      <DefaultSchema>guest</DefaultSchema>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="84" parent="9" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="85" parent="9" name="sys">
+      <ObjectId>4</ObjectId>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="86" parent="9" name="db_owner">
+      <ObjectId>16384</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="87" parent="9" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="88" parent="9" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="89" parent="9" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="90" parent="9" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="91" parent="9" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="92" parent="9" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="93" parent="9" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <role id="94" parent="9" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+      <OwnerId>1</OwnerId>
+      <Type>database-role</Type>
+      <AuthType>none</AuthType>
+    </role>
+    <table id="95" parent="49" name="MSreplication_options">
+      <ObjectId>2107154552</ObjectId>
+      <CreatedTimestamp>2019-09-24.16:22:51.377</CreatedTimestamp>
+      <ModifiedTimestamp>2019-09-24.16:23:14.290</ModifiedTimestamp>
+    </table>
+    <table id="96" parent="49" name="spt_fallback_db">
+      <ObjectId>117575457</ObjectId>
+      <CreatedTimestamp>2003-04-08.11:18:01.557</CreatedTimestamp>
+      <ModifiedTimestamp>2019-09-24.16:23:14.273</ModifiedTimestamp>
+    </table>
+    <table id="97" parent="49" name="spt_fallback_dev">
+      <ObjectId>133575514</ObjectId>
+      <CreatedTimestamp>2003-04-08.11:18:02.870</CreatedTimestamp>
+      <ModifiedTimestamp>2019-09-24.16:23:14.277</ModifiedTimestamp>
+    </table>
+    <table id="98" parent="49" name="spt_fallback_usg">
+      <ObjectId>149575571</ObjectId>
+      <CreatedTimestamp>2003-04-08.11:18:04.180</CreatedTimestamp>
+      <ModifiedTimestamp>2019-09-24.16:23:14.280</ModifiedTimestamp>
+    </table>
+    <table id="99" parent="49" name="spt_monitor">
+      <ObjectId>1803153469</ObjectId>
+      <CreatedTimestamp>2019-09-24.16:21:40.837</CreatedTimestamp>
+      <ModifiedTimestamp>2019-09-24.16:23:14.290</ModifiedTimestamp>
+    </table>
+    <view id="100" parent="49" name="spt_values">
+      <ObjectId>1787153412</ObjectId>
+      <SourceTextLength>161</SourceTextLength>
+      <CreatedTimestamp>2019-09-24.16:21:40.797</CreatedTimestamp>
+      <ModifiedTimestamp>2019-09-24.16:21:40.833</ModifiedTimestamp>
+    </view>
+    <routine id="101" parent="49" name="CZWARTA">
+      <ObjectId>727673640</ObjectId>
+      <SourceTextLength>394</SourceTextLength>
+      <CreatedTimestamp>2020-11-14.21:09:25.310</CreatedTimestamp>
+      <ModifiedTimestamp>2020-11-14.21:09:25.310</ModifiedTimestamp>
+      <RoutineType>scalar-fun</RoutineType>
+    </routine>
+    <routine id="102" parent="49" name="DRUGA">
+      <ObjectId>647673355</ObjectId>
+      <SourceTextLength>163</SourceTextLength>
+      <CreatedTimestamp>2020-11-14.18:31:43.123</CreatedTimestamp>
+      <ModifiedTimestamp>2020-11-14.18:31:43.123</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <routine id="103" parent="49" name="FUNKCJA">
+      <ObjectId>1575676661</ObjectId>
+      <SourceTextLength>290</SourceTextLength>
+      <CreatedTimestamp>2020-11-26.15:48:58.507</CreatedTimestamp>
+      <ModifiedTimestamp>2020-11-26.15:48:58.507</ModifiedTimestamp>
+      <RoutineType>scalar-fun</RoutineType>
+    </routine>
+    <routine id="104" parent="49" name="PIERWSZA">
+      <ObjectId>599673184</ObjectId>
+      <SourceTextLength>103</SourceTextLength>
+      <CreatedTimestamp>2020-11-14.17:31:44.917</CreatedTimestamp>
+      <ModifiedTimestamp>2020-11-14.17:31:44.917</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <routine id="105" parent="49" name="PROCEDURA">
+      <ObjectId>1271675578</ObjectId>
+      <SourceTextLength>244</SourceTextLength>
+      <CreatedTimestamp>2020-11-26.15:11:15.077</CreatedTimestamp>
+      <ModifiedTimestamp>2020-11-26.15:11:15.077</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <routine id="106" parent="49" name="TRZECIA">
+      <ObjectId>663673412</ObjectId>
+      <SourceTextLength>512</SourceTextLength>
+      <CreatedTimestamp>2020-11-14.19:04:27.970</CreatedTimestamp>
+      <ModifiedTimestamp>2020-11-14.19:04:27.970</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <routine id="107" parent="49" name="sp_MScleanupmergepublisher">
+      <ObjectId>2139154666</ObjectId>
+      <SourceTextLength>100</SourceTextLength>
+      <CreatedTimestamp>2019-09-24.16:22:51.420</CreatedTimestamp>
+      <ModifiedTimestamp>2019-09-24.16:23:14.297</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <routine id="108" parent="49" name="sp_MSrepl_startup">
+      <ObjectId>2123154609</ObjectId>
+      <SourceTextLength>83</SourceTextLength>
+      <CreatedTimestamp>2019-09-24.16:22:51.403</CreatedTimestamp>
+      <ModifiedTimestamp>2019-09-24.16:23:14.293</ModifiedTimestamp>
+      <RoutineType>proc</RoutineType>
+    </routine>
+    <table id="109" parent="78" name="archiwum_pracownikow">
+      <ObjectId>853578079</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.843</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.913</ModifiedTimestamp>
+    </table>
+    <table id="110" parent="78" name="archiwum_rezerwacji">
+      <ObjectId>1525580473</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.823</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.907</ModifiedTimestamp>
+    </table>
+    <table id="111" parent="78" name="hotele">
+      <ObjectId>661577395</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.520</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.063</ModifiedTimestamp>
+    </table>
+    <table id="112" parent="78" name="klienci">
+      <ObjectId>1269579561</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.340</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.890</ModifiedTimestamp>
+    </table>
+    <table id="113" parent="78" name="miasta">
+      <ObjectId>613577224</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.447</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.647</ModifiedTimestamp>
+    </table>
+    <table id="114" parent="78" name="panstwa">
+      <ObjectId>581577110</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.320</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.457</ModifiedTimestamp>
+    </table>
+    <table id="115" parent="78" name="pokoje">
+      <ObjectId>917578307</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.973</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.890</ModifiedTimestamp>
+    </table>
+    <table id="116" parent="78" name="pracownicy">
+      <ObjectId>741577680</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.710</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.907</ModifiedTimestamp>
+    </table>
+    <table id="117" parent="78" name="rezerwacje">
+      <ObjectId>1333579789</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.513</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.890</ModifiedTimestamp>
+    </table>
+    <table id="118" parent="78" name="rozmowy_telefoniczne">
+      <ObjectId>1157579162</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.263</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.343</ModifiedTimestamp>
+    </table>
+    <table id="119" parent="78" name="sprzatanie">
+      <ObjectId>1045578763</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.113</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.267</ModifiedTimestamp>
+    </table>
+    <table id="120" parent="78" name="usluga_dla_rezerwacji">
+      <ObjectId>1461580245</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.760</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.780</ModifiedTimestamp>
+    </table>
+    <table id="121" parent="78" name="uslugi">
+      <ObjectId>1413580074</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.540</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.770</ModifiedTimestamp>
+    </table>
+    <column id="122" parent="95" name="optname">
+      <Position>1</Position>
+      <DataType>sysname|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="123" parent="95" name="value">
+      <Position>2</Position>
+      <DataType>bit|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="124" parent="95" name="major_version">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="125" parent="95" name="minor_version">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="126" parent="95" name="revision">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="127" parent="95" name="install_failures">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="128" parent="96" name="xserver_name">
+      <Position>1</Position>
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="129" parent="96" name="xdttm_ins">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="130" parent="96" name="xdttm_last_ins_upd">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="131" parent="96" name="xfallback_dbid">
+      <Position>4</Position>
+      <DataType>smallint|0s</DataType>
+    </column>
+    <column id="132" parent="96" name="name">
+      <Position>5</Position>
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="133" parent="96" name="dbid">
+      <Position>6</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="134" parent="96" name="status">
+      <Position>7</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="135" parent="96" name="version">
+      <Position>8</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="136" parent="97" name="xserver_name">
+      <Position>1</Position>
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="137" parent="97" name="xdttm_ins">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="138" parent="97" name="xdttm_last_ins_upd">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="139" parent="97" name="xfallback_low">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="140" parent="97" name="xfallback_drive">
+      <Position>5</Position>
+      <DataType>char(2 char)|0s</DataType>
+    </column>
+    <column id="141" parent="97" name="low">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="142" parent="97" name="high">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="143" parent="97" name="status">
+      <Position>8</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="144" parent="97" name="name">
+      <Position>9</Position>
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="145" parent="97" name="phyname">
+      <Position>10</Position>
+      <DataType>varchar(127 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="146" parent="98" name="xserver_name">
+      <Position>1</Position>
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="147" parent="98" name="xdttm_ins">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="148" parent="98" name="xdttm_last_ins_upd">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="149" parent="98" name="xfallback_vstart">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="150" parent="98" name="dbid">
+      <Position>5</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="151" parent="98" name="segmap">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="152" parent="98" name="lstart">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="153" parent="98" name="sizepg">
+      <Position>8</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="154" parent="98" name="vstart">
+      <Position>9</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="155" parent="99" name="lastrun">
+      <Position>1</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="156" parent="99" name="cpu_busy">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="157" parent="99" name="io_busy">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="158" parent="99" name="idle">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="159" parent="99" name="pack_received">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="160" parent="99" name="pack_sent">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="161" parent="99" name="connections">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="162" parent="99" name="pack_errors">
+      <Position>8</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="163" parent="99" name="total_read">
+      <Position>9</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="164" parent="99" name="total_write">
+      <Position>10</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="165" parent="99" name="total_errors">
+      <Position>11</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="166" parent="100" name="name">
+      <Position>1</Position>
+      <DataType>nvarchar(35 char)|0s</DataType>
+    </column>
+    <column id="167" parent="100" name="number">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="168" parent="100" name="type">
+      <Position>3</Position>
+      <DataType>nchar(3 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="169" parent="100" name="low">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="170" parent="100" name="high">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="171" parent="100" name="status">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <argument id="172" parent="101">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>float|0s</DataType>
+    </argument>
+    <argument id="173" parent="101" name="@id">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="174" parent="102" name="@first">
+      <Position>1</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+    </argument>
+    <argument id="175" parent="102" name="@second">
+      <Position>2</Position>
+      <DataType>varchar(100 char)|0s</DataType>
+    </argument>
+    <argument id="176" parent="102" name="@third">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="177" parent="103">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>varchar(10 char)|0s</DataType>
+    </argument>
+    <argument id="178" parent="103" name="@data_zatr">
+      <Position>1</Position>
+      <DataType>date|0s</DataType>
+    </argument>
+    <argument id="179" parent="104" name="@first">
+      <Position>1</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+    </argument>
+    <argument id="180" parent="105" name="@miasto">
+      <Position>1</Position>
+      <DataType>varchar(30 char)|0s</DataType>
+    </argument>
+    <argument id="181" parent="106" name="@id">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <argument id="182" parent="106" name="@procent">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+    </argument>
+    <column id="183" parent="109" name="id_pracownika_arch">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="184" parent="109" name="poczatek_pracy">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="185" parent="109" name="koniec_pracy">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="186" parent="109" name="id_pracownika">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="187" parent="109" name="archiwum_pracownikow_id_pk">
+      <Position>1</Position>
+      <ColNames>id_pracownika_arch</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="188" parent="109" name="archiwum_pracownikow_id_pk">
+      <ObjectId>869578136</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.903</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.903</ModifiedTimestamp>
+      <ColNames>id_pracownika_arch</ColNames>
+      <UnderlyingIndexName>archiwum_pracownikow_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="189" parent="109" name="archiwum_pracownik_fk">
+      <ObjectId>901578250</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.907</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.907</ModifiedTimestamp>
+      <ColNames>id_pracownika</ColNames>
+      <RefTableId>741577680</RefTableId>
+      <RefTableName>pracownicy</RefTableName>
+      <RefKeyName>pracownicy_id_pk</RefKeyName>
+      <RefColNames>id_pracownika</RefColNames>
+    </foreign-key>
+    <check id="190" parent="109" name="archiwum_data_interwal">
+      <ObjectId>885578193</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.907</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.907</ModifiedTimestamp>
+      <Predicate>[koniec_pracy]&gt;[poczatek_pracy]</Predicate>
+    </check>
+    <column id="191" parent="110" name="id_rezerwacji_arch">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="192" parent="110" name="cena_calkowita">
+      <Position>2</Position>
+      <DataType>money|0s</DataType>
+    </column>
+    <column id="193" parent="110" name="cena_za_telefon">
+      <Position>3</Position>
+      <DataType>money|0s</DataType>
+    </column>
+    <column id="194" parent="110" name="cena_za_uslugi">
+      <Position>4</Position>
+      <DataType>money|0s</DataType>
+    </column>
+    <column id="195" parent="110" name="id_pokoju">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="196" parent="110" name="id_rezerwacji">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="197" parent="110" name="id_klienta">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="198" parent="110" name="archiwum_rezerwacji_id_pk">
+      <Position>1</Position>
+      <ColNames>id_rezerwacji_arch</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="199" parent="110" name="archiwum_rezerwacji_id_pk">
+      <ObjectId>1541580530</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.883</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.883</ModifiedTimestamp>
+      <ColNames>id_rezerwacji_arch</ColNames>
+      <UnderlyingIndexName>archiwum_rezerwacji_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="200" parent="110" name="archiwum_rezerwacji_pokoj_fk">
+      <ObjectId>1605580758</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.887</ModifiedTimestamp>
+      <ColNames>id_pokoju</ColNames>
+      <RefTableId>917578307</RefTableId>
+      <RefTableName>pokoje</RefTableName>
+      <RefKeyName>pokoje_id_pk</RefKeyName>
+      <RefColNames>id_pokoju</RefColNames>
+    </foreign-key>
+    <foreign-key id="201" parent="110" name="archiwum_rezerwacji_rezerwacja_fk">
+      <ObjectId>1621580815</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.890</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.890</ModifiedTimestamp>
+      <ColNames>id_rezerwacji</ColNames>
+      <RefTableId>1333579789</RefTableId>
+      <RefTableName>rezerwacje</RefTableName>
+      <RefKeyName>rezerwacje_id_pk</RefKeyName>
+      <RefColNames>id_rezerwacji</RefColNames>
+    </foreign-key>
+    <foreign-key id="202" parent="110" name="archiwum_rezerwacji_klient_fk">
+      <ObjectId>1637580872</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.890</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.890</ModifiedTimestamp>
+      <ColNames>id_klienta</ColNames>
+      <RefTableId>1269579561</RefTableId>
+      <RefTableName>klienci</RefTableName>
+      <RefKeyName>klienci_id_pk</RefKeyName>
+      <RefColNames>id_klienta</RefColNames>
+    </foreign-key>
+    <check id="203" parent="110" name="cena_calkowita_check">
+      <ObjectId>1557580587</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.887</ModifiedTimestamp>
+      <ColNames>cena_calkowita</ColNames>
+      <Predicate>[cena_calkowita]&gt;0</Predicate>
+    </check>
+    <check id="204" parent="110" name="cena_za_telefon_check">
+      <ObjectId>1573580644</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.887</ModifiedTimestamp>
+      <ColNames>cena_za_telefon</ColNames>
+      <Predicate>[cena_za_telefon]&gt;=0</Predicate>
+    </check>
+    <check id="205" parent="110" name="cena_za_uslugi_check">
+      <ObjectId>1589580701</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.887</ModifiedTimestamp>
+      <ColNames>cena_za_uslugi</ColNames>
+      <Predicate>[cena_za_uslugi]&gt;=0</Predicate>
+    </check>
+    <column id="206" parent="111" name="id_hotelu">
+      <Position>1</Position>
+      <SequenceIdentity>100</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="207" parent="111" name="nazwa_hotelu">
+      <Position>2</Position>
+      <DataType>varchar(70 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="208" parent="111" name="adres_hotelu">
+      <Position>3</Position>
+      <DataType>varchar(100 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="209" parent="111" name="cena_bazowa_za_pokoj">
+      <Position>4</Position>
+      <DataType>money|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="210" parent="111" name="cena_za_polaczenie_telefoniczne">
+      <Position>5</Position>
+      <DataType>money|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="211" parent="111" name="id_miasta">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="212" parent="111" name="hotele_id_pk">
+      <Position>1</Position>
+      <ColNames>id_hotelu</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="213" parent="111" name="hotele_id_pk">
+      <ObjectId>677577452</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.643</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.643</ModifiedTimestamp>
+      <ColNames>id_hotelu</ColNames>
+      <UnderlyingIndexName>hotele_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="214" parent="111" name="hotel_miasto_fk">
+      <ObjectId>725577623</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.647</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.647</ModifiedTimestamp>
+      <ColNames>id_miasta</ColNames>
+      <RefTableId>613577224</RefTableId>
+      <RefTableName>miasta</RefTableName>
+      <RefKeyName>miasta_id_pk</RefKeyName>
+      <RefColNames>id_miasta</RefColNames>
+    </foreign-key>
+    <check id="215" parent="111" name="cena_bazowa_pokoj_check">
+      <ObjectId>693577509</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.643</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.643</ModifiedTimestamp>
+      <ColNames>cena_bazowa_za_pokoj</ColNames>
+      <Predicate>[cena_bazowa_za_pokoj]&gt;0</Predicate>
+    </check>
+    <check id="216" parent="111" name="cena_telefon_check">
+      <ObjectId>709577566</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.647</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.647</ModifiedTimestamp>
+      <ColNames>cena_za_polaczenie_telefoniczne</ColNames>
+      <Predicate>[cena_za_polaczenie_telefoniczne]&gt;0</Predicate>
+    </check>
+    <column id="217" parent="112" name="id_klienta">
+      <Position>1</Position>
+      <SequenceIdentity>1000</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="218" parent="112" name="imie_klienta">
+      <Position>2</Position>
+      <DataType>varchar(20 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="219" parent="112" name="nazwisko_klienta">
+      <Position>3</Position>
+      <DataType>varchar(40 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="220" parent="112" name="numer_telefonu_klienta">
+      <Position>4</Position>
+      <DataType>char(9 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="221" parent="112" name="adres_zamieszkania">
+      <Position>5</Position>
+      <DataType>varchar(100 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="222" parent="112" name="klienci_id_pk">
+      <Position>1</Position>
+      <ColNames>id_klienta</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="223" parent="112" name="UQ__klienci__BCBD0BC363C9FB40">
+      <Position>2</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>numer_telefonu_klienta</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="224" parent="112" name="klienci_id_pk">
+      <ObjectId>1301579675</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.400</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.400</ModifiedTimestamp>
+      <ColNames>id_klienta</ColNames>
+      <UnderlyingIndexName>klienci_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="225" parent="112" name="UQ__klienci__BCBD0BC363C9FB40">
+      <ObjectId>1285579618</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2020-12-07.22:04:19.340</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.340</ModifiedTimestamp>
+      <ColNames>numer_telefonu_klienta</ColNames>
+      <UnderlyingIndexName>UQ__klienci__BCBD0BC363C9FB40</UnderlyingIndexName>
+    </key>
+    <check id="226" parent="112" name="numer_tel_klienta_check">
+      <ObjectId>1317579732</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.410</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.410</ModifiedTimestamp>
+      <ColNames>numer_telefonu_klienta</ColNames>
+      <Predicate>[numer_telefonu_klienta] like &apos;[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]&apos;</Predicate>
+    </check>
+    <column id="227" parent="113" name="id_miasta">
+      <Position>1</Position>
+      <SequenceIdentity>10+2</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="228" parent="113" name="nazwa_miasta">
+      <Position>2</Position>
+      <DataType>varchar(30 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="229" parent="113" name="id_panstwa">
+      <Position>3</Position>
+      <DataType>char(2 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="230" parent="113" name="miasta_id_pk">
+      <Position>1</Position>
+      <ColNames>id_miasta</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="231" parent="113" name="miasta_id_pk">
+      <ObjectId>629577281</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.453</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.453</ModifiedTimestamp>
+      <ColNames>id_miasta</ColNames>
+      <UnderlyingIndexName>miasta_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="232" parent="113" name="miasto_panstwo_fk">
+      <ObjectId>645577338</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.457</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.457</ModifiedTimestamp>
+      <ColNames>id_panstwa</ColNames>
+      <RefTableId>581577110</RefTableId>
+      <RefTableName>panstwa</RefTableName>
+      <RefKeyName>panstwa_id_pk</RefKeyName>
+      <RefColNames>id_panstwa</RefColNames>
+    </foreign-key>
+    <column id="233" parent="114" name="id_panstwa">
+      <Position>1</Position>
+      <DataType>char(2 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="234" parent="114" name="nazwa_panstwa">
+      <Position>2</Position>
+      <DataType>varchar(40 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="235" parent="114" name="panstwa_id_pk">
+      <Position>1</Position>
+      <ColNames>id_panstwa</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="236" parent="114" name="panstwa_id_pk">
+      <ObjectId>597577167</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.440</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.440</ModifiedTimestamp>
+      <ColNames>id_panstwa</ColNames>
+      <UnderlyingIndexName>panstwa_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="237" parent="115" name="id_pokoju">
+      <Position>1</Position>
+      <SequenceIdentity>100</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="238" parent="115" name="numer_pokoju">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="239" parent="115" name="numer_telefonu_pokoju">
+      <Position>3</Position>
+      <DataType>char(5 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="240" parent="115" name="liczba_przewidzianych_osob">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="241" parent="115" name="liczba_pomieszczen">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="242" parent="115" name="id_hotelu">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="243" parent="115" name="pokoje_id_pk">
+      <Position>1</Position>
+      <ColNames>id_pokoju</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="244" parent="115" name="UQ__pokoje__F803B584EDFF5512">
+      <Position>2</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>numer_pokoju
+id_hotelu</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="245" parent="115" name="UQ__pokoje__E9C4113563049A34">
+      <Position>3</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>numer_telefonu_pokoju</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="246" parent="115" name="pokoje_id_pk">
+      <ObjectId>965578478</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.053</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.053</ModifiedTimestamp>
+      <ColNames>id_pokoju</ColNames>
+      <UnderlyingIndexName>pokoje_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="247" parent="115" name="UQ__pokoje__F803B584EDFF5512">
+      <ObjectId>933578364</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2020-12-07.22:04:18.973</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.973</ModifiedTimestamp>
+      <ColNames>numer_pokoju
+id_hotelu</ColNames>
+      <UnderlyingIndexName>UQ__pokoje__F803B584EDFF5512</UnderlyingIndexName>
+    </key>
+    <key id="248" parent="115" name="UQ__pokoje__E9C4113563049A34">
+      <ObjectId>949578421</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2020-12-07.22:04:18.973</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.973</ModifiedTimestamp>
+      <ColNames>numer_telefonu_pokoju</ColNames>
+      <UnderlyingIndexName>UQ__pokoje__E9C4113563049A34</UnderlyingIndexName>
+    </key>
+    <foreign-key id="249" parent="115" name="pokoj_hotel_fk">
+      <ObjectId>1029578706</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.063</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.063</ModifiedTimestamp>
+      <ColNames>id_hotelu</ColNames>
+      <RefTableId>661577395</RefTableId>
+      <RefTableName>hotele</RefTableName>
+      <RefKeyName>hotele_id_pk</RefKeyName>
+      <RefColNames>id_hotelu</RefColNames>
+    </foreign-key>
+    <check id="250" parent="115" name="liczba_pomieszczen_check">
+      <ObjectId>1013578649</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.060</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.060</ModifiedTimestamp>
+      <ColNames>liczba_pomieszczen</ColNames>
+      <Predicate>[liczba_pomieszczen]&gt;0</Predicate>
+    </check>
+    <check id="251" parent="115" name="liczba_przewid_osob_check">
+      <ObjectId>997578592</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.060</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.060</ModifiedTimestamp>
+      <ColNames>liczba_przewidzianych_osob</ColNames>
+      <Predicate>[liczba_przewidzianych_osob]&gt;0</Predicate>
+    </check>
+    <check id="252" parent="115" name="numer_tel_pokoju_check">
+      <ObjectId>981578535</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.060</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.060</ModifiedTimestamp>
+      <ColNames>numer_telefonu_pokoju</ColNames>
+      <Predicate>[numer_telefonu_pokoju] like &apos;[0-9][0-9][0-9][0-9][0-9]&apos;</Predicate>
+    </check>
+    <column id="253" parent="116" name="id_pracownika">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="254" parent="116" name="imie_pracownika">
+      <Position>2</Position>
+      <DataType>varchar(20 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="255" parent="116" name="nazwisko_pracownika">
+      <Position>3</Position>
+      <DataType>varchar(40 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="256" parent="116" name="email_pracownika">
+      <Position>4</Position>
+      <DataType>varchar(25 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="257" parent="116" name="numer_telefonu_pracownika">
+      <Position>5</Position>
+      <DataType>char(9 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="258" parent="116" name="pensja">
+      <Position>6</Position>
+      <DataType>money|0s</DataType>
+    </column>
+    <column id="259" parent="116" name="premia">
+      <Position>7</Position>
+      <DataType>decimal(2,2)|0s</DataType>
+    </column>
+    <column id="260" parent="116" name="id_hotelu">
+      <Position>8</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="261" parent="116" name="pracownicy_id_pk">
+      <Position>1</Position>
+      <ColNames>id_pracownika</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="262" parent="116" name="UQ__pracowni__F2EF5066C5EA3BFE">
+      <Position>2</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>numer_telefonu_pracownika</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="263" parent="116" name="UQ__pracowni__634FC24DF472D27F">
+      <Position>3</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>email_pracownika</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="264" parent="116" name="pracownicy_id_pk">
+      <ObjectId>789577851</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.727</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.727</ModifiedTimestamp>
+      <ColNames>id_pracownika</ColNames>
+      <UnderlyingIndexName>pracownicy_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="265" parent="116" name="UQ__pracowni__634FC24DF472D27F">
+      <ObjectId>773577794</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2020-12-07.22:04:18.710</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.710</ModifiedTimestamp>
+      <ColNames>email_pracownika</ColNames>
+      <UnderlyingIndexName>UQ__pracowni__634FC24DF472D27F</UnderlyingIndexName>
+    </key>
+    <key id="266" parent="116" name="UQ__pracowni__F2EF5066C5EA3BFE">
+      <ObjectId>757577737</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2020-12-07.22:04:18.710</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.710</ModifiedTimestamp>
+      <ColNames>numer_telefonu_pracownika</ColNames>
+      <UnderlyingIndexName>UQ__pracowni__F2EF5066C5EA3BFE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="267" parent="116" name="pracownik_hotel_fk">
+      <ObjectId>837578022</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.737</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.737</ModifiedTimestamp>
+      <ColNames>id_hotelu</ColNames>
+      <RefTableId>661577395</RefTableId>
+      <RefTableName>hotele</RefTableName>
+      <RefKeyName>hotele_id_pk</RefKeyName>
+      <RefColNames>id_hotelu</RefColNames>
+    </foreign-key>
+    <check id="268" parent="116" name="numer_tel_pracownika_check">
+      <ObjectId>805577908</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.733</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.733</ModifiedTimestamp>
+      <ColNames>numer_telefonu_pracownika</ColNames>
+      <Predicate>[numer_telefonu_pracownika] like &apos;[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]&apos;</Predicate>
+    </check>
+    <check id="269" parent="116" name="pensja_pracownika_min">
+      <ObjectId>821577965</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:18.737</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:18.737</ModifiedTimestamp>
+      <ColNames>pensja</ColNames>
+      <Predicate>[pensja]&gt;0</Predicate>
+    </check>
+    <column id="270" parent="117" name="id_rezerwacji">
+      <Position>1</Position>
+      <SequenceIdentity>1000</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="271" parent="117" name="data_rezerwacji">
+      <Position>2</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="272" parent="117" name="liczba_dni_rezerwacji">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="273" parent="117" name="id_pokoju">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="274" parent="117" name="id_klienta">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="275" parent="117" name="rezerwacje_id_pk">
+      <Position>1</Position>
+      <ColNames>id_rezerwacji</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="276" parent="117" name="rezerwacje_id_pk">
+      <ObjectId>1349579846</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.530</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.530</ModifiedTimestamp>
+      <ColNames>id_rezerwacji</ColNames>
+      <UnderlyingIndexName>rezerwacje_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="277" parent="117" name="rezerwacja_pokoj_fk">
+      <ObjectId>1381579960</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.530</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.530</ModifiedTimestamp>
+      <ColNames>id_pokoju</ColNames>
+      <RefTableId>917578307</RefTableId>
+      <RefTableName>pokoje</RefTableName>
+      <RefKeyName>pokoje_id_pk</RefKeyName>
+      <RefColNames>id_pokoju</RefColNames>
+    </foreign-key>
+    <foreign-key id="278" parent="117" name="rezerwacja_klient_fk">
+      <ObjectId>1397580017</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.530</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.530</ModifiedTimestamp>
+      <ColNames>id_klienta</ColNames>
+      <RefTableId>1269579561</RefTableId>
+      <RefTableName>klienci</RefTableName>
+      <RefKeyName>klienci_id_pk</RefKeyName>
+      <RefColNames>id_klienta</RefColNames>
+    </foreign-key>
+    <check id="279" parent="117" name="liczba_dni_check">
+      <ObjectId>1365579903</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.530</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.530</ModifiedTimestamp>
+      <ColNames>liczba_dni_rezerwacji</ColNames>
+      <Predicate>[liczba_dni_rezerwacji]&gt;0</Predicate>
+    </check>
+    <column id="280" parent="118" name="id_rozmowy_telefonicznej">
+      <Position>1</Position>
+      <SequenceIdentity>100</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="281" parent="118" name="numer_telefonu">
+      <Position>2</Position>
+      <DataType>varchar(9 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="282" parent="118" name="data_rozpoczecia_rozmowy">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="283" parent="118" name="data_zakonczenia_rozmowy">
+      <Position>4</Position>
+      <DefaultConstraintName>DF__rozmowy_t__data___45F365D3</DefaultConstraintName>
+      <DefaultExpression>getdate()</DefaultExpression>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="284" parent="118" name="id_pokoju">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="285" parent="118" name="rozmowy_tel_id_pk">
+      <Position>1</Position>
+      <ColNames>id_rozmowy_telefonicznej</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="286" parent="118" name="rozmowy_tel_id_pk">
+      <ObjectId>1189579276</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.327</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.327</ModifiedTimestamp>
+      <ColNames>id_rozmowy_telefonicznej</ColNames>
+      <UnderlyingIndexName>rozmowy_tel_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="287" parent="118" name="rozmowy_pokoj_fk">
+      <ObjectId>1253579504</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.330</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.330</ModifiedTimestamp>
+      <ColNames>id_pokoju</ColNames>
+      <RefTableId>917578307</RefTableId>
+      <RefTableName>pokoje</RefTableName>
+      <RefKeyName>pokoje_id_pk</RefKeyName>
+      <RefColNames>id_pokoju</RefColNames>
+    </foreign-key>
+    <check id="288" parent="118" name="numer_telefonu_check">
+      <ObjectId>1205579333</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.330</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.330</ModifiedTimestamp>
+      <ColNames>numer_telefonu</ColNames>
+      <Predicate>NOT [numer_telefonu] like &apos;%^(0-9)%&apos;</Predicate>
+    </check>
+    <check id="289" parent="118" name="data_zakonczenia_rozmowy_check">
+      <ObjectId>1237579447</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.330</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.330</ModifiedTimestamp>
+      <ColNames>data_zakonczenia_rozmowy</ColNames>
+      <Predicate>[data_zakonczenia_rozmowy]&lt;=getdate()</Predicate>
+    </check>
+    <check id="290" parent="118" name="data_rozmowy_check">
+      <ObjectId>1221579390</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.330</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.330</ModifiedTimestamp>
+      <Predicate>[data_zakonczenia_rozmowy]&gt;=[data_rozpoczecia_rozmowy]</Predicate>
+    </check>
+    <default id="291" parent="118" name="DF__rozmowy_t__data___45F365D3">
+      <ObjectId>1173579219</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2020-12-07.22:04:19.263</ModifiedTimestamp>
+      <ColNames>data_zakonczenia_rozmowy</ColNames>
+      <DefaultExpression>getdate()</DefaultExpression>
+    </default>
+    <column id="292" parent="119" name="id_sprzatania">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="293" parent="119" name="data_rozpoczecia_sprzatania">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="294" parent="119" name="data_zakonczenia_sprzatania">
+      <Position>3</Position>
+      <DefaultConstraintName>DF__sprzatani__data___3F466844</DefaultConstraintName>
+      <DefaultExpression>getdate()</DefaultExpression>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="295" parent="119" name="rodzaj_sprzatania">
+      <Position>4</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+    </column>
+    <column id="296" parent="119" name="id_pokoju">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="297" parent="119" name="sprzatanie_id_pk">
+      <Position>1</Position>
+      <ColNames>id_sprzatania</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="298" parent="119" name="sprzatanie_id_pk">
+      <ObjectId>1077578877</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.250</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.250</ModifiedTimestamp>
+      <ColNames>id_sprzatania</ColNames>
+      <UnderlyingIndexName>sprzatanie_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="299" parent="119" name="sprzatanie_pokoj_fk">
+      <ObjectId>1141579105</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.253</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.253</ModifiedTimestamp>
+      <ColNames>id_pokoju</ColNames>
+      <RefTableId>917578307</RefTableId>
+      <RefTableName>pokoje</RefTableName>
+      <RefKeyName>pokoje_id_pk</RefKeyName>
+      <RefColNames>id_pokoju</RefColNames>
+    </foreign-key>
+    <check id="300" parent="119" name="data_zakonczenia_sprzatania_check">
+      <ObjectId>1109578991</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.250</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.250</ModifiedTimestamp>
+      <ColNames>data_zakonczenia_sprzatania</ColNames>
+      <Predicate>[data_zakonczenia_sprzatania]&lt;=getdate()</Predicate>
+    </check>
+    <check id="301" parent="119" name="data_sprzatania_check">
+      <ObjectId>1093578934</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.250</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.250</ModifiedTimestamp>
+      <Predicate>[data_zakonczenia_sprzatania]&gt;=[data_rozpoczecia_sprzatania]</Predicate>
+    </check>
+    <check id="302" parent="119" name="rodzaj_sprzatania_wybor">
+      <ObjectId>1125579048</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.250</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.250</ModifiedTimestamp>
+      <ColNames>rodzaj_sprzatania</ColNames>
+      <Predicate>upper([rodzaj_sprzatania])=&apos;PELNE&apos; OR upper([rodzaj_sprzatania])=&apos;PODSTAWOWE&apos;</Predicate>
+    </check>
+    <default id="303" parent="119" name="DF__sprzatani__data___3F466844">
+      <ObjectId>1061578820</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2020-12-07.22:04:19.113</ModifiedTimestamp>
+      <ColNames>data_zakonczenia_sprzatania</ColNames>
+      <DefaultExpression>getdate()</DefaultExpression>
+    </default>
+    <column id="304" parent="120" name="id_uslugi">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="305" parent="120" name="id_rezerwacji">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="306" parent="120" name="usluga_dla_rezerwacji_pk">
+      <Position>1</Position>
+      <ColNames>id_uslugi
+id_rezerwacji</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="307" parent="120" name="usluga_dla_rezerwacji_pk">
+      <ObjectId>1477580302</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.770</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.770</ModifiedTimestamp>
+      <ColNames>id_uslugi
+id_rezerwacji</ColNames>
+      <UnderlyingIndexName>usluga_dla_rezerwacji_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="308" parent="120" name="usluga_dla_rezerwacji_usluga_fk">
+      <ObjectId>1493580359</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.770</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.770</ModifiedTimestamp>
+      <ColNames>id_uslugi</ColNames>
+      <RefTableId>1413580074</RefTableId>
+      <RefTableName>uslugi</RefTableName>
+      <RefKeyName>uslugi_id_pk</RefKeyName>
+      <RefColNames>id_uslugi</RefColNames>
+    </foreign-key>
+    <foreign-key id="309" parent="120" name="usluga_dla_rezerwacji_rezerwacja_fk">
+      <ObjectId>1509580416</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.770</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.770</ModifiedTimestamp>
+      <ColNames>id_rezerwacji</ColNames>
+      <RefTableId>1333579789</RefTableId>
+      <RefTableName>rezerwacje</RefTableName>
+      <RefKeyName>rezerwacje_id_pk</RefKeyName>
+      <RefColNames>id_rezerwacji</RefColNames>
+    </foreign-key>
+    <column id="310" parent="121" name="id_uslugi">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="311" parent="121" name="nazwa_uslugi">
+      <Position>2</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="312" parent="121" name="cena_uslugi">
+      <Position>3</Position>
+      <DataType>money|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="313" parent="121" name="uslugi_id_pk">
+      <Position>1</Position>
+      <ColNames>id_uslugi</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="314" parent="121" name="uslugi_id_pk">
+      <ObjectId>1429580131</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.667</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.667</ModifiedTimestamp>
+      <ColNames>id_uslugi</ColNames>
+      <UnderlyingIndexName>uslugi_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <check id="315" parent="121" name="cena_uslugi_check">
+      <ObjectId>1445580188</ObjectId>
+      <CreatedTimestamp>2020-12-07.22:04:19.670</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-07.22:04:19.670</ModifiedTimestamp>
+      <ColNames>cena_uslugi</ColNames>
+      <Predicate>[cena_uslugi]&gt;0</Predicate>
+    </check>
+  </database-model>
+</dataSource>
