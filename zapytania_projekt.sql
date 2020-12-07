@@ -94,10 +94,9 @@ where rt.numer_telefonu = k1.numer_telefonu_klienta
   and rt.id_pokoju = p.id_pokoju
   and p.id_pokoju = rez.id_pokoju
   and rez.id_klienta = k2.id_klienta
+  and rez.data_rezerwacji < rt.data_rozpoczecia_rozmowy
+  and dateadd(day, rez.liczba_dni_rezerwacji, rez.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
 
-select * from siec_hoteli.dbo.rozmowy_telefoniczne
-
-select * from siec_hoteli.dbo.klienci k, siec_hoteli.dbo.rozmowy_telefoniczne rt where k.numer_telefonu_klienta = rt.numer_telefonu
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
 -- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania.

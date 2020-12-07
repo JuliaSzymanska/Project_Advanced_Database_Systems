@@ -749,13 +749,13 @@ VALUES ('205948876', '2020/02/28 13:17:23', '2020/02/28 14:45:13', 160);
 GO
 
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne
-VALUES ('601874010', '2020/03/29 13:17:23', '2020/03/29 15:45:13', 160);
+VALUES ('601874010', '2019/12/27 13:17:23', '2020/03/29 15:45:13', 160);
 GO
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne
-VALUES ('665074716', '2020/03/30 13:17:23', '2020/03/30 16:45:13', 160);
+VALUES ('665074716', '2020/01/17 13:17:23', '2020/03/30 16:45:13', 160);
 GO
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne
-VALUES ('601874010', '2020/03/31 13:17:23', '2020/03/31 17:45:13', 160);
+VALUES ('601874010', '2019/12/26 13:17:23', '2020/03/31 17:45:13', 160);
 GO
 
 
@@ -924,6 +924,13 @@ VALUES ('2020/11/05', 8, 151, 1012);
 INSERT INTO siec_hoteli.dbo.rezerwacje
 VALUES ('2019/12/15', 9, 160, 1005);
 GO
+INSERT INTO siec_hoteli.dbo.rezerwacje (data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
+VALUES ('2019/12/25', 7, 160, 1029);
+GO
+INSERT INTO siec_hoteli.dbo.rezerwacje (data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
+VALUES ('2020/01/11', 8, 160, 1030);
+GO
+
 
 INSERT INTO siec_hoteli.dbo.uslugi
 VALUES ('Miejsce parkingowe', 10);
