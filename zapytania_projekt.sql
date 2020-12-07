@@ -111,9 +111,14 @@ WHERE p.pensja IN (SELECT MAX(pensja) FROM siec_hoteli.dbo.pracownicy p2 WHERE p
   AND p.id_hotelu = h.id_hotelu
 ORDER BY p.nazwisko_pracownika
 
+<<<<<<< HEAD
 -- 12
 
 SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika 'Imie i nazwisko pracownika', DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy), m.nazwa_miasta
+=======
+
+-- 12. Wyswietl pracownikow z archiwum pracownikow, ktorzy pracuja dluzej niz srednia dlugosc pracy w tym miescie. 
+SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika 'Imie i nazwisko pracownika', m.nazwa_miasta
 FROM siec_hoteli.dbo.pracownicy p, siec_hoteli.dbo.archiwum_pracownikow ap, siec_hoteli.dbo.hotele h, siec_hoteli.dbo.miasta m
 WHERE ap.id_pracownika = p.id_pracownika
   AND p.id_hotelu = h.id_hotelu
@@ -125,17 +130,10 @@ and DATEDIFF(DAY, ap.poczatek_pracy, ap.koniec_pracy) > (
     GROUP BY m2.id_miasta)
 GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, ap.poczatek_pracy, ap.koniec_pracy
 
-select m.nazwa_miasta
-from siec_hoteli..archiwum_pracownikow ap,
-     siec_hoteli..pracownicy p,
-     siec_hoteli..hotele h,
-     siec_hoteli..miasta m
-where p.id_pracownika = ap.id_pracownika
-  and h.id_miasta = m.id_miasta
-  and p.id_hotelu = h.id_hotelu
-order by m.nazwa_miasta
 
--- 13.
+
+-- 13. Wyœwietla panstwo, w ktorym najwiecej sie wydaje na oplacenie pracownikow. 
+
 select sum(p.pensja) suma, pan.nazwa_panstwa
 from siec_hoteli..panstwa pan,
      siec_hoteli..miasta m,
@@ -158,7 +156,6 @@ where pan.id_panstwa = m.id_panstwa
   and p.id_hotelu = h.id_hotelu
 group by pan.nazwa_panstwa, pms.max_suma
 having sum(p.pensja) = max_suma
-
 
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------

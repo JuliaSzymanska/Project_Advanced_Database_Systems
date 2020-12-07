@@ -1,4 +1,4 @@
-DROP DATABASE if exists siec_hoteli
+DROP DATABASE IF EXISTS siec_hoteli
 CREATE DATABASE siec_hoteli
 GO
 
@@ -56,8 +56,10 @@ CREATE TABLE siec_hoteli.dbo.pracownicy
     nazwisko_pracownika       VARCHAR(40)        NOT NULL,
     email_pracownika          VARCHAR(25) UNIQUE NOT NULL,
     numer_telefonu_pracownika CHAR(9) UNIQUE     NOT NULL,
+	data_urodzenia			  DATETIME,			 
     pensja                    MONEY,
     premia                    DECIMAL(2, 2),
+	poczatek_pracy			  DATETIME			 NOT NULL	DEFAULT GETDATE(),
     id_hotelu                 INT                NOT NULL
 );
 GO
@@ -70,13 +72,16 @@ ALTER TABLE siec_hoteli.dbo.pracownicy
 ALTER TABLE siec_hoteli.dbo.pracownicy
     ADD CONSTRAINT pensja_pracownika_min CHECK (pensja > 0);
 ALTER TABLE siec_hoteli.dbo.pracownicy
+    ADD CONSTRAINT data_urodzenia_max CHECK (data_urodzenia < GETDATE());
+ALTER TABLE siec_hoteli.dbo.pracownicy
+    ADD CONSTRAINT poczatek_pracy_max CHECK (data_urodzenia <= GETDATE());
+ALTER TABLE siec_hoteli.dbo.pracownicy
     ADD CONSTRAINT pracownik_hotel_fk FOREIGN KEY (id_hotelu) REFERENCES hotele (id_hotelu);
 GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_pracownikow
 (
     id_pracownika_arch INT IDENTITY (1,1) NOT NULL,
-    poczatek_pracy     DATETIME           NOT NULL,
     koniec_pracy       DATETIME           NOT NULL,
     id_pracownika      INT                NOT NULL
 );
@@ -85,7 +90,7 @@ GO
 ALTER TABLE siec_hoteli.dbo.archiwum_pracownikow
     ADD CONSTRAINT archiwum_pracownikow_id_pk PRIMARY KEY (id_pracownika_arch);
 ALTER TABLE siec_hoteli.dbo.archiwum_pracownikow
-    ADD CONSTRAINT archiwum_data_interwal CHECK (koniec_pracy > poczatek_pracy);
+    ADD CONSTRAINT archiwum_data_interwal CHECK (koniec_pracy <= GETDATE());
 ALTER TABLE siec_hoteli.dbo.archiwum_pracownikow
     ADD CONSTRAINT archiwum_pracownik_fk FOREIGN KEY (id_pracownika) REFERENCES pracownicy (id_pracownika);
 GO
