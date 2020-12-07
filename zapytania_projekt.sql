@@ -43,11 +43,11 @@ GO
 
 
 -- 5. Wyœwietl piêæ najbli¿szych dat rezerwacji i rezerwacje przewidziane na te daty.
-SELECT id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
-FROM siec_hoteli.dbo.rezerwacje
-WHERE data_rezerwacji IN
-      (SELECT DISTINCT TOP 5 data_rezerwacji FROM rezerwacje WHERE data_rezerwacji > GETDATE() ORDER BY data_rezerwacji)
-ORDER BY data_rezerwacji
+SELECT r1.id_rezerwacji, r1.data_rezerwacji, r1.liczba_dni_rezerwacji
+FROM siec_hoteli.dbo.rezerwacje r1
+WHERE r1.data_rezerwacji IN
+      (SELECT DISTINCT TOP 5 r2.data_rezerwacji FROM siec_hoteli.dbo.rezerwacje r2 WHERE r2.data_rezerwacji > GETDATE() ORDER BY r2.data_rezerwacji)
+ORDER BY r1.data_rezerwacji
 GO
 
 -- 6. Wyœwietl imiona, nazwiska, adresy klientów, którzy mieszkaj¹ w Hiszpani.
@@ -96,6 +96,13 @@ where rt.numer_telefonu = k1.numer_telefonu_klienta
   and rez.id_klienta = k2.id_klienta
   and rez.data_rezerwacji < rt.data_rozpoczecia_rozmowy
   and dateadd(day, rez.liczba_dni_rezerwacji, rez.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
+
+
+-- 11. Wyswietl pracownikow, ktorzy maja najwieksza pensje w danym hotelu. 
+SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika Pracownik, p.pensja, h.nazwa_hotelu FROM siec_hoteli.dbo.pracownicy p, siec_hoteli.dbo.hotele h
+WHERE p.pensja IN (SELECT MAX(pensja) FROM siec_hoteli.dbo.pracownicy p2 WHERE p2.id_hotelu = p.id_hotelu)
+AND p.id_hotelu = h.id_hotelu
+ORDER BY p.nazwisko_pracownika
 
 
 --------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
