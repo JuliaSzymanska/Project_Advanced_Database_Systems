@@ -82,9 +82,9 @@ WHERE DATEDIFF(MINUTE, r.data_rozpoczecia_rozmowy, r.data_zakonczenia_rozmowy) >
 ORDER BY data_rozpoczecia_rozmowy
 GO
 
--- 10. Wyœwietl wszystkich ludzi którzy dzwonili do ludzia
-
-select k1.imie_klienta, k1.nazwisko_klienta, k1.numer_telefonu_klienta, k2.imie_klienta, k2.nazwisko_klienta
+-- 10. Wyœwietl wszystkich klientow, ktorzy dzownili z telefonu pokojowego do innych klientow. 
+select k1.imie_klienta + ' ' + k1.nazwisko_klienta 'Imie i nazwisko odbiorcy', k1.numer_telefonu_klienta 'Numer telefonu odbiorcy', 
+k2.imie_klienta + ' ' + k2.nazwisko_klienta 'Imie i nazwisko dzowniacego', p.numer_telefonu_pokoju 'Numer telefonu pokoju'
 from siec_hoteli.dbo.klienci k1,
      siec_hoteli.dbo.klienci k2,
      siec_hoteli.dbo.pokoje p,
