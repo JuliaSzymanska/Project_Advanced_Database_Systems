@@ -190,12 +190,14 @@ having (count(p.id_pokoju)) = (select top 1 count(*) count
                                order by count desc)
 
 --16. Wyswietl najczesciej wykupowana usluge
-SELECT MAX(max_count.Ile), u.nazwa_uslugi 
-FROM (SELECT COUNT(*) 'Ile', us.id_uslugi 'Usluga' 
+SELECT COUNT(*) Ilosc, u.nazwa_uslugi 'Nazwa uslugi'
+FROM siec_hoteli..uslugi u, siec_hoteli..usluga_dla_rezerwacji ur
+WHERE ur.id_uslugi = u.id_uslugi
+GROUP BY u.nazwa_uslugi
+HAVING COUNT(*) = (SELECT MAX(i.Ile) FROM
+(SELECT COUNT(*) 'Ile', us.id_uslugi 'Usluga' 
 		FROM siec_hoteli..usluga_dla_rezerwacji us 
-		GROUP BY us.id_uslugi) max_count, siec_hoteli..uslugi u
-WHERE u.id_uslugi = max_count.Usluga
-GROUP BY max_count.Usluga
+		GROUP BY us.id_uslugi) i)
 
 
 -- 17. Wyswietl nazwe hotelu, miasto oraz panstwo, w ktorych znajduje sie hotel, a takze kwote, dla hotelu, dla ktorego byla najdrozsza rezerwacja. 
