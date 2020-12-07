@@ -36,10 +36,10 @@ GROUP BY nazwa_hotelu
 ORDER BY [Liczba pokoi bez rezerwacji] DESC
 GO
 
--- 5. Wyœwietl piêæ najbli¿szych rezerwacji. 
-SELECT top 5 id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
+-- 5. Wyœwietl piêæ najbli¿szych dat rezerwacji i rezerwacje przewidziane na te daty. 
+SELECT id_rezerwacji, data_rezerwacji, liczba_dni_rezerwacji
 FROM rezerwacje
-WHERE data_rezerwacji > GETDATE()
+WHERE data_rezerwacji IN (SELECT DISTINCT TOP 5 data_rezerwacji FROM rezerwacje WHERE data_rezerwacji > GETDATE() ORDER BY data_rezerwacji)
 GROUP BY data_rezerwacji, id_rezerwacji, liczba_dni_rezerwacji
 ORDER BY data_rezerwacji ASC
 GO
