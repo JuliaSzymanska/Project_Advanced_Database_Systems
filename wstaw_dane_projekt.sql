@@ -127,7 +127,7 @@ VALUES ('Szawle', 'LT');
 GO
 
 insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
-                                   id_miasta)(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne, id_miasta)
+                                   id_miasta)
 VALUES ('Hotel Hiberia', 'Via XXIV Maggio 7, 00187', 136, 1.25, 10);
 insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
@@ -276,79 +276,79 @@ GO
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Steven', 'King', 'king@onet.us', '500498112', 2400, NULL, 100);
+VALUES ('Steven', 'King', 'king@onet.us', '500498112', CAST('15-JAN-1968' AS DATETIME), 2400, NULL, CAST('25-MAR-192002' AS DATETIME), 100);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Neena', 'Kochhar', 'kochhar1342@wp.pl', '210198662', 2850, NULL, 100);
+VALUES ('Neena', 'Kochhar', 'kochhar1342@wp.pl', '210198662', CAST('02-MAR-1978' AS DATETIME), 2850, NULL, CAST('20-FEB-1991' AS DATETIME), 100);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Lex', 'De Haan', 'lexDeHaanCute@expres.lt', '987544331', 2500, NULL, 101);
+VALUES ('Lex', 'De Haan', 'lexDeHaanCute@expres.lt', '987544331', CAST('18-SEP-1979' AS DATETIME), 2500, NULL, CAST('24-MAR-1998' AS DATETIME), 101);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Alexander', 'Hunold', 'axhunold@expres.fr', '882304607', 3900, NULL, 101);
+VALUES ('Alexander', 'Hunold', 'axhunold@expres.fr', '882304607', CAST('01-DEC-1990' AS DATETIME), 3900, NULL, CAST('17-AUG-1990' AS DATETIME), 101);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Bruce', 'Ernst', 'brucebruce@etlit.eu', '603604203', 6000, .3, 101);
+VALUES ('Bruce', 'Ernst', 'brucebruce@etlit.eu', '603604203', CAST('15-MAR-1998' AS DATETIME), 6000, .3, CAST('10-JUN-2004' AS DATETIME), 101);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('David', 'Austin', 'davidAustinMy@onet.us', '111222828', 4800, NULL, 102);
+VALUES ('David', 'Austin', 'davidAustinMy@onet.us', '111222828', CAST('04-JUL-1999' AS DATETIME), 4800, NULL, CAST('24-MAR-2019' AS DATETIME), 102);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Valli', 'Pataballa', 'vallipataballa@lavieu.it', '102920876', 4800, NULL, 102);
+VALUES ('Valli', 'Pataballa', 'vallipataballa@lavieu.it', '102920876', CAST('05-SEP-1976' AS DATETIME), 4800, NULL, CAST('14-APR-2000' AS DATETIME), 102);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Diana', 'Lorentz', 'dianadiana@lavieu.it', '772338222', 4200, NULL, 102);
+VALUES ('Diana', 'Lorentz', 'dianadiana@lavieu.it', '772338222', CAST('11-APR-1984' AS DATETIME), 4200, NULL, CAST('10-OCT-2005' AS DATETIME), 102);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Nancy', 'Greenberg', 'nNgreenberg@lavieu.it', '907263111', 1900, NULL, 102);
+VALUES ('Nancy', 'Greenberg', 'nNgreenberg@lavieu.it', '907263111', CAST('27-JUN-2079' AS DATETIME), 1900, NULL, CAST('22-SEP-2009' AS DATETIME), 102);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Daniel', 'Faviet', 'danielFaviet@usausa.us', '605605444', 3800, NULL, 104);
+VALUES ('Daniel', 'Faviet', 'danielFaviet@usausa.us', '605605444', CAST('23-APR-1982' AS DATETIME), 3800, NULL, CAST('03-DEC-2012' AS DATETIME), 104);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('John', 'Chen', 'johndchen@usausa.us', '747474102', 5100, .3, 105);
+VALUES ('John', 'Chen', 'johndchen@usausa.us', '747474102', CAST('20-MAR-1996' AS DATETIME), 5100, .3, CAST('22-NOV-2018' AS DATETIME), 105);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Ismael', 'Sciarra', 'isciarra1404@usausa.us', '308929002', 2200, NULL, 105);
+VALUES ('Ismael', 'Sciarra', 'isciarra1404@usausa.us', '308929002', CAST('05-OCT-1977' AS DATETIME), 2200, NULL, CAST('17-MAR-2001' AS DATETIME), 105);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Jose Manuel', 'Urman', 'jmanuelurman@usausa.us', '903903903', 3120, NULL, 105);
+VALUES ('Jose Manuel', 'Urman', 'jmanuelurman@usausa.us', '903903903', CAST('19-FEB-1972' AS DATETIME), 3120, NULL, CAST('12-MAR-1990' AS DATETIME), 105);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Luis', 'Popp', 'luispopp2@usausa.us', '534872610', 4050, NULL, 105);
+VALUES ('Luis', 'Popp', 'luispopp2@usausa.us', '534872610', CAST('29-OCT-1987' AS DATETIME), 4050, NULL, CAST('19-APR-2010' AS DATETIME), 105);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Den', 'Raphaely', 'denraphaely@onet.eu', '679630621', 3000, NULL, 106);
+VALUES ('Den', 'Raphaely', 'denraphaely@onet.eu', '679630621', CAST('11-JAN-2078' AS DATETIME), 3000, NULL, CAST('12-MAR-2014' AS DATETIME), 106);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Alexander', 'Khoo', 'alexanderkhoo@onet.eu', '330220110', 2190, NULL, 106);
+VALUES ('Alexander', 'Khoo', 'alexanderkhoo@onet.eu', '330220110', CAST('11-FEB-2078' AS DATETIME), 2190, NULL, CAST('11-APR-2078' AS DATETIME), 106);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Shelli', 'Baida', 'shellibaida@wicker.pl', '515231729', 2900, NULL, 107);
+VALUES ('Shelli', 'Baida', 'shellibaida@wicker.pl', '515231729', CAST('19-FEB-1979' AS DATETIME), 2900, NULL, CAST('19-FEB-2008' AS DATETIME), 107);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Sigal', 'Tobias', 'sigaltobias@wicker.pl', '929000188', 2800, NULL, 107);
+VALUES ('Sigal', 'Tobias', 'sigaltobias@wicker.pl', '929000188', CAST('20-AUG-1971' AS DATETIME), 2800, NULL, CAST('19-JUN-2004' AS DATETIME), 107);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Guy', 'Himuro', 'guyhimuro30@pflis.ang', '660320473', 2600, NULL, 108);
+VALUES ('Guy', 'Himuro', 'guyhimuro30@pflis.ang', '660320473', CAST('06-SEP-1966' AS DATETIME), 2600, NULL, CAST('11-AUG-2002' AS DATETIME), 108);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
@@ -611,33 +611,33 @@ INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, ema
 VALUES ('Aga', 'Aga', 'agaaga@gmail.com', '992313290', 2050, NULL, 146);
 
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('24-MAR-1998' AS DATETIME), CAST('24-DEC-2003' AS DATETIME), 3);
+VALUES (CAST('24-DEC-2003' AS DATETIME), 3);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('20-FEB-1991' AS DATETIME), CAST('03-MAY-2010' AS DATETIME), 8);
+VALUES (CAST('03-MAY-2010' AS DATETIME), 8);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('17-AUG-1990' AS DATETIME), CAST('01-DEC-1999' AS DATETIME), 12);
+VALUES (CAST('01-DEC-1999' AS DATETIME), 12);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('10-JUN-1998' AS DATETIME), CAST('10-JUN-2004' AS DATETIME), 13);
+VALUES (CAST('10-JUN-2004' AS DATETIME), 13);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('24-MAR-2019' AS DATETIME), CAST('24-DEC-2019' AS DATETIME), 21);
+VALUES (CAST('24-DEC-2019' AS DATETIME), 21);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('14-APR-2000' AS DATETIME), CAST('27-SEP-2006' AS DATETIME), 23);
+VALUES (CAST('27-SEP-2006' AS DATETIME), 23);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('10-OCT-2005' AS DATETIME), CAST('13-NOV-2008' AS DATETIME), 24);
+VALUES (CAST('13-NOV-2008' AS DATETIME), 24);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('22-SEP-2009' AS DATETIME), CAST('01-JAN-2015' AS DATETIME), 26);
+VALUES (CAST('01-JAN-2015' AS DATETIME), 26);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('03-SEP-2012' AS DATETIME), CAST('02-AUG-2016' AS DATETIME), 31);
+VALUES (CAST('02-AUG-2016' AS DATETIME), 31);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('22-NOV-2018' AS DATETIME), CAST('01-MAY-2019' AS DATETIME), 40);
+VALUES (CAST('01-MAY-2019' AS DATETIME), 40);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('17-MAR-1993' AS DATETIME), CAST('09-JUL-1995' AS DATETIME), 46);
+VALUES (CAST('09-JUL-1995' AS DATETIME), 46);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('12-MAR-1990' AS DATETIME), CAST('10-MAY-1990' AS DATETIME), 59);
+VALUES (CAST('10-MAY-1990' AS DATETIME), 59);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('19-APR-1990' AS DATETIME), CAST('29-MAR-2010' AS DATETIME), 73);
+VALUES (CAST('29-MAR-2010' AS DATETIME), 73);
 INSERT INTO siec_hoteli.dbo.archiwum_pracownikow(koniec_pracy, id_pracownika)
-VALUES (CAST('12-MAR-2014' AS DATETIME), CAST('19-DEC-2019' AS DATETIME), 78);
+VALUES (CAST('19-DEC-2019' AS DATETIME), 78);
 GO
 
 INSERT INTO siec_hoteli.dbo.pokoje(numer_pokoju, numer_telefonu_pokoju, liczba_przewidzianych_osob, liczba_pomieszczen,
