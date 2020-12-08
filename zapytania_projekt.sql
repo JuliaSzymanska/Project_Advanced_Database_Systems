@@ -1,11 +1,11 @@
 -- 1. Wyœwietl liczbê pokoi w ka¿dym z hoteli. Na koñcu dodaj podsumowanie ile jest ³¹cznie pokoi.
-SELECT IIF(h.nazwa_hotelu is null, 'Suma', h.nazwa_hotelu) as 'Nazwa Hotelu',
-       COUNT(*)                                            as 'Liczba pokoi'
+SELECT case when h.nazwa_hotelu is null then 'Suma' else h.nazwa_hotelu end as 'Nazwa Hotelu',
+       COUNT(*)                                                             as 'Liczba pokoi'
 FROM siec_hoteli.dbo.pokoje p,
      siec_hoteli.dbo.hotele h
 WHERE p.id_hotelu = h.id_hotelu
 GROUP BY ROLLUP (nazwa_hotelu)
-ORDER BY IIF(h.nazwa_hotelu IS NULL, 1, 0),
+ORDER BY CASE WHEN h.nazwa_hotelu IS NULL THEN 1 else 0 END,
          [Nazwa Hotelu]
 GO
 
@@ -305,7 +305,7 @@ GO
 --19. Stworz procedure, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle, 
 -- dla procentu jest to 1%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.
 GO
-CREATE PROCEDURE premia @id INT = -1, @procent INT = 1
+CREATE PROCEDURE premia_procedura @id INT = -1, @procent INT = 1
 AS
 BEGIN
     IF @id = -1
@@ -334,20 +334,22 @@ GO
 BEGIN 
 	DECLARE @id INT = 12, @procent INT = 50
 	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
-	EXEC premia @id, @procent
+	EXEC premia_procedura @id, @procent
 	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
 END
 
 BEGIN 
 	DECLARE @id2 INT = 46, @procent2 INT = 50
 	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
-	EXEC premia @id2, @procent2
+	EXEC premia_procedura @id2, @procent2
 	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
 END
 
 -- 20. Stworz wyzwalacz, ktory podczas wstawiania do tabeli archiwum pracownikow zmieni wartosc kolumny czy_aktywny na wartosc 0. 
-use siec_hoteli
-go
+USE siec_hoteli
+GO
+DROP TRIGGER IF EXISTS set_czy_aktywny
+GO
 Create Trigger set_czy_aktywny
     on dbo.archiwum_pracownikow
     for insert
@@ -357,8 +359,11 @@ Create Trigger set_czy_aktywny
     where dbo.pracownicy.id_pracownika = inserted.id_pracownika
 go
 
-use siec_hoteli
-go
+
+USE siec_hoteli
+GO
+DROP TRIGGER IF EXISTS zwieksz_pensje
+GO
 CREATE TRIGGER zwieksz_pensje
 ON dbo.pracownicy
 AFTER UPDATE
@@ -366,9 +371,10 @@ AS
 	IF (UPDATE (premia))
 		BEGIN
 			UPDATE dbo.pracownicy
-			SET    pensja = inserted.premia / 2
-			WHERE dbo.pracownicy.id_pracownika = inserted.id_pracownika
-			AND ((inserted.premia * dbo.pracownicy.premia) / dbo.pracownicy.premia) > 10.00
+			SET    dbo.pracownicy.pensja += i.premia / 2
+			FROM inserted i
+			WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
+			--AND ((i.premia * dbo.pracownicy.premia) / dbo.pracownicy.premia) > 10.00
 		END
 GO
 
