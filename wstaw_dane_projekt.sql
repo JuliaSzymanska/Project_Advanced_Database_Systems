@@ -1418,6 +1418,21 @@ VALUES ('Masaz', 150);
 INSERT INTO siec_hoteli.dbo.uslugi(nazwa_uslugi, cena_uslugi)
 VALUES ('Lekcja jogi', 75)
 GO
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (2137, 0, 0, 1023);
+
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (420, 0, 0, 1005);
+
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (820, 0, 0, 1009);
+
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (520, 0, 0, 1010);
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
