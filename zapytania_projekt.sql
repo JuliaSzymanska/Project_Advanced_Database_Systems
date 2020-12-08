@@ -304,54 +304,45 @@ SELECT * FROM siec_hoteli..archiwum_rezerwacji
 
 --19. 
 GO
-CREATE PROCEDURE premia @id INT = -1, @procent INT = -1
+CREATE PROCEDURE premia @id INT = -1, @procent INT = 1
 AS
 BEGIN
-    IF @procent = -1 AND @id = -1
+    IF @id = -1
         BEGIN
             UPDATE siec_hoteli.dbo.pracownicy
             SET premia = 0
             WHERE premia IS NULL;
+
+			UPDATE siec_hoteli.dbo.pracownicy
+            SET premia = premia * ((100.00 + @procent) / 100.00)
         END
     ELSE
-        IF @procent = -1 AND @id != -1
-            BEGIN
-                UPDATE siec_hoteli.dbo.pracownicy
-                SET premia = 0
-                WHERE premia IS NULL
-                  AND @id = id_pracownika
-            END
-        ELSE
-            IF @procent != -1 AND @id != -1
-                BEGIN
-                    UPDATE siec_hoteli.dbo.pracownicy
-                    SET premia = premia * ((100.00 + @procent) / 100.00)
-                    WHERE @id = id_pracownika
-                END
-            ELSE
-                BEGIN
-                    DECLARE kursor_premia CURSOR FOR
-                        SELECT id_pracownika FROM siec_hoteli.dbo.pracownicy
-                    DECLARE @id_kr INT
-                    BEGIN
-                        OPEN kursor_premia
-                        FETCH NEXT FROM kursor_premia INTO @id_kr
-                        WHILE @@FETCH_STATUS = 0
-                            BEGIN
-                                UPDATE siec_hoteli.dbo.pracownicy
-                                SET premia = premia * ((100.00 + @procent) / 100.00)
-                                WHERE CURRENT OF kursor_premia
-                                FETCH NEXT FROM kursor_premia INTO @id_kr
-                            END
-                        CLOSE kursor_premia
-                        DEALLOCATE kursor_premia
-                    END
-
-                END
-
+        BEGIN
+			UPDATE siec_hoteli.dbo.pracownicy
+			SET premia = 0
+            WHERE premia IS NULL
+            AND @id = id_pracownika
+ 
+            UPDATE siec_hoteli.dbo.pracownicy
+            SET premia = premia * ((100.00 + @procent) / 100.00)
+            WHERE @id = id_pracownika
+         END
 END
 GO
 
+BEGIN 
+	DECLARE @id INT = 12, @procent INT = 50
+	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
+	EXEC premia @id, @procent
+	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
+END
+
+BEGIN 
+	DECLARE @id2 INT = 46, @procent2 INT = 50
+	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+	EXEC premia @id2, @procent2
+	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+END
 
 -- Trigger 1
 
