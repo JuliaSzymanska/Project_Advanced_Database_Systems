@@ -419,35 +419,6 @@ BEGIN
 END
 GO
 
--- Wyzwalacz nr. 3 - Po wprowdzeniu rezerwacji do archiwum_rezerwacji ustaw cene_za_telefon obliczajac cene kazdej rozmowy, 
--- mnozac liczbe minut rozmowy razy cene_za_polaczenie_telefoniczne razy wspolczynnik obliczony za pomoca funkcji.
-USE siec_hoteli
-GO
-DROP TRIGGER IF EXISTS ustaw_cene_archiwum
-GO
-CREATE TRIGGER ustaw_cene_archiwum
-    ON siec_hoteli.dbo.archiwum_rezerwacji
-    AFTER INSERT
-    AS
-		DECLARE @id_rez INT, @id_rez_arch INT
-		DECLARE kursor CURSOR FOR
-			SELECT id_rezerwacji, id_rezerwacji_arch FROM inserted
-		
-		BEGIN
-			OPEN kursor
-			FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
-			WHILE @@FETCH_STATUS = 0
-				BEGIN
-					EXEC ustaw_cene_za_telefon @id_rez, @id_rez_arch
-					FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
-				END
-			CLOSE kursor
-			DEALLOCATE kursor
-		END
-GO
-USE master
-GO
-
 
 --------------------------------------------------------------------------------
 GO
@@ -478,6 +449,86 @@ BEGIN
     WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
+
+
+--------------------------------------------------------------------------------
+GO
+DROP PROCEDURE IF EXISTS ustaw_cene_za_uslugi
+GO
+CREATE PROCEDURE ustaw_cene_za_uslugi @id_rezerwacji INT, @id_rezerwacji_archiwalnej INT
+AS
+BEGIN
+	CREATE SYNONYM arch FOR siec_hoteli..archiwum_rezerwacji
+	UPDATE arch
+	SET cena_za_uslugi = t.suma_cen * r.liczba_dni_rezerwacji
+	FROM 
+		(
+			SELECT ur.id_rezerwacji ,SUM(u.cena_uslugi) suma_cen
+			FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..usluga_dla_rezerwacji ur, siec_hoteli..uslugi u
+			WHERE ar.id_rezerwacji = ur.id_rezerwacji
+			AND ur.id_uslugi = u.id_uslugi
+			GROUP BY ur.id_rezerwacji
+		) t, siec_hoteli..rezerwacje r
+	WHERE t.id_rezerwacji = arch.id_rezerwacji
+	AND arch.id_rezerwacji = @id_rezerwacji_archiwalnej
+	AND r.id_rezerwacji = @id_rezerwacji
+
+
+    UPDATE siec_hoteli..archiwum_rezerwacji
+    SET archiwum_rezerwacji.cena_za_telefon = (SELECT SUM(DATEDIFF(MINUTE, rt.data_rozpoczecia_rozmowy,
+                                                                   rt.data_zakonczenia_rozmowy) *
+                                                          h.cena_za_polaczenie_telefoniczne *
+                                                          dbo.oblicz_wspoczynnik(rt.numer_telefonu, rt.id_pokoju))
+                                               FROM siec_hoteli..rozmowy_telefoniczne rt,
+                                                    siec_hoteli..rezerwacje rez,
+                                                    siec_hoteli..hotele h,
+                                                    siec_hoteli..pokoje p
+                                               WHERE rez.id_pokoju = rt.id_pokoju
+                                                 AND @id_rezerwacji = rez.id_rezerwacji
+                                                 AND h.id_hotelu = p.id_hotelu
+                                                 AND p.id_pokoju = rez.id_pokoju
+                                                 AND @id_rezerwacji_archiwalnej =
+                                                     siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji_arch
+                                                 AND rt.data_rozpoczecia_rozmowy > rez.data_rezerwacji
+                                                 AND rt.data_rozpoczecia_rozmowy <
+                                                     DATEADD(DAY, rez.liczba_dni_rezerwacji, rez.data_rezerwacji)
+    )
+    WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
+END
+GO
+
+
+-- Wyzwalacz nr. 3 - Po wprowdzeniu rezerwacji do archiwum_rezerwacji ustaw cene_za_telefon obliczajac cene kazdej rozmowy, 
+-- mnozac liczbe minut rozmowy razy cene_za_polaczenie_telefoniczne razy wspolczynnik obliczony za pomoca funkcji.
+USE siec_hoteli
+GO
+DROP TRIGGER IF EXISTS ustaw_cene_archiwum
+GO
+CREATE TRIGGER ustaw_cene_archiwum
+    ON siec_hoteli.dbo.archiwum_rezerwacji
+    AFTER INSERT
+    AS
+		DECLARE @id_rez INT, @id_rez_arch INT
+		DECLARE kursor CURSOR FOR
+			SELECT id_rezerwacji, id_rezerwacji_arch FROM inserted
+		
+		BEGIN
+			OPEN kursor
+			FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
+			WHILE @@FETCH_STATUS = 0
+				BEGIN
+					EXEC ustaw_cene_za_telefon @id_rez, @id_rez_arch
+					FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
+				END
+			CLOSE kursor
+			DEALLOCATE kursor
+		END
+GO
+USE master
+GO
+
+
+
 
 SELECT *
 FROM siec_hoteli..archiwum_rezerwacji
