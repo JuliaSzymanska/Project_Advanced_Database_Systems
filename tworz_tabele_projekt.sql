@@ -250,7 +250,6 @@ GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_rezerwacji
 (
-    id_rezerwacji_arch INT IDENTITY (1,1) NOT NULL,
     cena_calkowita     MONEY,
     cena_za_telefon    MONEY,
     cena_za_uslugi     MONEY,
@@ -259,7 +258,7 @@ CREATE TABLE siec_hoteli.dbo.archiwum_rezerwacji
 GO
 
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
-    ADD CONSTRAINT archiwum_rezerwacji_id_pk PRIMARY KEY (id_rezerwacji_arch);
+    ADD CONSTRAINT archiwum_rezerwacji_id_pk PRIMARY KEY (id_rezerwacji);
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
     ADD CONSTRAINT cena_calkowita_check CHECK (cena_calkowita > 0);
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji

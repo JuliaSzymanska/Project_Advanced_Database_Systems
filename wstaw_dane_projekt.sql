@@ -1420,71 +1420,71 @@ VALUES ('Lekcja jogi', 75)
 GO
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (2137, 0, 0, 1023);
+VALUES (0, 0, 0, 1023);
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (420, 0, 0, 1005);
+VALUES (0, 0, 0, 1005);
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (820, 0, 0, 1009);
+VALUES (0, 0, 0, 1009);
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (520, 0, 0, 1010);
+VALUES (0, 0, 0, 1010);
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (1520, 0, 0, 1032);
+VALUES (0, 0, 0, 1032);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (3190, 0, 150, 1033);
+VALUES (0, 0, 0, 1033);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (3419, 0, 75, 1034);
+VALUES (0, 0, 0, 1034);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (2153, 25, 0, 1035);
+VALUES (0, 0, 0, 1035);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (985, 0, 25, 1036);
+VALUES (0, 0, 0, 1036);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (1130, 0, 20, 1037);
+VALUES (0, 0, 0, 1037);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (1447, 22, 25, 1038);
+VALUES (0, 0, 0, 1038);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (3640, 0, 0, 1039);
+VALUES (0, 0, 0, 1039);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (2850, 0, 50, 1040);
+VALUES (0, 0, 0, 1040);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (1060, 0, 100, 1041);
+VALUES (0, 0, 0, 1041);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (390, 0, 30, 1042);
+VALUES (0, 0, 0, 1042);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (2412, 0, 210, 1043);
+VALUES (0, 0, 0, 1043);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (1760, 0, 800, 1044);
+VALUES (0, 0, 0, 1044);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (638, 48, 150, 1045);
+VALUES (0, 0, 0, 1045);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (6688, 0, 480, 1046);
+VALUES (0, 0, 0, 1046);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (1283, 115, 240, 1047);
+VALUES (0, 0, 0, 1047);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
-VALUES (2624, 0, 800, 1048);
+VALUES (0, 0, 0, 1048);
 GO
 
 INSERT INTO siec_hoteli.dbo.usluga_dla_rezerwacji(id_uslugi, id_rezerwacji)
