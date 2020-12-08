@@ -1418,74 +1418,7 @@ VALUES ('Masaz', 150);
 INSERT INTO siec_hoteli.dbo.uslugi(nazwa_uslugi, cena_uslugi)
 VALUES ('Lekcja jogi', 75)
 GO
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1023);
 
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1005);
-
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1009);
-
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1010);
-
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1032);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1033);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1034);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1035);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1036);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1037);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1038);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1039);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1040);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1041);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1042);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1043);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1044);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1045);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1046);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1047);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1048);
-GO
 
 INSERT INTO siec_hoteli.dbo.usluga_dla_rezerwacji(id_uslugi, id_rezerwacji)
 VALUES (1, 1000);

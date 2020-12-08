@@ -422,9 +422,9 @@ GO
 
 --------------------------------------------------------------------------------
 GO
-DROP PROCEDURE IF EXISTS ustaw_cene_za_telefon
+DROP PROCEDURE IF EXISTS dbo.ustaw_cene_za_telefon
 GO
-CREATE PROCEDURE ustaw_cene_za_telefon @id_rezerwacji INT
+CREATE PROCEDURE dbo.ustaw_cene_za_telefon @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -451,9 +451,9 @@ GO
 
 --------------------------------------------------------------------------------
 GO
-DROP PROCEDURE IF EXISTS ustaw_cene_za_uslugi
+DROP PROCEDURE IF EXISTS dbo.ustaw_cene_za_uslugi
 GO
-CREATE PROCEDURE ustaw_cene_za_uslugi @id_rezerwacji INT
+CREATE PROCEDURE dbo.ustaw_cene_za_uslugi @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -483,30 +483,44 @@ FROM siec_hoteli..archiwum_rezerwacji
 WHERE id_rezerwacji = 1009
 
 
+
+
 --------------------------------------------------------------------------------
 GO
-DROP PROCEDURE IF EXISTS ustaw_cene_calkowita
+DROP PROCEDURE IF EXISTS dbo.ustaw_cene_za_wynajecie_pokoju
 GO
-CREATE PROCEDURE ustaw_cene_calkowita @id_rezerwacji INT
+CREATE PROCEDURE dbo.ustaw_cene_za_wynajecie_pokoju @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
-    SET cena_za_uslugi = (SELECT t2.iloczyn_sum
-                          FROM (SELECT t.suma_cen * r.liczba_dni_rezerwacji iloczyn_sum
-                                FROM (
-                                         SELECT ur.id_rezerwacji, SUM(u.cena_uslugi) suma_cen
-                                         FROM siec_hoteli..archiwum_rezerwacji ar,
-                                              siec_hoteli..usluga_dla_rezerwacji ur,
-                                              siec_hoteli..uslugi u
-                                         WHERE ar.id_rezerwacji = ur.id_rezerwacji
-                                           AND ur.id_uslugi = u.id_uslugi
-                                         GROUP BY ur.id_rezerwacji
-                                     ) t,
-                                     siec_hoteli..rezerwacje r
-                                WHERE r.id_rezerwacji = t.id_rezerwacji) AS t2)
+    SET cena_wynajecia_pokoju = (SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob * r.liczba_dni_rezerwacji cena_rezerwacji
+									FROM siec_hoteli..rezerwacje r, siec_hoteli..hotele h, siec_hoteli..pokoje p
+									WHERE r.id_pokoju = p.id_pokoju
+									AND p.id_hotelu = h.id_hotelu
+									AND r.id_rezerwacji = id_rezerwacji)
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
+
+SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob * r.liczba_dni_rezerwacji cena_rezerwacji
+FROM siec_hoteli..rezerwacje r, siec_hoteli..hotele h, siec_hoteli..pokoje p
+WHERE r.id_pokoju = p.id_pokoju
+AND p.id_hotelu = h.id_hotelu
+
+
+--------------------------------------------------------------------------------
+GO
+DROP PROCEDURE IF EXISTS dbo.ustaw_cene_calkowita
+GO
+CREATE PROCEDURE dbo.ustaw_cene_calkowita @id_rezerwacji INT
+AS
+BEGIN
+    UPDATE siec_hoteli..archiwum_rezerwacji
+    SET cena_calkowita = cena_za_uslugi + cena_za_telefon + cena_wynajecia_pokoju
+    WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
+END
+GO
+
 
 
 -- Wyzwalacz nr. 3 - Po wprowdzeniu rezerwacji do archiwum_rezerwacji ustaw cene_za_telefon obliczajac cene kazdej rozmowy, 
@@ -519,21 +533,21 @@ CREATE TRIGGER ustaw_cene_archiwum
     ON siec_hoteli.dbo.archiwum_rezerwacji
     AFTER INSERT
     AS
-    DECLARE
-        @id_rez INT, @id_rez_arch INT
+    DECLARE @id_rez INT
 DECLARE kursor CURSOR FOR
     SELECT id_rezerwacji
     FROM inserted
 
 BEGIN
     OPEN kursor
-    FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
+    FETCH NEXT FROM kursor INTO @id_rez
     WHILE @@FETCH_STATUS = 0
         BEGIN
-            EXEC ustaw_cene_za_telefon @id_rez, @id_rez_arch
-            EXEC ustaw_cene_za_uslugi @id_rez
-
-            FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
+            EXEC dbo.ustaw_cene_za_telefon @id_rez
+            EXEC dbo.ustaw_cene_za_uslugi @id_rez
+			EXEC dbo.ustaw_cene_za_wynajecie_pokoju @id_rez
+			EXEC dbo.ustaw_cene_calkowita  @id_rez
+            FETCH NEXT FROM kursor INTO @id_rez
         END
     CLOSE kursor
     DEALLOCATE kursor
@@ -542,12 +556,6 @@ GO
 USE master
 GO
 
-
-
-SELECT *
-FROM siec_hoteli..archiwum_rezerwacji
-SELECT *
-FROM siec_hoteli..rozmowy_telefoniczne
 
 
 -- Sprawdzenie dzialania wyzwalacza.
@@ -569,3 +577,75 @@ ORDER BY id_rezerwacji
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
 -- przy usunieciu pracownika jest dodawany do archiwum
 
+
+
+
+
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1023);
+
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1005);
+
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1009);
+
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1010);
+
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1032);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1033);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1034);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1035);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1036);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1037);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1038);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1039);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1040);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1041);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1042);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1043);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1044);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1045);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1046);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1047);
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1048);
+GO

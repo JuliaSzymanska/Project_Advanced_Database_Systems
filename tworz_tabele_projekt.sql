@@ -250,10 +250,11 @@ GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_rezerwacji
 (
-    cena_calkowita     MONEY,
-    cena_za_telefon    MONEY,
-    cena_za_uslugi     MONEY,
-    id_rezerwacji      INT                NOT NULL,
+    cena_calkowita			MONEY		DEFAULT 0,
+    cena_za_telefon			MONEY		DEFAULT 0,
+    cena_za_uslugi			MONEY		DEFAULT 0,
+	cena_wynajecie_pokoju	MONEY		DEFAULT 0,
+    id_rezerwacji			INT          NOT NULL,
 );
 GO
 
