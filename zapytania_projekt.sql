@@ -231,22 +231,6 @@ GROUP BY k.id_klienta, k.imie_klienta, k.nazwisko_klienta
 ORDER BY suma DESC
 
 
-
---------------------------------------------------------- FUNKCJA ---------------------------------------------------------------------------------------
--- 10. Wyœwietl id_rezerwacji, licza_dni_rezerwacji, data_rezerwacji oraz datê wymeldowania jako data_wymeldowania.
---SELECT id_rezerwacji, liczba_dni_rezerwacji, data_rezerwacji, DATEADD(DAY, liczba_dni_rezerwacji, data_rezerwacji) AS data_wymeldowania
---FROM rezerwacje
---GO
-
-------------------------------------------------- FUNKCJA ----------------------------------------------------------------
--- 16. Podwy¿sz wszystkim hotelom cenê bazow¹ za pokój o 5%.
---UPDATE hotele
---SET cena_bazowa_za_pokoj = 1.05 * cena_bazowa_za_pokoj
---SELECT id_hotelu, cena_bazowa_za_pokoj
---FROM hotele
---GO
-
-
 -- 17. Dodaj funkcjê zwracaj¹c¹ wspó³czynnik z jakim trzeba bêdzie pomno¿yæ cenê za po³¹czenie telefoniczne. Funkcja ma przyjmowaæ dwa argumenty:
 -- numer_telefonu, id_pokoju. Jeœli numer telefonu, na który zosta³o wykonane po³¹czenie nale¿y do któregoœ z pokoi w hotelu z którego wykonano po³¹czenie 
 -- (na podstawie id_pokoju uzyskujemy id_hotelu z którego wykonano po³¹czenie) wtedy wspó³czynnik ustawiany jest na 0. Dla numeru telefonu pokoju znajduj¹cego 
@@ -287,30 +271,6 @@ BEGIN
     RETURN @wspolczynnik;
 END;
 GO
-
---SELECT * FROM siec_hoteli..archiwum_rezerwacji
-
---UPDATE siec_hoteli..archiwum_rezerwacji
---SET cena_za_telefon = t.suma_cen
---FROM 
---    (
---        SELECT r.id_pokoju, rt.data_rozpoczecia_rozmowy,
---		SUM(DATEDIFF(MINUTE, rt.data_rozpoczecia_rozmowy, rt.data_zakonczenia_rozmowy) * h.cena_za_polaczenie_telefoniczne *  dbo.oblicz_wspoczynnik(rt.numer_telefonu, rt.id_pokoju)) suma_cen
---        FROM siec_hoteli..rozmowy_telefoniczne rt, siec_hoteli..hotele h, siec_hoteli..pokoje p, siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r
---        WHERE ar.id_rezerwacji = r.id_rezerwacji
---		AND r.id_pokoju = p.id_pokoju
---		AND rt.id_pokoju = p.id_pokoju
---		AND p.id_hotelu = h.id_hotelu
---		AND r.data_rezerwacji < rt.data_rozpoczecia_rozmowy
---		AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
---        GROUP BY r.id_pokoju, rt.data_rozpoczecia_rozmowy
---    ) t, siec_hoteli..rezerwacje r2
---WHERE siec_hoteli..archiwum_rezerwacji.id_rezerwacji = r2.id_rezerwacji
---AND r2.id_pokoju = t.id_pokoju
---AND r2.data_rezerwacji < t.data_rozpoczecia_rozmowy
---AND DATEADD(DAY, r2.liczba_dni_rezerwacji, r2.data_rezerwacji) > t.data_rozpoczecia_rozmowy
-
---SELECT * FROM siec_hoteli..archiwum_rezerwacji
 
 
 --19. Stworz procedure, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle, 
@@ -580,8 +540,6 @@ END
 GO
 USE master
 GO
--- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
--- przy usunieciu pracownika jest dodawany do archiwum
 
 
 SELECT * FROM siec_hoteli..archiwum_rezerwacji
