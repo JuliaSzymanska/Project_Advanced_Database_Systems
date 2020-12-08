@@ -344,6 +344,7 @@ BEGIN
 END
 GO
 
+-- Sprawdzenie dzialania procedury. 
 BEGIN
     DECLARE @id INT = 12, @procent INT = 50
     SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
@@ -372,8 +373,8 @@ END
 --     where dbo.pracownicy.id_pracownika = inserted.id_pracownika
 -- go
 
--- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
 
+-- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
 USE siec_hoteli
 GO
 DROP TRIGGER IF EXISTS zwieksz_pensje
@@ -394,8 +395,16 @@ GO
 USE master
 GO
 
+-- Sprawdzenie dzialania wyzwalacza.
+BEGIN
+    DECLARE @id2 INT = 46, @procent2 INT = 50
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+    EXEC premia_procedura @id2, @procent2
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+END
 
--- Wyzwalacz nr 2
+
+-- Wyzwalacz nr. 2 - Przy usuniêciu rezerwacji jest ona wprowadzana do tabeli anulowane_rezerwacje. 
 
 USE siec_hoteli
 GO
@@ -410,14 +419,18 @@ GO
 USE master
 GO
 
-SELECT *
-FROM siec_hoteli..rezerwacje
-
+-- Sprawdzenie dzialania wyzwalacza.
+BEGIN
+SELECT * FROM siec_hoteli..rezerwacje
 SELECT * from siec_hoteli..anulowane_rezerwacje
 
 DELETE siec_hoteli..rezerwacje
 WHERE id_rezerwacji = 1000
 
+SELECT * FROM siec_hoteli..rezerwacje
+SELECT * from siec_hoteli..anulowane_rezerwacje
+END
+GO
 
 
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
