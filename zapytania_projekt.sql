@@ -223,7 +223,7 @@ BEGIN
                                       siec_hoteli..pokoje p
                                  WHERE r.id_pokoju = p.id_pokoju
                                    AND p.id_hotelu = h.id_hotelu
-                                   AND r.id_rezerwacji = id_rezerwacji)
+                                   AND r.id_rezerwacji = @id_rezerwacji)
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
@@ -248,7 +248,7 @@ CREATE PROCEDURE [dbo].[ustaw_cene_calkowita] @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
-    SET cena_calkowita = cena_za_uslugi + cena_za_telefon + cena_wynajecia_pokoju
+    SET cena_calkowita = ISNULL(cena_za_uslugi, 0) + ISNULL(cena_za_telefon, 0) + ISNULL(cena_wynajecia_pokoju, 0)
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
