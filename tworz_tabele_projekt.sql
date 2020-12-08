@@ -189,6 +189,15 @@ CREATE TABLE siec_hoteli.dbo.rezerwacje
     id_pokoju             INT                   NOT NULL,
     id_klienta            INT                   NOT NULL
 );
+
+CREATE TABLE siec_hoteli.dbo.anulowane_rezerwacje
+(
+    id_rezerwacji         INT PRIMARY KEY       NOT NULL,
+    data_rezerwacji       DATE                  NOT NULL,
+    liczba_dni_rezerwacji INT                   NOT NULL,
+    id_pokoju             INT                   NOT NULL,
+    id_klienta            INT                   NOT NULL
+);
 GO
 
 ALTER TABLE siec_hoteli.dbo.rezerwacje
@@ -227,7 +236,7 @@ ALTER TABLE siec_hoteli.dbo.usluga_dla_rezerwacji
 ALTER TABLE siec_hoteli.dbo.usluga_dla_rezerwacji
     ADD CONSTRAINT usluga_dla_rezerwacji_usluga_fk FOREIGN KEY (id_uslugi) REFERENCES uslugi (id_uslugi);
 ALTER TABLE siec_hoteli.dbo.usluga_dla_rezerwacji
-    ADD CONSTRAINT usluga_dla_rezerwacji_rezerwacja_fk FOREIGN KEY (id_rezerwacji) REFERENCES rezerwacje (id_rezerwacji);
+    ADD CONSTRAINT usluga_dla_rezerwacji_rezerwacja_fk FOREIGN KEY (id_rezerwacji) REFERENCES rezerwacje (id_rezerwacji) on DELETE CASCADE ;
 GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_rezerwacji

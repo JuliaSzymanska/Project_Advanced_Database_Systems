@@ -391,6 +391,32 @@ CREATE TRIGGER zwieksz_pensje
               AND (i.premia - dbo.pracownicy.premia) > 0.1
         END
 GO
+USE master
+GO
+
+
+-- Wyzwalacz nr 2
+
+USE siec_hoteli
+GO
+DROP TRIGGER IF EXISTS przenies_do_anulowanych
+GO
+CREATE TRIGGER przenies_do_anulowanych
+    ON siec_hoteli.dbo.rezerwacje
+    FOR DELETE
+    AS
+    INSERT INTO siec_hoteli.dbo.anulowane_rezerwacje select d.id_rezerwacji, d.data_rezerwacji, d.liczba_dni_rezerwacji, d.id_pokoju, d.id_klienta from deleted d
+GO
+USE master
+GO
+
+SELECT *
+FROM siec_hoteli..rezerwacje
+
+SELECT * from siec_hoteli..anulowane_rezerwacje
+
+DELETE siec_hoteli..rezerwacje
+WHERE id_rezerwacji = 1000
 
 
 
@@ -398,6 +424,3 @@ GO
 -- przy usunieciu pracownika jest dodawany do archiwum
 
 -- trigger - instead of insert - przy wstawianiu rezerwacji do archiwum, wstawiana jest rezerwacja z cena za telefon wyliczona funkcji
-
--- trigger - after update premia - jesli zwiekszy sie premia o wiecej niz 10 procent zwieksz pensje o polowe premii
-
