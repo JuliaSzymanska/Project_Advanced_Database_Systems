@@ -4,8 +4,9 @@
     <file url="file://$PROJECT_DIR$/tworz_tabele_projekt.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/wstaw_dane_projekt.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/zapytania_projekt.sql" dialect="TSQL" />
+    <file url="PROJECT" dialect="TSQL" />
   </component>
   <component name="SqlResolveMappings">
-    <file url="PROJECT" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;78d34483-20f2-448a-88dd-0a0346c83f67&quot;    }   }  } }}" />
+    <file url="PROJECT" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;78d34483-20f2-448a-88dd-0a0346c83f67&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;database&quot;,     &quot;node&quot;:{      &quot;@negative&quot;:&quot;1&quot;     }    }   }  } }}" />
   </component>
 </project>

@@ -405,7 +405,6 @@ END
 
 
 -- Wyzwalacz nr. 2 - Przy usuniêciu rezerwacji jest ona wprowadzana do tabeli anulowane_rezerwacje. 
-
 USE siec_hoteli
 GO
 DROP TRIGGER IF EXISTS przenies_do_anulowanych
@@ -434,6 +433,8 @@ BEGIN
 END
 GO
 
+-- Wyzwalacz nr. 3 - Po wprowdzeniu rezerwacji do archiwum_rezerwacji ustaw cene_za_telefon obliczajac cene kazdej rozmowy, 
+-- mnozac liczbe minut rozmowy razy cene_za_polaczenie_telefoniczne razy wspolczynnik obliczony za pomoca funkcji.
 USE siec_hoteli
 GO
 DROP TRIGGER IF EXISTS ustaw_cene_archiwum
@@ -463,7 +464,10 @@ CREATE TRIGGER ustaw_cene_archiwum
 GO
 USE master
 GO
+
+-- Sprawdzenie dzialania wyzwalacza.
+
+
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
 -- przy usunieciu pracownika jest dodawany do archiwum
 
--- trigger - instead of insert - przy wstawianiu rezerwacji do archiwum, wstawiana jest rezerwacja z cena za telefon wyliczona funkcji

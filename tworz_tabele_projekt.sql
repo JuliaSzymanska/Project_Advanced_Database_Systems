@@ -190,6 +190,16 @@ CREATE TABLE siec_hoteli.dbo.rezerwacje
     id_klienta            INT                   NOT NULL
 );
 
+ALTER TABLE siec_hoteli.dbo.rezerwacje
+    ADD CONSTRAINT rezerwacje_id_pk PRIMARY KEY (id_rezerwacji);
+ALTER TABLE siec_hoteli.dbo.rezerwacje
+    ADD CONSTRAINT liczba_dni_check CHECK (liczba_dni_rezerwacji > 0);
+ALTER TABLE siec_hoteli.dbo.rezerwacje
+    ADD CONSTRAINT rezerwacja_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju);
+ALTER TABLE siec_hoteli.dbo.rezerwacje
+    ADD CONSTRAINT rezerwacja_klient_fk FOREIGN KEY (id_klienta) REFERENCES klienci (id_klienta);
+GO
+
 CREATE TABLE siec_hoteli.dbo.anulowane_rezerwacje
 (
     id_rezerwacji         INT PRIMARY KEY       NOT NULL,
@@ -198,15 +208,14 @@ CREATE TABLE siec_hoteli.dbo.anulowane_rezerwacje
     id_pokoju             INT                   NOT NULL,
     id_klienta            INT                   NOT NULL
 );
-GO
 
-ALTER TABLE siec_hoteli.dbo.rezerwacje
+ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
     ADD CONSTRAINT rezerwacje_id_pk PRIMARY KEY (id_rezerwacji);
-ALTER TABLE siec_hoteli.dbo.rezerwacje
+ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
     ADD CONSTRAINT liczba_dni_check CHECK (liczba_dni_rezerwacji > 0);
-ALTER TABLE siec_hoteli.dbo.rezerwacje
+ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
     ADD CONSTRAINT rezerwacja_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju);
-ALTER TABLE siec_hoteli.dbo.rezerwacje
+ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
     ADD CONSTRAINT rezerwacja_klient_fk FOREIGN KEY (id_klienta) REFERENCES klienci (id_klienta);
 GO
 
