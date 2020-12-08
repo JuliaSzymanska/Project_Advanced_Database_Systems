@@ -357,7 +357,20 @@ Create Trigger set_czy_aktywny
     where dbo.pracownicy.id_pracownika = inserted.id_pracownika
 go
 
-
+use siec_hoteli
+go
+CREATE TRIGGER zwieksz_pensje
+ON dbo.pracownicy
+AFTER UPDATE
+AS
+	IF (UPDATE (premia))
+		BEGIN
+			UPDATE dbo.pracownicy
+			SET    pensja = inserted.premia / 2
+			WHERE dbo.pracownicy.id_pracownika = inserted.id_pracownika
+			AND ((inserted.premia * dbo.pracownicy.premia) / dbo.pracownicy.premia) > 10.00
+		END
+GO
 
 
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 

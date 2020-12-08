@@ -495,7 +495,7 @@ VALUES ('Curtis', 'Davies', 'curtisdavies@view.eu', '900000888', CAST('22-JAN-19
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Julia', 'Szymanska', 'Julaszym1212@gmail.com', '601874010', CAST('08-MAY-1999' AS DATETIME), 2600, NULL,
+VALUES ('Julia', 'Szymanska', 'julaszym@gmail.com', '601874010', CAST('08-MAY-1999' AS DATETIME), 8600, NULL,
         CAST('08-MAY-2020' AS DATETIME), 117);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
