@@ -433,6 +433,21 @@ END
 GO
 
 
+-- Wyzwalacz nr. 3
+
+USE siec_hoteli
+GO
+DROP TRIGGER IF EXISTS do_archiwum_rezerwacji
+GO
+CREATE TRIGGER do_archiwum_rezerwacji
+    ON siec_hoteli..
+    FOR DELETE
+    AS
+    INSERT INTO siec_hoteli.dbo.anulowane_rezerwacje select d.id_rezerwacji, d.data_rezerwacji, d.liczba_dni_rezerwacji, d.id_pokoju, d.id_klienta from deleted d
+GO
+USE master
+GO
+
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
 -- przy usunieciu pracownika jest dodawany do archiwum
 
