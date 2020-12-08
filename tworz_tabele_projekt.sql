@@ -81,14 +81,13 @@ GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_pracownikow
 (
-    id_pracownika_arch INT IDENTITY (1,1) NOT NULL,
     koniec_pracy       DATETIME           NOT NULL,
     id_pracownika      INT                NOT NULL
 );
 GO
 
 ALTER TABLE siec_hoteli.dbo.archiwum_pracownikow
-    ADD CONSTRAINT archiwum_pracownikow_id_pk PRIMARY KEY (id_pracownika_arch);
+    ADD CONSTRAINT archiwum_pracownikow_id_pk PRIMARY KEY (id_pracownika);
 ALTER TABLE siec_hoteli.dbo.archiwum_pracownikow
     ADD CONSTRAINT archiwum_data_interwal CHECK (koniec_pracy <= GETDATE());
 ALTER TABLE siec_hoteli.dbo.archiwum_pracownikow
