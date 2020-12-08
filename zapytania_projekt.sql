@@ -361,3 +361,7 @@ BEGIN
 
 END
 GO
+
+
+-- Trigger 1
+

@@ -60,7 +60,8 @@ CREATE TABLE siec_hoteli.dbo.pracownicy
     pensja                    MONEY,
     premia                    DECIMAL(2, 2),
 	poczatek_pracy			  DATETIME			 NOT NULL	DEFAULT GETDATE(),
-    id_hotelu                 INT                NOT NULL
+    id_hotelu                 INT                NOT NULL,
+    czy_aktywny int not null default 1,
 );
 GO
 
