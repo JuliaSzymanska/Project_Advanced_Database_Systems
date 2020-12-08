@@ -424,9 +424,9 @@ GO
 GO
 USE siec_hoteli
 GO
-DROP PROCEDURE IF EXISTS dbo.ustaw_cene_za_telefon
+DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
 GO
-CREATE PROCEDURE dbo.ustaw_cene_za_telefon @id_rezerwacji INT
+CREATE PROCEDURE [dbo].[ustaw_cene_za_telefon] @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -457,9 +457,9 @@ GO
 GO
 USE siec_hoteli
 GO
-DROP PROCEDURE IF EXISTS [dbo].ustaw_cene_za_uslugi
+DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_uslugi]
 GO
-CREATE PROCEDURE [dbo].ustaw_cene_za_uslugi @id_rezerwacji INT
+CREATE PROCEDURE [dbo].[ustaw_cene_za_uslugi] @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -495,9 +495,9 @@ GO
 GO
 USE siec_hoteli
 GO
-DROP PROCEDURE IF EXISTS dbo.ustaw_cene_za_wynajecie_pokoju
+DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_wynajecie_pokoju]
 GO
-CREATE PROCEDURE dbo.ustaw_cene_za_wynajecie_pokoju @id_rezerwacji INT
+CREATE PROCEDURE [dbo].[ustaw_cene_za_wynajecie_pokoju] @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -511,6 +511,8 @@ BEGIN
                                    AND r.id_rezerwacji = id_rezerwacji)
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
+GO
+USE master
 GO
 
 --SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob *
@@ -529,9 +531,9 @@ GO
 GO
 USE siec_hoteli
 GO
-DROP PROCEDURE IF EXISTS dbo.ustaw_cene_calkowita
+DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_calkowita]
 GO
-CREATE PROCEDURE dbo.ustaw_cene_calkowita @id_rezerwacji INT
+CREATE PROCEDURE [dbo].[ustaw_cene_calkowita] @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -566,10 +568,10 @@ BEGIN
     FETCH NEXT FROM kursor INTO @id_rez
     WHILE @@FETCH_STATUS = 0
         BEGIN
-            EXEC [dbo].ustaw_cene_za_telefon @id_rez
-            EXEC dbo.ustaw_cene_za_uslugi @id_rez
-            EXEC dbo.ustaw_cene_za_wynajecie_pokoju @id_rez
-            EXEC dbo.ustaw_cene_calkowita @id_rez
+            EXEC [dbo].[ustaw_cene_za_telefon] @id_rez
+            EXEC [dbo].[ustaw_cene_za_uslugi] @id_rez
+            EXEC [dbo].[ustaw_cene_za_wynajecie_pokoju] @id_rez
+            EXEC [dbo].[ustaw_cene_calkowita] @id_rez
             FETCH NEXT FROM kursor INTO @id_rez
         END
     CLOSE kursor
