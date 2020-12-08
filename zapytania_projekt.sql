@@ -1,6 +1,6 @@
 -- 1. Wyœwietl liczbê pokoi w ka¿dym z hoteli. Na koñcu dodaj podsumowanie ile jest ³¹cznie pokoi.
-SELECT IIF(h.nazwa_hotelu is null, 'Suma', h.nazwa_hotelu) as 'Nazwa Hotelu',
-       COUNT(*)                                            as 'Liczba pokoi'
+SELECT IIF(h.nazwa_hotelu IS NULL, 'Suma', h.nazwa_hotelu) AS 'Nazwa Hotelu',
+       COUNT(*)                                            AS 'Liczba pokoi'
 FROM siec_hoteli.dbo.pokoje p,
      siec_hoteli.dbo.hotele h
 WHERE p.id_hotelu = h.id_hotelu
@@ -32,7 +32,7 @@ ORDER BY [Srednia cena polaczen telefonicznych] DESC
 GO
 
 -- 4. Wyœwietl liczbê pokoi dla których nie przewidziano rezerwacji. 
-SELECT nazwa_hotelu, COUNT(id_pokoju) as 'Liczba pokoi bez rezerwacji'
+SELECT nazwa_hotelu, COUNT(id_pokoju) AS 'Liczba pokoi bez rezerwacji'
 FROM siec_hoteli.dbo.pokoje,
      siec_hoteli.dbo.hotele
 WHERE id_pokoju NOT IN (SELECT id_pokoju FROM siec_hoteli.dbo.rezerwacje)
@@ -86,25 +86,25 @@ ORDER BY data_rozpoczecia_rozmowy
 GO
 
 -- 10. Wyœwietl wszystkich klientow, ktorzy dzownili z telefonu pokojowego do innych klientow. 
-select k1.imie_klienta + ' ' + k1.nazwisko_klienta 'Imie i nazwisko odbiorcy',
+SELECT k1.imie_klienta + ' ' + k1.nazwisko_klienta 'Imie i nazwisko odbiorcy',
        k1.numer_telefonu_klienta                   'Numer telefonu odbiorcy',
        k2.imie_klienta + ' ' + k2.nazwisko_klienta 'Imie i nazwisko dzowniacego',
        p.numer_telefonu_pokoju                     'Numer telefonu pokoju'
-from siec_hoteli.dbo.klienci k1,
+FROM siec_hoteli.dbo.klienci k1,
      siec_hoteli.dbo.klienci k2,
      siec_hoteli.dbo.pokoje p,
      siec_hoteli.dbo.rozmowy_telefoniczne rt,
      siec_hoteli.dbo.rezerwacje rez
-where rt.numer_telefonu = k1.numer_telefonu_klienta
-  and rt.id_pokoju = p.id_pokoju
-  and p.id_pokoju = rez.id_pokoju
-  and rez.id_klienta = k2.id_klienta
-  and rez.data_rezerwacji < rt.data_rozpoczecia_rozmowy
-  and dateadd(day, rez.liczba_dni_rezerwacji, rez.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
+WHERE rt.numer_telefonu = k1.numer_telefonu_klienta
+  AND rt.id_pokoju = p.id_pokoju
+  AND p.id_pokoju = rez.id_pokoju
+  AND rez.id_klienta = k2.id_klienta
+  AND rez.data_rezerwacji < rt.data_rozpoczecia_rozmowy
+  AND DATEADD(DAY, rez.liczba_dni_rezerwacji, rez.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
 
 
 -- 11. Wyswietl pracownikow, ktorzy maja najwieksza pensje w danym hotelu. 
-SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika Pracownik, p.pensja, h.nazwa_hotelu
+SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika pracownik, p.pensja, h.nazwa_hotelu
 FROM siec_hoteli.dbo.pracownicy p,
      siec_hoteli.dbo.hotele h
 WHERE p.pensja IN (SELECT MAX(pensja) FROM siec_hoteli.dbo.pracownicy p2 WHERE p2.id_hotelu = p.id_hotelu)
@@ -121,7 +121,7 @@ FROM siec_hoteli.dbo.pracownicy p,
 WHERE ap.id_pracownika = p.id_pracownika
   AND p.id_hotelu = h.id_hotelu
   AND h.id_miasta = m.id_miasta
-  and DATEDIFF(DAY, p.poczatek_pracy, ap.koniec_pracy) > (
+  AND DATEDIFF(DAY, p.poczatek_pracy, ap.koniec_pracy) > (
     SELECT AVG(DATEDIFF(DAY, p2.poczatek_pracy, ap2.koniec_pracy))
     FROM siec_hoteli.dbo.pracownicy p2,
          siec_hoteli.dbo.archiwum_pracownikow ap2,
@@ -130,94 +130,105 @@ WHERE ap.id_pracownika = p.id_pracownika
     WHERE ap2.id_pracownika = p2.id_pracownika
       AND p2.id_hotelu = h2.id_hotelu
       AND h2.id_miasta = m2.id_miasta
-      and m2.id_miasta = m.id_miasta
+      AND m2.id_miasta = m.id_miasta
     GROUP BY m2.id_miasta)
 GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, p.poczatek_pracy, ap.koniec_pracy
 
 
 -- 13. Wyœwietla panstwo, w ktorym najwiecej sie wydaje na oplacenie pracownikow.
 
-select sum(p.pensja) suma, pan.nazwa_panstwa
-from siec_hoteli..panstwa pan,
+SELECT SUM(p.pensja) suma, pan.nazwa_panstwa
+FROM siec_hoteli..panstwa pan,
      siec_hoteli..miasta m,
      siec_hoteli..hotele h,
      siec_hoteli..pracownicy p,
-     (select max(a.suma) as max_suma
-      from (
-               select sum(p.pensja) suma
-               from siec_hoteli..panstwa pan,
+     (SELECT MAX(a.suma) AS max_suma
+      FROM (
+               SELECT SUM(p.pensja) suma
+               FROM siec_hoteli..panstwa pan,
                     siec_hoteli..miasta m,
                     siec_hoteli..hotele h,
                     siec_hoteli..pracownicy p
-               where pan.id_panstwa = m.id_panstwa
-                 and m.id_miasta = h.id_miasta
-                 and p.id_hotelu = h.id_hotelu
-               group by pan.nazwa_panstwa
-           ) as a) as pms
-where pan.id_panstwa = m.id_panstwa
-  and m.id_miasta = h.id_miasta
-  and p.id_hotelu = h.id_hotelu
-group by pan.nazwa_panstwa, pms.max_suma
-having sum(p.pensja) = max_suma
+               WHERE pan.id_panstwa = m.id_panstwa
+                 AND m.id_miasta = h.id_miasta
+                 AND p.id_hotelu = h.id_hotelu
+               GROUP BY pan.nazwa_panstwa
+           ) AS a) AS pms
+WHERE pan.id_panstwa = m.id_panstwa
+  AND m.id_miasta = h.id_miasta
+  AND p.id_hotelu = h.id_hotelu
+GROUP BY pan.nazwa_panstwa, pms.max_suma
+HAVING SUM(p.pensja) = max_suma
 
 -- 14. Wypisz klienta który mia³ najwiecej skonczonych rezerwacji. 
-select k.imie_klienta, k.nazwisko_klienta, count(k.id_klienta) Ilosc_rezerwacji
-from siec_hoteli..klienci k,
+SELECT k.imie_klienta, k.nazwisko_klienta, COUNT(k.id_klienta) ilosc_rezerwacji
+FROM siec_hoteli..klienci k,
      siec_hoteli..rezerwacje r
-where k.id_klienta = r.id_klienta
-  and dateadd(day, r.liczba_dni_rezerwacji, r.data_rezerwacji) < getdate()
-group by k.id_klienta, imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania
-having count(k.id_klienta) = (select top 1 count(k.id_klienta)
-                              from siec_hoteli..klienci k,
+WHERE k.id_klienta = r.id_klienta
+  AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) < GETDATE()
+GROUP BY k.id_klienta, imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania
+HAVING COUNT(k.id_klienta) = (SELECT TOP 1 COUNT(k.id_klienta)
+                              FROM siec_hoteli..klienci k,
                                    siec_hoteli..rezerwacje r
-                              where k.id_klienta = r.id_klienta
-                                and dateadd(day, r.liczba_dni_rezerwacji, r.data_rezerwacji) < getdate()
-                              group by k.id_klienta
-                              order by count(k.id_klienta) desc)
+                              WHERE k.id_klienta = r.id_klienta
+                                AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) < GETDATE()
+                              GROUP BY k.id_klienta
+                              ORDER BY COUNT(k.id_klienta) DESC)
 
 
 -- 15. Wypisz najwiecej sprz¹tany pokój.
 SELECT p.id_pokoju, COUNT(*) 'Ilosc sprzatan'
-from siec_hoteli..pokoje p,
+FROM siec_hoteli..pokoje p,
      siec_hoteli..sprzatanie s
-where p.id_pokoju = s.id_pokoju
-group by p.id_pokoju
-having (count(p.id_pokoju)) = (select top 1 count(*) count
-                               from siec_hoteli..pokoje p,
+WHERE p.id_pokoju = s.id_pokoju
+GROUP BY p.id_pokoju
+HAVING (COUNT(p.id_pokoju)) = (SELECT TOP 1 COUNT(*) count
+                               FROM siec_hoteli..pokoje p,
                                     siec_hoteli..sprzatanie s
-                               where p.id_pokoju = s.id_pokoju
-                               group by p.id_pokoju
-                               order by count desc)
+                               WHERE p.id_pokoju = s.id_pokoju
+                               GROUP BY p.id_pokoju
+                               ORDER BY count DESC)
 
 --16. Wyswietl najczesciej wykupowana usluge
-SELECT COUNT(*) Ilosc, u.nazwa_uslugi 'Nazwa uslugi'
-FROM siec_hoteli..uslugi u, siec_hoteli..usluga_dla_rezerwacji ur
+SELECT COUNT(*) ilosc, u.nazwa_uslugi 'Nazwa uslugi'
+FROM siec_hoteli..uslugi u,
+     siec_hoteli..usluga_dla_rezerwacji ur
 WHERE ur.id_uslugi = u.id_uslugi
 GROUP BY u.nazwa_uslugi
-HAVING COUNT(*) = (SELECT MAX(i.Ile) FROM
-(SELECT COUNT(*) 'Ile', us.id_uslugi 'Usluga' 
-		FROM siec_hoteli..usluga_dla_rezerwacji us 
-		GROUP BY us.id_uslugi) i)
+HAVING COUNT(*) = (SELECT MAX(i.ile)
+                   FROM (SELECT COUNT(*) 'Ile', us.id_uslugi 'Usluga'
+                         FROM siec_hoteli..usluga_dla_rezerwacji us
+                         GROUP BY us.id_uslugi) i)
 
 
 -- 17. Wyswietl nazwe hotelu, miasto oraz panstwo, w ktorych znajduje sie hotel, a takze kwote, dla hotelu, dla ktorego byla najdrozsza rezerwacja. 
 SELECT h.nazwa_hotelu, m.nazwa_miasta, pan.nazwa_panstwa, max_kwota.[Kwota rezerwacji]
-FROM (SELECT MAX(ar2.cena_calkowita) 'Kwota rezerwacji' FROM siec_hoteli..archiwum_rezerwacji ar2) max_kwota, 
-	siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r, siec_hoteli..pokoje p, siec_hoteli..hotele h, siec_hoteli..miasta m, siec_hoteli..panstwa pan
+FROM (SELECT MAX(ar2.cena_calkowita) 'Kwota rezerwacji' FROM siec_hoteli..archiwum_rezerwacji ar2) max_kwota,
+     siec_hoteli..archiwum_rezerwacji ar,
+     siec_hoteli..rezerwacje r,
+     siec_hoteli..pokoje p,
+     siec_hoteli..hotele h,
+     siec_hoteli..miasta m,
+     siec_hoteli..panstwa pan
 WHERE max_kwota.[Kwota rezerwacji] = ar.cena_calkowita
-AND ar.id_rezerwacji = r.id_rezerwacji
-AND r.id_pokoju = p.id_pokoju
-AND p.id_hotelu = h.id_hotelu
-AND h.id_miasta = m.id_miasta
-AND m.id_panstwa = pan.id_panstwa
+  AND ar.id_rezerwacji = r.id_rezerwacji
+  AND r.id_pokoju = p.id_pokoju
+  AND p.id_hotelu = h.id_hotelu
+  AND h.id_miasta = m.id_miasta
+  AND m.id_panstwa = pan.id_panstwa
 
 
 -- 18 Wypisz klijentów, którzy mieli rezerwacje, posortowani po sumie wartoœci ich rezerwacji
-select sum(h.cena_bazowa_za_pokoj * r.liczba_dni_rezerwacji) suma, k.imie_klienta, k.nazwisko_klienta from siec_hoteli..klienci k, siec_hoteli..rezerwacje r, siec_hoteli..pokoje p, siec_hoteli..hotele h
-where k.id_klienta = r.id_klienta and r.id_pokoju = p.id_pokoju and h.id_hotelu = p.id_hotelu
-group by k.id_klienta, k.imie_klienta, k.nazwisko_klienta
-order by suma desc
-
+SELECT SUM(h.cena_bazowa_za_pokoj * r.liczba_dni_rezerwacji) suma, k.imie_klienta, k.nazwisko_klienta
+FROM siec_hoteli..klienci k,
+     siec_hoteli..rezerwacje r,
+     siec_hoteli..pokoje p,
+     siec_hoteli..hotele h
+WHERE k.id_klienta = r.id_klienta
+  AND r.id_pokoju = p.id_pokoju
+  AND h.id_hotelu = p.id_hotelu
+GROUP BY k.id_klienta, k.imie_klienta, k.nazwisko_klienta
+ORDER BY suma DESC
 
 
 
@@ -305,6 +316,8 @@ GO
 --19. Stworz procedure, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle, 
 -- dla procentu jest to 1%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.
 GO
+DROP PROCEDURE IF EXISTS premia_procedura
+GO
 CREATE PROCEDURE premia_procedura @id INT = -1, @procent INT = 1
 AS
 BEGIN
@@ -314,69 +327,71 @@ BEGIN
             SET premia = 0
             WHERE premia IS NULL;
 
-			UPDATE siec_hoteli.dbo.pracownicy
+            UPDATE siec_hoteli.dbo.pracownicy
             SET premia = premia * ((100.00 + @procent) / 100.00)
         END
     ELSE
         BEGIN
-			UPDATE siec_hoteli.dbo.pracownicy
-			SET premia = 0
+            UPDATE siec_hoteli.dbo.pracownicy
+            SET premia = 0
             WHERE premia IS NULL
-            AND @id = id_pracownika
- 
+              AND @id = id_pracownika
+
             UPDATE siec_hoteli.dbo.pracownicy
             SET premia = premia * ((100.00 + @procent) / 100.00)
             WHERE @id = id_pracownika
-         END
+        END
 END
 GO
 
-BEGIN 
-	DECLARE @id INT = 12, @procent INT = 50
-	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
-	EXEC premia_procedura @id, @procent
-	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
+BEGIN
+    DECLARE @id INT = 12, @procent INT = 50
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
+    EXEC premia_procedura @id, @procent
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
 END
 
-BEGIN 
-	DECLARE @id2 INT = 46, @procent2 INT = 50
-	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
-	EXEC premia_procedura @id2, @procent2
-	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+BEGIN
+    DECLARE @id2 INT = 46, @procent2 INT = 50
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+    EXEC premia_procedura @id2, @procent2
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
 END
 
 -- 20. Stworz wyzwalacz, ktory podczas wstawiania do tabeli archiwum pracownikow zmieni wartosc kolumny czy_aktywny na wartosc 0. 
-USE siec_hoteli
-GO
-DROP TRIGGER IF EXISTS set_czy_aktywny
-GO
-Create Trigger set_czy_aktywny
-    on dbo.archiwum_pracownikow
-    for insert
-    as
-    update dbo.pracownicy
-    set dbo.pracownicy.czy_aktywny = 0
-    where dbo.pracownicy.id_pracownika = inserted.id_pracownika
-go
+-- USE siec_hoteli
+-- GO
+-- DROP TRIGGER IF EXISTS set_czy_aktywny
+-- GO
+-- Create Trigger set_czy_aktywny
+--     on dbo.archiwum_pracownikow
+--     for insert
+--     as
+--     update dbo.pracownicy
+--     set dbo.pracownicy.czy_aktywny = 0
+--     where dbo.pracownicy.id_pracownika = inserted.id_pracownika
+-- go
 
+-- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
 
 USE siec_hoteli
 GO
 DROP TRIGGER IF EXISTS zwieksz_pensje
 GO
 CREATE TRIGGER zwieksz_pensje
-ON dbo.pracownicy
-AFTER UPDATE
-AS
-	IF (UPDATE (premia))
-		BEGIN
-			UPDATE dbo.pracownicy
-			SET    dbo.pracownicy.pensja += i.premia / 2
-			FROM inserted i
-			WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
-			--AND ((i.premia * dbo.pracownicy.premia) / dbo.pracownicy.premia) > 10.00
-		END
+    ON siec_hoteli.dbo.pracownicy
+    AFTER UPDATE
+    AS
+    IF (UPDATE(premia))
+        BEGIN
+            UPDATE dbo.pracownicy
+            SET dbo.pracownicy.pensja += i.pensja * i.premia * 0.5
+            FROM inserted i
+            WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
+              AND (i.premia - dbo.pracownicy.premia) > 0.1
+        END
 GO
+
 
 
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
