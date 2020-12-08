@@ -359,19 +359,10 @@ BEGIN
     SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
 END
 
--- 20. Stworz wyzwalacz, ktory podczas wstawiania do tabeli archiwum pracownikow zmieni wartosc kolumny czy_aktywny na wartosc 0. 
--- USE siec_hoteli
--- GO
--- DROP TRIGGER IF EXISTS set_czy_aktywny
--- GO
--- Create Trigger set_czy_aktywny
---     on dbo.archiwum_pracownikow
---     for insert
---     as
---     update dbo.pracownicy
---     set dbo.pracownicy.czy_aktywny = 0
---     where dbo.pracownicy.id_pracownika = inserted.id_pracownika
--- go
+
+
+
+
 
 
 -- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
@@ -443,30 +434,55 @@ CREATE TRIGGER ustaw_cene_archiwum
     ON siec_hoteli.dbo.archiwum_rezerwacji
     AFTER INSERT
     AS
+    
+GO
+USE master
+GO
+
+
+
+--------------------------------------------------------------------------------
+GO
+DROP PROCEDURE IF EXISTS ustaw_cene_za_telefon
+GO
+CREATE PROCEDURE ustaw_cene_za_telefon @id_rezerwacji INT, @id_rezerwacji_archiwalnej INT
+AS
+BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
     SET archiwum_rezerwacji.cena_za_telefon = (SELECT SUM(DATEDIFF(MINUTE, rt.data_rozpoczecia_rozmowy,
                                                                    rt.data_zakonczenia_rozmowy) *
                                                           h.cena_za_polaczenie_telefoniczne *
                                                           dbo.oblicz_wspoczynnik(rt.numer_telefonu, rt.id_pokoju))
-                                               FROM inserted i,
-                                                    siec_hoteli..rozmowy_telefoniczne rt,
+                                               FROM siec_hoteli..rozmowy_telefoniczne rt,
                                                     siec_hoteli..rezerwacje rez,
                                                     siec_hoteli..hotele h,
                                                     siec_hoteli..pokoje p
                                                WHERE rez.id_pokoju = rt.id_pokoju
-                                                 AND i.id_rezerwacji = rez.id_rezerwacji
+                                                 AND @id_rezerwacji = rez.id_rezerwacji
                                                  AND h.id_hotelu = p.id_hotelu
                                                  AND p.id_pokoju = rez.id_pokoju
-                                                 AND i.id_rezerwacji_arch =
+                                                 AND @id_rezerwacji_archiwalnej =
                                                      siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji_arch
     )
-    WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = (SELECT i.id_rezerwacji FROM inserted i)
+    WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
+END
 GO
-USE master
-GO
+
+SELECT * FROM siec_hoteli..archiwum_rezerwacji
+SELECT * FROM siec_hoteli..rozmowy_telefoniczne
+
 
 -- Sprawdzenie dzialania wyzwalacza.
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1049);
 
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1050);
+
+SELECT * FROM siec_hoteli..rezerwacje where data_rezerwacji < GETDATE()
+SELECT * FROM siec_hoteli..archiwum_rezerwacji order by id_rezerwacji
 
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
 -- przy usunieciu pracownika jest dodawany do archiwum
