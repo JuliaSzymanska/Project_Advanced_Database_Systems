@@ -482,13 +482,13 @@ GO
 USE master
 GO
 
-SELECT *
-FROM siec_hoteli..archiwum_rezerwacji
-WHERE id_rezerwacji = 1009
-EXEC dbo.ustaw_cene_za_uslugi 1009
-SELECT *
-FROM siec_hoteli..archiwum_rezerwacji
-WHERE id_rezerwacji = 1009
+--SELECT *
+--FROM siec_hoteli..archiwum_rezerwacji
+--WHERE id_rezerwacji = 1009
+--EXEC dbo.ustaw_cene_za_uslugi 1009
+--SELECT *
+--FROM siec_hoteli..archiwum_rezerwacji
+--WHERE id_rezerwacji = 1009
 
 
 --------------------------------------------------------------------------------
@@ -513,16 +513,16 @@ BEGIN
 END
 GO
 
-SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob *
-       r.liczba_dni_rezerwacji cena_rezerwacji
-FROM siec_hoteli..rezerwacje r,
-     siec_hoteli..hotele h,
-     siec_hoteli..pokoje p
-WHERE r.id_pokoju = p.id_pokoju
-  AND p.id_hotelu = h.id_hotelu
-GO
-USE master
-GO
+--SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob *
+--       r.liczba_dni_rezerwacji cena_rezerwacji
+--FROM siec_hoteli..rezerwacje r,
+--     siec_hoteli..hotele h,
+--     siec_hoteli..pokoje p
+--WHERE r.id_pokoju = p.id_pokoju
+--  AND p.id_hotelu = h.id_hotelu
+--GO
+--USE master
+--GO
 
 
 --------------------------------------------------------------------------------
@@ -561,6 +561,7 @@ DECLARE kursor CURSOR FOR
     FROM inserted
 
 BEGIN
+	PRINT 'Siemka jestem w triggerze'
     OPEN kursor
     FETCH NEXT FROM kursor INTO @id_rez
     WHILE @@FETCH_STATUS = 0
@@ -577,10 +578,15 @@ END
 GO
 USE master
 GO
+-- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
+-- przy usunieciu pracownika jest dodawany do archiwum
 
 
+SELECT * FROM siec_hoteli..archiwum_rezerwacji
 
--- Sprawdzenie dzialania wyzwalacza.
+USE siec_hoteli
+GO
+
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1049);
@@ -588,17 +594,6 @@ VALUES (0, 0, 0, 1049);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1050);
-
-SELECT *
-FROM siec_hoteli..rezerwacje
-WHERE data_rezerwacji < GETDATE()
-SELECT *
-FROM siec_hoteli..archiwum_rezerwacji
-ORDER BY id_rezerwacji
-
--- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
--- przy usunieciu pracownika jest dodawany do archiwum
-
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
@@ -668,3 +663,8 @@ INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1048);
 GO
+
+USE master
+GO
+
+SELECT * FROM siec_hoteli..archiwum_rezerwacji
