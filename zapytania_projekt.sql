@@ -366,3 +366,12 @@ Create Trigger set_czy_aktywny
     where dbo.pracownicy.id_pracownika = inserted.id_pracownika
 go
 
+
+
+-- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
+-- przy usunieciu pracownika jest dodawany do archiwum
+
+-- trigger - instead of insert - przy wstawianiu rezerwacji do archiwum, wstawiana jest rezerwacja z cena za telefon wyliczona funkcji
+
+-- trigger - after update premia - jesli zwiekszy sie premia o wiecej niz 10 procent zwieksz pensje o polowe premii
+

@@ -1209,6 +1209,9 @@ VALUES ('12432', '2020/02/13 04:45:59', '2020/02/13 05:54:11', 155);
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne(numer_telefonu, data_rozpoczecia_rozmowy, data_zakonczenia_rozmowy,
                                                  id_pokoju)
 VALUES ('205948876', '2020/02/28 13:17:23', '2020/02/28 14:45:13', 160);
+INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne(numer_telefonu, data_rozpoczecia_rozmowy, data_zakonczenia_rozmowy,
+                                                 id_pokoju)
+VALUES ('305869543', '2019/09/17 15:19:25', '2020/02/28 15:41:10', 110);
 GO
 
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne(numer_telefonu, data_rozpoczecia_rozmowy, data_zakonczenia_rozmowy,
