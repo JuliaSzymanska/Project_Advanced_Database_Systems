@@ -1,11 +1,11 @@
 -- 1. Wyœwietl liczbê pokoi w ka¿dym z hoteli. Na koñcu dodaj podsumowanie ile jest ³¹cznie pokoi.
-SELECT case when h.nazwa_hotelu is null then 'Suma' else h.nazwa_hotelu end as 'Nazwa Hotelu',
-       COUNT(*)                                                             as 'Liczba pokoi'
+SELECT IIF(h.nazwa_hotelu is null, 'Suma', h.nazwa_hotelu) as 'Nazwa Hotelu',
+       COUNT(*)                                            as 'Liczba pokoi'
 FROM siec_hoteli.dbo.pokoje p,
      siec_hoteli.dbo.hotele h
 WHERE p.id_hotelu = h.id_hotelu
 GROUP BY ROLLUP (nazwa_hotelu)
-ORDER BY CASE WHEN h.nazwa_hotelu IS NULL THEN 1 else 0 END,
+ORDER BY IIF(h.nazwa_hotelu IS NULL, 1, 0),
          [Nazwa Hotelu]
 GO
 
