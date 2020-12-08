@@ -277,32 +277,33 @@ BEGIN
 END;
 GO
 
-SELECT * FROM siec_hoteli..archiwum_rezerwacji
+--SELECT * FROM siec_hoteli..archiwum_rezerwacji
 
-UPDATE siec_hoteli..archiwum_rezerwacji
-SET cena_za_telefon = t.suma_cen
-FROM 
-    (
-        SELECT r.id_pokoju, rt.data_rozpoczecia_rozmowy,
-		SUM(DATEDIFF(MINUTE, rt.data_rozpoczecia_rozmowy, rt.data_zakonczenia_rozmowy) * h.cena_za_polaczenie_telefoniczne *  dbo.oblicz_wspoczynnik(rt.numer_telefonu, rt.id_pokoju)) suma_cen
-        FROM siec_hoteli..rozmowy_telefoniczne rt, siec_hoteli..hotele h, siec_hoteli..pokoje p, siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r
-        WHERE ar.id_rezerwacji = r.id_rezerwacji
-		AND r.id_pokoju = p.id_pokoju
-		AND rt.id_pokoju = p.id_pokoju
-		AND p.id_hotelu = h.id_hotelu
-		AND r.data_rezerwacji < rt.data_rozpoczecia_rozmowy
-		AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
-        GROUP BY r.id_pokoju, rt.data_rozpoczecia_rozmowy
-    ) t, siec_hoteli..rezerwacje r2
-WHERE siec_hoteli..archiwum_rezerwacji.id_rezerwacji = r2.id_rezerwacji
-AND r2.id_pokoju = t.id_pokoju
-AND r2.data_rezerwacji < t.data_rozpoczecia_rozmowy
-AND DATEADD(DAY, r2.liczba_dni_rezerwacji, r2.data_rezerwacji) > t.data_rozpoczecia_rozmowy
+--UPDATE siec_hoteli..archiwum_rezerwacji
+--SET cena_za_telefon = t.suma_cen
+--FROM 
+--    (
+--        SELECT r.id_pokoju, rt.data_rozpoczecia_rozmowy,
+--		SUM(DATEDIFF(MINUTE, rt.data_rozpoczecia_rozmowy, rt.data_zakonczenia_rozmowy) * h.cena_za_polaczenie_telefoniczne *  dbo.oblicz_wspoczynnik(rt.numer_telefonu, rt.id_pokoju)) suma_cen
+--        FROM siec_hoteli..rozmowy_telefoniczne rt, siec_hoteli..hotele h, siec_hoteli..pokoje p, siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r
+--        WHERE ar.id_rezerwacji = r.id_rezerwacji
+--		AND r.id_pokoju = p.id_pokoju
+--		AND rt.id_pokoju = p.id_pokoju
+--		AND p.id_hotelu = h.id_hotelu
+--		AND r.data_rezerwacji < rt.data_rozpoczecia_rozmowy
+--		AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
+--        GROUP BY r.id_pokoju, rt.data_rozpoczecia_rozmowy
+--    ) t, siec_hoteli..rezerwacje r2
+--WHERE siec_hoteli..archiwum_rezerwacji.id_rezerwacji = r2.id_rezerwacji
+--AND r2.id_pokoju = t.id_pokoju
+--AND r2.data_rezerwacji < t.data_rozpoczecia_rozmowy
+--AND DATEADD(DAY, r2.liczba_dni_rezerwacji, r2.data_rezerwacji) > t.data_rozpoczecia_rozmowy
 
-SELECT * FROM siec_hoteli..archiwum_rezerwacji
+--SELECT * FROM siec_hoteli..archiwum_rezerwacji
 
 
---19. 
+--19. Stworz procedure, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle, 
+-- dla procentu jest to 1%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.
 GO
 CREATE PROCEDURE premia @id INT = -1, @procent INT = 1
 AS
@@ -344,8 +345,7 @@ BEGIN
 	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
 END
 
--- Trigger 1
-
+-- 20. Stworz wyzwalacz, ktory podczas wstawiania do tabeli archiwum pracownikow zmieni wartosc kolumny czy_aktywny na wartosc 0. 
 use siec_hoteli
 go
 Create Trigger set_czy_aktywny
