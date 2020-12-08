@@ -360,11 +360,6 @@ BEGIN
 END
 
 
-
-
-
-
-
 -- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
 USE siec_hoteli
 GO
@@ -434,11 +429,10 @@ CREATE TRIGGER ustaw_cene_archiwum
     ON siec_hoteli.dbo.archiwum_rezerwacji
     AFTER INSERT
     AS
-    
+
 GO
 USE master
 GO
-
 
 
 --------------------------------------------------------------------------------
@@ -463,13 +457,18 @@ BEGIN
                                                  AND p.id_pokoju = rez.id_pokoju
                                                  AND @id_rezerwacji_archiwalnej =
                                                      siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji_arch
+                                                 AND rt.data_rozpoczecia_rozmowy > rez.data_rezerwacji
+                                                 AND rt.data_rozpoczecia_rozmowy <
+                                                     DATEADD(DAY, rez.liczba_dni_rezerwacji, rez.data_rezerwacji)
     )
     WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
 
-SELECT * FROM siec_hoteli..archiwum_rezerwacji
-SELECT * FROM siec_hoteli..rozmowy_telefoniczne
+SELECT *
+FROM siec_hoteli..archiwum_rezerwacji
+SELECT *
+FROM siec_hoteli..rozmowy_telefoniczne
 
 
 -- Sprawdzenie dzialania wyzwalacza.
@@ -481,8 +480,12 @@ INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1050);
 
-SELECT * FROM siec_hoteli..rezerwacje where data_rezerwacji < GETDATE()
-SELECT * FROM siec_hoteli..archiwum_rezerwacji order by id_rezerwacji
+SELECT *
+FROM siec_hoteli..rezerwacje
+WHERE data_rezerwacji < GETDATE()
+SELECT *
+FROM siec_hoteli..archiwum_rezerwacji
+ORDER BY id_rezerwacji
 
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
 -- przy usunieciu pracownika jest dodawany do archiwum
