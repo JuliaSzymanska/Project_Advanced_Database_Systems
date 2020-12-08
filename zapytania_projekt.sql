@@ -472,28 +472,6 @@ BEGIN
 	WHERE t.id_rezerwacji = arch.id_rezerwacji
 	AND arch.id_rezerwacji = @id_rezerwacji_archiwalnej
 	AND r.id_rezerwacji = @id_rezerwacji
-
-
-    UPDATE siec_hoteli..archiwum_rezerwacji
-    SET archiwum_rezerwacji.cena_za_telefon = (SELECT SUM(DATEDIFF(MINUTE, rt.data_rozpoczecia_rozmowy,
-                                                                   rt.data_zakonczenia_rozmowy) *
-                                                          h.cena_za_polaczenie_telefoniczne *
-                                                          dbo.oblicz_wspoczynnik(rt.numer_telefonu, rt.id_pokoju))
-                                               FROM siec_hoteli..rozmowy_telefoniczne rt,
-                                                    siec_hoteli..rezerwacje rez,
-                                                    siec_hoteli..hotele h,
-                                                    siec_hoteli..pokoje p
-                                               WHERE rez.id_pokoju = rt.id_pokoju
-                                                 AND @id_rezerwacji = rez.id_rezerwacji
-                                                 AND h.id_hotelu = p.id_hotelu
-                                                 AND p.id_pokoju = rez.id_pokoju
-                                                 AND @id_rezerwacji_archiwalnej =
-                                                     siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji_arch
-                                                 AND rt.data_rozpoczecia_rozmowy > rez.data_rezerwacji
-                                                 AND rt.data_rozpoczecia_rozmowy <
-                                                     DATEADD(DAY, rez.liczba_dni_rezerwacji, rez.data_rezerwacji)
-    )
-    WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
 
