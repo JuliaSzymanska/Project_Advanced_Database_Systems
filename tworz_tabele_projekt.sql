@@ -260,7 +260,7 @@ GO
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
     ADD CONSTRAINT archiwum_rezerwacji_id_pk PRIMARY KEY (id_rezerwacji);
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
-    ADD CONSTRAINT cena_calkowita_check CHECK (cena_calkowita > 0);
+    ADD CONSTRAINT cena_calkowita_check CHECK (cena_calkowita >= 0);
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji
     ADD CONSTRAINT cena_za_telefon_check CHECK (cena_za_telefon >= 0);
 ALTER TABLE siec_hoteli.dbo.archiwum_rezerwacji

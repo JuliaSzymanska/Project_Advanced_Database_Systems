@@ -424,7 +424,7 @@ GO
 GO
 DROP PROCEDURE IF EXISTS ustaw_cene_za_telefon
 GO
-CREATE PROCEDURE ustaw_cene_za_telefon @id_rezerwacji INT, @id_rezerwacji_archiwalnej INT
+CREATE PROCEDURE ustaw_cene_za_telefon @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -440,8 +440,6 @@ BEGIN
                                                  AND @id_rezerwacji = rez.id_rezerwacji
                                                  AND h.id_hotelu = p.id_hotelu
                                                  AND p.id_pokoju = rez.id_pokoju
-                                                 AND @id_rezerwacji_archiwalnej =
-                                                     siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji_arch
                                                  AND rt.data_rozpoczecia_rozmowy > rez.data_rezerwacji
                                                  AND rt.data_rozpoczecia_rozmowy <
                                                      DATEADD(DAY, rez.liczba_dni_rezerwacji, rez.data_rezerwacji)
@@ -476,17 +474,20 @@ BEGIN
 END
 GO
 
-SELECT * FROM siec_hoteli..archiwum_rezerwacji where id_rezerwacji = 1009
+SELECT *
+FROM siec_hoteli..archiwum_rezerwacji
+WHERE id_rezerwacji = 1009
 EXEC ustaw_cene_za_uslugi 1009
-SELECT * FROM siec_hoteli..archiwum_rezerwacji where id_rezerwacji = 1009
-
+SELECT *
+FROM siec_hoteli..archiwum_rezerwacji
+WHERE id_rezerwacji = 1009
 
 
 --------------------------------------------------------------------------------
 GO
 DROP PROCEDURE IF EXISTS ustaw_cene_calkowita
 GO
-CREATE PROCEDURE ustaw_cene_calkowita @id_rezerwacji_arch INT
+CREATE PROCEDURE ustaw_cene_calkowita @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -521,7 +522,7 @@ CREATE TRIGGER ustaw_cene_archiwum
     DECLARE
         @id_rez INT, @id_rez_arch INT
 DECLARE kursor CURSOR FOR
-    SELECT id_rezerwacji, id_rezerwacji_arch
+    SELECT id_rezerwacji
     FROM inserted
 
 BEGIN
@@ -530,7 +531,7 @@ BEGIN
     WHILE @@FETCH_STATUS = 0
         BEGIN
             EXEC ustaw_cene_za_telefon @id_rez, @id_rez_arch
-			EXEC ustaw_cene_za_uslugi @id_rez
+            EXEC ustaw_cene_za_uslugi @id_rez
 
             FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
         END
