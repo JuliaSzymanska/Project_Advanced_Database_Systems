@@ -329,3 +329,13 @@ GO
 
 -- Trigger 1
 
+use siec_hoteli
+go
+Create Trigger set_czy_aktywny
+    on dbo.archiwum_pracownikow
+    for insert
+    as
+    update dbo.pracownicy
+    set dbo.pracownicy.czy_aktywny = 0
+    where dbo.pracownicy.id_pracownika = inserted.id_pracownika
+go
