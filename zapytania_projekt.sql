@@ -429,7 +429,21 @@ CREATE TRIGGER ustaw_cene_archiwum
     ON siec_hoteli.dbo.archiwum_rezerwacji
     AFTER INSERT
     AS
-
+		DECLARE @id_rez INT, @id_rez_arch INT
+		DECLARE kursor CURSOR FOR
+			SELECT id_rezerwacji, id_rezerwacji_arch FROM inserted
+		
+		BEGIN
+			OPEN kursor
+			FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
+			WHILE @@FETCH_STATUS = 0
+				BEGIN
+					EXEC ustaw_cene_za_telefon @id_rez, @id_rez_arch
+					FETCH NEXT FROM kursor INTO @id_rez, @id_rez_arch
+				END
+			CLOSE kursor
+			DEALLOCATE kursor
+		END
 GO
 USE master
 GO
