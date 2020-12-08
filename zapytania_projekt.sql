@@ -2,10 +2,9 @@
 -- numer_telefonu, id_pokoju. Jeœli numer telefonu, na który zosta³o wykonane po³¹czenie nale¿y do któregoœ z pokoi w hotelu z którego wykonano po³¹czenie 
 -- (na podstawie id_pokoju uzyskujemy id_hotelu z którego wykonano po³¹czenie) wtedy wspó³czynnik ustawiany jest na 0. Dla numeru telefonu pokoju znajduj¹cego 
 -- siê w innym hotelu wspó³czynnik ustawiany jest na 0.5, dla numerów telefonów spoza hotelu wspó³czynnik ustawiany jest na 1.
-
 GO
 CREATE OR
-ALTER FUNCTION oblicz_wspoczynnik(@numer_telefonu VARCHAR(9),
+ALTER FUNCTION [dbo].[oblicz_wspoczynnik](@numer_telefonu VARCHAR(9),
                                   @id_pokoju INT)
     RETURNS FLOAT(2)
 AS
@@ -148,9 +147,7 @@ GO
 
 
 --------------------------------------------------------------------------------
-GO
-USE siec_hoteli
-GO
+
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
 GO
 CREATE PROCEDURE [dbo].[ustaw_cene_za_telefon] @id_rezerwacji INT
@@ -176,13 +173,8 @@ BEGIN
     WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
-USE master
-GO
-
 
 --------------------------------------------------------------------------------
-GO
-USE siec_hoteli
 GO
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_uslugi]
 GO
@@ -206,8 +198,6 @@ BEGIN
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
-USE master
-GO
 
 --SELECT *
 --FROM siec_hoteli..archiwum_rezerwacji
@@ -219,8 +209,6 @@ GO
 
 
 --------------------------------------------------------------------------------
-GO
-USE siec_hoteli
 GO
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_wynajecie_pokoju]
 GO
@@ -239,8 +227,6 @@ BEGIN
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
-USE master
-GO
 
 --SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob *
 --       r.liczba_dni_rezerwacji cena_rezerwacji
@@ -256,8 +242,6 @@ GO
 
 --------------------------------------------------------------------------------
 GO
-USE siec_hoteli
-GO
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_calkowita]
 GO
 CREATE PROCEDURE [dbo].[ustaw_cene_calkowita] @id_rezerwacji INT
@@ -267,8 +251,6 @@ BEGIN
     SET cena_calkowita = cena_za_uslugi + cena_za_telefon + cena_wynajecia_pokoju
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
-GO
-USE master
 GO
 
 
@@ -295,10 +277,10 @@ BEGIN
     FETCH NEXT FROM kursor INTO @id_rez
     WHILE @@FETCH_STATUS = 0
         BEGIN
-            EXEC [dbo].[ustaw_cene_za_telefon] @id_rez
-            EXEC [dbo].[ustaw_cene_za_uslugi] @id_rez
-            EXEC [dbo].[ustaw_cene_za_wynajecie_pokoju] @id_rez
-            EXEC [dbo].[ustaw_cene_calkowita] @id_rez
+            EXEC [master].[dbo].[ustaw_cene_za_telefon] @id_rez
+            EXEC [master].[dbo].[ustaw_cene_za_uslugi] @id_rez
+            EXEC [master].[dbo].[ustaw_cene_za_wynajecie_pokoju] @id_rez
+            EXEC [master].[dbo].[ustaw_cene_calkowita] @id_rez
             FETCH NEXT FROM kursor INTO @id_rez
         END
     CLOSE kursor
@@ -311,8 +293,6 @@ GO
 
 SELECT * FROM siec_hoteli..archiwum_rezerwacji
 
-USE siec_hoteli
-GO
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
@@ -391,7 +371,5 @@ INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon,
 VALUES (0, 0, 0, 1048);
 GO
 
-USE master
-GO
 
 SELECT * FROM siec_hoteli..archiwum_rezerwacji
