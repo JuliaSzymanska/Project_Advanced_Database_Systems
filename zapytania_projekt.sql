@@ -414,25 +414,55 @@ CREATE TRIGGER przenies_do_anulowanych
     ON siec_hoteli.dbo.rezerwacje
     FOR DELETE
     AS
-    INSERT INTO siec_hoteli.dbo.anulowane_rezerwacje select d.id_rezerwacji, d.data_rezerwacji, d.liczba_dni_rezerwacji, d.id_pokoju, d.id_klienta from deleted d
+    INSERT INTO siec_hoteli.dbo.anulowane_rezerwacje
+    SELECT d.id_rezerwacji, d.data_rezerwacji, d.liczba_dni_rezerwacji, d.id_pokoju, d.id_klienta
+    FROM deleted d
 GO
 USE master
 GO
 
 -- Sprawdzenie dzialania wyzwalacza.
 BEGIN
-SELECT * FROM siec_hoteli..rezerwacje
-SELECT * from siec_hoteli..anulowane_rezerwacje
+    SELECT * FROM siec_hoteli..rezerwacje
+    SELECT * FROM siec_hoteli..anulowane_rezerwacje
 
-DELETE siec_hoteli..rezerwacje
-WHERE id_rezerwacji = 1000
+    DELETE siec_hoteli..rezerwacje
+    WHERE id_rezerwacji = 1000
 
-SELECT * FROM siec_hoteli..rezerwacje
-SELECT * from siec_hoteli..anulowane_rezerwacje
+    SELECT * FROM siec_hoteli..rezerwacje
+    SELECT * FROM siec_hoteli..anulowane_rezerwacje
 END
 GO
 
-
+USE siec_hoteli
+GO
+DROP TRIGGER IF EXISTS ustaw_cene_archiwum
+GO
+CREATE TRIGGER ustaw_cene_archiwum
+    ON siec_hoteli.dbo.archiwum_rezerwacji
+    AFTER INSERT
+    AS
+    UPDATE siec_hoteli..archiwum_rezerwacji
+    SET archiwum_rezerwacji.cena_za_telefon = (SELECT SUM(DATEDIFF(MINUTE, rt.data_rozpoczecia_rozmowy,
+                                                                   rt.data_zakonczenia_rozmowy) *
+                                                          h.cena_za_polaczenie_telefoniczne *
+                                                          dbo.oblicz_wspoczynnik(rt.numer_telefonu, rt.id_pokoju))
+                                               FROM inserted i,
+                                                    siec_hoteli..rozmowy_telefoniczne rt,
+                                                    siec_hoteli..rezerwacje rez,
+                                                    siec_hoteli..hotele h,
+                                                    siec_hoteli..pokoje p
+                                               WHERE rez.id_pokoju = rt.id_pokoju
+                                                 AND i.id_rezerwacji = rez.id_rezerwacji
+                                                 AND h.id_hotelu = p.id_hotelu
+                                                 AND p.id_pokoju = rez.id_pokoju
+                                                 AND i.id_rezerwacji_arch =
+                                                     siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji_arch
+    )
+    WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = (SELECT i.id_rezerwacji FROM inserted i)
+GO
+USE master
+GO
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
 -- przy usunieciu pracownika jest dodawany do archiwum
 
