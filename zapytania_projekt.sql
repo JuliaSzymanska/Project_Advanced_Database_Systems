@@ -422,6 +422,8 @@ GO
 
 --------------------------------------------------------------------------------
 GO
+USE siec_hoteli
+GO
 DROP PROCEDURE IF EXISTS dbo.ustaw_cene_za_telefon
 GO
 CREATE PROCEDURE dbo.ustaw_cene_za_telefon @id_rezerwacji INT
@@ -447,13 +449,17 @@ BEGIN
     WHERE siec_hoteli.dbo.archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
+USE master
+GO
 
 
 --------------------------------------------------------------------------------
 GO
-DROP PROCEDURE IF EXISTS dbo.ustaw_cene_za_uslugi
+USE siec_hoteli
 GO
-CREATE PROCEDURE dbo.ustaw_cene_za_uslugi @id_rezerwacji INT
+DROP PROCEDURE IF EXISTS [dbo].ustaw_cene_za_uslugi
+GO
+CREATE PROCEDURE [dbo].ustaw_cene_za_uslugi @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
@@ -473,19 +479,21 @@ BEGIN
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
+USE master
+GO
 
 SELECT *
 FROM siec_hoteli..archiwum_rezerwacji
 WHERE id_rezerwacji = 1009
-EXEC ustaw_cene_za_uslugi 1009
+EXEC dbo.ustaw_cene_za_uslugi 1009
 SELECT *
 FROM siec_hoteli..archiwum_rezerwacji
 WHERE id_rezerwacji = 1009
-
-
 
 
 --------------------------------------------------------------------------------
+GO
+USE siec_hoteli
 GO
 DROP PROCEDURE IF EXISTS dbo.ustaw_cene_za_wynajecie_pokoju
 GO
@@ -493,22 +501,33 @@ CREATE PROCEDURE dbo.ustaw_cene_za_wynajecie_pokoju @id_rezerwacji INT
 AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
-    SET cena_wynajecia_pokoju = (SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob * r.liczba_dni_rezerwacji cena_rezerwacji
-									FROM siec_hoteli..rezerwacje r, siec_hoteli..hotele h, siec_hoteli..pokoje p
-									WHERE r.id_pokoju = p.id_pokoju
-									AND p.id_hotelu = h.id_hotelu
-									AND r.id_rezerwacji = id_rezerwacji)
+    SET cena_wynajecia_pokoju = (SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob *
+                                        r.liczba_dni_rezerwacji cena_rezerwacji
+                                 FROM siec_hoteli..rezerwacje r,
+                                      siec_hoteli..hotele h,
+                                      siec_hoteli..pokoje p
+                                 WHERE r.id_pokoju = p.id_pokoju
+                                   AND p.id_hotelu = h.id_hotelu
+                                   AND r.id_rezerwacji = id_rezerwacji)
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
 
-SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob * r.liczba_dni_rezerwacji cena_rezerwacji
-FROM siec_hoteli..rezerwacje r, siec_hoteli..hotele h, siec_hoteli..pokoje p
+SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob *
+       r.liczba_dni_rezerwacji cena_rezerwacji
+FROM siec_hoteli..rezerwacje r,
+     siec_hoteli..hotele h,
+     siec_hoteli..pokoje p
 WHERE r.id_pokoju = p.id_pokoju
-AND p.id_hotelu = h.id_hotelu
+  AND p.id_hotelu = h.id_hotelu
+GO
+USE master
+GO
 
 
 --------------------------------------------------------------------------------
+GO
+USE siec_hoteli
 GO
 DROP PROCEDURE IF EXISTS dbo.ustaw_cene_calkowita
 GO
@@ -519,6 +538,8 @@ BEGIN
     SET cena_calkowita = cena_za_uslugi + cena_za_telefon + cena_wynajecia_pokoju
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
+GO
+USE master
 GO
 
 
@@ -533,7 +554,8 @@ CREATE TRIGGER ustaw_cene_archiwum
     ON siec_hoteli.dbo.archiwum_rezerwacji
     AFTER INSERT
     AS
-    DECLARE @id_rez INT
+    DECLARE
+        @id_rez INT
 DECLARE kursor CURSOR FOR
     SELECT id_rezerwacji
     FROM inserted
@@ -543,10 +565,10 @@ BEGIN
     FETCH NEXT FROM kursor INTO @id_rez
     WHILE @@FETCH_STATUS = 0
         BEGIN
-            EXEC dbo.ustaw_cene_za_telefon @id_rez
+            EXEC [dbo].ustaw_cene_za_telefon @id_rez
             EXEC dbo.ustaw_cene_za_uslugi @id_rez
-			EXEC dbo.ustaw_cene_za_wynajecie_pokoju @id_rez
-			EXEC dbo.ustaw_cene_calkowita  @id_rez
+            EXEC dbo.ustaw_cene_za_wynajecie_pokoju @id_rez
+            EXEC dbo.ustaw_cene_calkowita @id_rez
             FETCH NEXT FROM kursor INTO @id_rez
         END
     CLOSE kursor
@@ -576,9 +598,6 @@ ORDER BY id_rezerwacji
 
 -- trigger - on delete - przy usunieciu klienta usuwane sa jego wszystkie rezerwacje, 
 -- przy usunieciu pracownika jest dodawany do archiwum
-
-
-
 
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
