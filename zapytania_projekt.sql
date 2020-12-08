@@ -211,8 +211,8 @@ AND p.id_hotelu = h.id_hotelu
 AND h.id_miasta = m.id_miasta
 AND m.id_panstwa = pan.id_panstwa
 
--- 18 Wypisz klijentów, którzy mieli rezerwacje, posortowani po sumie wartoœci ich rezerwacji
 
+-- 18 Wypisz klijentów, którzy mieli rezerwacje, posortowani po sumie wartoœci ich rezerwacji
 select sum(h.cena_bazowa_za_pokoj * r.liczba_dni_rezerwacji) suma, k.imie_klienta, k.nazwisko_klienta from siec_hoteli..klienci k, siec_hoteli..rezerwacje r, siec_hoteli..pokoje p, siec_hoteli..hotele h
 where k.id_klienta = r.id_klienta and r.id_pokoju = p.id_pokoju and h.id_hotelu = p.id_hotelu
 group by k.id_klienta, k.imie_klienta, k.nazwisko_klienta
@@ -235,12 +235,13 @@ order by suma desc
 --FROM hotele
 --GO
 
-----------------------------------------Napisac cos co wyswietli wszystkich klientow ktorzy dzownili --------------------------------------------------------
+
 -- 17. Dodaj funkcjê zwracaj¹c¹ wspó³czynnik z jakim trzeba bêdzie pomno¿yæ cenê za po³¹czenie telefoniczne. Funkcja ma przyjmowaæ dwa argumenty:
 -- numer_telefonu, id_pokoju. Jeœli numer telefonu, na który zosta³o wykonane po³¹czenie nale¿y do któregoœ z pokoi w hotelu z którego wykonano po³¹czenie 
 -- (na podstawie id_pokoju uzyskujemy id_hotelu z którego wykonano po³¹czenie) wtedy wspó³czynnik ustawiany jest na 0. Dla numeru telefonu pokoju znajduj¹cego 
 -- siê w innym hotelu wspó³czynnik ustawiany jest na 0.5, dla numerów telefonów spoza hotelu wspó³czynnik ustawiany jest na 1.
 
+GO
 CREATE OR
 ALTER FUNCTION oblicz_wspoczynnik(@numer_telefonu VARCHAR(9),
                                   @id_pokoju INT)
@@ -276,8 +277,33 @@ BEGIN
 END;
 GO
 
---19. 
+SELECT * FROM siec_hoteli..archiwum_rezerwacji
 
+UPDATE siec_hoteli..archiwum_rezerwacji
+SET cena_za_telefon = t.suma_cen
+FROM 
+    (
+        SELECT r.id_pokoju, rt.data_rozpoczecia_rozmowy,
+		SUM(DATEDIFF(MINUTE, rt.data_rozpoczecia_rozmowy, rt.data_zakonczenia_rozmowy) * h.cena_za_polaczenie_telefoniczne *  dbo.oblicz_wspoczynnik(rt.numer_telefonu, rt.id_pokoju)) suma_cen
+        FROM siec_hoteli..rozmowy_telefoniczne rt, siec_hoteli..hotele h, siec_hoteli..pokoje p, siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r
+        WHERE ar.id_rezerwacji = r.id_rezerwacji
+		AND r.id_pokoju = p.id_pokoju
+		AND rt.id_pokoju = p.id_pokoju
+		AND p.id_hotelu = h.id_hotelu
+		AND r.data_rezerwacji < rt.data_rozpoczecia_rozmowy
+		AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
+        GROUP BY r.id_pokoju, rt.data_rozpoczecia_rozmowy
+    ) t, siec_hoteli..rezerwacje r2
+WHERE siec_hoteli..archiwum_rezerwacji.id_rezerwacji = r2.id_rezerwacji
+AND r2.id_pokoju = t.id_pokoju
+AND r2.data_rezerwacji < t.data_rozpoczecia_rozmowy
+AND DATEADD(DAY, r2.liczba_dni_rezerwacji, r2.data_rezerwacji) > t.data_rozpoczecia_rozmowy
+
+SELECT * FROM siec_hoteli..archiwum_rezerwacji
+
+
+--19. 
+GO
 CREATE PROCEDURE premia @id INT = -1, @procent INT = -1
 AS
 BEGIN
@@ -339,3 +365,4 @@ Create Trigger set_czy_aktywny
     set dbo.pracownicy.czy_aktywny = 0
     where dbo.pracownicy.id_pracownika = inserted.id_pracownika
 go
+
