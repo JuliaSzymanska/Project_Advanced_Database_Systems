@@ -56,10 +56,10 @@ CREATE TABLE siec_hoteli.dbo.pracownicy
     nazwisko_pracownika       VARCHAR(40)        NOT NULL,
     email_pracownika          VARCHAR(40) UNIQUE NOT NULL,
     numer_telefonu_pracownika CHAR(9) UNIQUE     NOT NULL,
-	data_urodzenia			  DATETIME,			 
+    data_urodzenia            DATETIME,
     pensja                    MONEY,
     premia                    DECIMAL(2, 2),
-	poczatek_pracy			  DATETIME			 NOT NULL	DEFAULT GETDATE(),
+    poczatek_pracy            DATETIME           NOT NULL DEFAULT GETDATE(),
     id_hotelu                 INT                NOT NULL,
 );
 GO
@@ -202,11 +202,11 @@ GO
 
 CREATE TABLE siec_hoteli.dbo.anulowane_rezerwacje
 (
-    id_rezerwacji         INT PRIMARY KEY       NOT NULL,
-    data_rezerwacji       DATE                  NOT NULL,
-    liczba_dni_rezerwacji INT                   NOT NULL,
-    id_pokoju             INT                   NOT NULL,
-    id_klienta            INT                   NOT NULL
+    id_rezerwacji         INT PRIMARY KEY NOT NULL,
+    data_rezerwacji       DATE            NOT NULL,
+    liczba_dni_rezerwacji INT             NOT NULL,
+    id_pokoju             INT             NOT NULL,
+    id_klienta            INT             NOT NULL
 );
 
 ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
@@ -245,7 +245,7 @@ ALTER TABLE siec_hoteli.dbo.usluga_dla_rezerwacji
 ALTER TABLE siec_hoteli.dbo.usluga_dla_rezerwacji
     ADD CONSTRAINT usluga_dla_rezerwacji_usluga_fk FOREIGN KEY (id_uslugi) REFERENCES uslugi (id_uslugi);
 ALTER TABLE siec_hoteli.dbo.usluga_dla_rezerwacji
-    ADD CONSTRAINT usluga_dla_rezerwacji_rezerwacja_fk FOREIGN KEY (id_rezerwacji) REFERENCES rezerwacje (id_rezerwacji) on DELETE CASCADE ;
+    ADD CONSTRAINT usluga_dla_rezerwacji_rezerwacja_fk FOREIGN KEY (id_rezerwacji) REFERENCES rezerwacje (id_rezerwacji) ON DELETE CASCADE;
 GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_rezerwacji

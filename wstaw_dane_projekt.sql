@@ -126,149 +126,149 @@ INSERT INTO siec_hoteli.dbo.miasta(nazwa_miasta, id_panstwa)
 VALUES ('Szawle', 'LT');
 GO
 
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel Hiberia', 'Via XXIV Maggio 7, 00187', 136, 1.25, 10);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel Varese', 'Via Varese 26, 00185', 220, 2.10, 10);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel Bauer Palazzo', 'Calle del Pistor, Dorsoduro 995', 304, 2.50, 12);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel Inn', 'Wall Street - Financial District', 280, 2.20, 22);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('HI NYC Hostel', 'Upper West Side 5', 120, 1.00, 22);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('La Quinta by Wyndham LAX', 'West Century Boulevard CA 90045', 316, 2.35, 24);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Wrigley Hostel', 'North Sheffield Avenue, Lakeview IL 60657', 88, 0.80, 26);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Wicker Park Houstel', 'North Ashland Avenue, Wicker Park 60622', 132, 1.20, 26);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Days Inn by Wyndham Philadelphia', 'Race Street 1227 PA 19107', 308, 2.40, 28);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Sofitel Philadelphia at Rittenhouse Square', '17th Street PA 19103', 492, 3.75, 28);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('The Novotel Toronto Centre', 'The Esplanade M5E 1W2', 388, 4.05, 30);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hampton Inn by Hilton Toronto', 'Eglinton Aveneu West M9C 5K5', 232, 1.70, 30);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Tian Xin Ya Yuan Apartment', 'No 18. Zhujiang Lvzhou Residence, Jianguo Road', 92, 0.50, 34);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('GreenTree Inn Beijing Chaoyang Shilihe Antique City Express Hotel',
         'No. 8 Jiaju Avemue, Jiancaicheng, Shilihe, Chaoyang District', 116, 1.15, 34);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('ITC Maratha Mumbai Airport', 'Project Road, Sahar, Andheri 400099', 196, 1.85, 38);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Oaks Dydney Goldsbrough Suites', '243 Pyrmont Street, 2009', 292, 2.00, 42);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Sydney Hotel QVB', '143 York Street, 2000', 228, 1.50, 42);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Fitzrovia Hotel', '20-28 Bolsover Street W1W 5NB', 316, 2.35, 48);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Docklands Rooms', 'Glengarnock Ave Greater, Tower Hamlets, E14 3BP', 56, 0.10, 48);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Lamington Heights', '501 Lamington Heights, E14', 100, 1.05, 48);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Trellis Square - Deluxe Guest Room', '2DR Trellis Square bow, E3', 100, 0.80, 48);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Jurys Inn Glasgow', '60-96 Jamaica Street, G1 4QG', 196, 1.50, 50);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('ibis Manchester Centre Princess Street', 'Charles Street, M1 7DG', 152, 1.50, 52);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel Jenner', '10 Rue Jenner, 13. dzielnica 75013', 308, 2.80, 56);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel OHM by Happyculture', '11 rue Claude Terrasse, 16. dzielnica, 75016', 268, 2.35, 56);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Residence du Pre', 'Rue Pierre Semard 15, 9. dzielnica, 75009', 224, 1.55, 56);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Golden Tulip Mareille Euromed', '6, Place Henri Verneuil, 13002', 388, 4.00, 58);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Mezzanine en centre ville!', '15 Square de la Rance, 35000', 160, 0.90, 60);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Aparthotel Adagio Access Rennes Centre', '35 Rue d"Antrain, 35700', 208, 1.30, 60);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('H10 Berlin Ku"damm', 'Joachimsthaler Str. 31-32, Charlottenburg-Wilmersdorf, 10719', 268, 1.00, 62);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Generator Berlin Mitte', 'Oranienburger Strasse 65, Mitte, 10117', 48, 0.10, 62);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Zimmervermietung Berlin Mertens', 'Mertensstrasse 9, Spandau, 13587', 104, 0.50, 62);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('IntercityHotel Hamburg Hauptbahnhof', 'Glockengiesserwall 14/15, 20095', 316, 1.65, 64);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Holiday Inn - Hamburg - Berliner Tor', 'Wikingerweg 2, 20537', 264, 2.00, 64);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel Condor', 'Zweigstr 6, Ludwigvorstadt, 80336', 152, 1.20, 66);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Maritim Hotel Muenchen', 'Goethestr. 7, Ludwigvorstadt, 80336', 304, 2.15, 66);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Leonardo Hotel Muenchen City Center', 'Senefelderstr. 4, Ludwigvorstadt, 80336', 276, 1.20, 66);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Arthotel Munich', 'Paul-Heyse-Str. 10, Ludwigvorstadt, 80336', 200, 2.00, 66);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hitol Dresden', 'An der Frauenkirche 5, 01067', 344, 2.45, 68);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Novotel Warszawa Centrum', 'Marszalkowska 94/98, Srodmiescie, 00-510', 220, 1.85, 72);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hampton By Hilton Warsaw Mokotow', 'ul. Postepu 7, Mokotow, 02-676', 184, 1.55, 72);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel Perfekt', 'Kupa 7, Stare Miasto, 31-057', 136, 1.00, 74);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Best Western Premier Hotel City Center', 'Gwarna Street 12, Stare Miasto 50-001', 196, 1.75, 76);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Rezydencja na Wzgorzu', 'ul. Wazow 30/32, 93-435', 136, 0.10, 78);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Hotel Tobaco Lodz', 'Kopernika 64, 90-553', 152, 0.60, 78);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('OYO Hotel Vital', 'Rua Sacadura Cabral 107', 56, 0.05, 80);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Pestana Rio Atlantica', 'Avenida Atlantica, 2964, Copacabana, CEP 22070-000', 292, 1.60, 80);
-insert into siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
+INSERT INTO siec_hoteli.dbo.hotele(nazwa_hotelu, adres_hotelu, cena_bazowa_za_pokoj, cena_za_polaczenie_telefoniczne,
                                    id_miasta)
 VALUES ('Maxhotel', 'Bd. Adolphe Max 107, 1000', 196, 1.99, 90);
 GO
@@ -610,7 +610,7 @@ VALUES ('David', 'Lee', 'davidlee@onet.eu', '510600622', CAST('22-APR-1913' AS D
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Sundar', 'Ande', 'sundarande@onet.eu','210377213', CAST('22-APR-1973' AS DATETIME),  2050, NULL,
+VALUES ('Sundar', 'Ande', 'sundarande@onet.eu', '210377213', CAST('22-APR-1973' AS DATETIME), 2050, NULL,
         CAST('22-APR-2012' AS DATETIME), 131);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
