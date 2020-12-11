@@ -1,3 +1,10 @@
+-- Julia Szymanska 224441
+-- Przemek Zdrzalik 224466
+-- Martyna Piasecka 224398
+
+USE siec_hoteli
+GO
+
 INSERT INTO siec_hoteli.dbo.panstwa (id_panstwa, nazwa_panstwa)
 VALUES ('IT', 'Wlochy');
 INSERT INTO siec_hoteli.dbo.panstwa (id_panstwa, nazwa_panstwa)

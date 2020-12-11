@@ -1,3 +1,7 @@
+-- Julia Szymanska 224441
+-- Przemek Zdrzalik 224466
+-- Martyna Piasecka 224398
+
 -- 1. Wyœwietl liczbê pokoi w ka¿dym z hoteli. Na koñcu dodaj podsumowanie ile jest ³¹cznie pokoi.
 SELECT IIF(h.nazwa_hotelu IS NULL, 'Suma', h.nazwa_hotelu) AS 'Nazwa Hotelu',
        COUNT(*)                                            AS 'Liczba pokoi'
@@ -136,7 +140,6 @@ GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, p.poczatek_pr
 
 
 -- 13. Wyœwietla panstwo, w ktorym najwiecej sie wydaje na oplacenie pracownikow.
-
 SELECT SUM(p.pensja) suma, pan.nazwa_panstwa
 FROM siec_hoteli..panstwa pan,
      siec_hoteli..miasta m,
@@ -229,3 +232,37 @@ WHERE k.id_klienta = r.id_klienta
   AND h.id_hotelu = p.id_hotelu
 GROUP BY k.id_klienta, k.imie_klienta, k.nazwisko_klienta
 ORDER BY suma DESC
+
+-- 19 Wyœwietl nazwiska, identyfikator oraz nazwê hotelu, w którym pracuj¹ dla pracowników pracuj¹cych w Los Angeles
+SELECT p.nazwisko_pracownika, p.id_pracownika, h.nazwa_hotelu
+FROM	siec_hoteli..pracownicy p, 
+		siec_hoteli..hotele h
+WHERE p.id_hotelu = h.id_hotelu
+AND h.id_miasta IN 
+(SELECT id_miasta FROM miasta WHERE nazwa_miasta = 'Los Angeles')
+
+-- 20 Wyœwietl nazwiska, wynagrodzenie oraz prowizjê dla tych pracowników, którzy maj¹ prowizjê
+SELECT nazwisko_pracownika, pensja, premia
+FROM siec_hoteli..pracownicy
+WHERE siec_hoteli..pracownicy.premia IS NOT NULL
+	AND siec_hoteli..pracownicy.premia > 0.00
+ORDER BY siec_hoteli..pracownicy.premia DESC
+
+-- 21 Wyœwietl imiona i nazwiska tych pracowników, którzy trzeci¹ liter¹ nazwiska jest "i". Rezultat nazwij pracownicy
+-- i przedstaw w postaci jednego ci¹gu znaków
+SELECT (p.imie_pracownika + ' ' + p.nazwisko_pracownika) AS pracownicy 
+FROM siec_hoteli..pracownicy p
+WHERE p.nazwisko_pracownika LIKE '__i%'
+
+-- 22 Wyswietl nazwy krajów, których pierwsza i ostatnia litera s¹ takie same
+SELECT p.nazwa_panstwa
+FROM siec_hoteli..panstwa p
+WHERE RIGHT(p.nazwa_panstwa,1) = LEFT(p.nazwa_panstwa,1)
+
+-- 23 Wyœwietl nazwy miast, w których nie ma ¿adnego hotelu z sieci hoteli
+SELECT m.nazwa_miasta
+FROM siec_hoteli..miasta m
+WHERE m.nazwa_miasta NOT IN(
+		SELECT nazwa_miasta
+		FROM siec_hoteli..hotele h
+		JOIN siec_hoteli..miasta m ON m.id_miasta = h.id_miasta)
