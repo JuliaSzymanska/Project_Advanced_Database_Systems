@@ -5,6 +5,46 @@
 USE siec_hoteli
 GO
 
+
+-- Napisz funkcjê podaj¹c¹ dla ka¿dego kraju, ile procent wszystkich hoteli znajduje siê w tym kraju.
+-- Wywo³aj j¹ wewn¹trz zapytania daj¹cego wynik w postaci dwóch kolumn: nazwa_kraju, nazwa_funkcji
+IF EXISTS(SELECT 1
+          FROM sys.objects
+          WHERE type = 'FN'
+            AND name = 'okreslProcent')
+    DROP FUNCTION okreslProcent
+GO
+CREATE FUNCTION okreslProcent (@id CHAR(2))
+	RETURNS FLOAT
+AS
+BEGIN
+	DECLARE @procent FLOAT
+	DECLARE @ileOgolem FLOAT, @ileWKraju FLOAT
+
+	SET @ileWKraju =	(SELECT COUNT(*) 
+						FROM	siec_hoteli..hotele h, 
+								siec_hoteli..miasta m,
+								siec_hoteli..panstwa p
+						WHERE m.id_miasta = h.id_miasta
+							AND p.id_panstwa = m.id_panstwa
+							AND p.id_panstwa = @id)
+
+	SET @ileOgolem =	(SELECT COUNT(*) 
+						FROM siec_hoteli..hotele)
+
+	SET @procent = (@ileWKraju/@ileOgolem) * 100
+
+	RETURN @procent
+END
+GO
+
+SELECT DISTINCT p.nazwa_panstwa, dbo.okreslProcent(p.id_panstwa) AS 'procent_oddzialow'
+FROM siec_hoteli..panstwa p
+ORDER BY dbo.okreslProcent(p.id_panstwa) DESC
+GO
+
+
+
 -- Dodaj funkcjê zwracaj¹c¹ wspó³czynnik z jakim trzeba bêdzie pomno¿yæ cenê za po³¹czenie telefoniczne. Funkcja ma przyjmowaæ dwa argumenty:
 -- numer_telefonu, id_pokoju. Jeœli numer telefonu, na który zosta³o wykonane po³¹czenie nale¿y do któregoœ z pokoi w hotelu z którego wykonano po³¹czenie 
 -- (na podstawie id_pokoju uzyskujemy id_hotelu z którego wykonano po³¹czenie) wtedy wspó³czynnik ustawiany jest na 0. Dla numeru telefonu pokoju znajduj¹cego 
@@ -45,44 +85,6 @@ BEGIN
     RETURN @wspolczynnik;
 END;
 GO
-
--- Napisz funkcjê podaj¹c¹ dla ka¿dego kraju, ile procent wszystkich hoteli znajduje siê w tym kraju.
--- Wywo³aj j¹ wewn¹trz zapytania daj¹cego wynik w postaci dwóch kolumn: nazwa_kraju, nazwa_funkcji
-IF EXISTS(SELECT 1
-          FROM sys.objects
-          WHERE type = 'FN'
-            AND name = 'okreslProcent')
-    DROP FUNCTION okreslProcent
-GO
-CREATE FUNCTION okreslProcent (@id CHAR(2))
-	RETURNS FLOAT
-AS
-BEGIN
-	DECLARE @procent FLOAT
-	DECLARE @ileOgolem FLOAT, @ileWKraju FLOAT
-
-	SET @ileWKraju =	(SELECT COUNT(*) 
-						FROM	siec_hoteli..hotele h, 
-								siec_hoteli..miasta m,
-								siec_hoteli..panstwa p
-						WHERE m.id_miasta = h.id_miasta
-							AND p.id_panstwa = m.id_panstwa
-							AND p.id_panstwa = @id)
-
-	SET @ileOgolem =	(SELECT COUNT(*) 
-						FROM siec_hoteli..hotele)
-
-	SET @procent = (@ileWKraju/@ileOgolem) * 100
-
-	RETURN @procent
-END
-GO
-
-SELECT DISTINCT p.nazwa_panstwa, dbo.okreslProcent(p.id_panstwa) AS 'procent_oddzialow'
-FROM siec_hoteli..panstwa p
-ORDER BY dbo.okreslProcent(p.id_panstwa) DESC
-GO
-
 
 -- Stworz procedure, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle, 
 -- dla procentu jest to 1%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.

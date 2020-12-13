@@ -248,18 +248,7 @@ WHERE siec_hoteli..pracownicy.premia IS NOT NULL
 	AND siec_hoteli..pracownicy.premia > 0.00
 ORDER BY siec_hoteli..pracownicy.premia DESC
 
--- 21 Wyœwietl imiona i nazwiska tych pracowników, którzy trzeci¹ liter¹ nazwiska jest "i". Rezultat nazwij pracownicy
--- i przedstaw w postaci jednego ci¹gu znaków
-SELECT (p.imie_pracownika + ' ' + p.nazwisko_pracownika) AS pracownicy 
-FROM siec_hoteli..pracownicy p
-WHERE p.nazwisko_pracownika LIKE '__i%'
-
--- 22 Wyswietl nazwy krajów, których pierwsza i ostatnia litera s¹ takie same
-SELECT p.nazwa_panstwa
-FROM siec_hoteli..panstwa p
-WHERE RIGHT(p.nazwa_panstwa,1) = LEFT(p.nazwa_panstwa,1)
-
--- 23 Wyœwietl nazwy miast, w których nie ma ¿adnego hotelu z sieci hoteli
+-- 21 Wyœwietl nazwy miast, w których nie ma ¿adnego hotelu z sieci hoteli
 SELECT m.nazwa_miasta
 FROM siec_hoteli..miasta m
 WHERE m.nazwa_miasta NOT IN(
