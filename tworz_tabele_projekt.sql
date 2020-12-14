@@ -87,8 +87,8 @@ GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_pracownikow
 (
-    koniec_pracy       DATETIME           NOT NULL,
-    id_pracownika      INT                NOT NULL
+    koniec_pracy  DATETIME NOT NULL,
+    id_pracownika INT      NOT NULL
 );
 GO
 
@@ -255,11 +255,11 @@ GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_rezerwacji
 (
-    cena_calkowita			MONEY		DEFAULT 0,
-    cena_za_telefon			MONEY		DEFAULT 0,
-    cena_za_uslugi			MONEY		DEFAULT 0,
-	cena_wynajecia_pokoju	MONEY		DEFAULT 0,
-    id_rezerwacji			INT          NOT NULL,
+    cena_calkowita        MONEY DEFAULT 0,
+    cena_za_telefon       MONEY DEFAULT 0,
+    cena_za_uslugi        MONEY DEFAULT 0,
+    cena_wynajecia_pokoju MONEY DEFAULT 0,
+    id_rezerwacji         INT NOT NULL,
 );
 GO
 

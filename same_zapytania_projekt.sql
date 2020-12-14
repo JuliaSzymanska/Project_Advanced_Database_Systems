@@ -235,11 +235,11 @@ ORDER BY suma DESC
 
 -- 19 Wyœwietl nazwiska, identyfikator oraz nazwê hotelu, w którym pracuj¹ dla pracowników pracuj¹cych w Los Angeles
 SELECT p.nazwisko_pracownika, p.id_pracownika, h.nazwa_hotelu
-FROM	siec_hoteli..pracownicy p, 
-		siec_hoteli..hotele h
+FROM siec_hoteli..pracownicy p,
+     siec_hoteli..hotele h
 WHERE p.id_hotelu = h.id_hotelu
-AND h.id_miasta IN 
-(SELECT id_miasta FROM miasta WHERE nazwa_miasta = 'Los Angeles')
+  AND h.id_miasta IN
+      (SELECT id_miasta FROM miasta WHERE nazwa_miasta = 'Los Angeles')
 
 -- 20 Wyœwietl nazwiska, wynagrodzenie oraz prowizjê dla tych pracowników, którzy maj¹ prowizjê
 SELECT nazwisko_pracownika, pensja, premia
@@ -251,7 +251,7 @@ ORDER BY siec_hoteli..pracownicy.premia DESC
 -- 21 Wyœwietl nazwy miast, w których nie ma ¿adnego hotelu z sieci hoteli
 SELECT m.nazwa_miasta
 FROM siec_hoteli..miasta m
-WHERE m.nazwa_miasta NOT IN(
-		SELECT nazwa_miasta
-		FROM siec_hoteli..hotele h
-		JOIN siec_hoteli..miasta m ON m.id_miasta = h.id_miasta)
+WHERE m.nazwa_miasta NOT IN (
+    SELECT nazwa_miasta
+    FROM siec_hoteli..hotele h
+             JOIN siec_hoteli..miasta m ON m.id_miasta = h.id_miasta)
