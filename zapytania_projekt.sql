@@ -2,8 +2,8 @@
 -- Przemek Zdrzalik 224466
 -- Martyna Piasecka 224398
 
-USE siec_hoteli
-GO
+--USE siec_hoteli
+--GO
 
 
 -- Napisz funkcjê podaj¹c¹ dla ka¿dego kraju, ile procent wszystkich hoteli znajduje siê w tym kraju.
@@ -308,6 +308,7 @@ USE siec_hoteli
 GO
 DROP TRIGGER IF EXISTS ustaw_cene_archiwum
 GO
+
 CREATE TRIGGER ustaw_cene_archiwum
     ON siec_hoteli.dbo.archiwum_rezerwacji
     AFTER INSERT
@@ -339,7 +340,7 @@ GO
 
 
 SELECT * FROM siec_hoteli..archiwum_rezerwacji
-
+GO
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)

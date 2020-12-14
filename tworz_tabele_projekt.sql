@@ -6,8 +6,8 @@ DROP DATABASE IF EXISTS siec_hoteli
 CREATE DATABASE siec_hoteli
 GO
 
-USE siec_hoteli
-GO
+--USE siec_hoteli
+--GO
 
 CREATE TABLE siec_hoteli.dbo.panstwa
 (
