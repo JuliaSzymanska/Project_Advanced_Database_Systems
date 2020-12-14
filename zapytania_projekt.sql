@@ -153,3 +153,28 @@ BEGIN
     SELECT * FROM siec_hoteli..anulowane_rezerwacje
 END
 GO
+
+
+-- Wyzwalacz nr. 4
+USE siec_hoteli
+GO
+DROP TRIGGER IF EXISTS czy_rezerwacja_moze_byc_dodana
+GO
+CREATE TRIGGER czy_rezerwacja_moze_byc_dodana
+    ON siec_hoteli.dbo.rezerwacje
+    INSTEAD OF INSERT
+    AS
+    DECLARE @data_poczatkowa DATETIME,  @data_koncowa DATETIME
+	SELECT @data_poczatkowa = i.data_rezerwacji, @data_koncowa = DATEADD(DAY, i.liczba_dni_rezerwacji, i.data_rezerwacji) FROM inserted i
+
+
+
+GO
+USE master
+GO
+
+-- Sprawdzenie dzialania wyzwalacza.
+BEGIN
+
+END
+GO
