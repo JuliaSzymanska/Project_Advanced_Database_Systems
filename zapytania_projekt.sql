@@ -41,10 +41,7 @@ GO
 
 
 
-
-
-
--- Stworz procedure, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle, 
+-- Stworz procedure, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle,
 -- dla procentu jest to 1%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.
 GO
 DROP PROCEDURE IF EXISTS premia_procedura
@@ -152,12 +149,15 @@ GO
 
 
 -- Wyzwalacz nr. 4
-CREATE TYPE tabela_rezerwacji AS TABLE (
-    id_rezerwacji         INT				    NOT NULL,
-    data_rezerwacji       DATE                  NOT NULL,
-    liczba_dni_rezerwacji INT                   NOT NULL,
-    id_pokoju             INT                   NOT NULL,
-    id_klienta            INT                   NOT NULL
+DROP TYPE IF EXISTS dbo.tabela_rezerwacji
+GO
+CREATE TYPE dbo.tabela_rezerwacji AS TABLE
+(
+    id_rezerwacji         INT  NOT NULL,
+    data_rezerwacji       DATE NOT NULL,
+    liczba_dni_rezerwacji INT  NOT NULL,
+    id_pokoju             INT  NOT NULL,
+    id_klienta            INT  NOT NULL
 );
 
 USE siec_hoteli
@@ -169,36 +169,40 @@ CREATE TRIGGER czy_rezerwacja_moze_byc_dodana
     ON siec_hoteli.dbo.rezerwacje
     INSTEAD OF INSERT
     AS
-    DECLARE @data_poczatkowa DATETIME,  @data_koncowa DATETIME
-	SELECT @data_poczatkowa = i.data_rezerwacji, @data_koncowa = DATEADD(DAY, i.liczba_dni_rezerwacji, i.data_rezerwacji) FROM inserted i
+    DECLARE
+        @data_poczatkowa DATETIME, @data_koncowa DATETIME
+SELECT @data_poczatkowa = i.data_rezerwacji, @data_koncowa = DATEADD(DAY, i.liczba_dni_rezerwacji, i.data_rezerwacji)
+FROM inserted i
 
-	DECLARE
-    @rzad_tabeli tabela_rezerwacji
-	DECLARE kursor CURSOR FOR
-		SELECT i.id_rezerwacji, i.data_rezerwacji, i.liczba_dni_rezerwacji, i.id_pokoju, i.id_klienta
-		FROM inserted i
-	BEGIN
-		OPEN kursor
-		FETCH NEXT FROM kursor INTO @rzad_tabeli
-		WHILE @@FETCH_STATUS = 0
-			BEGIN
-				IF NOT EXISTS(SELECT * FROM siec_hoteli..rezerwacje r 
-							WHERE (r.data_rezerwacji > @rzad_tabeli.data_rezerwacji 
-							AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) < 
-							DATEADD(DAY, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.data_rezerwacji))
-
-				FETCH NEXT FROM kursor INTO @rzad_tabeli
-			END
-		CLOSE kursor
-		DEALLOCATE kursor
-	END
-
-GO
-USE master
-GO
+DECLARE
+    @rzad_tabeli dbo.tabela_rezerwacji
+DECLARE kursor CURSOR FOR
+    SELECT i.id_rezerwacji, i.data_rezerwacji, i.liczba_dni_rezerwacji, i.id_pokoju, i.id_klienta
+    FROM inserted i
+BEGIN
+    OPEN kursor
+    FETCH NEXT FROM kursor INTO @rzad_tabeli
+    WHILE @@FETCH_STATUS = 0
+        BEGIN
+            IF NOT EXISTS(SELECT *
+                          FROM siec_hoteli..rezerwacje r
+                          WHERE ((r.data_rezerwacji > @rzad_tabeli.data_rezerwacji
+                              AND r.data_rezerwacji <
+                                  DATEADD(DAY, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.data_rezerwacji))
+                              OR (DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) >
+                                  @rzad_tabeli.data_rezerwacji AND
+                                  DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) <
+                                  DATEADD(DAY, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.data_rezerwacji)))
+                          FETCH next FROM kursor INTO @rzad_tabeli
+                          END
+                          CLOSE kursor
+                          DEALLOCATE kursor
+                          END
+                          go
+                          USE master
+                          go
 
 -- Sprawdzenie dzialania wyzwalacza.
-BEGIN
-
-END
-GO
+                          BEGIN
+                          END
+                          go
