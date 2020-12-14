@@ -39,6 +39,7 @@ BEGIN
 END;
 GO
 
+--------------------------------------------------------------------------------
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
 GO
 CREATE PROCEDURE [dbo].[ustaw_cene_za_telefon] @id_rezerwacji INT
@@ -129,6 +130,7 @@ GO
 DROP TRIGGER IF EXISTS ustaw_cene_archiwum
 GO
 
+--------------------------------------------------------------------------------
 CREATE TRIGGER ustaw_cene_archiwum
     ON siec_hoteli.dbo.archiwum_rezerwacji
     AFTER INSERT
@@ -242,3 +244,57 @@ INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1048);
 GO
+
+
+
+SELECT *
+FROM siec_hoteli..archiwum_rezerwacji
+WHERE id_rezerwacji = 1033
+
+SELECT r.data_rezerwacji, r.liczba_dni_rezerwacji, r.id_pokoju, r.id_klienta, u.nazwa_uslugi, u.cena_uslugi
+FROM siec_hoteli..rezerwacje r,
+     siec_hoteli..usluga_dla_rezerwacji ur,
+     siec_hoteli..uslugi u
+WHERE r.id_rezerwacji = 1009
+  AND ur.id_rezerwacji = r.id_rezerwacji
+  AND u.id_uslugi = ur.id_uslugi
+
+SELECT *
+FROM siec_hoteli..usluga_dla_rezerwacji
+WHERE id_rezerwacji = 1009
+
+SELECT *
+FROM siec_hoteli..rezerwacje
+WHERE id_rezerwacji = 1009
+
+SELECT ar.id_rezerwacji, u.nazwa_uslugi
+FROM siec_hoteli..rezerwacje ar,
+     siec_hoteli..usluga_dla_rezerwacji ur,
+     siec_hoteli..uslugi u
+WHERE ar.id_rezerwacji = ur.id_rezerwacji
+  AND ur.id_uslugi = u.id_uslugi
+ORDER BY ar.id_rezerwacji
+
+SELECT r.id_rezerwacji,
+       rt.data_rozpoczecia_rozmowy,
+       rt.data_zakonczenia_rozmowy,
+       r.data_rezerwacji,
+       ar.cena_za_telefon,
+       p.id_pokoju
+FROM siec_hoteli..archiwum_rezerwacji ar,
+     siec_hoteli..rezerwacje r,
+     siec_hoteli..rozmowy_telefoniczne rt,
+     siec_hoteli..pokoje p
+WHERE ar.id_rezerwacji = r.id_rezerwacji
+  AND r.id_pokoju = p.id_pokoju
+  AND p.id_pokoju = rt.id_pokoju
+
+SELECT *
+FROM siec_hoteli..rozmowy_telefoniczne
+WHERE id_pokoju = 110
+
+SELECT r.liczba_dni_rezerwacji, h.cena_bazowa_za_pokoj, p.liczba_pomieszczen, p.liczba_przewidzianych_osob, ar.cena_wynajecia_pokoju
+FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r, siec_hoteli..hotele h, siec_hoteli..pokoje p
+WHERE ar.id_rezerwacji = r.id_rezerwacji
+AND r.id_pokoju = p.id_pokoju
+AND p.id_hotelu = h.id_hotelu

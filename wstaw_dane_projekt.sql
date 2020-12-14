@@ -1218,20 +1218,20 @@ INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne(numer_telefonu, data_rozpoczeci
 VALUES ('205948876', '2020/02/28 13:17:23', '2020/02/28 14:45:13', 160);
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne(numer_telefonu, data_rozpoczecia_rozmowy, data_zakonczenia_rozmowy,
                                                  id_pokoju)
-VALUES ('305869543', '2019/09/17 15:19:25', '2020/02/28 15:41:10', 110);
+VALUES ('305869543', '2019/09/17 15:19:25', '2019/09/17 15:41:10', 110);
 GO
 
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne(numer_telefonu, data_rozpoczecia_rozmowy, data_zakonczenia_rozmowy,
                                                  id_pokoju)
-VALUES ('601874010', '2019/12/27 13:17:23', '2020/03/29 15:45:13', 160);
+VALUES ('601874010', '2019/12/27 13:17:23', '2019/12/27 15:45:13', 160);
 GO
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne(numer_telefonu, data_rozpoczecia_rozmowy, data_zakonczenia_rozmowy,
                                                  id_pokoju)
-VALUES ('665074716', '2020/01/17 13:17:23', '2020/03/30 16:45:13', 160);
+VALUES ('665074716', '2020/01/17 13:17:23', '2020/01/17 16:45:13', 160);
 GO
 INSERT INTO siec_hoteli.dbo.rozmowy_telefoniczne(numer_telefonu, data_rozpoczecia_rozmowy, data_zakonczenia_rozmowy,
                                                  id_pokoju)
-VALUES ('601874010', '2019/12/26 13:17:23', '2020/03/31 17:45:13', 160);
+VALUES ('601874010', '2019/12/26 13:17:23', '2019/12/26 17:45:13', 160);
 GO
 
 
