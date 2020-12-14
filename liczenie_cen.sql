@@ -40,10 +40,9 @@ END;
 GO
 
 
-
 --------------------------------------------------------------------------------
 GO
-
+-- Obliczamy zni¿kê dla klientów którzy ju¿ kupowali w naszym hotelu
 CREATE OR
 ALTER FUNCTION [dbo].[oblicz_znizke](@id_klienta INT)
     RETURNS DECIMAL(3, 2)
@@ -51,33 +50,50 @@ AS
 BEGIN
     DECLARE @wspolczynnik_zniki DECIMAL(3, 2) = 1.00, @najstarsza_data_rezerwacji DATETIME;
 
-	IF NOT
-	SET @najstarsza_data_rezerwacji = (SELECT MIN(r.data_rezerwacji) FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r
-										WHERE ar.id_rezerwacji = r.id_rezerwacji AND r.id_klienta = @id_klienta)
-
-	IF EXISTS(SELECT * FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r 
-				WHERE ar.id_rezerwacji = r.id_rezerwacji 
-				AND r.id_klienta = @id_klienta)
+    IF NOT EXISTS(SELECT MIN(r.data_rezerwacji)
+                  FROM siec_hoteli..archiwum_rezerwacji ar,
+                       siec_hoteli..rezerwacje r
+                  WHERE ar.id_rezerwacji = r.id_rezerwacji
+                    AND r.id_klienta = @id_klienta)
         BEGIN
-			IF()
-
-            SET @wspolczynnik_zniki = 0.75
-			RETURN @wspolczynnik_zniki
+            RETURN @wspolczynnik_zniki
         END
 
-    RETURN @wspolczynnik_zniki;
+    SET @najstarsza_data_rezerwacji = (SELECT MIN(r.data_rezerwacji)
+                                       FROM siec_hoteli..archiwum_rezerwacji ar,
+                                            siec_hoteli..rezerwacje r
+                                       WHERE ar.id_rezerwacji = r.id_rezerwacji
+                                         AND r.id_klienta = @id_klienta)
+
+    IF (DATEDIFF(YEAR, @najstarsza_data_rezerwacji, GETDATE()))
+        BEGIN
+            SET @wspolczynnik_zniki = 0.5
+            RETURN @wspolczynnik_zniki
+        END
+
+    SET @wspolczynnik_zniki = 0.75
+    RETURN @wspolczynnik_zniki
+
 END;
 GO
 
 DECLARE @najstarsza_data_rezerwacji DATETIME;
-SET @najstarsza_data_rezerwacji = (SELECT MIN(r.data_rezerwacji) FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r
-										WHERE ar.id_rezerwacji = r.id_rezerwacji AND r.id_klienta = 1001)
+SET @najstarsza_data_rezerwacji = (SELECT MIN(r.data_rezerwacji)
+                                   FROM siec_hoteli..archiwum_rezerwacji ar,
+                                        siec_hoteli..rezerwacje r
+                                   WHERE ar.id_rezerwacji = r.id_rezerwacji
+                                     AND r.id_klienta = 1001)
 
-										
-SELECT id_klienta FROM siec_hoteli..klienci k WHERE k.id_klienta NOT IN (SELECT r.id_klienta
-FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r WHERE r.id_rezerwacji = ar.id_rezerwacji)
 
-SELECT * FROM siec_hoteli..archiwum_rezerwacji 
+SELECT id_klienta
+FROM siec_hoteli..klienci k
+WHERE k.id_klienta NOT IN (SELECT r.id_klienta
+                           FROM siec_hoteli..archiwum_rezerwacji ar,
+                                siec_hoteli..rezerwacje r
+                           WHERE r.id_rezerwacji = ar.id_rezerwacji)
+
+SELECT *
+FROM siec_hoteli..archiwum_rezerwacji
 
 --------------------------------------------------------------------------------
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
@@ -333,8 +349,15 @@ SELECT *
 FROM siec_hoteli..rozmowy_telefoniczne
 WHERE id_pokoju = 110
 
-SELECT r.liczba_dni_rezerwacji, h.cena_bazowa_za_pokoj, p.liczba_pomieszczen, p.liczba_przewidzianych_osob, ar.cena_wynajecia_pokoju
-FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r, siec_hoteli..hotele h, siec_hoteli..pokoje p
+SELECT r.liczba_dni_rezerwacji,
+       h.cena_bazowa_za_pokoj,
+       p.liczba_pomieszczen,
+       p.liczba_przewidzianych_osob,
+       ar.cena_wynajecia_pokoju
+FROM siec_hoteli..archiwum_rezerwacji ar,
+     siec_hoteli..rezerwacje r,
+     siec_hoteli..hotele h,
+     siec_hoteli..pokoje p
 WHERE ar.id_rezerwacji = r.id_rezerwacji
-AND r.id_pokoju = p.id_pokoju
-AND p.id_hotelu = h.id_hotelu
+  AND r.id_pokoju = p.id_pokoju
+  AND p.id_hotelu = h.id_hotelu
