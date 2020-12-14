@@ -8,13 +8,9 @@
 
 -- Napisz funkcjê podaj¹c¹ dla ka¿dego kraju, ile procent wszystkich hoteli znajduje siê w tym kraju.
 -- Wywo³aj j¹ wewn¹trz zapytania daj¹cego wynik w postaci dwóch kolumn: nazwa_kraju, nazwa_funkcji
-IF EXISTS(SELECT 1
-          FROM sys.objects
-          WHERE type = 'FN'
-            AND name = 'okreslProcent')
-    DROP FUNCTION okreslprocent
-GO
-CREATE FUNCTION okreslprocent(@id CHAR(2))
+drop FUNCTION if EXISTS [dbo].[okreslprocent]
+
+CREATE FUNCTION [dbo].[okreslprocent](@id CHAR(2))
     RETURNS FLOAT
 AS
 BEGIN
@@ -38,9 +34,9 @@ BEGIN
 END
 GO
 
-SELECT DISTINCT p.nazwa_panstwa, dbo.okreslprocent(p.id_panstwa) AS 'procent_oddzialow'
+SELECT DISTINCT p.nazwa_panstwa, [dbo].[okreslprocent](p.id_panstwa) AS 'procent_oddzialow'
 FROM siec_hoteli..panstwa p
-ORDER BY dbo.okreslprocent(p.id_panstwa) DESC
+ORDER BY [dbo].[okreslprocent](p.id_panstwa) DESC
 GO
 
 

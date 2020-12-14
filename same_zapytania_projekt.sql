@@ -244,7 +244,7 @@ WHERE p.id_hotelu = h.id_hotelu
 -- 20 Wyœwietl nazwiska, wynagrodzenie oraz prowizjê dla tych pracowników, którzy maj¹ prowizjê
 SELECT nazwisko_pracownika, pensja, premia
 FROM siec_hoteli..pracownicy
-WHERE siec_hoteli..pracownicy.premia is NOT NULL
+WHERE siec_hoteli..pracownicy.premia IS NOT NULL
 	AND siec_hoteli..pracownicy.premia > 0.00
 ORDER BY siec_hoteli..pracownicy.premia DESC
 
