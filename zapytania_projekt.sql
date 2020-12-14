@@ -153,62 +153,49 @@ USE siec_hoteli
 GO
 DROP TRIGGER IF EXISTS czy_rezerwacja_moze_byc_dodana
 GO
-
-DROP TYPE IF EXISTS tabela_rezerwacji
-GO
-CREATE TYPE tabela_rezerwacji AS TABLE
-(
-    id_rezerwacji         INT  NOT NULL,
-    data_rezerwacji       DATE NOT NULL,
-    liczba_dni_rezerwacji INT  NOT NULL,
-    id_pokoju             INT  NOT NULL,
-    id_klienta            INT  NOT NULL
-);
-GO
 CREATE TRIGGER czy_rezerwacja_moze_byc_dodana
     ON siec_hoteli.dbo.rezerwacje
     INSTEAD OF INSERT
     AS
     DECLARE
-        @data_poczatkowa DATETIME, @data_koncowa DATETIME
-SELECT @data_poczatkowa = i.data_rezerwacji, @data_koncowa = DATEADD(DAY, i.liczba_dni_rezerwacji, i.data_rezerwacji)
-FROM inserted i
-
-DECLARE
-    @rzad_tabeli tabela_rezerwacji
+        @id_rezerwacji         INT,
+        @data_rezerwacji       DATE,
+        @liczba_dni_rezerwacji INT,
+        @id_pokoju             INT,
+        @id_klienta            INT
 DECLARE kursor CURSOR FOR
     SELECT i.id_rezerwacji, i.data_rezerwacji, i.liczba_dni_rezerwacji, i.id_pokoju, i.id_klienta
     FROM inserted i
 BEGIN
     OPEN kursor
-    FETCH NEXT FROM kursor INTO @rzad_tabeli
+    FETCH NEXT FROM kursor INTO @id_rezerwacji, @data_rezerwacji, @liczba_dni_rezerwacji, @id_pokoju, @id_klienta
     WHILE @@FETCH_STATUS = 0
         BEGIN
             IF NOT EXISTS(SELECT *
                           FROM siec_hoteli..rezerwacje r
-                          WHERE ((r.data_rezerwacji > @rzad_tabeli.data_rezerwacji
+                          WHERE ((r.data_rezerwacji > @data_rezerwacji
                               AND r.data_rezerwacji <
-                                  DATEADD(DAY, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.data_rezerwacji))
+                                  DATEADD(DAY, @liczba_dni_rezerwacji, @data_rezerwacji))
                               OR (DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) >
-                                  @rzad_tabeli.data_rezerwacji AND
+                                  @data_rezerwacji AND
                                   DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) <
-                                  DATEADD(DAY, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.data_rezerwacji))))
-				BEGIN
-					INSERT INTO siec_hoteli..rezerwacje (data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
-					VALUES(@rzad_tabeli.data_rezerwacji, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.id_pokoju, @rzad_tabeli.id_klienta)
-				END
-			ELSE 
-				RAISERROR('Ten pokoj jest juz zajety w tym terminie.', 14, 1)
-			FETCH next FROM kursor INTO @rzad_tabeli
-		END
+                                  DATEADD(DAY, @liczba_dni_rezerwacji, @data_rezerwacji))))
+                BEGIN
+                    INSERT INTO siec_hoteli..rezerwacje (data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
+                    VALUES (@data_rezerwacji, @liczba_dni_rezerwacji, @id_pokoju, @id_klienta)
+                END
+            ELSE
+                RAISERROR ('Ten pokoj jest juz zajety w tym terminie.', 14, 1)
+            FETCH NEXT FROM kursor INTO @id_rezerwacji, @data_rezerwacji, @liczba_dni_rezerwacji, @id_pokoju, @id_klienta
+        END
     CLOSE kursor
     DEALLOCATE kursor
-    END
-go
+END
+GO
 USE master
-go
+GO
 
 -- Sprawdzenie dzialania wyzwalacza.
-                          BEGIN
-                          END
-                          go
+BEGIN
+END
+GO
