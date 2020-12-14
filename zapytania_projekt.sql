@@ -149,9 +149,14 @@ GO
 
 
 -- Wyzwalacz nr. 4
-DROP TYPE IF EXISTS dbo.tabela_rezerwacji
+USE siec_hoteli
 GO
-CREATE TYPE dbo.tabela_rezerwacji AS TABLE
+DROP TRIGGER IF EXISTS czy_rezerwacja_moze_byc_dodana
+GO
+
+DROP TYPE IF EXISTS tabela_rezerwacji
+GO
+CREATE TYPE tabela_rezerwacji AS TABLE
 (
     id_rezerwacji         INT  NOT NULL,
     data_rezerwacji       DATE NOT NULL,
@@ -159,12 +164,7 @@ CREATE TYPE dbo.tabela_rezerwacji AS TABLE
     id_pokoju             INT  NOT NULL,
     id_klienta            INT  NOT NULL
 );
-
-USE siec_hoteli
 GO
-DROP TRIGGER IF EXISTS czy_rezerwacja_moze_byc_dodana
-GO
-
 CREATE TRIGGER czy_rezerwacja_moze_byc_dodana
     ON siec_hoteli.dbo.rezerwacje
     INSTEAD OF INSERT
@@ -175,7 +175,7 @@ SELECT @data_poczatkowa = i.data_rezerwacji, @data_koncowa = DATEADD(DAY, i.licz
 FROM inserted i
 
 DECLARE
-    @rzad_tabeli dbo.tabela_rezerwacji
+    @rzad_tabeli tabela_rezerwacji
 DECLARE kursor CURSOR FOR
     SELECT i.id_rezerwacji, i.data_rezerwacji, i.liczba_dni_rezerwacji, i.id_pokoju, i.id_klienta
     FROM inserted i
@@ -192,15 +192,21 @@ BEGIN
                               OR (DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) >
                                   @rzad_tabeli.data_rezerwacji AND
                                   DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) <
-                                  DATEADD(DAY, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.data_rezerwacji)))
-                          FETCH next FROM kursor INTO @rzad_tabeli
-                          END
-                          CLOSE kursor
-                          DEALLOCATE kursor
-                          END
-                          go
-                          USE master
-                          go
+                                  DATEADD(DAY, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.data_rezerwacji))))
+				BEGIN
+					INSERT INTO siec_hoteli..rezerwacje (data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
+					VALUES(@rzad_tabeli.data_rezerwacji, @rzad_tabeli.liczba_dni_rezerwacji, @rzad_tabeli.id_pokoju, @rzad_tabeli.id_klienta)
+				END
+			ELSE 
+				RAISERROR('Ten pokoj jest juz zajety w tym terminie.', 14, 1)
+			FETCH next FROM kursor INTO @rzad_tabeli
+		END
+    CLOSE kursor
+    DEALLOCATE kursor
+    END
+go
+USE master
+go
 
 -- Sprawdzenie dzialania wyzwalacza.
                           BEGIN
