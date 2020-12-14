@@ -238,6 +238,7 @@ BEGIN
                                               siec_hoteli..uslugi u
                                          WHERE ar.id_rezerwacji = ur.id_rezerwacji
                                            AND ur.id_uslugi = u.id_uslugi
+										   AND ar.id_rezerwacji = @id_rezerwacji
                                          GROUP BY ur.id_rezerwacji
                                      ) t,
                                      siec_hoteli..rezerwacje r
@@ -320,7 +321,6 @@ DECLARE kursor CURSOR FOR
     FROM inserted
 
 BEGIN
-	PRINT 'Siemka jestem w triggerze'
     OPEN kursor
     FETCH NEXT FROM kursor INTO @id_rez
     WHILE @@FETCH_STATUS = 0
@@ -353,7 +353,9 @@ VALUES (0, 0, 0, 1050);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1023);
-
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1001);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1005);
@@ -365,7 +367,9 @@ VALUES (0, 0, 0, 1009);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1010);
-
+INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1019);
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
                                                 id_rezerwacji)
 VALUES (0, 0, 0, 1032);
@@ -420,4 +424,29 @@ VALUES (0, 0, 0, 1048);
 GO
 
 
-SELECT * FROM siec_hoteli..archiwum_rezerwacji
+SELECT * FROM siec_hoteli..archiwum_rezerwacji WHERE id_rezerwacji = 1033
+
+SELECT r.data_rezerwacji, r.liczba_dni_rezerwacji, r.id_pokoju, r.id_klienta, u.nazwa_uslugi, u.cena_uslugi
+FROM siec_hoteli..rezerwacje r, siec_hoteli..usluga_dla_rezerwacji ur, siec_hoteli..uslugi u 
+WHERE r.id_rezerwacji = 1009
+AND ur.id_rezerwacji = r.id_rezerwacji
+AND u.id_uslugi = ur.id_uslugi
+
+SELECT * FROM siec_hoteli..usluga_dla_rezerwacji WHERE id_rezerwacji = 1009
+
+SELECT * FROM siec_hoteli..rezerwacje WHERE id_rezerwacji = 1009
+
+SELECT ar.id_rezerwacji, u.nazwa_uslugi
+FROM siec_hoteli..rezerwacje ar, siec_hoteli..usluga_dla_rezerwacji ur, siec_hoteli..uslugi u
+WHERE ar.id_rezerwacji = ur.id_rezerwacji
+AND ur.id_uslugi = u.id_uslugi
+ORDER BY ar.id_rezerwacji
+
+SELECT r.id_rezerwacji, rt.data_rozpoczecia_rozmowy, rt.data_zakonczenia_rozmowy, r.data_rezerwacji, ar.cena_za_telefon , p.id_pokoju
+FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r, siec_hoteli..rozmowy_telefoniczne rt, siec_hoteli..pokoje p
+WHERE ar.id_rezerwacji = r.id_rezerwacji
+AND ar.id_rezerwacji = 1033
+AND r.id_pokoju = p.id_pokoju
+AND p.id_pokoju = rt.id_pokoju
+
+SELECT * FROM siec_hoteli..rozmowy_telefoniczne where id_pokoju = 110
