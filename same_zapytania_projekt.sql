@@ -239,7 +239,7 @@ FROM siec_hoteli..pracownicy p,
      siec_hoteli..hotele h
 WHERE p.id_hotelu = h.id_hotelu
   AND h.id_miasta IN
-      (SELECT id_miasta FROM miasta WHERE nazwa_miasta = 'Los Angeles')
+      (SELECT id_miasta FROM siec_hoteli..miasta WHERE nazwa_miasta = 'Los Angeles')
 
 -- 20 Wyœwietl nazwiska, wynagrodzenie oraz prowizjê dla tych pracowników, którzy maj¹ prowizjê
 SELECT nazwisko_pracownika, pensja, premia
