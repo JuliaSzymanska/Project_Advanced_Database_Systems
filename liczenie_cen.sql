@@ -39,6 +39,46 @@ BEGIN
 END;
 GO
 
+
+
+--------------------------------------------------------------------------------
+GO
+
+CREATE OR
+ALTER FUNCTION [dbo].[oblicz_znizke](@id_klienta INT)
+    RETURNS DECIMAL(3, 2)
+AS
+BEGIN
+    DECLARE @wspolczynnik_zniki DECIMAL(3, 2) = 1.00, @najstarsza_data_rezerwacji DATETIME;
+
+	IF NOT
+	SET @najstarsza_data_rezerwacji = (SELECT MIN(r.data_rezerwacji) FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r
+										WHERE ar.id_rezerwacji = r.id_rezerwacji AND r.id_klienta = @id_klienta)
+
+	IF EXISTS(SELECT * FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r 
+				WHERE ar.id_rezerwacji = r.id_rezerwacji 
+				AND r.id_klienta = @id_klienta)
+        BEGIN
+			IF()
+
+            SET @wspolczynnik_zniki = 0.75
+			RETURN @wspolczynnik_zniki
+        END
+
+    RETURN @wspolczynnik_zniki;
+END;
+GO
+
+DECLARE @najstarsza_data_rezerwacji DATETIME;
+SET @najstarsza_data_rezerwacji = (SELECT MIN(r.data_rezerwacji) FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r
+										WHERE ar.id_rezerwacji = r.id_rezerwacji AND r.id_klienta = 1001)
+
+										
+SELECT id_klienta FROM siec_hoteli..klienci k WHERE k.id_klienta NOT IN (SELECT r.id_klienta
+FROM siec_hoteli..archiwum_rezerwacji ar, siec_hoteli..rezerwacje r WHERE r.id_rezerwacji = ar.id_rezerwacji)
+
+SELECT * FROM siec_hoteli..archiwum_rezerwacji 
+
 --------------------------------------------------------------------------------
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
 GO
