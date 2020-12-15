@@ -30,15 +30,15 @@ CREATE TRIGGER zwieksz_pensje
     ELSE
         BEGIN
             UPDATE dbo.pracownicy
-            SET dbo.pracownicy.id_hotelu = i.id_hotelu
-                AND dbo.pracownicy.numer_telefonu_pracownika = i.numer_telefonu_pracownika
-                AND dbo.pracownicy.premia = i.premia
-                AND dbo.pracownicy.pensja = i.pensja
-                AND dbo.pracownicy.data_urodzenia = i.data_urodzenia
-                AND dbo.pracownicy.imie_pracownika = i.imie_pracownika
-                AND dbo.pracownicy.nazwisko_pracownika = i.nazwisko_pracownika
-                AND dbo.pracownicy.email_pracownika = i.email_pracownika
-                AND dbo.pracownicy.poczatek_pracy = i.poczatek_pracy
+            SET dbo.pracownicy.id_hotelu                 = i.id_hotelu,
+                dbo.pracownicy.numer_telefonu_pracownika = i.numer_telefonu_pracownika,
+                dbo.pracownicy.premia                    = i.premia,
+                dbo.pracownicy.pensja                    = i.pensja,
+                dbo.pracownicy.data_urodzenia            = i.data_urodzenia,
+                dbo.pracownicy.imie_pracownika           = i.imie_pracownika,
+                dbo.pracownicy.nazwisko_pracownika       = i.nazwisko_pracownika,
+                dbo.pracownicy.email_pracownika          = i.email_pracownika,
+                dbo.pracownicy.poczatek_pracy            = i.poczatek_pracy
             FROM inserted i
             WHERE pracownicy.id_pracownika = i.id_pracownika
         END
