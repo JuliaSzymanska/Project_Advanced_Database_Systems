@@ -64,7 +64,7 @@ CREATE TABLE siec_hoteli.dbo.pracownicy
     numer_telefonu_pracownika CHAR(9) UNIQUE     NOT NULL,
     data_urodzenia            DATETIME,
     pensja                    MONEY,
-    premia                    DECIMAL(2, 2),
+    premia                    DECIMAL(3, 2),
     poczatek_pracy            DATETIME           NOT NULL DEFAULT GETDATE(),
     id_hotelu                 INT,
 );

@@ -5,7 +5,7 @@ DROP TRIGGER IF EXISTS zwieksz_pensje
 GO
 CREATE TRIGGER zwieksz_pensje
     ON siec_hoteli.dbo.pracownicy
-    AFTER UPDATE
+    INSTEAD OF UPDATE
     AS
     IF (UPDATE(premia))
         BEGIN
@@ -14,6 +14,11 @@ CREATE TRIGGER zwieksz_pensje
             FROM inserted i
             WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
               AND (i.premia - dbo.pracownicy.premia) > 0.1
+
+            UPDATE dbo.pracownicy
+            SET premia = i.premia
+            FROM inserted i
+            WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
         END
 GO
 USE master
