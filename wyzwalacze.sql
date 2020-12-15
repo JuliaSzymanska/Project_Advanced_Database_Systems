@@ -27,6 +27,21 @@ CREATE TRIGGER zwieksz_pensje
             FROM inserted i
             WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
         END
+    ELSE
+        BEGIN
+            UPDATE dbo.pracownicy
+            SET dbo.pracownicy.id_hotelu = i.id_hotelu
+                AND dbo.pracownicy.numer_telefonu_pracownika = i.numer_telefonu_pracownika
+                AND dbo.pracownicy.premia = i.premia
+                AND dbo.pracownicy.pensja = i.pensja
+                AND dbo.pracownicy.data_urodzenia = i.data_urodzenia
+                AND dbo.pracownicy.imie_pracownika = i.imie_pracownika
+                AND dbo.pracownicy.nazwisko_pracownika = i.nazwisko_pracownika
+                AND dbo.pracownicy.email_pracownika = i.email_pracownika
+                AND dbo.pracownicy.poczatek_pracy = i.poczatek_pracy
+            FROM inserted i
+            WHERE pracownicy.id_pracownika = i.id_pracownika
+        END
 GO
 
 USE master
@@ -39,7 +54,6 @@ BEGIN
     EXEC premia_procedura @id2, @procent2
     SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
 END
-
 
 
 -- Wyzwalacz nr. 2 - Po wprowdzeniu rezerwacji do archiwum_rezerwacji ustaw cene_za_telefon obliczajac cene kazdej rozmowy,
@@ -114,7 +128,8 @@ VALUES (0, 0, 0, 1049),
        (0, 0, 0, 1048),
        (0, 0, 0, 1051);
 GO
-
+SELECT *
+FROM siec_hoteli..archiwum_rezerwacji
 GO
 
 -- Wyzwalacz nr. 3 Przy wprowadzaniu rezerwacji sprawdzane jest czy data nie konfliktuje z istniej¹cymi rezerwacjami dla tego pokoju
