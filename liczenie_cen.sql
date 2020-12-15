@@ -42,7 +42,9 @@ GO
 
 --------------------------------------------------------------------------------
 GO
--- Funkcja 2. Obliczamy zni¿kê dla klientów którzy ju¿ kupowali w naszym hotelu
+-- Funkcja 2. Funkcja obliczaj¹ca zni¿kê dla klientów, którzy posiadaj¹ rezerwacjê w archiwum rezerwacji, wartoœc zni¿ki wynosi 25%, 
+-- natomiast dla klientów, których najstarsza rezerwacja ma wiêcej ni¿ 10 lat zni¿ka wynosi 50%. 
+-- Dla klientów, który nie maj¹ rezerwacji w archiwum rezerwacji zni¿ka wynosi 0%.
 CREATE OR
 ALTER FUNCTION [dbo].[oblicz_znizke](@id_klienta INT)
     RETURNS DECIMAL(3, 2)
@@ -78,6 +80,8 @@ END;
 GO
 
 --------------------------------------------------------------------------------
+-- Procedura 1. Procedura uaktualniaj¹ca cenê za telefon dla rezerwacji o adanym id, 
+-- mno¿¹c cene za po³¹czenie telefoniczne dla hotelu, wspó³czynnik ceny oraz czas trwania rozmów, dla po³¹czeñ wykonanych dla tego pokoju podczas danej rezerwacji.
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
 GO
 CREATE PROCEDURE [dbo].[ustaw_cene_za_telefon] @id_rezerwacji INT
@@ -105,6 +109,7 @@ END
 GO
 
 --------------------------------------------------------------------------------
+-- Procedura 2. Procedura uaktualnia cenê za us³ugi dla zadanej rezerwacji mno¿¹c liczbê dni rezerwacji razu sumê cen za wybrane us³ugi. 
 GO
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_uslugi]
 GO
@@ -130,6 +135,8 @@ BEGIN
 END
 GO
 --------------------------------------------------------------------------------
+-- Procedura 3. Procedura uaktualnia cenê za wynajêcie pokoju dla zadanej rezerwacji 
+-- mno¿¹c cenê bazow¹ za pokój, liczbê pomieszczeñ, liczbê przewidzianych osób, liczbê dni rezerwacji oraz zni¿kê.
 GO
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_wynajecie_pokoju]
 GO
@@ -149,6 +156,7 @@ BEGIN
 END
 GO
 --------------------------------------------------------------------------------
+-- Procedura 4. Procedura uaktualnia cenê ca³kowit¹ dla zadanej rezerwacji sumuj¹c cenê za us³ugi, cenê za telefon oraz cenê za wynajêcie pokoju. 
 GO
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_calkowita]
 GO
