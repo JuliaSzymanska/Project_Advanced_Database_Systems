@@ -254,6 +254,7 @@ BEGIN
     SELECT *
     FROM siec_hoteli..archiwum_pracownikow
 END
+GO
 
 -- Wyzwalacz nr. 5 - Przy usuniêciu rezerwacji jest ona wprowadzana do tabeli anulowane_rezerwacje.
 GO

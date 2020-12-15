@@ -148,3 +148,7 @@ BEGIN
     EXEC premia_procedura @id2, @procent2
     SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
 END
+
+
+--------------------------------------------------------------------------------
+-- Procedura 6. 
