@@ -1,3 +1,8 @@
+-- Julia Szymanska 224441
+-- Przemek Zdrzalik 224466
+-- Martyna Piasecka 224398
+
+
 -- Procedura 1. Procedura uaktualniaj¹ca cenê za telefon dla rezerwacji o adanym id, 
 -- mno¿¹c cene za po³¹czenie telefoniczne dla hotelu, wspó³czynnik ceny oraz czas trwania rozmów, dla po³¹czeñ wykonanych dla tego pokoju podczas danej rezerwacji.
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
@@ -26,6 +31,8 @@ BEGIN
 END
 GO
 
+-- Sprawdzenie dzia³ania procedury jest sprawdzane przy sprawdzaniu wyzwalacza ustaw_cene_archiwum.
+
 --------------------------------------------------------------------------------
 -- Procedura 2. Procedura uaktualnia cenê za us³ugi dla zadanej rezerwacji mno¿¹c liczbê dni rezerwacji razu sumê cen za wybrane us³ugi. 
 GO
@@ -53,6 +60,8 @@ BEGIN
 END
 GO
 
+-- Sprawdzenie dzia³ania procedury jest sprawdzane przy sprawdzaniu wyzwalacza ustaw_cene_archiwum.
+
 --------------------------------------------------------------------------------
 -- Procedura 3. Procedura uaktualnia cenê za wynajêcie pokoju dla zadanej rezerwacji 
 -- mno¿¹c cenê bazow¹ za pokój, liczbê pomieszczeñ, liczbê przewidzianych osób, liczbê dni rezerwacji oraz zni¿kê.
@@ -75,6 +84,8 @@ BEGIN
 END
 GO
 
+-- Sprawdzenie dzia³ania procedury jest sprawdzane przy sprawdzaniu wyzwalacza ustaw_cene_archiwum.
+
 --------------------------------------------------------------------------------
 -- Procedura 4. Procedura uaktualnia cenê ca³kowit¹ dla zadanej rezerwacji sumuj¹c cenê za us³ugi, cenê za telefon oraz cenê za wynajêcie pokoju. 
 GO
@@ -88,3 +99,52 @@ BEGIN
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
+
+-- Sprawdzenie dzia³ania procedury jest sprawdzane przy sprawdzaniu wyzwalacza ustaw_cene_archiwum.
+
+--------------------------------------------------------------------------------
+-- Procedura 5. Procedura, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle,
+-- dla procentu jest to 1%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.
+GO
+DROP PROCEDURE IF EXISTS premia_procedura
+GO
+CREATE PROCEDURE premia_procedura @id INT = -1, @procent INT = 1
+AS
+BEGIN
+    IF @id = -1
+        BEGIN
+            UPDATE siec_hoteli.dbo.pracownicy
+            SET premia = 0
+            WHERE premia IS NULL;
+
+            UPDATE siec_hoteli.dbo.pracownicy
+            SET premia = premia * ((100.00 + @procent) / 100.00)
+        END
+    ELSE
+        BEGIN
+            UPDATE siec_hoteli.dbo.pracownicy
+            SET premia = 0
+            WHERE premia IS NULL
+              AND @id = id_pracownika
+
+            UPDATE siec_hoteli.dbo.pracownicy
+            SET premia = premia * ((100.00 + @procent) / 100.00)
+            WHERE @id = id_pracownika
+        END
+END
+GO
+
+-- Sprawdzenie dzialania procedury. 
+BEGIN
+    DECLARE @id INT = 12, @procent INT = 50
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
+    EXEC premia_procedura @id, @procent
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 12
+END
+
+BEGIN
+    DECLARE @id2 INT = 46, @procent2 INT = 50
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+    EXEC premia_procedura @id2, @procent2
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+END

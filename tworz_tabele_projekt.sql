@@ -82,7 +82,7 @@ ALTER TABLE siec_hoteli.dbo.pracownicy
 ALTER TABLE siec_hoteli.dbo.pracownicy
     ADD CONSTRAINT poczatek_pracy_max CHECK (data_urodzenia <= GETDATE());
 ALTER TABLE siec_hoteli.dbo.pracownicy
-    ADD CONSTRAINT pracownik_hotel_fk FOREIGN KEY (id_hotelu) REFERENCES hotele (id_hotelu);
+    ADD CONSTRAINT pracownik_hotel_fk FOREIGN KEY (id_hotelu) REFERENCES hotele (id_hotelu) ON DELETE SET NULL;
 GO
 
 CREATE TABLE siec_hoteli.dbo.archiwum_pracownikow

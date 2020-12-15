@@ -1,3 +1,7 @@
+-- Julia Szymanska 224441
+-- Przemek Zdrzalik 224466
+-- Martyna Piasecka 224398
+
 -- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, 
 -- zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
 USE siec_hoteli
@@ -139,7 +143,7 @@ VALUES
 		(0, 0, 0, 1045),
 		(0, 0, 0, 1046),
 		(0, 0, 0, 1047), 
-		(0, 0, 0, 1048);
+		(0, 0, 0, 1048),
 		(0, 0, 0, 1051);
 GO
 
