@@ -1,8 +1,11 @@
--- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
+-- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, 
+-- zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
 USE siec_hoteli
 GO
+
 DROP TRIGGER IF EXISTS zwieksz_pensje
 GO
+
 CREATE TRIGGER zwieksz_pensje
     ON siec_hoteli.dbo.pracownicy
     INSTEAD OF UPDATE
@@ -21,6 +24,7 @@ CREATE TRIGGER zwieksz_pensje
             WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
         END
 GO
+
 USE master
 GO
 
@@ -36,8 +40,10 @@ END
 -- Wyzwalacz nr. 2 - Przy usuniêciu rezerwacji jest ona wprowadzana do tabeli anulowane_rezerwacje.
 USE siec_hoteli
 GO
+
 DROP TRIGGER IF EXISTS przenies_do_anulowanych
 GO
+
 CREATE TRIGGER przenies_do_anulowanych
     ON siec_hoteli.dbo.rezerwacje
     FOR DELETE
@@ -46,6 +52,7 @@ CREATE TRIGGER przenies_do_anulowanych
     SELECT d.id_rezerwacji, d.data_rezerwacji, d.liczba_dni_rezerwacji, d.id_pokoju, d.id_klienta
     FROM deleted d
 GO
+
 USE master
 GO
 
@@ -66,8 +73,10 @@ GO
 -- mnozac liczbe minut rozmowy razy cene_za_polaczenie_telefoniczne razy wspolczynnik obliczony za pomoca funkcji.
 USE siec_hoteli
 GO
+
 DROP TRIGGER IF EXISTS ustaw_cene_archiwum
 GO
+
 CREATE TRIGGER ustaw_cene_archiwum
     ON siec_hoteli.dbo.archiwum_rezerwacji
     AFTER INSERT
@@ -93,95 +102,43 @@ BEGIN
     DEALLOCATE kursor
 END
 GO
+
 USE master
 GO
 
 
 -- Sprawdzenie dzialania wyzwalacza
-
 SELECT *
 FROM siec_hoteli..archiwum_rezerwacji
 GO
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1049);
-
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1050);
-
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1023);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1001);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1005);
-
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1009);
-
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1010);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1019);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1032);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1033);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1034);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1035);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1036);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1037);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1038);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1039);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1040);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1041);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1042);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1043);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1044);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1045);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1046);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1047);
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1048);
+												id_rezerwacji)
+VALUES (0, 0, 0, 1049),
+(0, 0, 0, 1050),
+(0, 0, 0, 1023),
+(0, 0, 0, 1001),
+(0, 0, 0, 1005),
+(0, 0, 0, 1009),
+(0, 0, 0, 1010),
+(0, 0, 0, 1019),
+(0, 0, 0, 1032),
+(0, 0, 0, 1033),
+(0, 0, 0, 1034),
+(0, 0, 0, 1035),
+(0, 0, 0, 1036),
+(0, 0, 0, 1037),
+(0, 0, 0, 1038),
+(0, 0, 0, 1039),
+(0, 0, 0, 1040),
+(0, 0, 0, 1041),
+(0, 0, 0, 1042),
+(0, 0, 0, 1043),
+(0, 0, 0, 1044),
+(0, 0, 0, 1045),
+(0, 0, 0, 1046),
+(0, 0, 0, 1047), 
+(0, 0, 0, 1048);
 GO
 
 SELECT *
@@ -191,8 +148,10 @@ GO
 -- Wyzwalacz nr. 4 Przy wprowadzaniu rezerwacji sprawdzane jest czy data nie konfliktuje z istniej¹cymi rezerwacjami dla tego pokoju : )
 USE siec_hoteli
 GO
+
 DROP TRIGGER IF EXISTS czy_rezerwacja_moze_byc_dodana
 GO
+
 CREATE TRIGGER czy_rezerwacja_moze_byc_dodana
     ON siec_hoteli.dbo.rezerwacje
     INSTEAD OF INSERT
@@ -232,6 +191,7 @@ BEGIN
     DEALLOCATE kursor
 END
 GO
+
 USE master
 GO
 
@@ -247,8 +207,10 @@ GO
 -- Trigger 5 - Przed usuniêciem hotelu wszyscy pracownicy pracuj¹cy w danym hotelu przenoszeni s¹ do archiwum pracowników a ich hotel ustawiany jest na Null
 USE siec_hoteli
 GO
+
 DROP TRIGGER IF EXISTS usun_hotel
 GO
+
 CREATE TRIGGER usun_hotel
     ON siec_hoteli.dbo.hotele
     INSTEAD OF DELETE
@@ -287,15 +249,17 @@ BEGIN
     DELETE FROM siec_hoteli..hotele WHERE id_hotelu IN (SELECT d.id_hotelu FROM deleted d)
 END
 GO
+
 USE master
 GO
 
 -- Sprawdzenie dzialania wyzwalacza
-
-SELECT *
-FROM siec_hoteli..archiwum_pracownikow
-DELETE
-FROM siec_hoteli..hotele
-WHERE id_hotelu = 100
-SELECT *
-FROM siec_hoteli..archiwum_pracownikow
+BEGIN
+	SELECT *
+	FROM siec_hoteli..archiwum_pracownikow
+	DELETE
+	FROM siec_hoteli..hotele
+	WHERE id_hotelu = 100
+	SELECT *
+	FROM siec_hoteli..archiwum_pracownikow
+END
