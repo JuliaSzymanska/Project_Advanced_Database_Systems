@@ -66,7 +66,7 @@ CREATE TABLE siec_hoteli.dbo.pracownicy
     pensja                    MONEY,
     premia                    DECIMAL(2, 2),
     poczatek_pracy            DATETIME           NOT NULL DEFAULT GETDATE(),
-    id_hotelu                 INT                NOT NULL,
+    id_hotelu                 INT,
 );
 GO
 
@@ -122,7 +122,7 @@ ALTER TABLE siec_hoteli.dbo.pokoje
 ALTER TABLE siec_hoteli.dbo.pokoje
     ADD CONSTRAINT liczba_pomieszczen_check CHECK (liczba_pomieszczen > 0);
 ALTER TABLE siec_hoteli.dbo.pokoje
-    ADD CONSTRAINT pokoj_hotel_fk FOREIGN KEY (id_hotelu) REFERENCES hotele (id_hotelu);
+    ADD CONSTRAINT pokoj_hotel_fk FOREIGN KEY (id_hotelu) REFERENCES hotele (id_hotelu) ON DELETE CASCADE;
 GO
 
 CREATE TABLE siec_hoteli.dbo.sprzatanie
@@ -144,7 +144,7 @@ ALTER TABLE siec_hoteli.dbo.sprzatanie
 ALTER TABLE siec_hoteli.dbo.sprzatanie
     ADD CONSTRAINT rodzaj_sprzatania_wybor CHECK (UPPER(rodzaj_sprzatania) IN ('PODSTAWOWE', 'PELNE'));
 ALTER TABLE siec_hoteli.dbo.sprzatanie
-    ADD CONSTRAINT sprzatanie_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju);
+    ADD CONSTRAINT sprzatanie_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju) ON DELETE CASCADE;
 GO
 
 CREATE TABLE siec_hoteli.dbo.rozmowy_telefoniczne
@@ -166,7 +166,7 @@ ALTER TABLE siec_hoteli.dbo.rozmowy_telefoniczne
 ALTER TABLE siec_hoteli.dbo.rozmowy_telefoniczne
     ADD CONSTRAINT data_zakonczenia_rozmowy_check CHECK (data_zakonczenia_rozmowy <= GETDATE());
 ALTER TABLE siec_hoteli.dbo.rozmowy_telefoniczne
-    ADD CONSTRAINT rozmowy_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju);
+    ADD CONSTRAINT rozmowy_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju) ON DELETE CASCADE;
 GO
 
 CREATE TABLE siec_hoteli.dbo.klienci
@@ -200,7 +200,7 @@ ALTER TABLE siec_hoteli.dbo.rezerwacje
 ALTER TABLE siec_hoteli.dbo.rezerwacje
     ADD CONSTRAINT liczba_dni_check CHECK (liczba_dni_rezerwacji > 0);
 ALTER TABLE siec_hoteli.dbo.rezerwacje
-    ADD CONSTRAINT rezerwacja_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju);
+    ADD CONSTRAINT rezerwacja_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju) ON DELETE CASCADE;
 ALTER TABLE siec_hoteli.dbo.rezerwacje
     ADD CONSTRAINT rezerwacja_klient_fk FOREIGN KEY (id_klienta) REFERENCES klienci (id_klienta);
 GO
@@ -219,7 +219,7 @@ ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
 ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
     ADD CONSTRAINT anulowane_rezerwacje_liczba_dni_check CHECK (liczba_dni_rezerwacji > 0);
 ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
-    ADD CONSTRAINT anulowane_rezerwacje_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju);
+    ADD CONSTRAINT anulowane_rezerwacje_pokoj_fk FOREIGN KEY (id_pokoju) REFERENCES pokoje (id_pokoju) ON DELETE CASCADE;
 ALTER TABLE siec_hoteli.dbo.anulowane_rezerwacje
     ADD CONSTRAINT anulowane_rezerwacje_klient_fk FOREIGN KEY (id_klienta) REFERENCES klienci (id_klienta);
 GO
