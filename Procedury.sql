@@ -151,7 +151,7 @@ END
 
 
 --------------------------------------------------------------------------------
--- Procedura 6.  Tworzymy rezerwacje dla nowego u¿ytkownika
+-- Procedura 6. Procedura na podstawie pobranych paramterów tworzy nowego klienta oraz now¹ rezerwacjê. 
 
 
 GO
@@ -179,3 +179,43 @@ BEGIN
 
 END
 
+
+--------------------------------------------------------------------------------
+-- Procedura 7. Procedura dla zadanego pokoju wyœwietla informacjê czy pokój by³ sprz¹tany po ostatniej rezerwacji. 
+
+
+GO
+DROP PROCEDURE IF EXISTS [dbo].[sprawdz_sprzatanie]
+GO
+CREATE PROCEDURE [dbo].[sprawdz_sprzatanie] @id_pokoju INT
+AS
+BEGIN
+	IF NOT EXISTS (SELECT s.id_pokoju FROM siec_hoteli..sprzatanie s, siec_hoteli..pokoje p, siec_hoteli..rezerwacje r
+		WHERE s.id_pokoju = @id_pokoju
+		AND r.id_pokoju = @id_pokoju
+		AND p.id_pokoju = @id_pokoju
+		AND r.id_rezerwacji = (SELECT TOP 1 r1.id_rezerwacji FROM siec_hoteli..rezerwacje r1 WHERE r1.id_pokoju = @id_pokoju AND r1.data_rezerwacji < GETDATE() ORDER BY r1.data_rezerwacji DESC)
+		AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) < s.data_rozpoczecia_sprzatania
+		AND s.id_sprzatania = (SELECT TOP 1 s1.id_sprzatania FROM siec_hoteli..sprzatanie s1 WHERE s1.id_pokoju = @id_pokoju ORDER BY s1.data_rozpoczecia_sprzatania DESC))
+		PRINT('Pokoj nie byl sprzatany')
+	ELSE 
+		PRINT('Pokoj byl sprzatany')
+END
+GO
+
+
+-- Sprawdzenie dzia³ania procedury
+BEGIN
+	DECLARE @id_pokoju INT = 151
+
+	EXEC sprawdz_sprzatanie @id_pokoju
+
+	SELECT * FROM siec_hoteli..sprzatanie where id_pokoju = 151
+
+	INSERT INTO siec_hoteli.dbo.sprzatanie(data_rozpoczecia_sprzatania, data_zakonczenia_sprzatania, rodzaj_sprzatania,
+                                       id_pokoju)
+	VALUES ('2020/12/15 12:00:00', '2020/12/15 14:30:00', 'Pelne', @id_pokoju);
+
+	EXEC sprawdz_sprzatanie @id_pokoju
+END
+GO
