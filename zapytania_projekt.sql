@@ -173,12 +173,12 @@ BEGIN
         BEGIN
             IF NOT EXISTS(SELECT *
                           FROM siec_hoteli..rezerwacje r
-                          WHERE ((r.data_rezerwacji > @data_rezerwacji
-                              AND r.data_rezerwacji <
+                          WHERE ((r.data_rezerwacji >= @data_rezerwacji
+                              AND r.data_rezerwacji <=
                                   DATEADD(DAY, @liczba_dni_rezerwacji, @data_rezerwacji))
-                              OR (DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) >
+                              OR (DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) >=
                                   @data_rezerwacji AND
-                                  DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) <
+                                  DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) <=
                                   DATEADD(DAY, @liczba_dni_rezerwacji, @data_rezerwacji))))
                 BEGIN
                     INSERT INTO siec_hoteli..rezerwacje (data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
@@ -197,5 +197,9 @@ GO
 
 -- Sprawdzenie dzialania wyzwalacza.
 BEGIN
+    INSERT INTO siec_hoteli.dbo.rezerwacje(data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
+    VALUES ('2025/12/19', 5, 101, 1002);
+    INSERT INTO siec_hoteli.dbo.rezerwacje(data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
+    VALUES ('2025/12/21', 7, 101, 1031);
 END
 GO
