@@ -1,4 +1,4 @@
--- Dodaj funkcjê zwracaj¹c¹ wspó³czynnik z jakim trzeba bêdzie pomno¿yæ cenê za po³¹czenie telefoniczne. Funkcja ma przyjmowaæ dwa argumenty:
+-- Funkcja 1. Funkcja zwracaj¹c¹ wspó³czynnik z jakim trzeba bêdzie pomno¿yæ cenê za po³¹czenie telefoniczne. Funkcja ma przyjmowaæ dwa argumenty:
 -- numer_telefonu, id_pokoju. Jeœli numer telefonu, na który zosta³o wykonane po³¹czenie nale¿y do któregoœ z pokoi w hotelu z którego wykonano po³¹czenie
 -- (na podstawie id_pokoju uzyskujemy id_hotelu z którego wykonano po³¹czenie) wtedy wspó³czynnik ustawiany jest na 0. Dla numeru telefonu pokoju znajduj¹cego
 -- siê w innym hotelu wspó³czynnik ustawiany jest na 0.5, dla numerów telefonów spoza hotelu wspó³czynnik ustawiany jest na 1.
@@ -42,7 +42,7 @@ GO
 
 --------------------------------------------------------------------------------
 GO
--- Obliczamy zni¿kê dla klientów którzy ju¿ kupowali w naszym hotelu
+-- Funkcja 2. Obliczamy zni¿kê dla klientów którzy ju¿ kupowali w naszym hotelu
 CREATE OR
 ALTER FUNCTION [dbo].[oblicz_znizke](@id_klienta INT)
     RETURNS DECIMAL(3, 2)
@@ -65,7 +65,7 @@ BEGIN
                                        WHERE ar.id_rezerwacji = r.id_rezerwacji
                                          AND r.id_klienta = @id_klienta)
 
-    IF (DATEDIFF(YEAR, @najstarsza_data_rezerwacji, GETDATE()))
+    IF (DATEDIFF(YEAR, @najstarsza_data_rezerwacji, GETDATE()) > 10)
         BEGIN
             SET @wspolczynnik_zniki = 0.5
             RETURN @wspolczynnik_zniki
@@ -76,24 +76,6 @@ BEGIN
 
 END;
 GO
-
-DECLARE @najstarsza_data_rezerwacji DATETIME;
-SET @najstarsza_data_rezerwacji = (SELECT MIN(r.data_rezerwacji)
-                                   FROM siec_hoteli..archiwum_rezerwacji ar,
-                                        siec_hoteli..rezerwacje r
-                                   WHERE ar.id_rezerwacji = r.id_rezerwacji
-                                     AND r.id_klienta = 1001)
-
-
-SELECT id_klienta
-FROM siec_hoteli..klienci k
-WHERE k.id_klienta NOT IN (SELECT r.id_klienta
-                           FROM siec_hoteli..archiwum_rezerwacji ar,
-                                siec_hoteli..rezerwacje r
-                           WHERE r.id_rezerwacji = ar.id_rezerwacji)
-
-SELECT *
-FROM siec_hoteli..archiwum_rezerwacji
 
 --------------------------------------------------------------------------------
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
@@ -156,7 +138,7 @@ AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
     SET cena_wynajecia_pokoju = (SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob *
-                                        r.liczba_dni_rezerwacji cena_rezerwacji
+                                        r.liczba_dni_rezerwacji * ([dbo].[oblicz_znizke](r.id_klienta)) cena_rezerwacji 
                                  FROM siec_hoteli..rezerwacje r,
                                       siec_hoteli..hotele h,
                                       siec_hoteli..pokoje p
@@ -178,64 +160,3 @@ BEGIN
     WHERE archiwum_rezerwacji.id_rezerwacji = @id_rezerwacji
 END
 GO
-
-
-
-
-
-
-
-SELECT r.data_rezerwacji, r.liczba_dni_rezerwacji, r.id_pokoju, r.id_klienta, u.nazwa_uslugi, u.cena_uslugi
-FROM siec_hoteli..rezerwacje r,
-     siec_hoteli..usluga_dla_rezerwacji ur,
-     siec_hoteli..uslugi u
-WHERE r.id_rezerwacji = 1009
-  AND ur.id_rezerwacji = r.id_rezerwacji
-  AND u.id_uslugi = ur.id_uslugi
-
-SELECT *
-FROM siec_hoteli..usluga_dla_rezerwacji
-WHERE id_rezerwacji = 1009
-
-SELECT *
-FROM siec_hoteli..rezerwacje
-WHERE id_rezerwacji = 1009
-
-SELECT ar.id_rezerwacji, u.nazwa_uslugi
-FROM siec_hoteli..rezerwacje ar,
-     siec_hoteli..usluga_dla_rezerwacji ur,
-     siec_hoteli..uslugi u
-WHERE ar.id_rezerwacji = ur.id_rezerwacji
-  AND ur.id_uslugi = u.id_uslugi
-ORDER BY ar.id_rezerwacji
-
-SELECT r.id_rezerwacji,
-       rt.data_rozpoczecia_rozmowy,
-       rt.data_zakonczenia_rozmowy,
-       r.data_rezerwacji,
-       ar.cena_za_telefon,
-       p.id_pokoju
-FROM siec_hoteli..archiwum_rezerwacji ar,
-     siec_hoteli..rezerwacje r,
-     siec_hoteli..rozmowy_telefoniczne rt,
-     siec_hoteli..pokoje p
-WHERE ar.id_rezerwacji = r.id_rezerwacji
-  AND r.id_pokoju = p.id_pokoju
-  AND p.id_pokoju = rt.id_pokoju
-
-SELECT *
-FROM siec_hoteli..rozmowy_telefoniczne
-WHERE id_pokoju = 110
-
-SELECT r.liczba_dni_rezerwacji,
-       h.cena_bazowa_za_pokoj,
-       p.liczba_pomieszczen,
-       p.liczba_przewidzianych_osob,
-       ar.cena_wynajecia_pokoju
-FROM siec_hoteli..archiwum_rezerwacji ar,
-     siec_hoteli..rezerwacje r,
-     siec_hoteli..hotele h,
-     siec_hoteli..pokoje p
-WHERE ar.id_rezerwacji = r.id_rezerwacji
-  AND r.id_pokoju = p.id_pokoju
-  AND p.id_hotelu = h.id_hotelu
