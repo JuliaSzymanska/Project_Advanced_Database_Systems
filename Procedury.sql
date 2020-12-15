@@ -151,4 +151,31 @@ END
 
 
 --------------------------------------------------------------------------------
--- Procedura 6. 
+-- Procedura 6.  Tworzymy rezerwacje dla nowego u¿ytkownika
+
+
+GO
+DROP PROCEDURE IF EXISTS [dbo].[rezerwacja_dla_nowego]
+GO
+CREATE PROCEDURE [dbo].[rezerwacja_dla_nowego] @data_rezerwacji DATE, @liczba_dni INT, @id_pokoju INT,
+                                               @imie_klienta VARCHAR(20), @nazwisko_klienta VARCHAR(40),
+                                               @nr_tel CHAR(9), @adres VARCHAR(100)
+AS
+BEGIN
+    INSERT INTO siec_hoteli..klienci(imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania)
+    VALUES (@imie_klienta, @nazwisko_klienta, @nr_tel, @adres)
+
+    DECLARE @id_klienta INT = (SELECT TOP 1 k.id_klienta
+                               FROM klienci k
+                               WHERE k.imie_klienta = @imie_klienta
+                                 AND k.nazwisko_klienta = @nazwisko_klienta
+                                 AND @nr_tel = k.numer_telefonu_klienta
+                                 AND k.adres_zamieszkania = @adres
+                               ORDER BY k.id_klienta DESC
+    )
+
+    INSERT INTO siec_hoteli..rezerwacje(data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
+    VALUES (@data_rezerwacji, @liczba_dni, @id_pokoju, @id_klienta)
+
+END
+
