@@ -1406,6 +1406,9 @@ GO
 INSERT INTO siec_hoteli.dbo.rezerwacje(data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
 VALUES ('2020/01/11', 8, 160, 1030);
 GO
+INSERT INTO siec_hoteli.dbo.rezerwacje(data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
+VALUES ('2002/01/11', 8, 160, 1020);
+GO
 
 
 INSERT INTO siec_hoteli.dbo.uslugi(nazwa_uslugi, cena_uslugi)

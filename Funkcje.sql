@@ -68,8 +68,7 @@ BEGIN
                   FROM siec_hoteli..archiwum_rezerwacji ar,
                        siec_hoteli..rezerwacje r
                   WHERE ar.id_rezerwacji = r.id_rezerwacji
-                    AND r.id_klienta = @id_klienta 
-					ORDER BY r.data_rezerwacji)
+                    AND r.id_klienta = @id_klienta)
         BEGIN
             RETURN @wspolczynnik_zniki
         END
@@ -138,6 +137,7 @@ BEGIN
 END
 GO
 
+-- Sprawdzenie dzia³ania funkcji
 SELECT DISTINCT p.nazwa_panstwa, [dbo].[okreslprocent](p.id_panstwa) AS 'procent_oddzialow'
 FROM siec_hoteli..panstwa p
 ORDER BY [dbo].[okreslprocent](p.id_panstwa) DESC

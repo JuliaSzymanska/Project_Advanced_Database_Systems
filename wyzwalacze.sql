@@ -140,10 +140,9 @@ VALUES
 		(0, 0, 0, 1046),
 		(0, 0, 0, 1047), 
 		(0, 0, 0, 1048);
+		(0, 0, 0, 1051);
 GO
 
-SELECT *
-FROM siec_hoteli..archiwum_rezerwacji
 GO
 
 -- Wyzwalacz nr. 4 Przy wprowadzaniu rezerwacji sprawdzane jest czy data nie konfliktuje z istniej¹cymi rezerwacjami dla tego pokoju : )
