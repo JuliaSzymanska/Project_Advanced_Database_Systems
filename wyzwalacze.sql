@@ -220,9 +220,11 @@ CREATE TRIGGER usun_hotel
     INSTEAD OF DELETE
     AS
 BEGIN
-    UPDATE siec_hoteli..pracownicy
-    SET id_hotelu = NULL
-    WHERE id_hotelu IN (SELECT d.id_hotelu FROM deleted d)
+	BEGIN
+		UPDATE siec_hoteli..pracownicy
+			 SET id_hotelu = NULL
+			 WHERE id_hotelu IN (SELECT d.id_hotelu FROM deleted d)
+	END
 
     DECLARE kursor CURSOR FOR
         SELECT p.id_pracownika, p.id_hotelu
