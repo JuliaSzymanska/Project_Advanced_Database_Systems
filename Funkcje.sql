@@ -10,7 +10,7 @@
 DROP FUNCTION IF EXISTS [dbo].[oblicz_wspoczynnik]
 GO
 CREATE FUNCTION [dbo].[oblicz_wspoczynnik](@numer_telefonu VARCHAR(9),
-                                          @id_pokoju INT)
+                                           @id_pokoju INT)
     RETURNS DECIMAL(3, 2)
 AS
 BEGIN
@@ -24,7 +24,7 @@ BEGIN
                                    WHERE p.id_pokoju = @id_pokoju))
         BEGIN
             SET @wspolczynnik = 0.00
-			RETURN @wspolczynnik;
+            RETURN @wspolczynnik;
         END
     ELSE
         IF EXISTS(SELECT *
@@ -35,12 +35,12 @@ BEGIN
                                         WHERE @id_pokoju = p.id_pokoju))
             BEGIN
                 SET @wspolczynnik = 0.50
-				RETURN @wspolczynnik;
+                RETURN @wspolczynnik;
             END
         ELSE
             BEGIN
                 SET @wspolczynnik = 1.00
-				RETURN @wspolczynnik;
+                RETURN @wspolczynnik;
             END
     RETURN @wspolczynnik;
 END;
@@ -48,12 +48,14 @@ GO
 
 -- Sprawdzenie dzia³ania funkcji
 -- Dla przypadku gdzie, niektóre pokoje s¹ w tym samym hotelu co numer, na ktory jest wykonywane po³¹czenie, natomiast pozosta³e znajduj¹ siê w innym hotelu.
-DECLARE @numer_telefonu VARCHAR(9) = '69421' 
-SELECT [dbo].[oblicz_wspoczynnik](@numer_telefonu, id_pokoju) FROM siec_hoteli..rozmowy_telefoniczne
+DECLARE @numer_telefonu VARCHAR(9) = '69421'
+SELECT [dbo].[oblicz_wspoczynnik](@numer_telefonu, id_pokoju)
+FROM siec_hoteli..rozmowy_telefoniczne
 
 -- Dla przypadku, gdy numer, na który wykonywane jest po³¹czenie jest spoza sieci hoteli. 
 SET @numer_telefonu = '205947321'
-SELECT [dbo].[oblicz_wspoczynnik](@numer_telefonu, id_pokoju) FROM siec_hoteli..rozmowy_telefoniczne
+SELECT [dbo].[oblicz_wspoczynnik](@numer_telefonu, id_pokoju)
+FROM siec_hoteli..rozmowy_telefoniczne
 
 
 --------------------------------------------------------------------------------
@@ -69,7 +71,7 @@ AS
 BEGIN
     DECLARE @wspolczynnik_zniki DECIMAL(3, 2) = 1.00, @najstarsza_data_rezerwacji DATETIME;
 
-    IF NOT EXISTS (SELECT r.data_rezerwacji
+    IF NOT EXISTS(SELECT r.data_rezerwacji
                   FROM siec_hoteli..archiwum_rezerwacji ar,
                        siec_hoteli..rezerwacje r
                   WHERE ar.id_rezerwacji = r.id_rezerwacji
@@ -89,7 +91,7 @@ BEGIN
             SET @wspolczynnik_zniki = 0.5
             RETURN @wspolczynnik_zniki
         END
-	SET @wspolczynnik_zniki = 0.75
+    SET @wspolczynnik_zniki = 0.75
     RETURN @wspolczynnik_zniki
 
 END;
@@ -97,22 +99,33 @@ GO
 
 -- Sprawdzenie dzia³ania funkcji
 -- Gdy klienci nie mieli jak dot¹d ¿adnej rezerwacji
-SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka FROM siec_hoteli..klienci k 
+SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka
+FROM siec_hoteli..klienci k
 WHERE k.id_klienta NOT IN (
-	SELECT id_klienta FROM siec_hoteli..rezerwacje r, siec_hoteli..archiwum_rezerwacji ar 
-	WHERE r.id_rezerwacji = ar.id_rezerwacji)
+    SELECT id_klienta
+    FROM siec_hoteli..rezerwacje r,
+         siec_hoteli..archiwum_rezerwacji ar
+    WHERE r.id_rezerwacji = ar.id_rezerwacji)
 
 -- Gdy klienci mieli pierwsz¹ rezerwacjê wczeœniej ni¿ 10 lat temu. 
-SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka FROM siec_hoteli..klienci k 
+SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka
+FROM siec_hoteli..klienci k
 WHERE k.id_klienta IN (
-	SELECT id_klienta FROM siec_hoteli..rezerwacje r, siec_hoteli..archiwum_rezerwacji ar 
-	WHERE r.id_rezerwacji = ar.id_rezerwacji AND DATEDIFF(YEAR, r.data_rezerwacji, GETDATE()) < 10)
+    SELECT id_klienta
+    FROM siec_hoteli..rezerwacje r,
+         siec_hoteli..archiwum_rezerwacji ar
+    WHERE r.id_rezerwacji = ar.id_rezerwacji
+      AND DATEDIFF(YEAR, r.data_rezerwacji, GETDATE()) < 10)
 
 -- Gdy klienci mieli pierwsz¹ rezerwacjê dawniej ni¿ 10 lat temu. 
-SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka FROM siec_hoteli..klienci k 
+SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka
+FROM siec_hoteli..klienci k
 WHERE k.id_klienta IN (
-	SELECT id_klienta FROM siec_hoteli..rezerwacje r, siec_hoteli..archiwum_rezerwacji ar 
-	WHERE r.id_rezerwacji = ar.id_rezerwacji AND DATEDIFF(YEAR, r.data_rezerwacji, GETDATE()) > 10)
+    SELECT id_klienta
+    FROM siec_hoteli..rezerwacje r,
+         siec_hoteli..archiwum_rezerwacji ar
+    WHERE r.id_rezerwacji = ar.id_rezerwacji
+      AND DATEDIFF(YEAR, r.data_rezerwacji, GETDATE()) > 10)
 
 --------------------------------------------------------------------------------
 -- Funkcja 3. Funkcja podaje dla ka¿dego kraju, ile procent wszystkich hoteli znajduje siê w tym kraju.

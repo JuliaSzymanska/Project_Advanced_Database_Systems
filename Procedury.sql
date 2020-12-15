@@ -73,7 +73,7 @@ AS
 BEGIN
     UPDATE siec_hoteli..archiwum_rezerwacji
     SET cena_wynajecia_pokoju = (SELECT h.cena_bazowa_za_pokoj * p.liczba_pomieszczen * p.liczba_przewidzianych_osob *
-                                        r.liczba_dni_rezerwacji * ([dbo].[oblicz_znizke](r.id_klienta)) cena_rezerwacji 
+                                        r.liczba_dni_rezerwacji * ([dbo].[oblicz_znizke](r.id_klienta)) cena_rezerwacji
                                  FROM siec_hoteli..rezerwacje r,
                                       siec_hoteli..hotele h,
                                       siec_hoteli..pokoje p
