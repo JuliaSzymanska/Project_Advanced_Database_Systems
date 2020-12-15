@@ -117,34 +117,33 @@ FROM siec_hoteli..archiwum_rezerwacji
 GO
 
 INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-												id_rezerwacji)
-VALUES 
-		(0, 0, 0, 1049),
-		(0, 0, 0, 1050),
-		(0, 0, 0, 1023),
-		(0, 0, 0, 1001),
-		(0, 0, 0, 1005),
-		(0, 0, 0, 1009),
-		(0, 0, 0, 1010),
-		(0, 0, 0, 1019),
-		(0, 0, 0, 1032),
-		(0, 0, 0, 1033),
-		(0, 0, 0, 1034),
-		(0, 0, 0, 1035),
-		(0, 0, 0, 1036),
-		(0, 0, 0, 1037),
-		(0, 0, 0, 1038),
-		(0, 0, 0, 1039),
-		(0, 0, 0, 1040),
-		(0, 0, 0, 1041),
-		(0, 0, 0, 1042),
-		(0, 0, 0, 1043),
-		(0, 0, 0, 1044),
-		(0, 0, 0, 1045),
-		(0, 0, 0, 1046),
-		(0, 0, 0, 1047), 
-		(0, 0, 0, 1048),
-		(0, 0, 0, 1051);
+                                                id_rezerwacji)
+VALUES (0, 0, 0, 1049),
+       (0, 0, 0, 1050),
+       (0, 0, 0, 1023),
+       (0, 0, 0, 1001),
+       (0, 0, 0, 1005),
+       (0, 0, 0, 1009),
+       (0, 0, 0, 1010),
+       (0, 0, 0, 1019),
+       (0, 0, 0, 1032),
+       (0, 0, 0, 1033),
+       (0, 0, 0, 1034),
+       (0, 0, 0, 1035),
+       (0, 0, 0, 1036),
+       (0, 0, 0, 1037),
+       (0, 0, 0, 1038),
+       (0, 0, 0, 1039),
+       (0, 0, 0, 1040),
+       (0, 0, 0, 1041),
+       (0, 0, 0, 1042),
+       (0, 0, 0, 1043),
+       (0, 0, 0, 1044),
+       (0, 0, 0, 1045),
+       (0, 0, 0, 1046),
+       (0, 0, 0, 1047),
+       (0, 0, 0, 1048),
+       (0, 0, 0, 1051);
 GO
 
 GO
@@ -220,11 +219,11 @@ CREATE TRIGGER usun_hotel
     INSTEAD OF DELETE
     AS
 BEGIN
-	BEGIN
-		UPDATE siec_hoteli..pracownicy
-			 SET id_hotelu = NULL
-			 WHERE id_hotelu IN (SELECT d.id_hotelu FROM deleted d)
-	END
+    BEGIN
+        UPDATE siec_hoteli..pracownicy
+        SET id_hotelu = NULL
+        WHERE id_hotelu IN (SELECT d.id_hotelu FROM deleted d)
+    END
 
     DECLARE kursor CURSOR FOR
         SELECT p.id_pracownika, p.id_hotelu
@@ -252,7 +251,9 @@ BEGIN
         CLOSE kursor
         DEALLOCATE kursor
     END
-    DELETE FROM siec_hoteli..hotele WHERE id_hotelu IN (SELECT d.id_hotelu FROM deleted d)
+    BEGIN
+        DELETE FROM siec_hoteli..hotele WHERE id_hotelu IN (SELECT d.id_hotelu FROM deleted d)
+    END
 END
 GO
 
@@ -261,11 +262,11 @@ GO
 
 -- Sprawdzenie dzialania wyzwalacza
 BEGIN
-	SELECT *
-	FROM siec_hoteli..archiwum_pracownikow
-	DELETE
-	FROM siec_hoteli..hotele
-	WHERE id_hotelu = 100
-	SELECT *
-	FROM siec_hoteli..archiwum_pracownikow
+    SELECT *
+    FROM siec_hoteli..archiwum_pracownikow
+    DELETE
+    FROM siec_hoteli..hotele
+    WHERE id_hotelu = 100
+    SELECT *
+    FROM siec_hoteli..archiwum_pracownikow
 END

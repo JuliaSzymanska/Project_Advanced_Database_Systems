@@ -3,7 +3,6 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/tworz_tabele_projekt.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/wstaw_dane_projekt.sql" dialect="TSQL" />
-    <file url="file://$PROJECT_DIR$/zapytania_projekt.sql" dialect="TSQL" />
     <file url="PROJECT" dialect="TSQL" />
   </component>
   <component name="SqlResolveMappings">
