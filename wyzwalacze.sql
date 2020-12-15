@@ -41,39 +41,8 @@ BEGIN
 END
 
 
--- Wyzwalacz nr. 2 - Przy usuniêciu rezerwacji jest ona wprowadzana do tabeli anulowane_rezerwacje.
-USE siec_hoteli
-GO
 
-DROP TRIGGER IF EXISTS przenies_do_anulowanych
-GO
-
-CREATE TRIGGER przenies_do_anulowanych
-    ON siec_hoteli.dbo.rezerwacje
-    FOR DELETE
-    AS
-    INSERT INTO siec_hoteli.dbo.anulowane_rezerwacje
-    SELECT d.id_rezerwacji, d.data_rezerwacji, d.liczba_dni_rezerwacji, d.id_pokoju, d.id_klienta
-    FROM deleted d
-GO
-
-USE master
-GO
-
--- Sprawdzenie dzialania wyzwalacza.
-BEGIN
-    SELECT * FROM siec_hoteli..rezerwacje
-    SELECT * FROM siec_hoteli..anulowane_rezerwacje
-
-    DELETE siec_hoteli..rezerwacje
-    WHERE id_rezerwacji = 1000
-
-    SELECT * FROM siec_hoteli..rezerwacje
-    SELECT * FROM siec_hoteli..anulowane_rezerwacje
-END
-GO
-
--- Wyzwalacz nr. 3 - Po wprowdzeniu rezerwacji do archiwum_rezerwacji ustaw cene_za_telefon obliczajac cene kazdej rozmowy,
+-- Wyzwalacz nr. 2 - Po wprowdzeniu rezerwacji do archiwum_rezerwacji ustaw cene_za_telefon obliczajac cene kazdej rozmowy,
 -- mnozac liczbe minut rozmowy razy cene_za_polaczenie_telefoniczne razy wspolczynnik obliczony za pomoca funkcji.
 USE siec_hoteli
 GO
@@ -148,7 +117,7 @@ GO
 
 GO
 
--- Wyzwalacz nr. 4 Przy wprowadzaniu rezerwacji sprawdzane jest czy data nie konfliktuje z istniej¹cymi rezerwacjami dla tego pokoju : )
+-- Wyzwalacz nr. 3 Przy wprowadzaniu rezerwacji sprawdzane jest czy data nie konfliktuje z istniej¹cymi rezerwacjami dla tego pokoju
 USE siec_hoteli
 GO
 
@@ -207,7 +176,7 @@ BEGIN
 END
 GO
 
--- Trigger 5 - Przed usuniêciem hotelu wszyscy pracownicy pracuj¹cy w danym hotelu przenoszeni s¹ do archiwum pracowników a ich hotel ustawiany jest na Null
+-- Trigger 4 - Przed usuniêciem hotelu wszyscy pracownicy pracuj¹cy w danym hotelu przenoszeni s¹ do archiwum pracowników a ich hotel ustawiany jest na Null
 USE siec_hoteli
 GO
 
@@ -270,3 +239,36 @@ BEGIN
     SELECT *
     FROM siec_hoteli..archiwum_pracownikow
 END
+
+-- Wyzwalacz nr. 5 - Przy usuniêciu rezerwacji jest ona wprowadzana do tabeli anulowane_rezerwacje.
+GO
+USE siec_hoteli
+GO
+
+DROP TRIGGER IF EXISTS przenies_do_anulowanych
+GO
+
+CREATE TRIGGER przenies_do_anulowanych
+    ON siec_hoteli.dbo.rezerwacje
+    FOR DELETE
+    AS
+    INSERT INTO siec_hoteli.dbo.anulowane_rezerwacje
+    SELECT d.id_rezerwacji, d.data_rezerwacji, d.liczba_dni_rezerwacji, d.id_pokoju, d.id_klienta
+    FROM deleted d
+GO
+
+USE master
+GO
+
+-- Sprawdzenie dzialania wyzwalacza.
+BEGIN
+    SELECT * FROM siec_hoteli..rezerwacje
+    SELECT * FROM siec_hoteli..anulowane_rezerwacje
+
+    DELETE siec_hoteli..rezerwacje
+    WHERE id_rezerwacji = 1000
+
+    SELECT * FROM siec_hoteli..rezerwacje
+    SELECT * FROM siec_hoteli..anulowane_rezerwacje
+END
+GO
