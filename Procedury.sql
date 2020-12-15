@@ -153,7 +153,6 @@ END
 --------------------------------------------------------------------------------
 -- Procedura 6. Procedura na podstawie pobranych paramterów tworzy nowego klienta oraz now¹ rezerwacjê. 
 
-
 GO
 DROP PROCEDURE IF EXISTS [dbo].[rezerwacja_dla_nowego]
 GO
@@ -166,7 +165,7 @@ BEGIN
     VALUES (@imie_klienta, @nazwisko_klienta, @nr_tel, @adres)
 
     DECLARE @id_klienta INT = (SELECT TOP 1 k.id_klienta
-                               FROM klienci k
+                               FROM siec_hoteli..klienci k
                                WHERE k.imie_klienta = @imie_klienta
                                  AND k.nazwisko_klienta = @nazwisko_klienta
                                  AND @nr_tel = k.numer_telefonu_klienta
@@ -178,7 +177,26 @@ BEGIN
     VALUES (@data_rezerwacji, @liczba_dni, @id_pokoju, @id_klienta)
 
 END
+GO
 
+-- Sprawdzenie dzia³ania procedury
+DECLARE @data_rezerwacji DATE = '2021/12/01', @liczba_dni INT = 5, @id_pokoju INT = 151,
+        @imie_klienta VARCHAR(20) = 'Kamil', @nazwisko_klienta VARCHAR(40) = 'Stachura',
+        @nr_tel CHAR(9) = '104758432', @adres VARCHAR(100) = 'Politechniki 43 92-431 Lodz Polska'
+
+SELECT * FROM siec_hoteli..klienci WHERE imie_klienta = @imie_klienta AND nazwisko_klienta = @nazwisko_klienta 
+										AND numer_telefonu_klienta = @nr_tel AND adres_zamieszkania = @adres
+SELECT * FROM siec_hoteli..rezerwacje re, siec_hoteli..klienci kl WHERE re.id_klienta = kl.id_klienta AND
+										imie_klienta = @imie_klienta AND nazwisko_klienta = @nazwisko_klienta 
+										AND numer_telefonu_klienta = @nr_tel AND adres_zamieszkania = @adres
+
+EXEC rezerwacja_dla_nowego @data_rezerwacji, @liczba_dni, @id_pokoju, @imie_klienta, @nazwisko_klienta, @nr_tel, @adres
+
+SELECT * FROM siec_hoteli..klienci WHERE imie_klienta = @imie_klienta AND nazwisko_klienta = @nazwisko_klienta 
+										AND numer_telefonu_klienta = @nr_tel AND adres_zamieszkania = @adres
+SELECT * FROM siec_hoteli..rezerwacje re, siec_hoteli..klienci kl WHERE re.id_klienta = kl.id_klienta AND
+										imie_klienta = @imie_klienta AND nazwisko_klienta = @nazwisko_klienta 
+										AND numer_telefonu_klienta = @nr_tel AND adres_zamieszkania = @adres
 
 --------------------------------------------------------------------------------
 -- Procedura 7. Procedura dla zadanego pokoju wyœwietla informacjê czy pokój by³ sprz¹tany po ostatniej rezerwacji. 
@@ -212,8 +230,7 @@ BEGIN
 
 	SELECT * FROM siec_hoteli..sprzatanie where id_pokoju = 151
 
-	INSERT INTO siec_hoteli.dbo.sprzatanie(data_rozpoczecia_sprzatania, data_zakonczenia_sprzatania, rodzaj_sprzatania,
-                                       id_pokoju)
+	INSERT INTO siec_hoteli.dbo.sprzatanie(data_rozpoczecia_sprzatania, data_zakonczenia_sprzatania, rodzaj_sprzatania, id_pokoju)
 	VALUES ('2020/12/15 12:00:00', '2020/12/15 14:30:00', 'Pelne', @id_pokoju);
 
 	EXEC sprawdz_sprzatanie @id_pokoju
