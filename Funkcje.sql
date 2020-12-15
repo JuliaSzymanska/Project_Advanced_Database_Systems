@@ -64,11 +64,12 @@ AS
 BEGIN
     DECLARE @wspolczynnik_zniki DECIMAL(3, 2) = 1.00, @najstarsza_data_rezerwacji DATETIME;
 
-    IF NOT EXISTS(SELECT MIN(r.data_rezerwacji)
+    IF NOT EXISTS (SELECT r.data_rezerwacji
                   FROM siec_hoteli..archiwum_rezerwacji ar,
                        siec_hoteli..rezerwacje r
                   WHERE ar.id_rezerwacji = r.id_rezerwacji
-                    AND r.id_klienta = @id_klienta)
+                    AND r.id_klienta = @id_klienta 
+					ORDER BY r.data_rezerwacji)
         BEGIN
             RETURN @wspolczynnik_zniki
         END
@@ -84,14 +85,30 @@ BEGIN
             SET @wspolczynnik_zniki = 0.5
             RETURN @wspolczynnik_zniki
         END
-
-    SET @wspolczynnik_zniki = 0.75
+	SET @wspolczynnik_zniki = 0.75
     RETURN @wspolczynnik_zniki
 
 END;
 GO
 
--- Funkcja jest sprawdzana przy sprawdzaniu Triggera ustawiaj¹cego ceny przy wstawianiu rezerwacji do archiwum. 
+-- Sprawdzenie dzia³ania funkcji
+-- Gdy klienci nie mieli jak dot¹d ¿adnej rezerwacji
+SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka FROM siec_hoteli..klienci k 
+WHERE k.id_klienta NOT IN (
+	SELECT id_klienta FROM siec_hoteli..rezerwacje r, siec_hoteli..archiwum_rezerwacji ar 
+	WHERE r.id_rezerwacji = ar.id_rezerwacji)
+
+-- Gdy klienci mieli pierwsz¹ rezerwacjê wczeœniej ni¿ 10 lat temu. 
+SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka FROM siec_hoteli..klienci k 
+WHERE k.id_klienta IN (
+	SELECT id_klienta FROM siec_hoteli..rezerwacje r, siec_hoteli..archiwum_rezerwacji ar 
+	WHERE r.id_rezerwacji = ar.id_rezerwacji AND DATEDIFF(YEAR, r.data_rezerwacji, GETDATE()) < 10)
+
+-- Gdy klienci mieli pierwsz¹ rezerwacjê dawniej ni¿ 10 lat temu. 
+SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka FROM siec_hoteli..klienci k 
+WHERE k.id_klienta IN (
+	SELECT id_klienta FROM siec_hoteli..rezerwacje r, siec_hoteli..archiwum_rezerwacji ar 
+	WHERE r.id_rezerwacji = ar.id_rezerwacji AND DATEDIFF(YEAR, r.data_rezerwacji, GETDATE()) > 10)
 
 --------------------------------------------------------------------------------
 -- Funkcja 3. Funkcja podaje dla ka¿dego kraju, ile procent wszystkich hoteli znajduje siê w tym kraju.
