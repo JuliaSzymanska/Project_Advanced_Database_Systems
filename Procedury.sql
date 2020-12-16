@@ -181,22 +181,40 @@ GO
 
 -- Sprawdzenie dzia³ania procedury
 DECLARE @data_rezerwacji DATE = '2021/12/01', @liczba_dni INT = 5, @id_pokoju INT = 151,
-        @imie_klienta VARCHAR(20) = 'Kamil', @nazwisko_klienta VARCHAR(40) = 'Stachura',
-        @nr_tel CHAR(9) = '104758432', @adres VARCHAR(100) = 'Politechniki 43 92-431 Lodz Polska'
+    @imie_klienta VARCHAR(20) = 'Kamil', @nazwisko_klienta VARCHAR(40) = 'Stachura',
+    @nr_tel CHAR(9) = '104758432', @adres VARCHAR(100) = 'Politechniki 43 92-431 Lodz Polska'
 
-SELECT * FROM siec_hoteli..klienci WHERE imie_klienta = @imie_klienta AND nazwisko_klienta = @nazwisko_klienta 
-										AND numer_telefonu_klienta = @nr_tel AND adres_zamieszkania = @adres
-SELECT * FROM siec_hoteli..rezerwacje re, siec_hoteli..klienci kl WHERE re.id_klienta = kl.id_klienta AND
-										imie_klienta = @imie_klienta AND nazwisko_klienta = @nazwisko_klienta 
-										AND numer_telefonu_klienta = @nr_tel AND adres_zamieszkania = @adres
+SELECT *
+FROM siec_hoteli..klienci
+WHERE imie_klienta = @imie_klienta
+  AND nazwisko_klienta = @nazwisko_klienta
+  AND numer_telefonu_klienta = @nr_tel
+  AND adres_zamieszkania = @adres
+SELECT *
+FROM siec_hoteli..rezerwacje re,
+     siec_hoteli..klienci kl
+WHERE re.id_klienta = kl.id_klienta
+  AND imie_klienta = @imie_klienta
+  AND nazwisko_klienta = @nazwisko_klienta
+  AND numer_telefonu_klienta = @nr_tel
+  AND adres_zamieszkania = @adres
 
 EXEC rezerwacja_dla_nowego @data_rezerwacji, @liczba_dni, @id_pokoju, @imie_klienta, @nazwisko_klienta, @nr_tel, @adres
 
-SELECT * FROM siec_hoteli..klienci WHERE imie_klienta = @imie_klienta AND nazwisko_klienta = @nazwisko_klienta 
-										AND numer_telefonu_klienta = @nr_tel AND adres_zamieszkania = @adres
-SELECT * FROM siec_hoteli..rezerwacje re, siec_hoteli..klienci kl WHERE re.id_klienta = kl.id_klienta AND
-										imie_klienta = @imie_klienta AND nazwisko_klienta = @nazwisko_klienta 
-										AND numer_telefonu_klienta = @nr_tel AND adres_zamieszkania = @adres
+SELECT *
+FROM siec_hoteli..klienci
+WHERE imie_klienta = @imie_klienta
+  AND nazwisko_klienta = @nazwisko_klienta
+  AND numer_telefonu_klienta = @nr_tel
+  AND adres_zamieszkania = @adres
+SELECT *
+FROM siec_hoteli..rezerwacje re,
+     siec_hoteli..klienci kl
+WHERE re.id_klienta = kl.id_klienta
+  AND imie_klienta = @imie_klienta
+  AND nazwisko_klienta = @nazwisko_klienta
+  AND numer_telefonu_klienta = @nr_tel
+  AND adres_zamieszkania = @adres
 
 --------------------------------------------------------------------------------
 -- Procedura 7. Procedura dla zadanego pokoju wyœwietla informacjê czy pokój by³ sprz¹tany po ostatniej rezerwacji. 
@@ -208,31 +226,97 @@ GO
 CREATE PROCEDURE [dbo].[sprawdz_sprzatanie] @id_pokoju INT
 AS
 BEGIN
-	IF NOT EXISTS (SELECT s.id_pokoju FROM siec_hoteli..sprzatanie s, siec_hoteli..pokoje p, siec_hoteli..rezerwacje r
-		WHERE s.id_pokoju = @id_pokoju
-		AND r.id_pokoju = @id_pokoju
-		AND p.id_pokoju = @id_pokoju
-		AND r.id_rezerwacji = (SELECT TOP 1 r1.id_rezerwacji FROM siec_hoteli..rezerwacje r1 WHERE r1.id_pokoju = @id_pokoju AND r1.data_rezerwacji < GETDATE() ORDER BY r1.data_rezerwacji DESC)
-		AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) < s.data_rozpoczecia_sprzatania
-		AND s.id_sprzatania = (SELECT TOP 1 s1.id_sprzatania FROM siec_hoteli..sprzatanie s1 WHERE s1.id_pokoju = @id_pokoju ORDER BY s1.data_rozpoczecia_sprzatania DESC))
-		PRINT('Pokoj nie byl sprzatany')
-	ELSE 
-		PRINT('Pokoj byl sprzatany')
+    IF NOT EXISTS(SELECT s.id_pokoju
+                  FROM siec_hoteli..sprzatanie s,
+                       siec_hoteli..pokoje p,
+                       siec_hoteli..rezerwacje r
+                  WHERE s.id_pokoju = @id_pokoju
+                    AND r.id_pokoju = @id_pokoju
+                    AND p.id_pokoju = @id_pokoju
+                    AND r.id_rezerwacji = (SELECT TOP 1 r1.id_rezerwacji
+                                           FROM siec_hoteli..rezerwacje r1
+                                           WHERE r1.id_pokoju = @id_pokoju
+                                             AND r1.data_rezerwacji < GETDATE()
+                                           ORDER BY r1.data_rezerwacji DESC)
+                    AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) < s.data_rozpoczecia_sprzatania
+                    AND s.id_sprzatania = (SELECT TOP 1 s1.id_sprzatania
+                                           FROM siec_hoteli..sprzatanie s1
+                                           WHERE s1.id_pokoju = @id_pokoju
+                                           ORDER BY s1.data_rozpoczecia_sprzatania DESC))
+        PRINT ('Pokoj nie byl sprzatany')
+    ELSE
+        PRINT ('Pokoj byl sprzatany')
 END
 GO
 
 
 -- Sprawdzenie dzia³ania procedury
 BEGIN
-	DECLARE @id_pokoju INT = 151
+    DECLARE @id_pokoju INT = 151
 
-	EXEC sprawdz_sprzatanie @id_pokoju
+    EXEC sprawdz_sprzatanie @id_pokoju
 
-	SELECT * FROM siec_hoteli..sprzatanie where id_pokoju = 151
+    SELECT * FROM siec_hoteli..sprzatanie WHERE id_pokoju = 151
 
-	INSERT INTO siec_hoteli.dbo.sprzatanie(data_rozpoczecia_sprzatania, data_zakonczenia_sprzatania, rodzaj_sprzatania, id_pokoju)
-	VALUES ('2020/12/15 12:00:00', '2020/12/15 14:30:00', 'Pelne', @id_pokoju);
+    INSERT INTO siec_hoteli.dbo.sprzatanie(data_rozpoczecia_sprzatania, data_zakonczenia_sprzatania, rodzaj_sprzatania,
+                                           id_pokoju)
+    VALUES ('2020/12/15 12:00:00', '2020/12/15 14:30:00', 'Pelne', @id_pokoju);
 
-	EXEC sprawdz_sprzatanie @id_pokoju
+    EXEC sprawdz_sprzatanie @id_pokoju
 END
 GO
+
+-- Procedura 8 Procedura dla zadanego pañstwa zmienia cenê bazow¹ za pokój znajduj¹cych siê w nim hoteli.
+-- Jeœli cena bazowa za pokój jest wiêksza od 120% œredniej w sieci hoteli to cena zostaje zmniejszona o 8%,
+-- jesli cena bazowa za pokój jest mniejsza od 80% œredniej w sieci hoteli to cena zostaje zwiêkszona o 11%.
+
+GO
+DROP PROCEDURE IF EXISTS [dbo].[sprawdz_ceny]
+GO
+CREATE PROCEDURE [dbo].[sprawdz_ceny] @id_panstwa VARCHAR(2)
+AS
+BEGIN
+    IF (SELECT AVG(h.cena_bazowa_za_pokoj)
+        FROM siec_hoteli..miasta m,
+             siec_hoteli..hotele h
+        WHERE h.id_miasta = m.id_miasta
+          AND m.id_panstwa = @id_panstwa) > (SELECT AVG(h2.cena_bazowa_za_pokoj) * 1.20 FROM siec_hoteli..hotele h2)
+        BEGIN
+            UPDATE siec_hoteli..hotele
+            SET cena_bazowa_za_pokoj = cena_bazowa_za_pokoj * 0.92
+            WHERE id_miasta in (SELECT m.id_miasta FROM siec_hoteli..miasta m WHERE m.id_panstwa = @id_panstwa)
+        END
+    ELSE
+        IF (SELECT AVG(h.cena_bazowa_za_pokoj)
+            FROM siec_hoteli..miasta m,
+                 siec_hoteli..hotele h
+            WHERE h.id_miasta = m.id_miasta
+              AND m.id_panstwa = @id_panstwa) < (SELECT AVG(h2.cena_bazowa_za_pokoj) * 0.8 FROM siec_hoteli..hotele h2)
+            BEGIN
+                UPDATE siec_hoteli..hotele
+                SET cena_bazowa_za_pokoj = cena_bazowa_za_pokoj * 1.11
+                WHERE id_miasta in (SELECT m.id_miasta FROM siec_hoteli..miasta m WHERE m.id_panstwa = @id_panstwa)
+            END
+END
+GO
+-- sprawdzenie dzialania
+
+BEGIN
+    DECLARE @id_panstwa VARCHAR(2) = 'PL'
+
+    SELECT AVG(h.cena_bazowa_za_pokoj), m.id_panstwa
+    FROM siec_hoteli..miasta m,
+         siec_hoteli..hotele h
+    WHERE m.id_panstwa = @id_panstwa
+      AND h.id_miasta = m.id_miasta
+    GROUP BY m.id_panstwa
+
+    EXECUTE [dbo].sprawdz_ceny 'PL'
+
+    SELECT AVG(h.cena_bazowa_za_pokoj), m.id_panstwa
+    FROM siec_hoteli..miasta m,
+         siec_hoteli..hotele h
+    WHERE m.id_panstwa = @id_panstwa
+      AND h.id_miasta = m.id_miasta
+    GROUP BY m.id_panstwa
+END
