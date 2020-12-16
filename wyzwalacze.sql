@@ -15,6 +15,7 @@ CREATE TRIGGER zwieksz_pensje
     INSTEAD OF UPDATE
     AS
     IF (UPDATE(premia))
+		IF NOT(SELECT premia FROM inserted) > 10
         BEGIN
             UPDATE dbo.pracownicy
             SET dbo.pracownicy.pensja += i.pensja * i.premia * 0.5

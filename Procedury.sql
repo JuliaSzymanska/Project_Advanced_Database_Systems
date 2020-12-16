@@ -104,7 +104,7 @@ GO
 
 --------------------------------------------------------------------------------
 -- Procedura 5. Procedura, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle,
--- dla procentu jest to 10%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.
+-- dla procentu jest to 10%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie. Maksymalna premia to 9.99.
 GO
 DROP PROCEDURE IF EXISTS premia_procedura
 GO
@@ -117,8 +117,13 @@ BEGIN
             SET premia = 0
             WHERE premia IS NULL;
 
+		
             UPDATE siec_hoteli.dbo.pracownicy
-            SET premia = premia * ((100.00 + @procent) / 100.00)
+            SET premia = CASE
+                  WHEN premia * ((100.00 + @procent) / 100.00) < 10 then premia * ((100.00 + @procent) / 100.00)
+                  else premia
+				  END
+		
         END
     ELSE
         BEGIN
@@ -128,7 +133,10 @@ BEGIN
               AND @id = id_pracownika
 
             UPDATE siec_hoteli.dbo.pracownicy
-            SET premia = premia * ((100.00 + @procent) / 100.00)
+            SET premia = CASE
+                  WHEN premia * ((100.00 + @procent) / 100.00) < 10 then premia * ((100.00 + @procent) / 100.00)
+                  else premia
+				  END
             WHERE @id = id_pracownika
         END
 END
