@@ -51,15 +51,17 @@ GO
 DECLARE @numer_telefonu VARCHAR(9) = '69421'
 SELECT [dbo].[oblicz_wspoczynnik](@numer_telefonu, id_pokoju)
 FROM siec_hoteli..rozmowy_telefoniczne
+GO
 
 -- Dla przypadku, gdy numer, na który wykonywane jest po³¹czenie jest spoza sieci hoteli. 
-SET @numer_telefonu = '205947321'
+DECLARE @numer_telefonu VARCHAR(9) = '205947321'
 SELECT [dbo].[oblicz_wspoczynnik](@numer_telefonu, id_pokoju)
 FROM siec_hoteli..rozmowy_telefoniczne
+GO
 
 
 --------------------------------------------------------------------------------
-GO
+
 -- Funkcja 2. Funkcja obliczaj¹ca zni¿kê dla klientów, którzy posiadaj¹ rezerwacjê w archiwum rezerwacji, wartoœc zni¿ki wynosi 25%, 
 -- natomiast dla klientów, których najstarsza rezerwacja ma wiêcej ni¿ 10 lat zni¿ka wynosi 50%. 
 -- Dla klientów, który nie maj¹ rezerwacji w archiwum rezerwacji zni¿ka wynosi 0%.
@@ -106,6 +108,7 @@ WHERE k.id_klienta NOT IN (
     FROM siec_hoteli..rezerwacje r,
          siec_hoteli..archiwum_rezerwacji ar
     WHERE r.id_rezerwacji = ar.id_rezerwacji)
+GO
 
 -- Gdy klienci mieli pierwsz¹ rezerwacjê wczeœniej ni¿ 10 lat temu. 
 SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka
@@ -116,6 +119,7 @@ WHERE k.id_klienta IN (
          siec_hoteli..archiwum_rezerwacji ar
     WHERE r.id_rezerwacji = ar.id_rezerwacji
       AND DATEDIFF(YEAR, r.data_rezerwacji, GETDATE()) < 10)
+GO
 
 -- Gdy klienci mieli pierwsz¹ rezerwacjê dawniej ni¿ 10 lat temu. 
 SELECT k.id_klienta, [dbo].[oblicz_znizke](id_klienta) znizka
@@ -126,6 +130,7 @@ WHERE k.id_klienta IN (
          siec_hoteli..archiwum_rezerwacji ar
     WHERE r.id_rezerwacji = ar.id_rezerwacji
       AND DATEDIFF(YEAR, r.data_rezerwacji, GETDATE()) > 10)
+GO
 
 --------------------------------------------------------------------------------
 -- Funkcja 3. Funkcja podaje dla ka¿dego kraju, ile procent wszystkich hoteli znajduje siê w tym kraju.

@@ -210,41 +210,58 @@ END
 GO
 
 -- Sprawdzenie dzia³ania procedury
-DECLARE @data_rezerwacji DATE = '2022/12/01', @liczba_dni INT = 5, @id_pokoju INT = 153,
-    @imie_klienta VARCHAR(20) = 'Kamil', @nazwisko_klienta VARCHAR(40) = 'Stachura',
-    @nr_tel CHAR(9) = '144768432', @adres VARCHAR(100) = 'Politechniki 43 92-431 Lodz Polska'
+BEGIN
+    DECLARE @data_rezerwacji DATE = '2022/12/01', @liczba_dni INT = 5, @id_pokoju INT = 153,
+        @imie_klienta VARCHAR(20) = 'Kamil', @nazwisko_klienta VARCHAR(40) = 'Stachura',
+        @nr_tel CHAR(9) = '144768432', @adres VARCHAR(100) = 'Politechniki 43 92-431 Lodz Polska'
 
-SELECT *
-FROM siec_hoteli..klienci
-WHERE imie_klienta = @imie_klienta
-  AND nazwisko_klienta = @nazwisko_klienta
-  AND numer_telefonu_klienta = @nr_tel
-  AND adres_zamieszkania = @adres
-SELECT *
-FROM siec_hoteli..rezerwacje re,
-     siec_hoteli..klienci kl
-WHERE re.id_klienta = kl.id_klienta
-  AND imie_klienta = @imie_klienta
-  AND nazwisko_klienta = @nazwisko_klienta
-  AND numer_telefonu_klienta = @nr_tel
-  AND adres_zamieszkania = @adres
+    SELECT k.id_klienta, imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania
+    FROM siec_hoteli..klienci k
+    WHERE k.imie_klienta = @imie_klienta
+      AND k.nazwisko_klienta = @nazwisko_klienta
+      AND k.numer_telefonu_klienta = @nr_tel
+      AND k.adres_zamieszkania = @adres
 
-EXEC rezerwacja_dla_nowego @data_rezerwacji, @liczba_dni, @id_pokoju, @imie_klienta, @nazwisko_klienta, @nr_tel, @adres
+    SELECT re.id_rezerwacji,
+           re.data_rezerwacji,
+           re.liczba_dni_rezerwacji,
+           re.id_pokoju,
+           re.id_klienta,
+           kl.imie_klienta,
+           kl.nazwisko_klienta
+    FROM siec_hoteli..rezerwacje re,
+         siec_hoteli..klienci kl
+    WHERE re.id_klienta = kl.id_klienta
+      AND imie_klienta = @imie_klienta
+      AND nazwisko_klienta = @nazwisko_klienta
+      AND numer_telefonu_klienta = @nr_tel
+      AND adres_zamieszkania = @adres
 
-SELECT *
-FROM siec_hoteli..klienci
-WHERE imie_klienta = @imie_klienta
-  AND nazwisko_klienta = @nazwisko_klienta
-  AND numer_telefonu_klienta = @nr_tel
-  AND adres_zamieszkania = @adres
-SELECT *
-FROM siec_hoteli..rezerwacje re,
-     siec_hoteli..klienci kl
-WHERE re.id_klienta = kl.id_klienta
-  AND imie_klienta = @imie_klienta
-  AND nazwisko_klienta = @nazwisko_klienta
-  AND numer_telefonu_klienta = @nr_tel
-  AND adres_zamieszkania = @adres
+    EXEC rezerwacja_dla_nowego @data_rezerwacji, @liczba_dni, @id_pokoju, @imie_klienta, @nazwisko_klienta, @nr_tel,
+         @adres
+
+    SELECT k.id_klienta, imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania
+    FROM siec_hoteli..klienci k
+    WHERE k.imie_klienta = @imie_klienta
+      AND k.nazwisko_klienta = @nazwisko_klienta
+      AND k.numer_telefonu_klienta = @nr_tel
+      AND k.adres_zamieszkania = @adres
+    
+    SELECT re.id_rezerwacji,
+           re.data_rezerwacji,
+           re.liczba_dni_rezerwacji,
+           re.id_pokoju,
+           re.id_klienta,
+           kl.imie_klienta,
+           kl.nazwisko_klienta
+    FROM siec_hoteli..rezerwacje re,
+         siec_hoteli..klienci kl
+    WHERE re.id_klienta = kl.id_klienta
+      AND imie_klienta = @imie_klienta
+      AND nazwisko_klienta = @nazwisko_klienta
+      AND numer_telefonu_klienta = @nr_tel
+      AND adres_zamieszkania = @adres
+END
 
 --------------------------------------------------------------------------------
 -- Procedura 7. Procedura dla zadanego pokoju wyœwietla informacjê czy pokój by³ sprz¹tany po ostatniej rezerwacji. 
