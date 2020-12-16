@@ -104,11 +104,11 @@ GO
 
 --------------------------------------------------------------------------------
 -- Procedura 5. Procedura, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle,
--- dla procentu jest to 1%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.
+-- dla procentu jest to 10%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie.
 GO
 DROP PROCEDURE IF EXISTS premia_procedura
 GO
-CREATE PROCEDURE premia_procedura @id INT = -1, @procent INT = 1
+CREATE PROCEDURE premia_procedura @id INT = -1, @procent INT = 10
 AS
 BEGIN
     IF @id = -1
@@ -149,6 +149,26 @@ BEGIN
     SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
 END
 
+BEGIN
+	DECLARE @procent3 INT = 50
+	SELECT * FROM siec_hoteli..pracownicy
+    EXEC premia_procedura @procent = @procent3
+    SELECT * FROM siec_hoteli..pracownicy
+END
+
+BEGIN
+	DECLARE @id3 INT = 46
+	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = @id3
+    EXEC premia_procedura @id = @id3
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = @id3
+END
+
+BEGIN
+	SELECT * FROM siec_hoteli..pracownicy
+    EXEC premia_procedura
+    SELECT * FROM siec_hoteli..pracownicy
+END
+
 
 --------------------------------------------------------------------------------
 -- Procedura 6. Procedura na podstawie pobranych paramterów tworzy nowego klienta oraz now¹ rezerwacjê. 
@@ -180,9 +200,9 @@ END
 GO
 
 -- Sprawdzenie dzia³ania procedury
-DECLARE @data_rezerwacji DATE = '2021/12/01', @liczba_dni INT = 5, @id_pokoju INT = 151,
+DECLARE @data_rezerwacji DATE = '2022/12/01', @liczba_dni INT = 5, @id_pokoju INT = 153,
     @imie_klienta VARCHAR(20) = 'Kamil', @nazwisko_klienta VARCHAR(40) = 'Stachura',
-    @nr_tel CHAR(9) = '104758432', @adres VARCHAR(100) = 'Politechniki 43 92-431 Lodz Polska'
+    @nr_tel CHAR(9) = '144768432', @adres VARCHAR(100) = 'Politechniki 43 92-431 Lodz Polska'
 
 SELECT *
 FROM siec_hoteli..klienci
@@ -299,8 +319,9 @@ BEGIN
             END
 END
 GO
--- sprawdzenie dzialania
 
+
+-- Sprawdzenie dzialania
 BEGIN
     DECLARE @id_panstwa VARCHAR(2) = 'PL'
 
