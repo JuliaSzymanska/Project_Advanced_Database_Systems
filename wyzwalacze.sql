@@ -15,34 +15,34 @@ CREATE TRIGGER zwieksz_pensje
     INSTEAD OF UPDATE
     AS
     IF (UPDATE(premia))
-		IF NOT(SELECT premia FROM inserted) > 10
-        BEGIN
-            UPDATE dbo.pracownicy
-            SET dbo.pracownicy.pensja += i.pensja * i.premia * 0.5
-            FROM inserted i
-            WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
-              AND (i.premia - dbo.pracownicy.premia) > 0.1
+        IF NOT (SELECT premia FROM inserted) > 10
+            BEGIN
+                UPDATE dbo.pracownicy
+                SET dbo.pracownicy.pensja += i.pensja * i.premia * 0.5
+                FROM inserted i
+                WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
+                  AND (i.premia - dbo.pracownicy.premia) > 0.1
 
-            UPDATE dbo.pracownicy
-            SET premia = i.premia
-            FROM inserted i
-            WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
-        END
-    ELSE
-        BEGIN
-            UPDATE dbo.pracownicy
-            SET dbo.pracownicy.id_hotelu                 = i.id_hotelu,
-                dbo.pracownicy.numer_telefonu_pracownika = i.numer_telefonu_pracownika,
-                dbo.pracownicy.premia                    = i.premia,
-                dbo.pracownicy.pensja                    = i.pensja,
-                dbo.pracownicy.data_urodzenia            = i.data_urodzenia,
-                dbo.pracownicy.imie_pracownika           = i.imie_pracownika,
-                dbo.pracownicy.nazwisko_pracownika       = i.nazwisko_pracownika,
-                dbo.pracownicy.email_pracownika          = i.email_pracownika,
-                dbo.pracownicy.poczatek_pracy            = i.poczatek_pracy
-            FROM inserted i
-            WHERE pracownicy.id_pracownika = i.id_pracownika
-        END
+                UPDATE dbo.pracownicy
+                SET premia = i.premia
+                FROM inserted i
+                WHERE dbo.pracownicy.id_pracownika = i.id_pracownika
+            END
+        ELSE
+            BEGIN
+                UPDATE dbo.pracownicy
+                SET dbo.pracownicy.id_hotelu                 = i.id_hotelu,
+                    dbo.pracownicy.numer_telefonu_pracownika = i.numer_telefonu_pracownika,
+                    dbo.pracownicy.premia                    = i.premia,
+                    dbo.pracownicy.pensja                    = i.pensja,
+                    dbo.pracownicy.data_urodzenia            = i.data_urodzenia,
+                    dbo.pracownicy.imie_pracownika           = i.imie_pracownika,
+                    dbo.pracownicy.nazwisko_pracownika       = i.nazwisko_pracownika,
+                    dbo.pracownicy.email_pracownika          = i.email_pracownika,
+                    dbo.pracownicy.poczatek_pracy            = i.poczatek_pracy
+                FROM inserted i
+                WHERE pracownicy.id_pracownika = i.id_pracownika
+            END
 GO
 
 USE master

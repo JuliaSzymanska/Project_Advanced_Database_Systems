@@ -117,13 +117,14 @@ BEGIN
             SET premia = 0
             WHERE premia IS NULL;
 
-		
+
             UPDATE siec_hoteli.dbo.pracownicy
             SET premia = CASE
-                  WHEN premia * ((100.00 + @procent) / 100.00) < 10 then premia * ((100.00 + @procent) / 100.00)
-                  else premia
-				  END
-		
+                             WHEN premia * ((100.00 + @procent) / 100.00) < 10
+                                 THEN premia * ((100.00 + @procent) / 100.00)
+                             ELSE premia
+                END
+
         END
     ELSE
         BEGIN
@@ -134,9 +135,10 @@ BEGIN
 
             UPDATE siec_hoteli.dbo.pracownicy
             SET premia = CASE
-                  WHEN premia * ((100.00 + @procent) / 100.00) < 10 then premia * ((100.00 + @procent) / 100.00)
-                  else premia
-				  END
+                             WHEN premia * ((100.00 + @procent) / 100.00) < 10
+                                 THEN premia * ((100.00 + @procent) / 100.00)
+                             ELSE premia
+                END
             WHERE @id = id_pracownika
         END
 END
@@ -158,21 +160,21 @@ BEGIN
 END
 
 BEGIN
-	DECLARE @procent3 INT = 50
-	SELECT * FROM siec_hoteli..pracownicy
+    DECLARE @procent3 INT = 50
+    SELECT * FROM siec_hoteli..pracownicy
     EXEC premia_procedura @procent = @procent3
     SELECT * FROM siec_hoteli..pracownicy
 END
 
 BEGIN
-	DECLARE @id3 INT = 46
-	SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = @id3
+    DECLARE @id3 INT = 46
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = @id3
     EXEC premia_procedura @id = @id3
     SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = @id3
 END
 
 BEGIN
-	SELECT * FROM siec_hoteli..pracownicy
+    SELECT * FROM siec_hoteli..pracownicy
     EXEC premia_procedura
     SELECT * FROM siec_hoteli..pracownicy
 END
@@ -312,7 +314,7 @@ BEGIN
         BEGIN
             UPDATE siec_hoteli..hotele
             SET cena_bazowa_za_pokoj = cena_bazowa_za_pokoj * 0.92
-            WHERE id_miasta in (SELECT m.id_miasta FROM siec_hoteli..miasta m WHERE m.id_panstwa = @id_panstwa)
+            WHERE id_miasta IN (SELECT m.id_miasta FROM siec_hoteli..miasta m WHERE m.id_panstwa = @id_panstwa)
         END
     ELSE
         IF (SELECT AVG(h.cena_bazowa_za_pokoj)
@@ -323,7 +325,7 @@ BEGIN
             BEGIN
                 UPDATE siec_hoteli..hotele
                 SET cena_bazowa_za_pokoj = cena_bazowa_za_pokoj * 1.11
-                WHERE id_miasta in (SELECT m.id_miasta FROM siec_hoteli..miasta m WHERE m.id_panstwa = @id_panstwa)
+                WHERE id_miasta IN (SELECT m.id_miasta FROM siec_hoteli..miasta m WHERE m.id_panstwa = @id_panstwa)
             END
 END
 GO
