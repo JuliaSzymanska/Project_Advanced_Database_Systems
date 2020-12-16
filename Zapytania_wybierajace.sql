@@ -83,7 +83,7 @@ ORDER BY data_rozpoczecia_sprzatania
 GO
 
 -- 9. Wyœwietl wszystkie rozmowy telefoniczne, które trwa³y d³u¿ej ni¿ 5 minut.
-SELECT *
+SELECT r.data_rozpoczecia_rozmowy, r.data_zakonczenia_rozmowy, r.id_rozmowy_telefonicznej
 FROM siec_hoteli.dbo.rozmowy_telefoniczne r
 WHERE DATEDIFF(MINUTE, r.data_rozpoczecia_rozmowy, r.data_zakonczenia_rozmowy) > 5
 ORDER BY data_rozpoczecia_rozmowy
@@ -105,7 +105,7 @@ WHERE rt.numer_telefonu = k1.numer_telefonu_klienta
   AND rez.id_klienta = k2.id_klienta
   AND rez.data_rezerwacji < rt.data_rozpoczecia_rozmowy
   AND DATEADD(DAY, rez.liczba_dni_rezerwacji, rez.data_rezerwacji) > rt.data_rozpoczecia_rozmowy
-
+GO
 
 -- 11. Wyswietl pracownikow, ktorzy maja najwieksza pensje w danym hotelu. 
 SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika pracownik, p.pensja, h.nazwa_hotelu
@@ -114,7 +114,7 @@ FROM siec_hoteli.dbo.pracownicy p,
 WHERE p.pensja IN (SELECT MAX(pensja) FROM siec_hoteli.dbo.pracownicy p2 WHERE p2.id_hotelu = p.id_hotelu)
   AND p.id_hotelu = h.id_hotelu
 ORDER BY p.nazwisko_pracownika
-
+GO
 
 -- 12. Wyswietl pracownikow z archiwum pracownikow, ktorzy pracuja dluzej niz srednia dlugosc pracy w tym miescie. 
 SELECT p.imie_pracownika + ' ' + p.nazwisko_pracownika 'Imie i nazwisko pracownika', m.nazwa_miasta
@@ -137,7 +137,7 @@ WHERE ap.id_pracownika = p.id_pracownika
       AND m2.id_miasta = m.id_miasta
     GROUP BY m2.id_miasta)
 GROUP BY m.nazwa_miasta, p.imie_pracownika, p.nazwisko_pracownika, p.poczatek_pracy, ap.koniec_pracy
-
+GO
 
 -- 13. Wyœwietla panstwo, w ktorym najwiecej sie wydaje na oplacenie pracownikow.
 SELECT SUM(p.pensja) suma, pan.nazwa_panstwa
@@ -162,6 +162,7 @@ WHERE pan.id_panstwa = m.id_panstwa
   AND p.id_hotelu = h.id_hotelu
 GROUP BY pan.nazwa_panstwa, pms.max_suma
 HAVING SUM(p.pensja) = max_suma
+GO
 
 -- 14. Wypisz klienta który mia³ najwiecej skonczonych rezerwacji. 
 SELECT k.imie_klienta, k.nazwisko_klienta, COUNT(k.id_klienta) ilosc_rezerwacji
@@ -177,7 +178,7 @@ HAVING COUNT(k.id_klienta) = (SELECT TOP 1 COUNT(k.id_klienta)
                                 AND DATEADD(DAY, r.liczba_dni_rezerwacji, r.data_rezerwacji) < GETDATE()
                               GROUP BY k.id_klienta
                               ORDER BY COUNT(k.id_klienta) DESC)
-
+GO
 
 -- 15. Wypisz najwiecej sprz¹tany pokój.
 SELECT p.id_pokoju, COUNT(*) 'Ilosc sprzatan'
@@ -191,6 +192,7 @@ HAVING (COUNT(p.id_pokoju)) = (SELECT TOP 1 COUNT(*) count
                                WHERE p.id_pokoju = s.id_pokoju
                                GROUP BY p.id_pokoju
                                ORDER BY count DESC)
+GO
 
 --16. Wyswietl najczesciej wykupowana usluge
 SELECT COUNT(*) ilosc, u.nazwa_uslugi 'Nazwa uslugi'
@@ -202,9 +204,10 @@ HAVING COUNT(*) = (SELECT MAX(i.ile)
                    FROM (SELECT COUNT(*) 'Ile', us.id_uslugi 'Usluga'
                          FROM siec_hoteli..usluga_dla_rezerwacji us
                          GROUP BY us.id_uslugi) i)
+GO
 
-
--- 17. Wyswietl nazwe hotelu, miasto oraz panstwo, w ktorych znajduje sie hotel, dla którego byla najdrozsza rezerwacja, a takze cenê rezerwacji, dla hotelu. 
+-- 17. Wyswietl nazwe hotelu, miasto oraz panstwo, w ktorych znajduje sie hotel, dla którego byla najdrozsza rezerwacja, a takze cenê rezerwacji, dla hotelu.
+--  Wyniki mozna dopiero zobaczyæ po wykonaniu poleceñ sprawdzaj¹cych dla wyzwalacza 2.
 SELECT h.nazwa_hotelu, m.nazwa_miasta, pan.nazwa_panstwa, max_kwota.[Kwota rezerwacji]
 FROM (SELECT MAX(ar2.cena_calkowita) 'Kwota rezerwacji' FROM siec_hoteli..archiwum_rezerwacji ar2) max_kwota,
      siec_hoteli..archiwum_rezerwacji ar,
@@ -219,7 +222,7 @@ WHERE max_kwota.[Kwota rezerwacji] = ar.cena_calkowita
   AND p.id_hotelu = h.id_hotelu
   AND h.id_miasta = m.id_miasta
   AND m.id_panstwa = pan.id_panstwa
-
+GO
 
 -- 18 Wypisz klientów, którzy mieli rezerwacje, posortowani po sumie wartoœci ich rezerwacji
 SELECT SUM(h.cena_bazowa_za_pokoj * r.liczba_dni_rezerwacji) suma, k.imie_klienta, k.nazwisko_klienta
@@ -232,6 +235,7 @@ WHERE k.id_klienta = r.id_klienta
   AND h.id_hotelu = p.id_hotelu
 GROUP BY k.id_klienta, k.imie_klienta, k.nazwisko_klienta
 ORDER BY suma DESC
+GO
 
 -- 19 Wyœwietl nazwiska, identyfikator pracowników oraz nazwê hotelu, znajduj¹cego siê w Los Angeles
 SELECT p.nazwisko_pracownika, p.id_pracownika, h.nazwa_hotelu
@@ -240,6 +244,7 @@ FROM siec_hoteli..pracownicy p,
 WHERE p.id_hotelu = h.id_hotelu
   AND h.id_miasta IN
       (SELECT id_miasta FROM siec_hoteli..miasta WHERE nazwa_miasta = 'Los Angeles')
+GO
 
 -- 20 Wyœwietl nazwiska, wynagrodzenie oraz premiê dla tych pracowników, którzy maj¹ premiê
 SELECT nazwisko_pracownika, pensja, premia
@@ -247,6 +252,7 @@ FROM siec_hoteli..pracownicy
 WHERE siec_hoteli..pracownicy.premia IS NOT NULL
 	AND siec_hoteli..pracownicy.premia > 0.00
 ORDER BY siec_hoteli..pracownicy.premia DESC
+GO
 
 -- 21 Wyœwietl nazwy miast, w których nie ma ¿adnego hotelu z sieci hoteli
 SELECT m.nazwa_miasta
@@ -255,3 +261,4 @@ WHERE m.nazwa_miasta NOT IN (
     SELECT nazwa_miasta
     FROM siec_hoteli..hotele h
              JOIN siec_hoteli..miasta m ON m.id_miasta = h.id_miasta)
+GO
