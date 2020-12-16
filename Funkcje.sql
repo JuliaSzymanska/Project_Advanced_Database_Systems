@@ -132,10 +132,10 @@ WHERE k.id_klienta IN (
 DROP FUNCTION IF EXISTS [dbo].[okreslprocent]
 GO
 CREATE FUNCTION [dbo].[okreslprocent](@id CHAR(2))
-    RETURNS FLOAT
+    RETURNS DECIMAL(5, 2)
 AS
 BEGIN
-    DECLARE @procent FLOAT
+    DECLARE @procent DECIMAL(5, 2)
     DECLARE @ileogolem FLOAT, @ilewkraju FLOAT
 
     SET @ilewkraju = (SELECT COUNT(*)
