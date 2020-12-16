@@ -104,42 +104,44 @@ GO
 
 
 -- Sprawdzenie dzialania wyzwalacza
-SELECT *
-FROM siec_hoteli..archiwum_rezerwacji
-GO
+BEGIN
+    SELECT *
+    FROM siec_hoteli..archiwum_rezerwacji
 
-INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
-                                                id_rezerwacji)
-VALUES (0, 0, 0, 1049),
-       (0, 0, 0, 1050),
-       (0, 0, 0, 1023),
-       (0, 0, 0, 1001),
-       (0, 0, 0, 1005),
-       (0, 0, 0, 1009),
-       (0, 0, 0, 1010),
-       (0, 0, 0, 1019),
-       (0, 0, 0, 1032),
-       (0, 0, 0, 1033),
-       (0, 0, 0, 1034),
-       (0, 0, 0, 1035),
-       (0, 0, 0, 1036),
-       (0, 0, 0, 1037),
-       (0, 0, 0, 1038),
-       (0, 0, 0, 1039),
-       (0, 0, 0, 1040),
-       (0, 0, 0, 1041),
-       (0, 0, 0, 1042),
-       (0, 0, 0, 1043),
-       (0, 0, 0, 1044),
-       (0, 0, 0, 1045),
-       (0, 0, 0, 1046),
-       (0, 0, 0, 1047),
-       (0, 0, 0, 1048),
-       (0, 0, 0, 1051);
-GO
-SELECT *
-FROM siec_hoteli..archiwum_rezerwacji
-GO
+
+    INSERT INTO siec_hoteli.dbo.archiwum_rezerwacji(cena_calkowita, cena_za_telefon, cena_za_uslugi,
+                                                    id_rezerwacji)
+    VALUES (0, 0, 0, 1049),
+           (0, 0, 0, 1050),
+           (0, 0, 0, 1023),
+           (0, 0, 0, 1001),
+           (0, 0, 0, 1005),
+           (0, 0, 0, 1009),
+           (0, 0, 0, 1010),
+           (0, 0, 0, 1019),
+           (0, 0, 0, 1032),
+           (0, 0, 0, 1033),
+           (0, 0, 0, 1034),
+           (0, 0, 0, 1035),
+           (0, 0, 0, 1036),
+           (0, 0, 0, 1037),
+           (0, 0, 0, 1038),
+           (0, 0, 0, 1039),
+           (0, 0, 0, 1040),
+           (0, 0, 0, 1041),
+           (0, 0, 0, 1042),
+           (0, 0, 0, 1043),
+           (0, 0, 0, 1044),
+           (0, 0, 0, 1045),
+           (0, 0, 0, 1046),
+           (0, 0, 0, 1047),
+           (0, 0, 0, 1048),
+           (0, 0, 0, 1051);
+
+    SELECT *
+    FROM siec_hoteli..archiwum_rezerwacji
+
+END
 
 -- Wyzwalacz nr. 3 Przy wprowadzaniu rezerwacji sprawdzane jest czy data nie konfliktuje z istniej¹cymi rezerwacjami dla tego pokoju
 USE siec_hoteli
