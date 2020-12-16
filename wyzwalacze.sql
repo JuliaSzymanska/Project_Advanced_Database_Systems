@@ -54,7 +54,15 @@ BEGIN
     EXEC premia_procedura @id2, @procent2
     SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
 END
+GO
 
+BEGIN
+    DECLARE @id2 INT = 46, @procent2 INT = 1
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+    EXEC premia_procedura @id2, @procent2
+    SELECT * FROM siec_hoteli..pracownicy WHERE id_pracownika = 46
+END
+GO
 
 -- Wyzwalacz nr. 2 - Po wprowdzeniu rezerwacji do archiwum_rezerwacji ustaw cene_za_telefon obliczajac cene kazdej rozmowy,
 -- mnozac liczbe minut rozmowy razy cene_za_polaczenie_telefoniczne razy wspolczynnik obliczony za pomoca funkcji.

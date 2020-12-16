@@ -286,7 +286,7 @@ BEGIN
 END
 GO
 
--- Procedura 8 Procedura dla zadanego pañstwa zmienia cenê bazow¹ za pokój znajduj¹cych siê w nim hoteli.
+-- Procedura 8. Procedura dla zadanego pañstwa zmienia cenê bazow¹ za pokój znajduj¹cych siê w nim hoteli.
 -- Jeœli cena bazowa za pokój jest wiêksza od 120% œredniej w sieci hoteli to cena zostaje zmniejszona o 8%,
 -- jesli cena bazowa za pokój jest mniejsza od 80% œredniej w sieci hoteli to cena zostaje zwiêkszona o 11%.
 
