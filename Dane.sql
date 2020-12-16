@@ -500,7 +500,7 @@ VALUES ('Curtis', 'Davies', 'curtisdavies@view.eu', '900000888', CAST('22-JAN-19
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Julia', 'Szymanska', 'julaszym@gmail.com', '601874010', CAST('08-MAY-1999' AS DATETIME), 8600, NULL,
+VALUES ('Julia', 'Kamińska', 'julakim@gmail.com', '601874011', CAST('08-MAY-1999' AS DATETIME), 8600, NULL,
         CAST('08-MAY-2020' AS DATETIME), 117);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
@@ -510,7 +510,7 @@ VALUES ('Peter', 'Vargas', 'peterpetervargas@view.eu', '800121222', CAST('12-MAR
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
                                        id_hotelu)
-VALUES ('Przemyslaw', 'Zdrzalik', 'zdrzalikprzemyslaw@gmail.com', '665071716', CAST('21-JUL-1999' AS DATETIME), 7500,
+VALUES ('Jakub', 'Wypych', 'jakubWypych@gmail.com', '665071756', CAST('21-JUL-1999' AS DATETIME), 7500,
         .6, CAST('21-JUL-2020' AS DATETIME), 117);
 INSERT INTO siec_hoteli.dbo.pracownicy(imie_pracownika, nazwisko_pracownika, email_pracownika,
                                        numer_telefonu_pracownika, data_urodzenia, pensja, premia, poczatek_pracy,
@@ -1295,9 +1295,9 @@ INSERT INTO siec_hoteli.dbo.klienci(imie_klienta, nazwisko_klienta, numer_telefo
 VALUES (N'Michał', 'Daniec', '023151085', 'Konin, ul.Mala 1 Polska');
 GO
 INSERT INTO siec_hoteli.dbo.klienci(imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania)
-VALUES (N'Przemysław', 'Zdrzalik', '665074716', N'Łódź ul.Sacharowa 53 Polska')
+VALUES (N'Michał', 'Wysoki', '665074717', N'Łódź ul.Przednia 53 Polska')
 INSERT INTO siec_hoteli.dbo.klienci(imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania)
-VALUES ('Julia', N'Szymańska', '601874010', N'Łódź ul.Krzeptowskiego 12 Polska')
+VALUES ('Natalia', N'Kosztowny', '601874012', N'Łódź ul.Stokrotki 12 Polska')
 
 INSERT INTO siec_hoteli.dbo.rezerwacje(data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
 VALUES ('2021/12/25', 5, 101, 1000);
