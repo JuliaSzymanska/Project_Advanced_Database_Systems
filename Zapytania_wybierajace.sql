@@ -39,7 +39,7 @@ GO
 SELECT nazwa_hotelu, COUNT(id_pokoju) AS 'Liczba pokoi bez rezerwacji'
 FROM siec_hoteli.dbo.pokoje,
      siec_hoteli.dbo.hotele
-WHERE id_pokoju NOT IN (SELECT id_pokoju FROM siec_hoteli.dbo.rezerwacje)
+WHERE id_pokoju NOT IN (SELECT id_pokoju FROM siec_hoteli.dbo.rezerwacje WHERE data_rezerwacji >= GETDATE())
   AND pokoje.id_hotelu = hotele.id_hotelu
 GROUP BY nazwa_hotelu
 ORDER BY [Liczba pokoi bez rezerwacji] DESC
@@ -204,7 +204,7 @@ HAVING COUNT(*) = (SELECT MAX(i.ile)
                          GROUP BY us.id_uslugi) i)
 
 
--- 17. Wyswietl nazwe hotelu, miasto oraz panstwo, w ktorych znajduje sie hotel, a takze kwote, dla hotelu, dla ktorego byla najdrozsza rezerwacja. 
+-- 17. Wyswietl nazwe hotelu, miasto oraz panstwo, w ktorych znajduje sie hotel, dla którego byla najdrozsza rezerwacja, a takze cenê rezerwacji, dla hotelu. 
 SELECT h.nazwa_hotelu, m.nazwa_miasta, pan.nazwa_panstwa, max_kwota.[Kwota rezerwacji]
 FROM (SELECT MAX(ar2.cena_calkowita) 'Kwota rezerwacji' FROM siec_hoteli..archiwum_rezerwacji ar2) max_kwota,
      siec_hoteli..archiwum_rezerwacji ar,
@@ -233,7 +233,7 @@ WHERE k.id_klienta = r.id_klienta
 GROUP BY k.id_klienta, k.imie_klienta, k.nazwisko_klienta
 ORDER BY suma DESC
 
--- 19 Wyœwietl nazwiska, identyfikator oraz nazwê hotelu, w którym pracuj¹ dla pracowników pracuj¹cych w Los Angeles
+-- 19 Wyœwietl nazwiska, identyfikator pracowników oraz nazwê hotelu, znajduj¹cego siê w Los Angeles
 SELECT p.nazwisko_pracownika, p.id_pracownika, h.nazwa_hotelu
 FROM siec_hoteli..pracownicy p,
      siec_hoteli..hotele h
@@ -241,7 +241,7 @@ WHERE p.id_hotelu = h.id_hotelu
   AND h.id_miasta IN
       (SELECT id_miasta FROM siec_hoteli..miasta WHERE nazwa_miasta = 'Los Angeles')
 
--- 20 Wyœwietl nazwiska, wynagrodzenie oraz prowizjê dla tych pracowników, którzy maj¹ prowizjê
+-- 20 Wyœwietl nazwiska, wynagrodzenie oraz premiê dla tych pracowników, którzy maj¹ premiê
 SELECT nazwisko_pracownika, pensja, premia
 FROM siec_hoteli..pracownicy
 WHERE siec_hoteli..pracownicy.premia IS NOT NULL
