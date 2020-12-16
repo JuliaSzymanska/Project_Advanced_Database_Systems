@@ -2,12 +2,20 @@
 -- Przemek Zdrzalik 224466
 -- Martyna Piasecka 224398
 
+/*
+ W celu poprawnego wykonania wszystich poleceñ pliki nale¿y uruchamiaæ w kolejnoœci:
+    - Schemat
+    - Dane
+    - Funkcje
+    - Procedury
+    - Wyzwalacze
+    - Zapytania wybieraj¹ce
+ */
+
 DROP DATABASE IF EXISTS siec_hoteli
 CREATE DATABASE siec_hoteli
 GO
 
---USE siec_hoteli
---GO
 
 CREATE TABLE siec_hoteli.dbo.panstwa
 (
