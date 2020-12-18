@@ -3,8 +3,9 @@
 -- Martyna Piasecka 224398
 
 
--- Procedura 1. Procedura uaktualniaj¹ca cenê za telefon dla rezerwacji o adanym id, 
--- mno¿¹c cene za po³¹czenie telefoniczne dla hotelu, wspó³czynnik ceny oraz czas trwania rozmów, dla po³¹czeñ wykonanych dla tego pokoju podczas danej rezerwacji.
+-- Procedura 1. Procedura uaktualniaj¹ca cenê za telefon dla rezerwacji o zadanym id, 
+-- mno¿¹c cene za po³¹czenie telefoniczne dla hotelu, wspó³czynnik ceny oraz czas trwania rozmów, 
+-- dla po³¹czeñ wykonanych dla pokoju podczas danej rezerwacji.
 DROP PROCEDURE IF EXISTS [dbo].[ustaw_cene_za_telefon]
 GO
 CREATE PROCEDURE [dbo].[ustaw_cene_za_telefon] @id_rezerwacji INT
@@ -104,7 +105,7 @@ GO
 
 --------------------------------------------------------------------------------
 -- Procedura 5. Procedura, która pracownikowi o zadanym id zwiekszy premie o zadany procent. Oba argumenty posiadaja wartosci domysle,
--- dla procentu jest to 10%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzsz premie. Maksymalna premia to 9.99.
+-- dla procentu jest to 10%, natomiast jestli nie zostalo podane id pracownika, wszystkim pracownikom podwyzszy premie. Maksymalna premia to 9.99.
 GO
 DROP PROCEDURE IF EXISTS premia_procedura
 GO
@@ -181,7 +182,7 @@ END
 
 
 --------------------------------------------------------------------------------
--- Procedura 6. Procedura na podstawie pobranych paramterów tworzy nowego klienta oraz now¹ rezerwacjê. 
+-- Procedura 6. Procedura na podstawie pobranych paramterów tworzy nowego klienta oraz now¹ rezerwacjê dla tego klienta. 
 
 GO
 DROP PROCEDURE IF EXISTS [dbo].[rezerwacja_dla_nowego]
@@ -313,6 +314,8 @@ BEGIN
 END
 GO
 
+
+--------------------------------------------------------------------------------
 -- Procedura 8. Procedura dla zadanego pañstwa zmienia cenê bazow¹ za pokój znajduj¹cych siê w nim hoteli.
 -- Jeœli cena bazowa za pokój jest wiêksza od 120% œredniej w sieci hoteli to cena zostaje zmniejszona o 8%,
 -- jesli cena bazowa za pokój jest mniejsza od 80% œredniej w sieci hoteli to cena zostaje zwiêkszona o 11%.

@@ -3,7 +3,7 @@
 -- Martyna Piasecka 224398
 
 -- Wyzwalacz nr. 1 - Po zmianie premii, jesli premia jest zwiêkszona o wiêcej ni¿ 10 punktów procentowych, 
--- zwiêksz pensjê pracownika o po³owê iloczyny premii i pensji
+-- zwiêksz pensjê pracownika o po³owê iloczynu premii i pensji
 USE siec_hoteli
 GO
 
@@ -204,7 +204,8 @@ BEGIN
 END
 GO
 
--- Trigger 4 - Przed usuniêciem hotelu wszyscy pracownicy pracuj¹cy w danym hotelu przenoszeni s¹ do archiwum pracowników a ich hotel ustawiany jest na Null
+-- Trigger 4 - Przed usuniêciem hotelu wszyscy pracownicy pracuj¹cy w danym hotelu przenoszeni s¹ do archiwum pracowników,
+-- a ich id hotelu zostaje ustawiony na Null.
 USE siec_hoteli
 GO
 
