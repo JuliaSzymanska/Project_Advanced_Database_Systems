@@ -1297,7 +1297,7 @@ GO
 INSERT INTO siec_hoteli.dbo.klienci(imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania)
 VALUES (N'Michał', 'Wysoki', '665074717', N'Łódź ul.Przednia 53 Polska')
 INSERT INTO siec_hoteli.dbo.klienci(imie_klienta, nazwisko_klienta, numer_telefonu_klienta, adres_zamieszkania)
-VALUES ('Natalia', N'Kosztowny', '601874012', N'Łódź ul.Stokrotki 12 Polska')
+VALUES ('Natalia', N'Kosztowny', '601874010', N'Łódź ul.Stokrotki 12 Polska')
 
 INSERT INTO siec_hoteli.dbo.rezerwacje(data_rezerwacji, liczba_dni_rezerwacji, id_pokoju, id_klienta)
 VALUES ('2021/12/25', 5, 101, 1000);
